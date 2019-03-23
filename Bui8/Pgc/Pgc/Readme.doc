@@ -1,0 +1,42 @@
+Platform Games Core By R.Sutcliffe May 1996
+
+This is something I've been working on for a few months on and off. It's
+a core sequence of routines for handling characters in Platform games.
+So far it can handle animation of characters, Baddies and the main
+character.
+
+The little demo it comprises of consists of a single screen, three platforms
+with baddies walking on them , and a ladder. All the features included work,
+although collision detection is a bit cumbersome and dosesn't work too well.
+Three features I have intended to add but not got around to doing yet are
+falling blocks (called crumble blocks in the listing), background animation
+(called animblocks) and collectables. It will probably be winter before I
+can get around to them now.
+
+The heart of this system depends on two background map arrays - one is
+the array created by the map editor which draws the background onto the
+bitmap, the second is a virtual map array which is used by the program
+to determine what the main character is standing on. For this demo the
+virtual map is derived from the background map. For more complex games
+the virtual map could be created seperatly, as more block types could
+be added, eg hidden blocks, hidden doors and entrances to bonus rooms etc.,
+whick would not be visible on the screen.
+
+There are three programs in this release - PGC.bb is the Platform game
+core itself, PGC.h is a header file which defines the constants and newtypes
+which is used to create the resident file. This is well documented and
+should be looked at if you wish to understand the main listing
+(particularly the notes on variable naming at the foot of the header file.).
+The third program - sin.bb was used to develop the offsets for the jump
+routine.
+
+Enjoy
+
+R.Sutcliffe,
+1, Snell Grove,
+Colne,
+Lancs.
+BB8 OQS.
+
+Tel. 01282 862610.
+

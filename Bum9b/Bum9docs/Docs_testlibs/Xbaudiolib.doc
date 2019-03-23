@@ -1,0 +1,19 @@
+
+          XBaudiolib (Temp lib #4) - Steve Flock (Xbones)
+          -----------------------------------------------
+
+
+This is a possible replacement for Acids' audio lib. It uses exactly the
+same commands as the acid lib, except they are prefixed with the letters
+XB.  
+
+e.g.   Sound 0,15  becomes  XBSound 0,15
+
+Steve believes his fixes have made significant speed increases to the acid
+audio lib, so if there are no compatibility problems reported, this will 
+be the new audio lib and the XB prefixes will be dropped.
+
+If you have installed the large deflibs, you can try out the commands
+using the Bum9examples1:UserCode/Set_Period.bb2 example. Just type XB in
+front of the 'LoadSound' and the two 'Sound' commands and then recompile
+the example.

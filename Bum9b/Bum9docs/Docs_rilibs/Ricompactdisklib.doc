@@ -1,0 +1,250 @@
+-----------------------------------------------------------------------------
+----               RI Compact Disc Library V1.4 (C)1996                  ----
+-----------------------------------------------------------------------------
+
+                Written By Stephen McNamara & Steven Matty
+                        ©1996 Red When Excited Ltd
+
+Introduction
+============
+
+This library provides easy, yet powerful control of an Amiga compatible
+CD-ROM player.
+
+
+
+Statement/Function: OpenCD
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: [suc=]OpenCD[devicename$,unit#]
+
+  Attempts to open the cd.device for use my the library.  If used as a
+function it returns true or false to say whether the device was opened
+successfully.  You must use this command before you attempt to use any of
+the other commands in this library.
+
+You can specify a device other than cd.device by passing a device name
+and unit number. eg OpenCD "scsi.device",2
+
+
+Statement/Function: CloseCD
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: [suc=]CloseCD
+
+  You must close the device before your program ends.  Close the device
+by using this command.
+
+
+Statement: CDDoor
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDDoor On/Off
+
+  Controls the status of the cd tray on your cd drive.  Giving a value of
+On (non-zero) with this command will cause the tray to open, Off will cause
+the tray to close
+
+
+Statement/Function: CDPlayTrack
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDPlayTrack track#,numtracks
+
+  Use this command to make the cd drive play one or more audio tracks on
+the currently inserted compact disc.  Tracks are numbered from one but you
+should make sure that track one is an audio track, since CD-ROMs store
+program data on track one.  The numtracks arguement allows you to play
+more than one track without extra commands.  When the cd player reaches the
+end of the track it will move straight onto the next track automatically if
+you specified to play more than one.
+  This command can return a value to you if desired.  A return value of
+true means that the command succeeded, else false means failure.
+
+
+Statement/Function: CDReadTOC
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: [suc=]CDReadTOC
+
+  Read the table of contents off the current CD.  This most be done before
+you attempt to obtain information about tracks/try to play a track.  This
+command can optionally return true or false to say whether or not it
+succeeded.
+
+
+Function: CDStatus
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: status=CDStatus
+
+  Returns the status information for the device.  This data includes the
+current status of the cd drive, and whether or not there is a compact disc
+inserted into it.  The return value is a binary number, with the following
+bits being of interest:
+
+Name                Bit number     Meaning
+------------------------------------------
+CDSTSB_CLOSED	    0		   Drive door is closed
+CDSTSB_DISK	    1		   A disk has been detected
+CDSTSB_SPIN	    2		   Disk is spinning (motor is on)
+CDSTSB_TOC	    3		   Table of contents read.  Disk is valid.
+CDSTSB_CDROM	    4		   Track 1 contains CD-ROM data
+CDSTSB_PLAYING	    5		   Audio is playing
+CDSTSB_PAUSED	    6		   Pause mode (pauses on play command)
+CDSTSB_SEARCH	    7		   Search mode (Fast Forward/Fast Reverse)
+CDSTSB_DIRECTION    8		   Search direction (0 = Forward, 1 = Reverse)
+
+It is possible to get more than one bit set at a time in the variable so
+you should not do straight comparisions with the return value.  Use the &
+operator to test for different statuses, e.g.
+
+		If (CDStatus & %1) then NPrint "CD tray is closed!"
+
+
+Statement: CDStop
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDStop
+
+  Causes the cd player to stop playing the current track.
+
+
+Statement/Function: CDVolume
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDVolume volume,lengthoffade
+
+Gotta find out :)
+
+
+Function: CDNumTracks
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: num=CDNumTracks
+
+  Get the total number of tracks on the currently inserted compact disc.
+Should be used only after the table of contents has been read using
+CDReadTOC.
+
+
+Function: CDFirstTrack
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: num=CDFirstTrack
+
+  Returns the first track on the disc available for playing using the
+CDPlayTrack command.
+
+
+Function: CDLastTrack
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: num=CDLastTrack
+
+  Returns the last track on the disc available for playing using the
+CDPlayTrack command.
+
+
+Function: CDTrackLength
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: l=CDTrackLength(track#)
+
+  Returns the length in seconds of the selected track.  The track# should
+be checked to make sure that it exists on the compact disc.
+
+
+Statement: CDFlush
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDFlush
+
+Gotta find out :)
+
+
+Statement: CDPause
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDPause On/Off
+
+  This command is used to either make the cd player pause on the currently
+playing track, or restart after being paused.  If you set pause on whilst
+a track is not playing, and then attempt to play a track the cd player will
+go straight into pause mode.
+
+
+Statement: CDRewind
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDRewind
+
+  Set the cd player into rewind mode.
+
+
+Statement: CDFastForward
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDFastForward
+
+
+  Set the cd player into fastforward mode.
+
+
+Statement: CDNormalSpeed
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDNormalSpeed
+
+  Restore the cd player to normal playing speed.
+
+
+Statement: CDSpeed
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDSpeed speed
+
+  Set the cd player speed directly using the value in the speed parameter.
+
+
+Statement: CDUpdateInfo
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: CDUpdateInfo
+
+  This command is used to update the current track information whilst a
+compact disc is actually playing.  After it has been called, the commands
+CDTrackMins, CDTrackSecs and CDTrackPlaying will return information about
+the current track.
+
+
+Function: CDTrackMins
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: num=CDTrackMins[(offset)]
+
+  Returns the current time from start of the track for the currently
+playing cd track.  The optional parameter offset can take the value of 0 or
+1.  IF offset=1 is passed, the time returned will reflect the playing time
+from the start of the compact disc, rather than from the start of the
+track.
+
+
+Function: CDTrackSecs
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: num=CDTrackSecs[(offset)]
+
+  Returns the current time from start of the track for the currently
+playing cd track.  The optional parameter offset can take the value of 0 or
+1.  IF offset=1 is passed, the time returned will reflect the playing time
+from the start of the compact disc, rather than from the start of the
+track.
+
+
+Function: CDTrackPlaying
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: num=CDTrackPlaying
+
+  Returns the number of the currently playing cd track.

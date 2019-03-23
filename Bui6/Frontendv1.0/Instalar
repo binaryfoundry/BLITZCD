@@ -1,0 +1,89 @@
+;;$VER: Instalar 1.1 (11.3.96)
+;;
+;;   $Filename: Instalar $
+;;   $Version: 1.1 $
+;;   $Date: 11.3.96 $
+;;
+;;   Script Installer para instalar FrontEnd.
+;;   
+;;   © Copyright 1996 Arturo Roa Ros.
+;;
+;============================================================================================
+; Español
+
+(copyfiles
+	(prompt "Copiar FrontEnd a C:.")
+	(help "Necesito copiar FrontEnd a C:")
+	(source "")
+	(choices "FrontEnd")
+	(dest "C:")
+	(confirm)
+	(infos)
+)
+(set directorio
+       	(askdir
+             (prompt "¿Donde quieres instalar FrontEnd?\n")
+       	     (help "Elije el camino donde crear un directorio para FrontEnd.\nSi no existe, elige crear un directorio nuevo.")
+       	     (default "WORK:")
+	)
+)
+(copyfiles
+        (prompt "Copiar ficheros.")
+	(help "Se copiarán unos ficheros al directorio de destino.")
+	(source "")
+	(choices "Data" "Docs" "Examples" "FrontEndPrefs")
+	(dest directorio)
+	(confirm)
+	(infos)
+)
+(copyfiles
+	(prompt "Copiar Catalogs.")
+	(help "Si copias estos catalogs podrás usar FrontEnd en tu idioma.")
+	(source "catalogs/")
+	(choices "español")
+	(dest "LOCALE:catalogs/")
+	(confirm)
+	(infos)  
+)
+(copyfiles
+	(prompt "Copiar Fonts.")
+	(help "Tienes que copiar estas fuentes si quieres usar FrontEnd.")
+	(source "Fonts/")
+	(choices "XEN" "XEN.font")
+	(dest "FONTS:")
+	(confirm)
+	(infos)  
+)
+(set n
+	(askbool
+		(prompt "¿Quieres Descomprimir el codigo fuente del programa?")
+		(help "Si eliges Si se descomprimira un nuevo directorio en el directorio de destino con el codigo fuente Blitz Basic II. Para descomprimir este código necesitas tener Lzx en C:")
+	)
+)
+(if (= n 1) 
+	(run "Lzx x -M -x BlitzSource.lzx ram:"
+		(help "Descomprimiendo BlitzSource.lzx")
+		(prompt "Descomprimiendo BlitzSource.lzx a RAM:")
+	)
+)
+(if (= n 1) 
+	(copyfiles
+		(prompt "Copiando Source a "directorio)
+		(help   "Se copia Source a "directorio)
+		(source "Ram:")
+		(dest directorio)
+		(choices "BlitzSource")
+		(confirm)
+		(infos)
+	)
+)
+(if (= n 1) 
+	(run "delete Ram:BlitzSource ALL" 
+		(prompt "Borrando Ram:BlitzSource")
+		(help "lo")
+		(confirm)
+	)
+)
+(message "La instalación the FrontEnd V1.0 ha finalizado, puedes encontrar FrontEnd en "directorio)
+(exit "" (quiet))
+;;===================================================================================================

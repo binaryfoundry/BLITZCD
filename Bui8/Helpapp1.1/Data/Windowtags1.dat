@@ -1,0 +1,284 @@
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Left: ( ti_Tag=$80000064 )
+
+Specify the Window's initial position horizontally
+in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Top: ( ti_Tag=$80000065 )
+
+Specify the Window's initial position vertically
+in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Width: ( ti_Tag=$80000066 )
+
+Specify the Window's initial Width in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Height: ( ti_Tag=$80000067 )
+
+Specify the Window's initial Height in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_DetailPen: ( ti_Tag=$80000068 )
+
+Specify the DetailPen for Intuition to use
+in rendering details in the window titlebar
+such as gadgets and text, in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_BlockPen: ( ti_Tag=$80000069 )
+
+Specify the BlockPen for Intuition to use
+in rendering details in the window titlebar
+such as gadgets and text, in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_IDCMP: ( ti_Tag=$8000006A )
+
+Specify which IDCMP events your window
+requires in ti_Data. (OR them together).
+(See the IDCMP Page for more details).
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Flags: ( ti_Tag=$8000006B )
+
+Multiple initialisation of the window Flags
+equivalent to NewWindow.Flags. The required
+WFLG_ constants are OR'ed to give ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Gadgets: ( ti_Tag=$8000006C )
+
+Specify a pointer to the first in the
+linked list of Gadget structures to be included
+in this window, in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Checkmark: ( ti_Tag=$8000006D )
+
+Specify a pointer to an Image structure
+which is to be used as the ckeckmark image
+in this window's menus.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Title: ( ti_Tag=$8000006E )
+
+Specify the default window title as a
+pointer to a null terminated string
+in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_ScreenTitle: ( ti_Tag=$8000006F )
+
+Specify the screen title to be displayed
+whilst the window is active, as a pointer 
+to a null terminated string in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Colors: ( ti_Tag=$8000007C )
+
+UNIMPLEMENTED TAG.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_SuperBitmap: ( ti_Tag=$80000071 )
+
+Specify a pointer to a BitMap structure
+for a SuperBitMap window in ti_Data.
+(The application will allocate and 
+maintain its own bitmap).
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_MinWidth: ( ti_Tag=$80000072 )
+
+Specify the Minimum width setting
+for the window in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_MinHeight: ( ti_Tag=$80000073 )
+
+Specify the Minimum height setting
+for the window in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_MaxWidth: ( ti_Tag=$80000074 )
+
+Specify the Maximum width setting
+for the window in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_MaxHeight: ( ti_Tag=$80000075 )
+
+Specify the Maximum height setting
+for the window in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_InnerWidth: ( ti_Tag=$80000076 )
+
+Specify the dimensions region inside the
+border, independed of the border widths
+in ti_Data.
+When using WA_InnerWidth and WA_InnerHeight,
+probably want WA_AutoAdjust set also.
+
+
+Window  Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_InnerHeight: ( ti_Tag=$80000077 )
+
+Specify the dimensions region inside the
+border, independed of the border widths
+in ti_Data.
+When using WA_InnerWidth and WA_InnerHeight,
+probably want WA_AutoAdjust set also.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_PubScreenFallBack: ( ti_Tag=$80000078 )
+
+ti_Data is a boolean specifying whether a
+visitor window should "fall back" to the
+default public screen if the named public
+screen is not available.
+(Only useful when used with WA_PubScreenName)
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_PubScreen: ( ti_Tag=$80000079 )
+
+Specify to open the window as a visitor
+window on the public screen whose address
+is in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_PubScreenName: ( ti_Tag=$8000007A )
+
+Specify to open the window as a visitor
+window on the public screen whose name is
+given by a pointer to a null terminated 
+string in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_CustomScreen: ( ti_Tag=$8000007A )
+
+Specify a pointer to the Screen structure
+of a screen created by this application,
+on which the window is to be opened.
+

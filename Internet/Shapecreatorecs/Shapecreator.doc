@@ -1,0 +1,59 @@
+
+ShapeCreator 1.1  di Giuseppe Perniola     E-Mail: perniolapa@bccsanteramo.it
+
+QUESTO SOFTWARE E' GIFTWARE.
+SE TI PIACE QUESTO PROGRAMMA, MI PUOI SPEDIRE UNA CARTOLINA,UNA E-MAIL,
+UNA SOMMA DI DENARO, O MEGLIO ANCORA VECCHI COMPUTER O ACCCESSORI PER
+QUEST'ULTIMI.
+
+Questa utility per il Blitz Basic serve a disegnare uno Shape, di dimensioni
+variabili; ci sono 2 versioni: una per gli Amiga AGA, che permette l'uso
+dei 256 colori e della palette a 24 Bit, l'altro per gli Amiga ECS, che
+permette l'uso di 32 colori.
+
+Questo programma e' sopratutto utile per chi programma videogiochi con
+questo linguaggio. Richiede Kickstart 2.0 o superiore.
+
+Appena caricato il programma, verra' visualizzato sullo schermo l'ambiente
+di lavoro; e' suddiviso in varie parti:
+1) la parte in alto a sinistra - qui si puo' disegnare lo shape all'interno
+                                 della griglia, premendo il tasto sinistro
+                                 del mouse
+2) la parte in basso           - dove si puo' scegliere il colore, con cui
+                                 disegnare, e il numero dello Shape; si puo'
+                                 anche salvarlo, con o senza la palette che
+                                 usa il programma, o caricare uno Shape.
+3) la parte in alto a destra   - dove si puo' scegliere la lunghezza e la
+                                 larghezza dello Shape, cancellarlo con
+                                 l'ultimo colore selezionato e anche
+                                 invertirlo in senso orizzontale e verticale;
+                                 sono presenti anche opzioni per caricare o
+                                 salvare la palette, e anche manipolarla.
+Le dimensioni dello Shape, che si puo' caricare o disegnare, vanno dagli
+8 Pixel ai 37 Pixel. Se si tenta di caricare uno Shape di dimensioni maggiori
+o minori, sicuramente il computer andra' in crash!
+Nelle future versioni cerchero' di aggiungere queste caratteristiche:
+_ possibilita' di operare su piu' Shape;
+_ possibilita' di caricare ed editare uno Shape di qualsiasi dimensioni;
+_ localizzazione.
+
+Questo programma e' stato sviluppato, e testato, su un Amiga 1200 68030-68882
+a 50 Mhz, 6 Mb di Ram e con HD da 85 Mb.
+
+----------------------------------------------------------------------------
+AVVISO!!!!
+In questo periodo ho in mente di fare un gioco 3D simile a Wolfenstein 3D;
+ho gia' fatto due piccoli esempi, tutti e due presenti su Aminet
+(DEV/SRC/3DNAV.LHA e GAME/DEMO/INV3D02.LHA). Chi mi puo' aiutare,
+scrivere al mio indirizzo di E-Mail.
+----------------------------------------------------------------------------
+
+Per suggerimenti o critiche scrivere a:
+perniolapa@bccsanteramo.it
+
+Il mio indirizzo e':
+Giuseppe Perniola
+via Laterza, n.40
+70029  Santeramo in Colle (Bari) ITALIA
+TEL. 080/8826487
+

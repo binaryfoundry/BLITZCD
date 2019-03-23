@@ -1,0 +1,262 @@
+
+GadTools BevelBox Tags (V39)
+============================
+
+Usage: GTBevelBox/DrawBevelBoxA_
+
+GTBB_FrameType: ( ti_Tag = $8008004D )
+
+Specify in ti_Data one of the
+following constants for the type
+of box to draw.
+
+BBFT_BUTTON      = Button Gadget box
+BBFT_RIDGE       = String Gadget box
+BBFT_ICONDROPBOX = Icon Drop box
+
+
+GadTools CheckBox Tags (V39)
+============================
+
+Usage: CreateGadgetA/GTTags
+
+GTCB_Scaled: ( ti_Tag = $80080044 )
+
+Specify a boolean True in ti_Data
+for GadTools to scale the CheckBox image
+to the gadget width/height specified.
+
+
+GadTools Palette Tags (V39)
+===========================
+
+Usage: CreateGadgetA/GTTags
+
+GTPA_ColorTable: ( ti_Tag = $80080052 )
+
+Specify a pointer to a list
+of colors to use in the palette.
+
+
+GadTools Palette Tags (V39)
+===========================
+
+Usage: CreateGadgetA/GTTags
+
+GTPA_NumColors: ( ti_Tag = $80080046 )
+
+Specify the number of colors in
+the palette, in ti_Data.
+
+
+GadTools MutualExclude Tags (V39)
+=================================
+
+Usage: CreateGadgetA/GTTags
+
+GTMX_Scaled: ( ti_Tag = $80080045 )
+
+Specify a boolean True in ti_Data
+for GadTools to scale the MX image
+to the gadget width/height specified.
+
+
+GadTools MutualExclude Tags (V39)
+=================================
+
+Usage: CreateGadgetA/GTTags
+
+GTMX_TitlePlace: ( ti_Tag = $80080047 )
+
+Specify a constant in ti_Data for
+where to put the title.
+
+
+GadTools ListView Tags (V39)
+============================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_CallBack: ( ti_Tag = $80080053 )
+
+Specify a general purpose ListView
+callback hook in ti_Data.
+
+
+GadTools ListView Tags (V39)
+============================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_ItemHeight: ( ti_Tag = $8008004F )
+
+Specify in ti_Data the height of an
+individual List item.
+
+
+GadTools ListView Tags (V39)
+============================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_MakeVisible: ( ti_Tag = $8008004E )
+
+Specify a list item number in ti_Data 
+to make the item visible.
+
+
+GadTools ListView Tags (V39)
+============================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_MaxPen: ( ti_Tag = $80080054 )
+
+Specify in ti_Data the maximum pen number
+to be used in the callback.
+
+
+GadTools Number Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTNM_Justification: ( ti_Tag = $8008004A )
+
+Specify in ti_Data one of the following
+constants for number justification:
+
+GTJ_LEFT  
+GTJ_RIGHT
+GTJ_CENTER
+
+
+GadTools Number Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTNM_MaxNumberLen: ( ti_Tag = $80080056 )
+
+Specify in ti_Data the maximum length
+of the number allowed in the gadget.
+
+
+GadTools Slider Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTSL_Justification: ( ti_Tag = $80080051 )
+
+Specify in ti_Data one of the following
+constants for level justification:
+
+GTJ_LEFT  
+GTJ_RIGHT
+GTJ_CENTER
+
+
+GadTools Slider Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTSL_MaxPixelLen: ( ti_Tag = $80080050 )
+
+Specify in ti_Data, using a pixel limit,
+the maximum size of the level display.
+
+
+GadTools Text Tags (V39)
+========================
+
+Usage: CreateGadgetA/GTTags
+
+GTTX_BackPen: ( ti_Tag = $80080049 )
+
+Specify in ti_Data, the background color
+to use for the text.
+
+
+GadTools Text Tags (V39)
+========================
+
+Usage: CreateGadgetA/GTTags
+
+GTTX_Clipped: ( ti_Tag = $80080055 )
+
+Specify a boolean True in ti_Data to
+make the gadget clip text.
+
+
+GadTools Text Tags (V39)
+========================
+
+Usage: CreateGadgetA/GTTags
+
+GTTX_FrontPen: ( ti_Tag = $80080056 )
+
+Specify in ti_Data, the foreground color
+to use for the text.
+
+
+GadTools Text Tags (V39)
+========================
+
+Usage: CreateGadgetA/GTTags
+
+GTTX_Justification: ( ti_Tag = $8008004A )
+
+Specify in ti_Data one of the following
+constants for text justification:
+
+GTJ_LEFT  
+GTJ_RIGHT
+GTJ_CENTER
+
+
+GadTools Number Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTNM_BackPen: ( ti_Tag = $80080049 )
+
+Specify in ti_Data, the background color
+to use for the number.
+
+
+GadTools Number Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTNM_Clipped: ( ti_Tag = $80080055 )
+
+Specify a boolean True in ti_Data to
+make the gadget clip the number.
+
+
+GadTools Number Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTNM_Format: ( ti_Tag = $8008004B )
+
+Specify in ti_Data a pointer to a
+Null terminated string, containing format
+information (printf style), for the number.
+
+
+GadTools Number Tags (V39)
+==========================
+
+Usage: CreateGadgetA/GTTags
+
+GTNM_FrontPen: ( ti_Tag = $80080048 )
+
+Specify in ti_Data, the foreground color
+to use for the number.
+

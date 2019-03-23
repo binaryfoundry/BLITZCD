@@ -1,0 +1,19 @@
+Short   : Complete Blitz Source for Crazy 8's gamecamge@ix.netcom.com
+Author  : Curt Esser
+Uploader: camge@ix.netcom.com
+Type    : dev/basic
+Requires: Blitz Basic if you want to compile it
+
+
+This is the complete source for my card game Crazy 8's.
+If you want to compile and run it you will need Blitz Basic
+(I use version 2.1) and also the data files which are
+found with the game itself.  The game is found on Aminet
+in games/think/Crazy8.lha .  The game is found on Aminet
+
+PLEASE NOTE:
+
+The complete game is copyright to me and you are NOT PERMITTED to
+distribute altered versions of the game without my permission!
+
+You may use parts of the code for any other purpose as you wish.

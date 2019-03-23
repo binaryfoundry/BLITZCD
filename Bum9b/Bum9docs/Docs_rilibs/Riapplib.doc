@@ -1,0 +1,221 @@
+-----------------------------------------------------------------------------
+====         	    	RI App Library V1.4 (C)1996		 	 ====
+-----------------------------------------------------------------------------
+
+                          Written By Steven Matty
+                        ©1996 Red When Excited Ltd
+
+Introduction
+============
+
+This small library provides quick and easy to use commands for accessing
+AppWindows, AppIcons and AppMenus.
+
+An AppWindow is a window on the Workbench screen which will allow you
+to drag file(s) from into it, instead of ploughing through file-requesters.
+
+An AppMenu adds a menu item to the "Tools" menu of the Workbench. It is
+normally used for when the program is 'sleeping' and the user wishes to
+wake it up. In addition, if any files are selected and the menu item
+is selected these are passed to the program.
+
+An AppIcon is just like a normal file icon on the Workbench except it
+allows you to drop file(s) onto it, or to double-click it to wake
+up the program.
+
+These features require at Workbench v2.0 or higher.
+
+
+
+Function : AppEvent
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : status=AppEvent
+
+This command checks to see whether or not an 'App'Event (e.g. File
+dropped onto an AppIcon or Menu Item selected) has occurred.
+
+This function will return 0 if no event has occurred, else
+$80000 if :
+	An AppMenu was selected
+        An AppIcon was double-clicked
+        A File Was Dragged Into An AppWindow
+        A File Was Dragged Onto An AppIcon
+
+********
+* NOTE * : This function no longer returns the number of files
+********   selected. $80000 is returned instead of -1.
+           See AppNumFiles().
+
+e.g.
+
+  Repeat
+    VWait
+    appev.l=AppEvent		; Has something happened
+  Until appev
+  If appev=$80000
+    NPrint "An AppEvent Occurred! !"
+  EndIf
+
+
+Function : AddAppWindow
+-------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=AddAppWindow(windownumber)
+
+This command attempts to make the window specified by 'windownumber' to become
+an AppWindow. -1 means success, 0 means failure. There is a limit of 16
+AppWindows open at any one time.
+
+
+Function : AddAppIcon
+-------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=AddAppIcon(id,text$,iconname$)
+
+This command attempts to place an AppIcon onto the Workbench desktop.
+ID is a unique identification number. Text$ is text to display underneath
+the AppIcon and Iconname$ is the name of the file to use the Icon imagery.
+-1 means success, 0 means failure. There is a limit of 16 AppIcons.
+e.g.
+
+  suc=AddAppIcon(0,"QuickFormat","SYS:System/Format")
+  If suc=0 Then End
+  
+
+Function : AddAppMenu
+-------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=AddAppMenu(id,text$)
+
+This command tries to add 'text$' to the Tools menu of Workbench.
+ID is a unique identification number. Returns -1 for success, 0 for failure.
+There is a limit of 16 AppMenu items.
+
+e.g.
+
+  suc=AddAppMenu(0,"Wakey Wakey")
+  If suc=0 Then End
+
+
+Function : AppEventCode
+-------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : apptype=AppEventCode
+
+This function will return the type of App object which caused the event.
+0=No Event Occurred
+1=AppWindow
+2=AppIcon
+3=AppMenu
+
+e.g.
+
+  Repeat
+    VWait
+    appev.l=AppEvent		; Has something happened
+  Until appev
+  Select AppEventCode
+    Case 1
+      NPrint "An AppWindow caused this!"
+    Case 2
+      NPrint "An AppIcon caused this!"
+    Case 3
+      NPrint "An AppMenu caused this!"
+  End Select
+
+
+Function : AppEventID
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : idnumber=AppEventID
+
+  This will return the object ID number which caused the AppEvent.
+  This ID number refers to the one which was used in 
+  AddAppIcon/AddAppWindow/AddAppWindow.
+
+  -1 means that no AppEvent occurred.
+
+
+Function : NextAppFile
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : filename$=NextAppFile
+
+  This will return the full path and filename for the file/drawer/volume
+  which was selected when an AppEvent occurred.  If a directory was selected
+  then a '/' is appended to file name. If a volume (e.g. a Disk) was
+  selected then a ":" is appended.
+
+  An empty string means nothing was selected.
+
+  e.g.
+  ; AppStuff initalized
+  Repeat
+    VWait
+    appev.l=AppEvent
+  Until appev=$80000      ; repeat until some files are selected.
+  numfiles.l=AppNumFiles
+  For n=1 To numfiles
+    NPrint "File number "+str$(n)+" is "+NextAppFile
+  Next n
+
+
+Function : AppNumFiles
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : numfiles=AppNumFiles
+
+  This will return the number of files selected when the AppEvent occurred.
+  
+
+Function : AppFile
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : filename$=AppFile(file#)
+
+  This will return the full path and filename for the file/drawer/volume
+  which was selected when an AppEvent occurred. The file# parameter
+  specifies which file to return. If a directory was selected then a '/'
+  is appended to file name. If a volume (e.g. a Disk) was selected then
+  a ":" is appended.
+
+  An empty string means nothing was selected.
+
+  e.g.
+  ; AppStuff initalized
+  Repeat
+    VWait
+    appev.l=AppEvent
+  Until appev=$80000      ; repeat until some files are selected.
+  numfiles.l=AppNumFiles
+  For n=1 To numfiles
+    NPrint "File number "+str$(n)+" is "+AppFile(n)
+  Next n
+
+
+Function: DelAppWindow
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=DelAppWindow[(number)]
+
+These commands will remove the AppWindow from the system and free up the
+associated message port.
+
+
+Function: DelAppIcon
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=DelAppIcon[(id)]
+
+These commands will remove the AppIcon from the system and free up the
+associated message port.
+
+
+Function: DelAppMenu
+------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=DelAppMenu[(id)]
+
+These commands will remove the AppMenu from the system and free up the
+associated message port.

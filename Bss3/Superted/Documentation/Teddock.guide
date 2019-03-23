@@ -1,0 +1,119 @@
+@DATABASE "TEDDock AmigaGuide® Documentation"
+@REMARK $VER: TEDDock.guide 1.1 (17.6.96)
+
+@node "Main" "Welcome to TEDDock"
+
+                                 @{b}@{u}TEDDock@{ub}@{uu}
+
+                        ©1996 Red When Excited Ltd
+
+
+                             @{" Introduction   " link "Introduction" 0}
+
+                             @{" Usage          " link "Usage" 0}
+                             @{" ARexx Port     " link "ARexx" 0}
+                             @{" Configuration  " link "Configuration" 0}
+
+			     @{"Red When Excited" link RWE}
+
+@endnode
+
+@node "Introduction" "Introduction"
+
+                               @{b}@{u}Introduction@{ub}@{uu}
+
+TEDDock is a small accessory for @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}, the new Blitz Basic 2 editor. It
+provides direct access to @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}s arexx port in the form of a useful
+draggable menubar on @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}'s screen.
+
+It is supplied FREE with the Blitz Support Suite.
+@endnode
+
+@node "Usage" "Usage"
+@{b}@{u}Usage@{ub}@{uu}
+
+Either run TEDDock once you have started Blitz and @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}, or place it in
+the Blitz2:StartUp/@{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN} folder to have TEDDock available at all times.
+
+To use TEDDock, simply click on a button to cause the equivalent function in
+@{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}.
+
+TEDDock is @{"fully configurable" link "Configuration" 0}, and the preferences are availabel by activating
+TEDDocks window and then selecting the appropriate menu item.  Configuration
+is via a simple interface giving full control over the look and feel of
+TEDDock.  Preferences are of course stored in ENV: and ENVARC:
+@endnode
+
+@node "ARexx" "ARexx Port"
+
+                                @{b}@{u}AREXX Port@{ub}@{uu}
+
+TEDDock has its own ARexx port used mainly for communication with @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}.
+All ARexx commands are of course available for others to use.
+
+TEDDock will open a port called TEDDock_REXXn, where n is a number from 1 to
+9.  Numbers will be selected fom 1 upwards until an arexx port is successfully
+opened.  Once TEDDock is running the following ARexx commands are available.
+
+@{b}CLOSEWINDOW@{ub}
+  This will cause TEDDock to close its window if it is open.
+
+@{b}OPENWINDOW@{ub}
+  This will cause TEDDock to reopen its window if it has been closed.
+
+@{b}MESSAGE text$@{ub}
+  This command changes TEDDocks window title to text$.  This is used for
+  messages from @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}.
+
+@{b}ABOUT@{ub}
+  Brings up TEDDocks about requester.
+
+@{b}QUIT@{ub}
+  This forces TEDDock to suit with no requester.
+
+@{b}OWNER@{ub}
+  Returns the Identifier (1-9) of the copy of Ted that a particular
+  copy of TEDDock is conversing with.  Mainly of internal use.
+
+@endnode
+
+@node "Configuration" "Configuration"
+
+                               @{b}@{u}Configuration@{ub}@{uu}
+
+TEDDock is fully configurable by you the user through an easy to use, built in
+preferences editor. To return to the default settings merely delete the file
+ENVARC:TEDDock.prefs.
+
+TEDDock can be configured to use any shapes files that you provide as a button
+image, and to execute any arexx script, dos script, or arexx command (the
+latter is always directed at @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}). Using the integrated preferences
+window it is possible to tailor TEDDock to suit youwr needs.
+
+Note that when using your own imagery, there are 14 images built into TEDDock,
+available through the names @{b}INTERNAL??@{ub}.  When using your own shapes files,
+note that these should be of individual @{b}single@{ub} shapes.  A variety of shapes
+are provided in the GFX drawer for you to use at will.
+@endnode
+
+@NODE RWE "Red When Excited"
+
+                      @{b}@{u}How To Contact Red When Excited@{ub}@{uu}
+
+
+Write to:                   Red When Excited Ltd,
+                            2 Slimmons Drive,
+                            St. Albans,
+                            Herts.
+                            AL4 9AS.
+                            ENGLAND.
+
+If you have Internet access, you can e-mail us :
+
+                      redwhen@ldngedge.demon.co.uk
+
+or point your browser at our WorldWide Web page :
+
+                   http://www.aber.ac.uk/~ngh94/rwe.html
+
+@ENDNODE RWE

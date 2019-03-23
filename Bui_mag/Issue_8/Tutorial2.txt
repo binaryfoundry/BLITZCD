@@ -1,0 +1,209 @@
+PROGRAMMING THEORY
+
+(C) BUI
+
+BY LEE PACKHAM
+
+
+
+Finding His Exams To Easy To Be True (what a liar!! - ed) Lee Packham Comes Back For The Fifth Time To Teach You Something New.
+
+
+
+Hello again. I bet you're getting bored of me! I am now truly stuck on what to write. Nobody has responded and so I am stuck. So what I think I will do is babble on about theory this month and not work on any particular piece of code.
+
+
+
+Over the next couple of months I am going to be looking at different parts of programming and how it should be written. This month I am going to look at the initialisation code. That is, the code that starts the program. What should be there and what shou
+
+
+
+I will be referring to my first ever tutorial as there is code there that could be useful. So order a back issue of 5 months ago (issue 4 - ed) to read that.  Right then, let's get started...
+
+
+
+The first thing that should be at the top of evert program should be a lot of lines beginning with ";" i.e. REMarks. Listing information with the program. Not useful code wise. But useful if you look again at the code in six months time and wonder what it
+
+
+
+;Program Title V1
+
+;(C)1996 Fred Bloggs
+
+;
+
+;
+
+;FORMAT
+
+;     My Program ARG1/M ARG2/S
+
+;
+
+;HISTORY
+
+;     25/05/96   Started out with original idea
+
+;
+
+;     15/05/96   Improved A Bit More
+
+;
+
+;NOTES
+
+;     This does this, this and this
+
+
+
+This is basically there so anybody, including yourself, who looks at the code knows exactly what it is about and exactly how it works. The format line is how the program is called from the CLI. Consult you Workbench manual on what /M and /S mean. The next
+
+commands...
+
+
+
+WBStartup
+
+NoCLI
+
+CloseEd
+
+
+
+You know what these commands do don't you? If you don't, quit now! Always include WBStartup even if your program is a CLI program. However don't include it if you want to use the code out of my first tutorial. See my first tutorial for details. 
+
+
+
+The next important part to look at is variables. It is a good idea to define a lot of constants for different things. What I use constants for are things like window numbers, GTList numbers and gadget numbers themselves.  Like this, for example...
+
+
+
+WIN1_Window=0              ;Window Number
+
+WIN1_GTList=2              ;GTList Number For WIN1
+
+
+
+WIN1_About=10              ;Gadget Number For About Gadget On WIN1
+
+WIN1_Quit=11               ;Gadget Number For Quit Gadget On WIN1
+
+
+
+There are three reasons for giving things like windows and gadgets variables, they are...
+
+
+
+    1. It cuts the size of the executable because instead of using the same 
+
+       number over and over again, you are getting it from one place.
+
+
+
+    2. It allows you to refer to objects from Statements and Functions.
+
+
+
+    3. You can change the numbers easily without having to change every
+
+       reference to that object.
+
+
+
+In the example above when you want to create the Quit gadget you would use...
+
+
+
+    GTButton #WIN1_GTList,#WIN1_Quit,10,10,100,14,"Quit",0
+
+
+
+And then any reference to that gadget would be made by #WIN1_Quit. Which saves space in the executable.
+
+
+
+The thing you want to do is some checking before you execute any real code.  Things like:- Is the machine able to run your program?  For example, let's say this program requires the ""reqtools.library"", Kickstart 2 and HAD to be started from Workbench...
+
+
+
+If IsReqToolsActive<>True Or ExecVersion<37 Or FromCLI<>False
+
+  End
+
+Endif
+
+
+
+Don't tell the user what's going on because the code might not work to do a request! Just quit nicely without causing any errors and the host machine not crashing. This way the user doesn't get really annoyed and can check the documentation for the progra
+
+
+
+The next line is essential if you want to open a window on the Workbench screen...
+
+
+
+WBToScreen 0
+
+
+
+This way whatever happens next you have a screen to work on! Now simply go ahead and open your windows. While we are on the subject of windows this is how I do it.  I have two subroutines, one called "openmain" and one called "closemain".  You could have 
+
+
+
+.openmain
+
+If mainwin=false  ;Make sure window is shut
+
+  GTButton #WIN1_GTList,#WIN1_About,10,10,100,14,"_About",0
+
+  GTButton #WIN1_GTList,#WIN1_Quit,120,10,100,14,"_Quit",0
+
+
+
+  Window #WIN1_Window,0,0,320,128,$20100e,"Tester",0,1
+
+  AttachGTList #WIN1_GTList,#WIN1_Window
+
+
+
+  mainwin=True  ;Make the window true (open)
+
+EndIf
+
+Return
+
+
+
+.closemain
+
+If mainwin=true   ;Make sure window is open!
+
+  CloseWindow #WIN1_Window
+
+  Free GTList #WIN1_GTList
+
+
+
+  mainwin=False
+
+Endif
+
+Return
+
+
+
+Ideal if you have a commodity which you want to hide/show, one routine will quickly open the window and one will quickly close it.
+
+
+
+Anyway, there is no code on the coverdisk. But there is UpdateDrawers V2 which is written by me (spot the plug or what Lee - ed).  Harddisk essential! And see my Password Rememberer V3 plug elsewhere in this issue.
+
+
+
+Next month, I might write something about BUM 9 which will have been released when you read this. I'll go through all the new things that they have done (will keep you too that! - ed).
+
+
+
+Anyway, see ya. Next month, I will have finished my exams so back to nice long tutorials on interesting bits of code after that!
+
+[Lee Packham]

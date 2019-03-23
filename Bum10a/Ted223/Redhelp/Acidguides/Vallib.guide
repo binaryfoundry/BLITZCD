@@ -1,0 +1,251 @@
+@DATABASE VALLIB
+@Author Conversion program
+@NODE OVERVIEW "Overview of VALLIB"
+
+                                  @{b}@{u}Overview@{ub}@{uu}
+
+
+                          An Acid Software Library
+
+                         Converted to AmigaGuide by
+
+                            Red When Excited Ltd
+
+                 Used with the permission of Acid Software
+
+
+
+@ENDNODE OVERVIEW
+
+@NODE Val "VALLIB"
+
+@{fg shine}Function: Val@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =Val (String$)
+
+This functions converts the string String$ into a numeric value and returns 
+this value. When converting the string, the conversion will stop the moment 
+either a non numeric value or a second decimal point is reached.
+
+
+@ENDNODE Val
+
+@NODE Int "VALLIB"
+
+@{fg shine}Function: Int@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =Int (Expression)
+
+This returns the Integer part (before the decimal point) of Expression.
+
+
+@ENDNODE Int
+
+@NODE Sgn "VALLIB"
+
+@{fg shine}Function: Sgn@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =Sgn (Expression)
+
+Sgn returns the sign of Expression. If Expression is less than 0, then -1 is 
+returned. If Expression is equal to 0, then 0 is returned. If Expression is 
+greater than 0, then 1 is returned.
+
+
+@ENDNODE Sgn
+
+@NODE Frac "VALLIB"
+
+@{fg shine}Function: Frac@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =Frac (Expression)
+
+Frac() returns the fractional part of Expression.
+
+
+@ENDNODE Frac
+
+@NODE QFrac "VALLIB"
+
+@{fg shine}Function: QFrac@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QFrac (Quick)
+
+QFrac() returns the fractional part of a quick value. It works like Frac() 
+but accepts a quick value as it's argument. It is faster than Frac() but has 
+the normal quick value limits.
+
+
+@ENDNODE QFrac
+
+@NODE QWrap "VALLIB"
+
+@{fg shine}Function: QWrap@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QWrap (Quick,Low,High)
+
+QWrap will wrap the result of the Quick expression if Quick is greater than 
+or equal to high, or less than low. If Quick is less than Low, then 
+Quick-Low+High is returned. If Quick is greater than or equal to High, then 
+Quick-High+Low is returned.
+
+
+@ENDNODE QWrap
+
+@NODE Rnd "VALLIB"
+
+@{fg shine}Statement: Rnd@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Rnd [(Range)]
+
+This function returns a random number. If Range is not specified then a 
+random decimal is returned between 0 and 1. If Range is specified, then a 
+decimal value between 0 and Range is returned.
+
+
+@ENDNODE Rnd
+
+@NODE QAbs "VALLIB"
+
+@{fg shine}Function: QAbs@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QAbs (Quick)
+
+QAbs works just like Abs except that the value it accepts is a Quick. This 
+enhances the speed at which the function executes quite dramatically. Of 
+course you are limited by the restrictions of the quick type of value.
+
+
+@ENDNODE QAbs
+
+@NODE Abs "VALLIB"
+
+@{fg shine}Function: Abs@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =Abs (Expression)
+
+This function returns the positive equivalent of Expression.
+
+
+@ENDNODE Abs
+
+@NODE QLimit "VALLIB"
+
+@{fg shine}Function: QLimit@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QLimit (Quick,Low,High)
+
+QLimit is used to limit the range of a quick number. If Quick is greater 
+than or equal to Low, and less or equal to High, the value of Quick is 
+returned. If Quick is less than Low, then Low is returned. If Quick is 
+greater than High, then High is returned.
+
+
+@ENDNODE QLimit
+
+@NODE NTSC "VALLIB"
+
+@{fg shine}Statement: NTSC@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : NTSC 
+
+This function returns 0 if the display is currently in PAL mode, or -1 if 
+currently in NTSC mode. This may be used to write software which dynamically 
+adjusts itself to different versions of the Amiga computer.
+
+
+@ENDNODE NTSC
+
+@NODE DispHeight "VALLIB"
+
+@{fg shine}Statement: DispHeight@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : DispHeight 
+
+DispHeight will return 256 if executed on a PAL Amiga, or 200 if executed on 
+an NTSC Amiga. This allows programs to open full sized screens, windows etc 
+on any Amiga.
+
+
+@ENDNODE DispHeight
+
+@NODE VPos "VALLIB"
+
+@{fg shine}Statement: VPos@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : VPos 
+
+VPos returns the video's beam vertical position. Useful in both highspeed 
+animation where screen update may need to be synced to a certain video beam 
+position (not just the top of frame as with VWait) and for a fast random 
+nember generator in non frame-synced applications.
+
+
+@ENDNODE VPos
+
+@NODE True "VALLIB"
+
+@{fg shine}Statement: True@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : True 
+
+True is a system constant with a value of -1.
+
+
+@ENDNODE True
+
+@NODE False "VALLIB"
+
+@{fg shine}Statement: False@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : False 
+
+False is a system constant with a value of 0.
+
+
+@ENDNODE False
+
+@NODE QAngle "VALLIB"
+
+@{fg shine}Function: QAngle@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QAngle (Src X,Src Y,Dest X,Dest Y)
+
+@ENDNODE QAngle
+
+@NODE MAIN "VALLIB"
+
+.-----------------------------------------------------------------------------.
+|                                   @{b}VALLIB@{ub}                                    |
+`-----------------------------------------------------------------------------'
+
+                             @{"     Overview     " link OVERVIEW}
+
+                               Command Index                                
+
+                 @{" Abs        " link Abs}                @{" DispHeight " link DispHeight}
+                 @{" False      " link False}                @{" Frac       " link Frac}
+                 @{" Int        " link Int}                @{" NTSC       " link NTSC}
+                 @{" QAbs       " link QAbs}                @{" QAngle     " link QAngle}
+                 @{" QFrac      " link QFrac}                @{" QLimit     " link QLimit}
+                 @{" QWrap      " link QWrap}                @{" Rnd        " link Rnd}
+                 @{" Sgn        " link Sgn}                @{" True       " link True}
+                 @{" Val        " link Val}                @{" VPos       " link VPos}
+@ENDNODE MAIN
+

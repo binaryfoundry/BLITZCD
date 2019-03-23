@@ -1,0 +1,552 @@
+
+Make The Most From Blitz Basic 2, Part 2
+
+(C) BUI
+
+BY LEE PACKHAM
+
+
+
+Lee Packham strikes again with a different type of screen...
+
+Hello readers! I'm back again with the second installment of features that allow you to get the most out of your favourite programming language. If you're a new reader, get onto the editor and order a back issue. Last month's tutorial was probably the mos
+
+Now, onto this month. I have a rather nice piece of code for you this month. It's all to do with a type of screen known as "Public Screens" or PUBSCREEN for short. This is a new type of screen that was added to the Amiga's operating system as of Release 2
+
+The problem with Blitz Basic ][ is that it doesn't directly support PUBSCREENS with it's built in command set. At least, it didn't support it until I was asked the following question. How do I do AmigaGuide online help on my own screen?
+
+Unfortunately, AmigaGuide can't open on a normal Screen, so I set about opening a PUBSCREEN. As with last month, I'll give you a whole example first and then tell what it does so as you can adapt it for your purposes.
+
+You may be interested to know that this code is used in Multitudinious V5.5 and BBOnlineHelp V1.0 both on last months coverdisk by Kevin Winspear.
+
+(Don't forget to include the Amigalibs.res in your compiler options before you compile - Ed).
+
+Now for that code...
+
+
+
+NoCli
+
+
+
+MyFont$="topaz.font"
+
+MyFontSize=8
+
+
+
+;Fill the TextAttr structure
+
+MyFontAttr.TextAttr\ta_Name = &MyFont$,MyFontSize,0,0
+
+
+
+;Needed to get the palette right!
+
+;it sets what colour is used for what
+
+Dim scr0_pens.w(21)
+
+scr0_pens(0)=-1
+
+scr0_pens(1)=0
+
+scr0_pens(2)=0
+
+scr0_pens(3)=0
+
+scr0_pens(4)=0
+
+scr0_pens(5)=0
+
+scr0_pens(6)=0
+
+scr0_pens(7)=0
+
+scr0_pens(8)=0
+
+scr0_pens(9)=0
+
+
+
+;PubScreen Name
+
+;In this demo it is used as it's name
+
+;and title
+
+a$="BUG.1"
+
+
+
+;Allocate a nice signal
+
+;for the pubscreen
+
+;
+
+;Don't ask me why it needs it,
+
+;but it DOES!!! And this took
+
+;me ages to figure out. (15 mins)
+
+mysig.l=AllocSignal_(-1)
+
+If mysig=0
+
+  mysig=-1
+
+EndIf
+
+
+
+;Screen tags, here they are set for a normal
+
+;HiRes 4 colour screen...
+
+Dim scr0_tags.TagItem (9)
+
+scr0_tags(0)\ti_Tag=#SA_Depth,2
+
+scr0_tags(1)\ti_Tag=#SA_Pens,&scr0_pens(0)
+
+scr0_tags(2)\ti_Tag=#SA_DetailPen,0
+
+scr0_tags(3)\ti_Tag=#SA_BlockPen,1
+
+scr0_tags(4)\ti_Tag=#SA_DisplayID,$8000
+
+scr0_tags(5)\ti_Tag=#SA_Font,MyFontAttr
+
+scr0_tags(6)\ti_Tag=#SA_PubName,&a$
+
+scr0_tags(7)\ti_Tag=#SA_Title,&a$
+
+scr0_tags(8)\ti_Tag=#SA_PubSig,mysig
+
+scr0_tags(9)\ti_Tag=#SA_PubTask,0
+
+
+
+;Open the screen...
+
+*myscreen.Screen=OpenScreenTagList_(0,&scr0_tags(0)\ti_Tag)
+
+;
+
+;*myscreen will be 0 if the screen could not be
+
+;opened. NO CHECKING YET!!!!
+
+;All the code below relies on the fact hat
+
+;screen COULD be opened.
+
+
+
+;Give the screen a number
+
+;
+
+;if the screen did not open, the debugger (LES)
+
+;will throw up an error.
+
+FindScreen 0,a$
+
+
+
+;Activate the pubscreen to the system
+
+PubScreenStatus_ *myscreen,0
+
+
+
+;Open a test window on the screen
+
+Window 0,10,15,400,87,$0000100E,"Work Window",1,0
+
+
+
+;Bring up an AmigaGuide File of the users choice
+
+MaxLen fi$=162
+
+MaxLen pa$=162
+
+testfile$=ASLFileRequest$("Select A Nice Guide File...",pa$,fi$,"#?.guide")
+
+
+
+b$="run >nil: <nil: amigaguide "+testfile$+" PUBSCREEN BUG.1"
+
+p.l=Execute_(&b$,0,0)
+
+
+
+;Wait until all windows are shut down,
+
+;ALL windows must be closed before
+
+;I can shut down the screen
+
+Repeat
+
+  VWait
+
+  ev.l=Event
+
+  ew.l=EventWindow
+
+
+
+  ;has my window been closed?
+
+  If ev=$200 AND ew=0
+
+    CloseWindow 0
+
+  EndIf
+
+
+
+  ;Are there any windows out there?
+
+  If *myscreen.Screen\FirstWindow=0
+
+    exitr=True
+
+  EndIf
+
+Until exitr=True
+
+
+
+;Free my screen from Blitz and the system
+
+;BOTH COMMANDS REQUIRED!!!!
+
+;
+
+;MAKE SURE ALL WINDOWS ARE SHUT!!!!!!!!!
+
+;The main loop does this...
+
+CloseScreen 0
+
+CloseScreen_ *myscreen
+
+
+
+;Free My Nice Signal
+
+;If you don't do this
+
+;you WILL get a guru
+
+;
+
+;I found out the hard way!
+
+If mysig>0
+
+  FreeSignal_(mysig)
+
+EndIf
+
+
+
+; BYE BYE (bang!) extract from WORMS
+
+End
+
+
+
+Okay then. Now I will take you through this fairly complex example in a few
+
+lines at a time...
+
+
+
+NoCli
+
+
+
+MyFont$="topaz.font"
+
+MyFontSize=8
+
+
+
+;Fill the TextAttr structure
+
+MyFontAttr.TextAttr\ta_Name = &MyFont$,MyFontSize,0,0
+
+
+
+This is fairly simple. We tell the Blitz to not bring up a CLI when the program is started. Then we say what font we would like to use for our lovely screen. In this case we will use Topaz 8, the system default. We then need to fill out a TextAttr structu
+
+
+
+;Needed to get the palette right!
+
+;it sets what colour is used for what
+
+Dim scr0_pens.w(21)
+
+scr0_pens(0)=-1
+
+scr0_pens(1)=0
+
+scr0_pens(2)=0
+
+scr0_pens(3)=0
+
+scr0_pens(4)=0
+
+scr0_pens(5)=0
+
+scr0_pens(6)=0
+
+scr0_pens(7)=0
+
+scr0_pens(8)=0
+
+scr0_pens(9)=0
+
+
+
+This is standard and should remain as it is whenever you use it. It simply assigns colours to certain aspects of the screen. We don't need anything special so we set it do default.
+
+
+
+;PubScreen Name
+
+;In this demo it is used as it's name
+
+;and title
+
+a$="BUG.1"
+
+
+
+This piece of code, surpisingly enough, is the name of our screen. In this example, we use it for the title that will be displayed on the titlebar aswell. You wouldn't do that normally.
+
+
+
+;Allocate a nice signal
+
+;for the pubscreen
+
+;
+
+;Don't ask me why it needs it,
+
+;but it DOES!!! And this took
+
+;me ages to figure out. (15 mins)
+
+mysig.l=AllocSignal_(-1)
+
+If mysig=0
+
+  mysig=-1
+
+EndIf
+
+
+
+This part simply allocates a system signal for our screen. It needs it to open. A signal in this case could notify us that all the windows are shut on the screen. In this example, we don't need a signal but we basically HAVE to have it.
+
+
+
+;Screen tags, here they are set for a normal
+
+;HiRes 4 colour screen...
+
+Dim scr0_tags.TagItem (9)
+
+scr0_tags(0)\ti_Tag=#SA_Depth,2
+
+scr0_tags(1)\ti_Tag=#SA_Pens,&scr0_pens(0)
+
+scr0_tags(2)\ti_Tag=#SA_DetailPen,0
+
+scr0_tags(3)\ti_Tag=#SA_BlockPen,1
+
+scr0_tags(4)\ti_Tag=#SA_DisplayID,$8000
+
+scr0_tags(5)\ti_Tag=#SA_Font,MyFontAttr
+
+scr0_tags(6)\ti_Tag=#SA_PubName,&a$
+
+scr0_tags(7)\ti_Tag=#SA_Title,&a$
+
+scr0_tags(8)\ti_Tag=#SA_PubSig,mysig
+
+scr0_tags(9)\ti_Tag=#SA_PubTask,0
+
+
+
+This is very simple. This part simply says what we want our screen to be. In this case, it's a simple High-Res 4 colour screen. Notice that I set both the PUBNAME and the TITLE to a$. Normally they would be different.
+
+
+
+;Open the screen...
+
+*myscreen.Screen=OpenScreenTagList_(0,&scr0_tags(0)\ti_Tag)
+
+;
+
+;*myscreen will be 0 if the screen could not be
+
+;opened. NO CHECKING YET!!!!
+
+;All the code below relies on the fact hat
+
+;screen COULD be opened.
+
+
+
+;Give the screen a number
+
+;
+
+;if the screen did not open, the debugger (LES)
+
+;will throw up an error.
+
+FindScreen 0,a$
+
+
+
+;Activate the pubscreen to the system
+
+PubScreenStatus_ *myscreen,0
+
+
+
+This code is rather complex. It opens the screen first. There is no checking in the example. What you could do is have a number on the end of your PUBNAME and increase by one until you can open the screen. You can't have two screens with the same PUBNAME 
+
+
+
+;Open a test window on the screen
+
+Window 0,10,15,400,87,$0000100E,"Work Window",1,0
+
+
+
+;Bring up an AmigaGuide File of the users choice
+
+MaxLen fi$=162
+
+MaxLen pa$=162
+
+testfile$=ASLFileRequest$("Select A Nice Guide File...",pa$,fi$,"#?.guide")
+
+
+
+b$="run >nil: <nil: amigaguide "+testfile$+" PUBSCREEN BUG.1"
+
+p.l=Execute_(&b$,0,0)
+
+
+
+We then open a dummy window and ask the user to open up an AmigaGuide file aswell. This piece of code was orignally made so that Kevin Winspear could open a Help file on one of his own screens ya see.
+
+
+
+;Wait until all windows are shut down,
+
+;ALL windows must be closed before
+
+;I can shut down the screen
+
+Repeat
+
+  VWait
+
+  ev.l=Event
+
+  ew.l=EventWindow
+
+
+
+  ;has my window been closed?
+
+  If ev=$200 AND ew=0
+
+    CloseWindow 0
+
+  EndIf
+
+
+
+  ;Are there any windows out there?
+
+  If *myscreen.Screen\FirstWindow=0
+
+    exitr=True
+
+  EndIf
+
+Until exitr=True
+
+
+
+The main loop is here at last! This simply checks to see if our own window has had it's close gadget clicked on. If so, it closes it. The loop will only exit once all windows on the screen have been shut. A PUBSCREEN can't be closed until all windows that
+
+
+
+;Free my screen from Blitz and the system
+
+;BOTH COMMANDS REQUIRED!!!!
+
+;
+
+;MAKE SURE ALL WINDOWS ARE SHUT!!!!!!!!!
+
+;The main loop does this...
+
+CloseScreen 0
+
+CloseScreen_ *myscreen
+
+
+
+Very important. You have to close your screen manually. Not let Blitz do it for you. This is really standard practice. If Blitz can do it, you can do it better and safer!
+
+
+
+;Free My Nice Signal
+
+;If you don't do this
+
+;you WILL get a guru
+
+;
+
+;I found out the hard way!
+
+If mysig>0
+
+  FreeSignal_(mysig)
+
+EndIf
+
+
+
+; BYE BYE (bang!) extract from WORMS
+
+End
+
+
+
+We then free up that signal we made earlier and end the example with a big BYE BYE! In this case, End!
+
+If you can't be bothered to type the code in, why not look on the coverdisk?  As with last month, you can find the code there in the Source.LZX archive.
+
+For next month I would like to solve one of your problems. Is there anything you have trouble with? Is there anything another program can do, but you can't seem to do it in Blitz? If so, why not send your query to...  Lee Packhams Letters, 27 Hillside Ave
+
+I also hope to start a letters page in this magazine soon. So send all problems to that address to. If I don't get any letters problems that will fill this tutorial I have another trick up my sleave! Wait and see!

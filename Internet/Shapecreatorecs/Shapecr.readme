@@ -1,0 +1,34 @@
+Short   : A shape creator for bb2 (ITALIAN)
+Author  : perniolapa@bccsanteramo.it (Giuseppe Perniola)
+Uploader: perniolapa@bccsanteramo.it (Giuseppe Perniola)
+Type    : dev/basic
+
+ShapeCreator 1.1  di Giuseppe Perniola     E-Mail: perniolapa@bccsanteramo.it
+
+QUESTO SOFTWARE E' GIFTWARE.
+
+Questa utility per il Blitz Basic serve a disegnare uno Shape, di dimensioni
+variabili; ci sono 2 versioni: una per gli Amiga AGA, che permette l'uso
+dei 256 colori e della palette a 24 Bit, l'altro per gli Amiga ECS, che
+permette l'uso di 32 colori.
+
+Questo programma e' sopratutto utile per chi programma videogiochi con
+questo linguaggio. Richiede Kickstart 2.0 o superiore.
+
+-----------------------------------------------------------------------------
+
+ShapeCreator 1.1  by Giuseppe Perniola
+
+THIS SOFTWARE IS GIFTWARE.
+
+This utility for the Blitz Basic serve to draw a Shape of variables sizes;
+there are two versions: one for Amiga AGA, it permits the use of 256 colors
+and of 24 Bit palette, the other for Amiga ECS, it permits the use of
+32 colors.
+
+This program is useful for who is videogames programmer with this language.
+
+It requires Kickstart 2.0 or upper.
+
+
+

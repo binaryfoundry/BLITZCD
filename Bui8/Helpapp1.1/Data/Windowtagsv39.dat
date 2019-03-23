@@ -1,0 +1,117 @@
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_NewLookMenus: ( ti_Tag=$80000093 )
+
+Specify a boolean in ti_Data for whether
+or not NewLook menus are required.
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_AmigaKey: ( ti_Tag=$80000094 )
+
+Specify a pointer to an Image structure 
+in ti_Data to use a custom Amiga-key
+image for the menus.
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_NotifyDepth: ( ti_Tag=$80000095 )
+
+Specify a boolean True to request 
+IDCMP_CHANGEWINDOW messages when window 
+is depth arranged. (imsg->Code = CWCODE_DEPTH)
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Pointer: ( ti_Tag=$80000097 )
+
+Specify a new Mouse Pointer to use in the
+window. ti_Data contains a pointer to a
+pointer object obtained via "pointerclass".
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_BusyPointer: ( ti_Tag=$80000098 )
+
+Specify a True boolean to request the
+standard busy pointer.
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_PointerDelay: ( ti_Tag=$80000099 )
+
+Specify a True boolean to request that the
+changing of the pointer be slightly delayed.
+(To avoid the possibility of a flashing
+pointer for short busy periods).
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_TabletMessages: ( ti_Tag=$8000009A )
+
+Specify a True Boolean in ti_Data to request
+that tablet information be included in
+IntuiMessages sent to the window.
+NB. Requires something to feed
+IESUBCLASS_NEWTABLET InputEvents
+into the system.
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_HelpGroup: ( ti_Tag=$8000009B )
+
+When the active window has gadget help enabled,
+other windows of the same HelpGroup number
+will also get GadgetHelp.  This allows GadgetHelp
+to work for multi-windowed applications.
+Use GetGroupID() to get an ID number.  Pass
+this number as ti_Data to all your windows.
+
+
+Window Attribute Tags (V39)
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_HelpGroupWindow: ( ti_Tag=$8000009B )
+
+When the active window has gadget help enabled,
+other windows of the same HelpGroup will also get
+GadgetHelp. This allows GadgetHelp to work
+for multi-windowed applications.  As an alternative
+to WA_HelpGroup, you can pass a pointer to any
+other window of the same group to join its help
+group.  Defaults to NULL, which has no effect.
+

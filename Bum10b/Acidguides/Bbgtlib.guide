@@ -1,0 +1,519 @@
+@DATABASE BBGTLIB
+@Author Conversion program
+@NODE OVERVIEW "Overview of BBGTLIB"
+
+                                  @{b}@{u}Overview@{ub}@{uu}
+
+
+                          An Acid Software Library
+
+                         Converted to AmigaGuide by
+
+                            Red When Excited Ltd
+
+                 Used with the permission of Acid Software
+
+
+
+@ENDNODE OVERVIEW
+
+@NODE DetachGTList "BBGTLIB"
+
+@{fg shine}Statement: DetachGTList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : DetachGTList GTList#
+
+This command removes a GTList# object from the current window it is
+attached to.  After removal, it can the modified and then reattached as
+required.
+
+
+@ENDNODE DetachGTList
+
+@NODE GTGZZPosition "BBGTLIB"
+
+@{fg shine}Statement: GTGZZPosition@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTGZZPosition On/Off
+
+Switch off control of the GimmeZeroZero windows.  If your window is of type
+GIMMEZEROZERO (specified in the flags when you open the window) you should
+switch on GTGZZPosition to stop all gadgets' positions being wrong.
+
+
+@ENDNODE GTGZZPosition
+
+@NODE GTFreeGadget "BBGTLIB"
+
+@{fg shine}Statement: GTFreeGadget@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTFreeGadget GTList#,gadget_id
+
+This command is used to delete a gadget from the selected GTList#.  It
+should only be used when the GTList is not currently attached to a window.
+
+
+@ENDNODE GTFreeGadget
+
+@NODE GTSetHighLight "BBGTLIB"
+
+@{fg shine}Statement: GTSetHighLight@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTSetHighLigh GTList#,listview_id,item
+
+This command allows you to easily set the currently selected item inside a
+listview gadget.  It sets the desired item, plus moves the listviews
+contents to make the item visible.
+
+
+@ENDNODE GTSetHighLight
+
+@NODE GTList "BBGTLIB"
+
+@{fg shine}Statement: GTList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTList A GadgTools GadgetList
+
+
+
+@ENDNODE GTList
+
+@NODE GTButton "BBGTLIB"
+
+@{fg shine}Statement: GTButton@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTButton GTList#,id,x,y,w,h,Text$,flags[,UserData]
+
+Same as Blitz2's TextGadget but with the added flexibility of placing the 
+label Text$ above, below to the left or right of the button (see flags).
+
+The optional userdata field allows you to define a longword value to be
+associated with this gadget.
+
+
+@ENDNODE GTButton
+
+@NODE GTCheckBox "BBGTLIB"
+
+@{fg shine}Statement: GTCheckBox@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTCheckBox GTList#,id,x,y,w,h,Text$,flags
+
+A box with a check mark that toggles on and off, best used for options that 
+are either enabled or disabled. 
+
+
+@ENDNODE GTCheckBox
+
+@NODE GTCycle "BBGTLIB"
+
+@{fg shine}Statement: GTCycle@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTCycle GTList#,id,x,y,w,h,Text$,flags,Options$[,active]
+
+Used for offering the user a range of options, the options string should be 
+a list of options separated by the | character eg. "HIRES | LORES | SUPER 
+HIRES"
+
+
+@ENDNODE GTCycle
+
+@NODE GTInteger "BBGTLIB"
+
+@{fg shine}Statement: GTInteger@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTInteger GTList#,id,x,y,w,h,Text$,flags,default
+
+A string gadget that allows only numbers to be entered by the user.See 
+GTSetInteger and GTGetInteger for information about accessing the contents 
+of a GTInteger gadget.
+
+
+@ENDNODE GTInteger
+
+@NODE GTListView "BBGTLIB"
+
+@{fg shine}Statement: GTListView@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTListView GTList#,id,x,y,w,h,Text$,flags,list()[,selected[,top]]
+
+The ListView gadget enaables the user to scroll through a list of options. 
+These options must be contained in a string field of a Blitz2 linked list. 
+Currently this string field must be the second field, the first being a word 
+type. *See the GTChangeList command for more details.
+
+
+@ENDNODE GTListView
+
+@NODE GTMX "BBGTLIB"
+
+@{fg shine}Statement: GTMX@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTMX GTList#,id,x,y,w,h,Text$,flags,Options$[,active]
+
+GTMX is an exclusive selection gadget , the Options$ is the same as GTCycle 
+in format, GadTools then displays all the options in a vertical list each 
+with a hi-light beside them.
+
+
+@ENDNODE GTMX
+
+@NODE GTNumber "BBGTLIB"
+
+@{fg shine}Statement: GTNumber@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTNumber GTList#,id,x,y,w,h,Text$,flags,value
+
+This is a readonly gadget (user cannot interact with it) used to display 
+numbers. See GTSetInteger to update the contents of this readonly "display" 
+gadget.
+
+
+@ENDNODE GTNumber
+
+@NODE GTPalette "BBGTLIB"
+
+@{fg shine}Statement: GTPalette@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTPalette GTList#,id,x,y,w,h,Text$,flags,depth[,Color]
+
+Creates a number of coloured boxes relating to a colour palette, 
+
+
+@ENDNODE GTPalette
+
+@NODE GTScroller "BBGTLIB"
+
+@{fg shine}Statement: GTScroller@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTScroller GTList#,id,x,y,w,h,Text$,flags,Visible,Total[,Top]
+
+A prop type gadget for the user to control an amount or level, is 
+accompanied by a set of arrow gadgets.
+
+
+@ENDNODE GTScroller
+
+@NODE GTSlider "BBGTLIB"
+
+@{fg shine}Statement: GTSlider@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTSlider GTList#,id,x,y,w,h,Text$,flags,Min,Max[,Level]
+
+Same as Scroller but for controlling the position of display inside a larger 
+view.
+
+
+@ENDNODE GTSlider
+
+@NODE GTString "BBGTLIB"
+
+@{fg shine}Statement: GTString@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTString GTList#,id,x,y,w,h,Text$,flags,MaxChars [,default$]
+
+A standard string type gadget. See GTSetString and GTGetString for accessing 
+the contents of a GTString gadget.
+
+
+@ENDNODE GTString
+
+@NODE GTText "BBGTLIB"
+
+@{fg shine}Statement: GTText@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTText GTList#,id,x,y,w,h,Text$,flags,Display$
+
+A read only gadget (see GTNumber) for displaying text messages. See 
+GTSetString for updating the contents of this read only "display" gadget.
+
+
+@ENDNODE GTText
+
+@NODE AttachGTList "BBGTLIB"
+
+@{fg shine}Statement: AttachGTList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : AttachGTList GTList#,Window#
+
+The AttchGTList command is used to attach a set of GadTools gadgets to a 
+Window after it has been opened.
+
+
+@ENDNODE AttachGTList
+
+@NODE GTTags "BBGTLIB"
+
+@{fg shine}Statement: GTTags@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTTags Tag,Value [,Tag,Value...]
+
+#tag=$80080000
+#GTCB_Checked=#tag+4   ; State of checkbox
+#GTLV_Top=#tag+5     ; Top visible item in listview
+#GTLV_ReadOnly=#tag+7   ; Set TRUE if listview is to be ReadOnly
+#GTMX_Active=#tag+10   ; Active one in mx gadget
+#GTTX_Text=#tag+11    ; Text to display
+#GTNM_Number=#tag+13   ; Number to display
+#GTCY_Active=#tag+15   ; The active one in the cycle gad
+#GTPA_Color=#tag+17    ; Palette color
+#GTPA_ColorOffset=#tag+18 ; First color to use in palette
+#GTSC_Top=#tag+21     ; Top visible in scroller
+#GTSC_Total=#tag+22    ; Total in scroller area
+#GTSC_Visible=#tag+23   ; Number visible in scroller
+#GTSL_Level=#tag+40    ; Slider level
+#GTSL_MaxLevelLen=#tag+41 ; Max length of printed level
+#GTSL_LevelFormat=#tag+42 ;* Format string for level
+#GTSL_LevelPlace=#tag+43 ;* Where level should be placed
+#GTLV_Selected=#tag+54  ; Set ordinal number of selected
+#GTMX_Spacing=#tag+61   ;* Added to font height to
+
+All of the above except for those marked * can be set after initialisation 
+of the Gadget using the GTSetAttrs command. 
+
+The following is an example of creating a slider gadget with a numeric 
+display:
+
+f$="%2ld":GTTags #GTSLLevelFormat,&f$,#GTSLMaxLevelLen,4
+GTSlider 2,10,320,120,200,20,"GTSLIDER",2,0,10
+
+
+@ENDNODE GTTags
+
+@NODE GTGadPtr "BBGTLIB"
+
+@{fg shine}Function: GTGadPtr@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =GTGadPtr (GTList#,id)
+
+GTGadPtr returns the actual location of the specified GadTools gadget in 
+memory.
+
+
+@ENDNODE GTGadPtr
+
+@NODE GTBevelBox "BBGTLIB"
+
+@{fg shine}Statement: GTBevelBox@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTBevelBox GTList#,x,y,w,h,flags
+
+GTBevelBox is the GadTools library equivalent of the Borders command and can 
+be used to render frames and boxes in the currently used Window.
+
+
+@ENDNODE GTBevelBox
+
+@NODE GTChangeList "BBGTLIB"
+
+@{fg shine}Statement: GTChangeList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTChangeList GTList#,id [ ,List() ]
+
+GTChangeList must be used whenever a List attached to a GTListView needs to 
+be modified. Call GTChangeList without the List() parameter to free the 
+List, modify it then reattache it with another call to GTChangeList this 
+time using the List() parameter.
+
+
+@ENDNODE GTChangeList
+
+@NODE GTSetAttrs "BBGTLIB"
+
+@{fg shine}Statement: GTSetAttrs@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTSetAttrs GTList#,id [,Tag,Value...]
+
+GTSetAttrs can be used to modify the status of certain GadTools gadgets with 
+the relevant Tags. See GTTags for more information.
+
+
+@ENDNODE GTSetAttrs
+
+@NODE GTSetString "BBGTLIB"
+
+@{fg shine}Statement: GTSetString@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTSetString GTList#,id,string$
+
+Used with both GTString and GTText gadgets, GTSetString will not only update 
+the contents of the gadget but redraw it also.
+
+
+@ENDNODE GTSetString
+
+@NODE GTSetInteger "BBGTLIB"
+
+@{fg shine}Statement: GTSetInteger@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTSetInteger GTList#,id,value
+
+Used with both GTInteger and GTNumber gadgets, GTSetInteger will not only 
+update the contents of the gadget but redraw it also.
+
+
+@ENDNODE GTSetInteger
+
+@NODE GTGetString "BBGTLIB"
+
+@{fg shine}Statement: GTGetString@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTGetString GTList#,id
+
+Used to read the contents from a GTString gadget.
+
+
+@ENDNODE GTGetString
+
+@NODE GTGetInteger "BBGTLIB"
+
+@{fg shine}Statement: GTGetInteger@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTGetInteger GTList#,id
+
+Used to read the contents from a GTInteger gadget.
+
+
+@ENDNODE GTGetInteger
+
+@NODE GTShape "BBGTLIB"
+
+@{fg shine}Statement: GTShape@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTShape GTList#,id,x,y,flags,Shape#[,Shape#]
+
+Similar to the Blitz2 ShapeGadget allowing IFF graphics that are loaded into 
+Blitz2 shape objects to be used as gadgets in a window.
+
+
+@ENDNODE GTShape
+
+@NODE GTGetAttrs "BBGTLIB"
+
+@{fg shine}Function: GTGetAttrs@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =GTGetAttrs (GTList#,id,Tag)
+
+A 3.0 specific command. See C= documentation for more information.
+
+
+@ENDNODE GTGetAttrs
+
+@NODE GTEnable "BBGTLIB"
+
+@{fg shine}Statement: GTEnable@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTEnable GTList#,Id
+
+Allows GTGadgets to be enabled and disabled.
+
+
+@ENDNODE GTEnable
+
+@NODE GTDisable "BBGTLIB"
+
+@{fg shine}Statement: GTDisable@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTDisable GTList#,Id
+
+Allows GTGadgets to be enabled and disabled.
+
+
+@ENDNODE GTDisable
+
+@NODE GTToggle "BBGTLIB"
+
+@{fg shine}Statement: GTToggle@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTToggle GTList#,Id [,On|Off]
+
+GTToggle allows the programmer to set Boolean gadgets such as GTButton and 
+GTCheckbox to a desired state.
+
+
+@ENDNODE GTToggle
+
+@NODE GTStatus "BBGTLIB"
+
+@{fg shine}Statement: GTStatus@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTStatus GTList#,Id
+
+GTStatus returns the status of and gadtools toggle gadgets, a value of 1 
+means the the gadget is selected, 0 deselected.
+
+
+@ENDNODE GTStatus
+
+@NODE GTArrowSize "BBGTLIB"
+
+@{fg shine}Statement: GTArrowSize@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : GTArrowSize size
+
+Allows the size of GTScroller arrows to be preset. Default size is 16.
+@ENDNODE GTArrowSize
+
+@NODE MAIN "BBGTLIB"
+
+.-----------------------------------------------------------------------------.
+|                                  @{b}BBGTLIB@{ub}                                    |
+`-----------------------------------------------------------------------------'
+
+                             @{"     Overview     " link OVERVIEW}
+
+                               Command Index                                
+
+             @{" AttachGTList   " link AttachGTList}                @{" DetachGTList   " link DetachGTList}
+             @{" GTArrowSize    " link GTArrowSize}                @{" GTBevelBox     " link GTBevelBox}
+             @{" GTButton       " link GTButton}                @{" GTChangeList   " link GTChangeList}
+             @{" GTCheckBox     " link GTCheckBox}                @{" GTCycle        " link GTCycle}
+             @{" GTDisable      " link GTDisable}                @{" GTEnable       " link GTEnable}
+             @{" GTFreeGadget   " link GTFreeGadget}                @{" GTGadPtr       " link GTGadPtr}
+             @{" GTGetAttrs     " link GTGetAttrs}                @{" GTGetInteger   " link GTGetInteger}
+             @{" GTGetString    " link GTGetString}                @{" GTGZZPosition  " link GTGZZPosition}
+             @{" GTInteger      " link GTInteger}                @{" GTList         " link GTList}
+             @{" GTListView     " link GTListView}                @{" GTMX           " link GTMX}
+             @{" GTNumber       " link GTNumber}                @{" GTPalette      " link GTPalette}
+             @{" GTScroller     " link GTScroller}                @{" GTSetAttrs     " link GTSetAttrs}
+             @{" GTSetHighLight " link GTSetHighLight}                @{" GTSetInteger   " link GTSetInteger}
+             @{" GTSetString    " link GTSetString}                @{" GTShape        " link GTShape}
+             @{" GTSlider       " link GTSlider}                @{" GTStatus       " link GTStatus}
+             @{" GTString       " link GTString}                @{" GTTags         " link GTTags}
+             @{" GTText         " link GTText}                @{" GTToggle       " link GTToggle}
+@ENDNODE MAIN
+

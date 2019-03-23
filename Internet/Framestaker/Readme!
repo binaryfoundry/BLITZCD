@@ -1,0 +1,53 @@
+
+FramesTaker  V1.2b
+------------------
+
+
+Introduction
+------------
+
+This tool has the purpose of making life easier to BlitzII programmers who wants to spare time grabbing their animation frames out of pictures.
+
+It works as a CLI utility, taking as parameters an IFF picture (where it suppose to find the frames to be grabbed) it writes as output a 'Blitz Basic II' shapes file.
+The program loads the picture, makes the assumption that colour 0 is considered as a "separator" between frames (ie : you just have to place the frames of the pic without overlapping them :) and starts searching them in a systematic left-right+top-bottom order (by showing what is doing on a intuition screen).
+The frames don't need to be on perfect rows or coloums, neither to be same size or to be of a particoular shape ... they can even have "holes" between them (I mean that a frame doesn't need to be composed by a single shape, but can be more complex).
+After the search&grab process the proggy returns the number of frames found and saves the Blitz shapes packet.
+
+
+Usage
+-----
+
+ FramesTaker sourcepic destgfxfile precision
+
+where : sourcepic    = IFF file where frames are drawn
+        destgfxfile  = name of shapes fiel to be created
+        precision    = maximum distance between two shapes wich are part of the same frame.
+                       Every time the program will find a division (formed by pixels of colour 0) between two graphic shapes that is more tick than this value, it will consider the two shapes as two different frames.
+                       If your picture contains only "one shaped" frames (like spaceships, characters, or so), just put the value 1 here.
+
+Bugs
+----
+The biggest 'bug' present is that, to be shown correctly, the pic must follow a very standard format (lowres 320x200 or others), because of the lack of care programming the little self-contained displayer. BUT the program work with ANY picture (well, any IFF picture :), even if it doesn't show it correctly, it grabs the frames correctly.
+
+
+Availability
+------------
+FramesTaker is Freeware, but comments/bugs/compliments/claims are always welcome at : vega@tilink.ch
+
+
+Acknowledgements
+---------------
+
+Thanx goes to : Claudio Preiano' , for starting the Vega project
+                Serge Veugelers  , for supporting our relation with Raymond and for showing loads of patience :)
+                Mark Sibly       , for BB2 ! :)
+                Ted Baley        , probably the most productive Acid member (well, ex member :)
+
+
+
+
+  Vittorio Ferrari
+
+ CineTech - Graphic adventures development
+ 
+ 

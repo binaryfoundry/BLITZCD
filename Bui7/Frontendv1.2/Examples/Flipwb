@@ -1,0 +1,35 @@
+*******************************************************************************
+* Fichero de preferencias generado por FrontEnd Prefs V1.2  © Arturo Roa 1996 *
+*******************************************************************************
+PROGRAMA: Trabajo:Utilidades/Visores/Flip/Flip
+OPCIONES: WARP
+STACK: 4096
+REQUESTER: 0
+FILTRO: #?.(FLI|FLC)
+TITULO: Select the FLI|FLC to play.
+PRIMERO: 0
+VARIABLES: 2
+Loop
+How many times dou you want to play the anim?.
+1
+ONCE
+5
+LOOPS 5
+20
+LOOPS 20
+Infinite
+LOOPS 999999
+
+
+Disk
+From were do you want to play the anim?.
+Disk
+DISK
+Memory
+
+
+
+
+
+
+

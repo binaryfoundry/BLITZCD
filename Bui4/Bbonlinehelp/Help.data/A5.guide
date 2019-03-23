@@ -1,0 +1,357 @@
+@DATABASE "A5.guide"
+
+@NODE A501
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Implode@{fg text}
+--------------------------------------------------------------------------
+Syntax:   Implode Error/CrunchedLen=Bufferadr,DataLen,?Callback
+
+Description:
+Crunch a buffer using the Imploder algorythm. The ?Callback could be a 0
+for no own routine or a pointer to an own routine for display or abort 
+checking. If the Imploder command jump to the callback in register d0 
+the current crunch position is presend. The callback itself have to 
+return True for cont crunching or False for a break!
+
+The command return the crunched buffer len or of course a break or an 
+error. If a <0 is returned the callback returned a userbreak, a return 
+of 0 means an error happens. Else the new buffer len is returned.
+@ENDNODE
+@NODE A502
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Deplode@{fg text}
+--------------------------------------------------------------------------
+Syntax:   Deplode Success=Startadr
+
+Description:
+Decrunch a Imploder-Crunched buffer. There is no need to give the 
+crunched buffer len to the command, imploder handle this by itself. But
+be careful, if the alloceted buffer hasn' t enought space the program 
+crash.
+    
+    The buffer has to have a header like this:
+
+    Type  Offset  Contents                  Function
+    LONG  0       "IMP!"                    To recongnize crunched files
+    LONG  4       Original Len              Datalen before packing
+    LONG  8       Crunched Len-$32          Datalen after packing
+    
+    So $a is the start of the datas...
+
+    The decrunch routine NEED this header to decrunch!!!
+    Do memoryallocation for the buffer using a allocate for the 
+    Startadr+$4 size.
+@ENDNODE
+@NODE A503
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Command: @{fg shine}CrMDecrunch@{fg text}
+--------------------------------------------------------------------------
+Syntax:  CrMDecrunch Bufferadr [,Destinationadr]
+
+Description:
+If the only parameter is the Bufferadr this routine works like the 
+Deplode command, but decrunch a CrunchMania crunched file. If you use it
+with to parameters the decrunch will be done from Bufferadr to 
+Destinationadr, so 2 buffers have to been allocated. 
+
+    The header for CrunchMania files have to look like this:
+
+    Type  Offset  Contents                   Function
+    --------------------------------------------------------------------
+    LONG  0       "CrM!"/"CrM2"              To recongnize crunched 
+                                             files.
+    
+    WORD  4       Minimum Security Distance  To savely decrunch Data 
+                                             when Source AND Dest is
+                                             in the same Memoryblock.
+
+    LONG  6       Original Len               Datalen before packing
+
+    LONG  10 ($a) Crunched Len               Datalen after packing 
+                                             without header.
+
+    So at $d is the data startadress.
+
+    This header is NEEDED for decrunching!
+@ENDNODE                   
+@NODE A504
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Command: @{fg shine}PPDecrunch@{fg text}
+--------------------------------------------------------------------------
+Syntax: PPDecrunch Bufferadr,Bufferend,Destinationadr
+
+Description:
+This command decrunch a PowerPacker crunched file. PowerPacker need two
+buffers for decrunching. Also the lenght of the buffer must be given!
+
+Sorry, I can' t find my PowerPacker archive where the header is 
+descripted...Like Imploder and CrunchMania PowerPacker also support his 
+own file header.
+
+Please have a look at the PowerPacker(.library) documentation!
+@ENDNODE         
+@NODE A582
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: Reboot@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : Reboot
+
+This will perform a cold reboot
+@ENDNODE     
+@NODE A583
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Lisa@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : chipver=Lisa
+
+   This will return the current Lisa chip version :
+
+    $00 for OCS Denise
+    $F7 for ECS Denise
+    $F8 for AGA Lisa
+@ENDNODE        
+@NODE A585
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Rename@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=Rename(source$,dest$)
+
+This attempts to rename the file <source$> to <dest$>
+
+@{fg shine}NOTE:@{fg text} It is not possible to rename across devices. -1 is returned if 
+successfull, else 0.
+@ENDNODE     
+@NODE A586
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: MemFree@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : bytes.l=MemFree
+
+This will return the total amount of Public Free RAM available to the
+system.
+@ENDNODE 
+@NODE A588
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Timer@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : t.l=Timer
+
+This will return the number of 50ths of a second since startup.
+@ENDNODE
+@NODE A58A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: CopyByte@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : CopyByte(source.l,dest.l,num.l)
+
+This will copy <num> bytes from <source> to <dest> 
+@ENDNODE
+@NODE A58B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: CopyWord@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : CopyByte(source.l,dest.l,num.l)
+
+This will copy <num> words from <source> to <dest> 
+@ENDNODE
+@NODE A58C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: CopyLong@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : CopyByte(source.l,dest.l,num.l)
+
+This will copy <num> longwords from <source> to <dest> 
+@ENDNODE
+@NODE A58D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Max/Min@{fg text}
+------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : value=Max(first_var,second_var)
+         value=Min(first_var,second_var)
+
+This will compare both values and return either the Higher of the values
+(Max) or the Lower (Min). This currently supports INTEGERs only.
+@ENDNODE
+@NODE A58E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: FileSize@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : size.l=FileSize(filename$)
+
+This return the length (in bytes) of the file.
+@ENDNODE
+@NODE A58F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: BLoad@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=BLoad(filename$,bank/address[,length,offset])
+
+If bank is specified, then the file is loaded into that bank. If address
+is specified then it is loaded to the address. Valid banks are 0-49. 
+If the bank does not exist, Blitz will reserve a bank for you.
+If the bank does exist, Blitz will erase the bank from memory, and
+allocate a new one.
+
+The return result is -1 for success, or 0 for failure  (not enough RAM, 
+file not exist). If offset is specified, then <length> bytes will be 
+read from the specified offset position in the file.
+@ENDNODE
+@NODE A590
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: BSave@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=BSave(filename$,bank/address,length)
+
+This will save <length> bytes at bank/address to the file. Return result
+is -1 for success, 0 for failure. If length > bank length then the 
+length of the bank is saved instead. If 0 is specified, the entire bank 
+is saved.
+@ENDNODE
+@NODE A591
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Start@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : start_address.l=Start(banknumber.b)
+
+This will return the start address of the specified bank. (0=no bank)
+@ENDNODE
+@NODE A592
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Length@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : length_of_bank.l=Length(banknumber.b)
+
+This will return the length of the specified bank in bytes. (0=No bank)
+@ENDNODE
+@NODE A593
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: Erase@{fg text}
+--------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : Erase(banknumber)
+
+The Erase command will erase the specified memory bank.
+@ENDNODE
+@NODE A594
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: EraseAll@{fg text}
+--------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : EraseAll
+
+This command will erase ALL allocated memory banks.
+@ENDNODE
+@NODE A595
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Reserve@{fg text}
+--------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : success=Reserve(banknumber,length)
+
+  This will attempt to reserve <length> bytes of memory. If succesfull,
+it will return the address of the bank. If unsuccessfull, 0 is returned.
+Banks are limited by the Compiler Options Menu.
+@ENDNODE
+@NODE A596
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: NextBank@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : bank.b=NextBank
+
+This will return the number of the first available bank (-1 if none 
+free).
+@ENDNODE
+@NODE A598
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: PLoad@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=PLoad(filename$,bank/address)
+
+This will attempt to load the executable file to the specified address.
+-1 is success, 0 is failure.
+@ENDNODE
+@NODE A599
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: FillMem@{fg text}
+-------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : FillMem(address.l,length.l,value.b)
+
+This will fill 'length' bytes starting from the specified address with 
+'value'.
+@ENDNODE
+@NODE A59A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: KeyCode@{fg text}
+------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : keycode=KeyCode
+
+This will return the status of the keyboard in the form of a keycode.
+You will need to experiment to find out the desired keycode for
+a particular key.
+
+This merely peeks address $bfec01 and returns the value found.
+@ENDNODE
+@NODE A59B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function : CludgeShapes@{fg text}
+--------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : [success]=CludgeShapes(shape#,numshapes,address)
+
+This allows the creation of shapes through INCBIN statements. It
+allocates chip memory for each shape and copies the data into this.
+It does the same as LoadShapes except it grabs shapes from memory.
+@ENDNODE
+@NODE A59C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function : CludgeSound@{fg text}
+--------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : [success]=CludgeSound(sound#,address)
+
+This does that same for CludgeShapes but works on only 1 sound at a time
+
+@{fg shine}NOTE:@{fg text} Looped sounds are not currently supported! The sound must be a valid
+8SVX sample.
+@ENDNODE
+
+

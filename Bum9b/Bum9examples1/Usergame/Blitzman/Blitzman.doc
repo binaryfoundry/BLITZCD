@@ -1,0 +1,102 @@
+
+                  Blitz Man -  Version: not much.
+
+                  By Vaughan Roberts.
+                  For the Blitz Basic Internet Comp.
+
+Copyright:  For registered Blitz Users - none what so ever, apart from what
+                                         Acid Software decides on. See
+                                         elsewhere I guess.
+
+
+  Well since no one reads doc files (I hardly ever do..) and I'm fast running
+out of time to write this, I'll keep it short.
+
+  Blitz Man is a PacMan derivitive, you eat little yellow pills until you
+clear a level.  If you eat a purple pill, for a short time you can eat the
+monsters that are trying to eat you, errrm and thats about it really......
+What makes this game better than the orginal PacMan?  Not a lot. If anything.
+  Well I had plans, but unsurprisingly, due to the compitition deadline have
+been unable to use them (this has been a six day effort, start to finish), so
+if you want to add something feel free to add it yourself or give me a call.
+
+  Three good points for this game:
+    1 - Two players at once.  But be careful players can't cross so you and
+        your friend can be caught between monsters with no where to go.
+    2 - Map editor.  You can design and play on your own levels.  At the
+        moment there are ownly 10 levels, but you can increase the number by
+        increase int #Levels constant in the source code. *You will loses
+        old levels however*
+    3 - You've got the source code. ;)
+
+
+The Game:
+
+  You can select one or two players, and fast or slow speed at the beginning
+of the game.  The speed settings control the speed of both the players and the
+monsters, and so can alter the difficulty of the game.
+  We you eat a purple pill your character will begin to flash, this will last
+for about 3 seconds and during this time you can safely eat the monsters.
+Once killed monsters will disappear for about 3 seconds and then reappear
+at random on the map.  When they appear they will flash for a second, during
+this time they cannot kill you.
+  Scoring points:
+    Yellow pills - 1 point.
+    Purple pills - 5 points.
+    Eating Monsters - 25 points.
+
+
+
+The Editor:
+
+  The keys that are used in the editor are shown at the bottom of the screen
+at all times.
+  They are:
+    m - change editor mode.
+    l - cycle through levels.
+    s - save all levels.
+    c - clear current level.
+    f - fill all blank places with yellow pills.
+    p - display movement path on the map. (Until map is changed.)
+    Esc - Exit to main menu.
+
+  There are 5 modes of operation, depending on what you want to place on the
+level.  In each mode the mouse buttons place different things on the map.
+    Wall mode:    left mouse button places wall pieces.
+                  RMB removes piece. (place Grass)
+    Small pills:  LMB place yellow pill.
+                  RMB remove piece.
+    Big pills:    LMB place purple pill.
+                  RMB remove piece.
+    Tunnels:      LMB make tunnel.
+                  RMB fill in tunnel.
+    Start Pos:    LMB player one's starting position.
+                  RMB player two's starting position.
+                  Note: you may only place starting positions on blank
+                  (grass) places.
+
+
+That's about it really.
+
+If you want to use, alter, or use bits of the program or gfx fill free
+to do so. The code is at least paritialy commented (depending on how much
+time I have left =(  )  But hopefully someone can find something usefull
+in there.  If anyone wants fully documented code then just let me know
+and I'll email it to you.
+
+I can be contacted at:
+  email: vroberts@yoyo.cc.monash.edu.au
+  www:   http://yoyo.cc.monash.edu.au/~vroberts
+
+or
+  Vaughan Roberts
+  46 Beddoe Ave.
+  Clayton North
+  Victoria 3168
+  Australia
+
+
+Hope you enjoy it.
+  Vaughan.
+
+

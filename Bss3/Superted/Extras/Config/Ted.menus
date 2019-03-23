@@ -1,0 +1,5 @@
+Edit...,~,0,run >NIL: Blitz2:PlugIns/MenuED
+~,~,0,~
+Help...,~,2,run >NIL: Blitz2:RedHelp/RED_HELP LIB="%g" CMD="%t" PORT="%r" SCREEN="%s"
+Library Help...,~,3,run >NIL: Blitz2:RedHelp/RED_HELP LIB="%g" PORT="%r" SCREEN="%s"
+TEDDock,0,0,run >NIL: Blitz2:PlugIns/SuperTED/TEDDock

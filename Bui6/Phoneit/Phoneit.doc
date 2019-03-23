@@ -1,0 +1,332 @@
+PhoneIt V1.3 - Steve White 1994
+
+
+PhoneIt: Introduction
+
+PhoneIt is an easy-to-use name and phone storage program. I wrote this program
+because, although there are many database programs around none of them seemed
+instantly accessible.
+	PhoneIt is small in size (around 30K PowerPacked) and is specifically
+designed to deliver names and phone numbers with the minimum amount of fuss.
+	This, I feel it does extremely well. As I really don't have enough
+time to learn assembly language Blitz Basic 2 from Acid Software seemed the
+language to use.
+	The program itself uses a handsome user-interface made up of clearly
+labelled buttons and indicators. The interface has been kept as small as
+possible in order not to clutter up the Workbench screen. Every button has a
+keyboard equivalent so you hardly need to use the mouse at all.
+
+
+PhoneIt: Shareware Notice
+
+PhoneIt is shareware. I don't expect to be paid for it (would I be anyway?)
+but it would be nice to get some feedback from users.
+	However, you will not be able to Print or use Tool Types from this
+version as it is the unregistered version.
+	If you want to receive the registered version of PhoneIt which will
+allow you to use the Print option and Tool Types you should send a disk and a
+cheque for £2.50 made payable to S A White and send it to following address:
+
+Steve White
+PhoneIt Register
+Amiga Computing Magazine
+Europress Enterprise
+Europa House
+Adlington Park
+Macclesfield
+SK10 4NP
+
+(Please don't phone)
+
+Your name will be present in the Help window to confirm your registration.
+	Your address will be stored and you will be told of any future
+versions of PhoneIt. All you need to do then is send a disk, altering the
+address to read PhoneIt Update and I will copy the new version and send it out
+to you free of charge.
+NOTE: The registered version will be sent when your cheque has cleared!
+
+
+Disclaimer
+
+The information and the PhoneIt program are provided "as is" without warranty
+of any kind, either expressed or implied. Use this program at your own risk.
+Steve White does not warrant, guarantee, or make any representations regarding
+the use of, or the results of the use of, the information or the PhoneIt
+program in terms of correctness, accuracy, reliability, currentness, or
+otherwise. In no event will Steve White be liable for direct, indirect,
+incidental, or consequential damages resulting from any defect in the
+information or the PhoneIt program even if he has been advised of the
+possibility of such damages.
+
+
+PhoneIt: System requirements
+
+PhoneIt will happily run on any Amiga with Kickstart 2.04 or greater. The only
+files that PhoneIt needs in order to function is the font Peridot and the
+loader picture called PhoneItPic. The font should be copied into the FONTS:
+directory. The PhoneItPic should be present in the same directory as the
+PhoneIt program. As PhoneIt is packed using PowerPacker you will need the
+powerpacker.library and asl.library (for the file requesters) in your LIBS:
+drawer. If you intend to use the Print option and you are running PhoneIt from
+a floppy disk make sure you have the necessary printer files. And that's it!
+
+
+PhoneIt: Installation
+
+To install PhoneIt simply copy it across to a location on your hard drive or
+floppy disk. Make sure you have a FONTS: directory as you will need to copy
+the Peridot font into it. Copy the PhoneItPic file to the same directory as
+the main PhoneIt program. Make sure you have the powerpacker.library and
+asl.library present in the LIBS: drawer.
+
+
+PhoneIt: Using PhoneIt
+
+PhoneIt is extremely easy to use and requires little explanation. The main
+control panel is divided into three sections - the data entry windows, the
+main control buttons and the movement buttons.
+	PhoneIt starts on Card 1 of 1 which is displayed in the boxes
+alongside the Phone gadget. PhoneIt can hold up to 200 cards (who needs more
+than 200?) and you can add more cards by clicking the Add button or pressing
+key A. New cards are added at the end of the last card.
+	Likewise, cards can be deleted by clicking on the Delete button or
+pressing the Del key. Delete erases the current card and shifts those after up
+one position.
+	PhoneIt files can be saved and loaded by clicking on the Save and Load
+buttons or by pressing the keys S and L. PhoneIt files are given the extension
+.pi to distinguish them from other files. A new PhoneIt file can be created by
+clicking on the New button or by pressing the N key. You can also print out
+your PhoneIt files by clicking the Print button or pressing P.
+	The Quit button is fairly self-explanatory. If you have not made any
+changes to the present file when you quit, new or load the effect will be
+immediate. If changes have been made you will be asked to confirm these
+options.
+	The buttons on the far-right control movement around the present
+PhoneIt file. The arrow buttons from left to right are move to first card,
+move to previous card, move to next card and move to last card. Movement can
+also be controlled via the cursor keys. If movement is beyond the dimensions
+of the file the screen will flash and you may hear a warning sound. Sort
+simply arranges the cards alphabetically and can also be controlled by
+pressing key R. Goto will allow you to enter a valid card number. When you
+click on the Okay button the main display will be changed to reflect your
+selection. Goto can also be selected with key G.
+	The Search button allows you to search for specific criteria either in
+the Name gadget or Phone gadget. You can select the type of search by clicking
+on the appropriate button. PhoneIt will search the fields and match them
+against whatever you typed in. The Search facility IS case sensitive. Quit
+returns you back to the main control panel.
+
+	KEYCODES
+	Load	L
+	Save	S
+	New	N
+	Quit	Q
+	Print	P
+	Delete	Del
+	Add	A
+	Goto	G
+	Search	F
+	Sort	R
+	|<	Cursor Down
+	<	Cursor Left
+	>	Cursor Right
+	>|	Cursor Up
+	Help	Help
+
+ 
+PhoneIt: Notes
+
+PhoneIt looks in the S: directory when saving or loading files.
+
+If other applications are open when PhoneIt is quit one of them will be made
+the current screen. I'll try and sort this in a later version.
+
+You MUST hit Return after typing in a Name or Phone for PhoneIt to store it
+successfully. This is NOT a bug.
+
+I wanted to be able to display the filename of the presently loaded PhoneIt
+file in the main display window bar but the command to do this - WTITLE
+seems to have some nasty side effects when file input or output is used. This
+is a bug in Blitz Basic I think (Not good having bugs in a programming
+language). I'll try and add this if I can at a later date.
+
+The Sort option sorts the Name fields into alphabetical order. Only the first
+character of each name is sorted. I'll try and improve the Sort so that it
+checks the second characters also and maybe an option to sort from the Phone
+fields. As it is, the Sort command is adequate for most people's use.
+
+
+That's just about it. Enjoy the program.
+
+Any bug reports, suggestions or sollutions send them to;
+
+Steve White
+PhoneIt Jive
+Amiga Computing Magazine
+Europress Enterprise
+Europa House
+Adlington Park
+Macclesfield
+SK10 4NP
+
+(Please don't phone)
+
+
+
++++STOP PRESS+++
+
+PhoneIt V2.0
+
+Version 2.0 of PhoneIt is now ready for registered users. The improvements
+over version 1.3 are massive and require extensive explanation.
+	Apart from the fact that you can use the Print option the program
+has been almost totally redesigned. A list and explanation of all the new
+improvements is available below:
+
+
+***S:PhoneIt.defaults***
+PhoneIt now includes a special defaults file that always resides in the S:
+directory. This file holds information about how PhoneIt should load. If
+this file does not exist one is created when you save Preferences from the
+Preferences window or snapshot the X and Y positions of the iconified window
+(See below).
+	The file holds four important elements;
+
+1. The default phone file that PhoneIt should load when run. If you want a
+particular phone file loaded automatically then type its path and name here.
+You can also set this in the Prefs window activated by clicking the Prefs
+button on the PhoneIt main display
+
+2. The STARTUP option. If this line reads STARTUP then PhoneIt will load
+as an iconified window. This is useful if you don't want PhoneIt to load its
+main display. The iconified window has two buttons in it - Run PhoneIt and SS.
+The Run PhoneIt button opens the main PhoneIt window. The SS button
+snapshots the X and Y positions of the iconified window and saves them to
+the S:PhoneIt.defaults file. The main PhoneIt display can be iconified by
+clicking on the Iconify button.
+
+3. The X position of the iconified window. This can be set by clicking the
+SS button on the iconified window or from the Prefs window. If X is greater
+than the physical dimensions of your Workbench minus the length of the
+iconified window then X will be set as far right as is possible.
+
+4.The Y position of the iconified window. This can be set by clicking the
+SS button on the iconified window or from the Prefs window. If Y is greater
+than the physical dimensions of your Workbench minus the height of the
+iconified window then Y will be set to 0.
+
+
+***Fax Field***
+PhoneIt now incorporates a Fax field so that you can enter any relevant fax
+numbers. The Search button allows you to search in the Fax field.
+
+
+***Notes Field***
+As well as a Fax field PhoneIt also has a Notes field in which you can enter
+any relevant information about that particular file. The Notes button is
+on the main PhoneIt display and also indicates which files have Notes. If
+there is a >>> to the left of the Notes button then that particular file
+includes information in the Notes field. Click on the Notes button to open
+the Notes window. The Search buttons allows you to search in the Notes field.
+
+
+***Windows***
+All the windows now include depth and close gadgets and all can be dragged.
+The close gadget basically acts as a cancel.
+
+
+***Search***
+The Search facility has now been improved considerably. Not only can you
+search in the Fax and Notes fields but the search will look through entire
+field contents, not just the beginning. You may have a Name field
+containing Joe Bloggs but all you can remember is loggs. If you type in
+loggs in the Name field PhoneIt will find the file Joe Bloggs. The results
+of the Search are also displayed in the main PhoneIt window.
+
+
+***Preferences***
+You can now customise PhoneIt using the Prefs button. The Preferences
+window allows you to alter the default phone file, turn the STARTUP option
+on or off and alter the X and Y positions of the iconified window. If you
+can't remember the name of the default phone file you can click on the
+requester button to the right of the Auto Load: field and select one. Any
+incorrect settings entered in the S:PhoneIt.defaults file will be ignored.
+
+
+***Keys***
+All of the keyboard shortcuts are now accessed via the RightA key. This
+brings PhoneIt's keyboard shortcuts in line with other Amiga applications.
+For a full list of all keyboard shortcuts check out the Help windows
+accessed via the Help button on the main PhoneIt display. Each button has its
+corresponding key underlined also.
+
+
+***Print***
+The Print option prints out PhoneIt files in the following way:
+
+
+PhoneIt: <Registered name>
+
+<Name01>----<Phone01>----<Fax01>
+<Name02>----<Phone02>----<Fax02>
+<Name03>----<Phone03>----<Fax03>
+
+etc.
+If there is not a Fax available then the printout will be:
+
+<Name01>----<Phone01>----<Fax01>
+<Name02>----<Phone02>
+<Name03>----<Phone03>----<Fax03>
+
+etc.
+
+
+***Bugs***
+The few bugs that there were have been fixed. There may be others but only
+time will tell and a bit of hands-on experience.
+
+
+***Auto-loading***
+If you want to make PhoneIt load successfully everytime you boot your Amiga
+you will need to add the following line to your S:Startup-Sequence or
+S:User-Startup:
+
+run >NIL: <Path>PhoneIt
+
+
+
+That's it, have fun.
+
+Steve White 1994
+Sewer Vision
+
+
+
+***Things to do for V3.0***
+
+1. I would like to incorporate the S:PhoneIt.defaults into the PhoneIt icon's
+Tool Types. Blitz Basic 2 doesn't support Tool Types as of yet but as soon
+as it does I will sack the S:PhoneIt.defaults file altogether.
+
+2. I may consider improving the Sort option so that it sorts alphabetically
+by the first three characters and not just the first. Hopefully Acid
+Software will consider a command to sort a string dimension instead of just
+numerical ones.
+
+3. I'd like to change the >>> indicator to something more appropriate in the
+future. Perhaps a CheckBox that cannot be toggled manually or an arrow of
+some description.
+
+4. The shrink window gadget can not be present without a resize gadget. As
+I did not want a resize gadget the iconified PhoneIt window has to have a
+button to expand the window (Run PhoneIt) as does the main display to iconify
+it. Provided Acid Software add a resize gadget option to Blitz basic 2 I will
+include this instead of iconify and expand buttons.
+
+5. I'm trying desperately to stop PhoneIt bringing any multitasking
+applications to the front when it is quit. This isn't a major problem but I
+WANT to fix it. I can't tell yet whether it can be done but I just don't
+know how or if it is a quirk with Blitz Basic 2. I'll keep trying...  
+
+
+***End***

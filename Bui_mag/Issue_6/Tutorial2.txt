@@ -1,0 +1,251 @@
+The inner workings of Multitudinous
+
+(C) BUI
+
+BY KEVIN WINSPEAR
+
+
+
+So many people asked me how did I make Multitudinous so different from other programs, i.e.  gadgets, windows, requesters.  Over the next few issues I am going to let out some (but not all) of my secrets to the inner workings of Multitudinous.
+
+
+
+First of all I wanted a menu system different from other menus, i.e. colour gadgets, fonts, as many menus as you like, all at a click of the mouse.  Multitudinous was born...
+
+
+
+The code to Multitudinous is based around Statements and Functions so this is a good place to start.  In this months tutorial I will try to explain and show you how to use them.
+
+
+
+The real difference between a statement and a function is that a statement does not return a value as a function does.  Both statements and functions are called procedures, which are lists of code within a start and end, very simmilar to a gosub routine w
+
+
+
+I think the easiest way is to show you how a statement works is to show you an example, this is one of the statements I used in Multitudinous:-
+
+
+
+Statement text{x,y,t$,f,b}
+
+     Wlocate x,y
+
+     Wcolour f,b
+
+     print t$
+
+End Statement
+
+
+
+It's only small but will save us a lot of work later on because now we can print text in any colour anywhere on our window.  All we do is type the following:-
+
+
+
+text{10,15,"B.U.I",1,0}
+
+
+
+This will print 'B.U.I' 10 across and 10 down on our window with the foreground colour 1, background 0.
+
+
+
+How does this work? well in the curly brakets { } we send what is known as parameters, we can call up to 6 parameters in anyone statement.
+
+
+
+For this example x=10, y=15, t$="B.U.I", f=colour 1, b=colour 0
+
+
+
+The first parameter is "x", for how far across the window we want to print our text, we said 10 across, the next is "y" for how far down the window we want to print our text, here we said 15 down, next is the text inside quotes " " as the parameter is "t$
+
+
+
+Can you now see why this will save us a lot of work later on?
+
+
+
+Did someone say no?  Well, if for example in your program you printed some text about 10 times in different colours, you would type something like this:-
+
+
+
+WColour 1,0
+
+WLocate 10,15
+
+Print "Some text!"
+
+
+
+Imagine typing these three lines 10 times, thats 30 more lines of code.  Here we only need one line with this statement.  All you would have to type in 10 times is this:-
+
+
+
+text{10,15,"Some text!",1,0}
+
+
+
+A lot more easier and at the same time you are optimizing your program by keeping the code as small as possible.  (Good point! - Ed.)
+
+
+
+We now go into dealing with functions.
+
+
+
+Functions are made in the same way, but as I said in the opening paragraphs, these return a value.
+
+
+
+Here is a clever little function I used in Multitudinous:-
+
+     Function mousexy{x1,y1,x2,y2}
+
+If Joyb(0)=1 AND WMouseX>x1  AND WMouseX<x2 AND WmouseY>y1  AND WMouseY<y2          <===ALL ONE LINE..
+
+     Function Return True
+
+EndIF
+
+
+
+Function Return False
+
+End Function
+
+
+
+With this little function we now can find out if the mouse pointer is in a specific area by typing:-
+
+
+
+If mousexy{10,20,100,40} Then do something..
+
+
+
+In a sense we are drawing an invisible box in our Window.
+
+
+
+This time the parameters are x1= how far across and y1= how far down, this is the start of our area/box, x2= this time how long the area/box is and the y2= how deep the area/box is.
+
+
+
+So if we moved our mouse in this area, the function will return as true.  If not the Function will return false we are not the specific area.
+
+
+
+The main loop will be something like this:-
+
+Quit=False
+
+
+
+Repeat
+
+VWait
+
+
+
+If mousexy{10,20,100,40}
+
+     Quit=True.         ;We click the left mouse in the area.
+
+EndIf
+
+
+
+Until Quit=True
+
+End
+
+
+
+Add this next line in the main  loop  to  find the X, Y to make your invisible boxes.
+
+
+
+text{50,3,"X:- "+Str$(WMouseX)+"  Y:- "+Str$(WMouseY)+"  ",1,0}
+
+
+
+Here is a fully working example  it's  also on the disk to save your fingers:-
+
+
+
+WBStartup:NoCli:FindScreen 0
+
+
+
+  Statement text{x,y,t$,f.b,b.b}
+
+    WLocate x,y
+
+    WColour f,b
+
+    Print t$
+
+  End Statement
+
+
+
+  Function mousexy{x1,y1,x2,y2}
+
+    ; Test To see If the  Mouse  has been clicked in a specific 
+
+area of a Window.
+
+    If Joyb(0)=1 AND WMouseX>x1  AND  WMouseX<x2 AND WMouseY>y1 
+
+AND WMouseY<y2
+
+      Function Return True
+
+    EndIf
+
+    Function Return False
+
+  End Function
+
+
+
+Window 0,30,20,400,100,$1000,"Example One",0,1
+
+
+
+text{20,20,"Click the left mouse on this line to Quit",1,0}
+
+
+
+Quit=False
+
+Repeat
+
+VWait
+
+
+
+text{50,3,"X:- "+Str$(WMouseX)+"  Y:- "+Str$(WMouseY)+"  ",1,0}
+
+
+
+If mousexy{25,30,350,40}
+
+Quit=True
+
+EndIf
+
+
+
+Until Quit=True
+
+
+
+End
+
+
+
+Well we've run out of space for this month, but we shall be back next month and I will show you how I made Multitudinous's gadgets with full colour and how to make your own requesters.
+
+Kevin Winspear.

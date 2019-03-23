@@ -1,0 +1,17 @@
+   You will need to set some of the printing parameters within Workbench
+Preferences. These are density, horizontal or vertical aspect, and perhaps
+some others if you wish. The two most important are the density and the
+aspect though.
+
+   Horizontal aspect: This will give you smaller images and is better if
+you want to print more than one image per page. Even if you select Max X or
+Max Y, the image will not be as large as the dungeon appears on the screen.
+
+   Vertical aspect: Produces larger images in general. If you set the Max X
+or Y buttons, the printout will be close to the same size as the screen
+image (at least this is the case with a Cannon BJ200e). Due to the huge
+number of printers and drivers out there, I'm just not sure whether this
+will be true in all cases. Experiment with the settings and let me know how
+your printouts turn out.
+
+   Pressing the Esc key will exit the print requester.

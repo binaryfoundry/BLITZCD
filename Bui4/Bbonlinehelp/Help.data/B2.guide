@@ -1,0 +1,267 @@
+@DATABASE "B2.guide"
+
+@NODE B206
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}BlockScroll@{fg text} 
+--------------------------------------------------------------------------
+Syntax   : BlockScroll X1,Y1,Width,Height,X2,Y2[,BitMap#] 
+
+library: scrolllib
+
+Description:
+Same as the Scroll command except that BlockScroll is much faster but
+only works with 16 bit aligned areas. This means that X1, X2 and Width
+must all be multiples of 16. Useful for block scrolling routines that
+render the same blocks to both sides of the display, the programmer
+can now choose to render just one set and then copy the result to the
+other side with the BlockScroll command.
+@ENDNODE
+@NODE B282
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SPACE$@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}SPACE$@{fg text} (number of spaces)
+Modes: Amiga or Blitz
+
+This function is identical to the Space$ function in many other dialects
+of BASIC.  It will return a string containing the desired number of
+spaces, making it easier to align tables etc. to the screen or printer.
+@ENDNODE
+@NODE B283
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}CHECKSUM@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Checksum@{fg text} (String$) 
+Modes: Amiga or Blitz
+
+Given a string, Checksum() will return a unique 32-bit integer as
+a checksum, useful in situations such as serial transfers, etc. to
+ensure both parties have the same data.
+@ENDNODE
+@NODE B284
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}CHARCOUNT@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}CharCount@{fg text} (String$,byte) 
+Modes: Amiga or Blitz
+
+This function will return the number of occurances of a given byte
+within a string.  For example, CharCount(text$,32) will count the
+number of spaces in text$.
+@ENDNODE
+@NODE B285
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SEARCHEND@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}SearchEnd@{fg text} (String$,byte,# from End) 
+Modes: Amiga or Blitz
+
+Like SearchBegin() (above) except it searches from the end of
+the string to the front.  For example, SearchBegin(a$,asc("A"),2)
+will return the character position of the second-from-last letter
+"A" in the string 'a$.'
+@ENDNODE
+@NODE B286
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SEARCHBEGIN@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}SearchBegin@{fg text} (String$,byte,# from Begin) 
+Modes: Amiga or Blitz
+
+Similar to Instr(), SearchBegin will search the given string
+for the specified byte.  For example, SearchBegin(a$,32,1)
+will return the character position of the first space in a$,
+while SearchBegin(a$,32,3) will return the position of the
+third space.  If the byte is not found in the string, SearchBegin
+will return a zero.
+@ENDNODE
+@NODE B287
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}CIPHER$@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Cipher$@{fg text} (String$) 
+Modes: Amiga or Blitz
+
+The Cipher$() function will encrypt or decrypt a string passed to it.
+This is especially handy if you don't want users "zapping" your 
+executeable or data files to read it's contents.  Note that Cipher$() 
+can only decrypt strings previously created with Cipher$().
+@ENDNODE
+@NODE B288
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}REPEATS@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Repeats@{fg text} (String$) 
+Modes: Amiga or Blitz
+
+This function will return the number of repeated bytes at the
+beginning of your string.  Thus, Repeats("...Test") would return 3,
+while Repeats("Example") would return 1.  If the string is null,
+Repeats() will return zero.
+@ENDNODE
+@NODE B381
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FREQ@{fg text}
+---------------------------------------------------------------------------
+Syntax: @{fg shine}Freq@{fg text} Channelmask,period
+Modes: Amiga or Blitz
+
+This command allows you to change the period, or pitch, of the currently 
+playing sound effect. Note that the lower the period, the higher the 
+frequency; Thus, a period of 100 would be very high-pitched, whereas a 
+period of 30000 would be low-pitched.
+@ENDNODE
+@NODE B382
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}QUIET @{fg text}
+---------------------------------------------------------------------------
+Syntax: @{fg shine}Quiet@{fg text} ChannelMask 
+Modes: Amiga or Blitz
+
+This command will silence the sound channels specified by ChannelMask. 
+See the description for "Envelope" for more information on channelmasks.
+@ENDNODE
+@NODE B383
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}VWAITPOS@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}VWaitPos@{fg text} RasterLine
+Modes: Amiga or Blitz
+
+This command is similar to VWAIT, except it allows you to wait for any 
+raster position, not just the top of the display.  This is useful for 
+interesting graphics effects.
+@ENDNODE
+@NODE B384
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}TICKS@{fg text}
+---------------------------------------------------------------------------
+Syntax: @{fg shine}Ticks@{fg text}  
+Modes: Amiga or Blitz
+
+This function returns the number of "ticks" since the Amiga was switched
+on, or since the last "RESETTIMER" command.  The unit of measurement is 
+1/60 of a second for NTSC machines, and 1/50 of a second for PAL 
+machines.
+
+See Also: @{" ResetTimer " link B385}
+@ENDNODE
+@NODE B385
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}RESETTIMER@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ResetTimer@{fg text}  
+Modes: Amiga or Blitz
+
+Resets the Amiga's hardware timer to zero "ticks." Read the description 
+for @{" TICKS " link B384} for more information.
+@ENDNODE
+@NODE B386
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}JOYC@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}JoyC@{fg text} (Port)  
+Modes: Amiga or Blitz
+
+This function works similarly to the JoyB() function, however it allows 
+you to read the second fire button on two-button joysticks.  It will 
+return a 1 if the normal fire button is pressed, a 2 if the second 
+button is pressed, or 3 if both buttons are pressed.  Otherwise, it will
+return a zero (no buttons pressed.)
+@ENDNODE
+@NODE B387
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}CHECKAGA@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}CheckAGA@{fg text}  
+Modes: Amiga or Blitz
+
+Returns 'TRUE' for AGA machines, otherwise returns 'FALSE.' Using 
+ExecVersion alone will not detect an AGA machine.  Kickstart version 39
+can and does run on pre-AGA machines, such as the A3000, etc.  
+Therefore, this function is provided to allow you to accurately 
+determine if the AGA chipset is present.
+@ENDNODE
+@NODE B388
+Function: @{fg shine}PEEKTO$@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}PeekTo$@{fg text} (Address,byte)  
+Modes: Amiga or Blitz
+
+PeekTo$() is similar to the Peek$() function, except you can specify
+what terminator byte to use.  With Peek$() the terminator will always
+be zero, but PeekTo$() will accept any byte value as a terminator.
+@ENDNODE
+@NODE B388
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}PEEKTO$@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}PeekTo$@{fg text} (Address,byte)  
+Modes: Amiga or Blitz
+
+PeekTo$() is similar to the Peek$() function, except you can specify
+what terminator byte to use.  With Peek$() the terminator will always
+be zero, but PeekTo$() will accept any byte value as a terminator.
+@ENDNODE
+@NODE B389
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FORCEPAL@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ForcePAL@{fg text}  
+Modes: Amiga or Blitz
+
+This command switches the current screen from NTSC to PAL.
+@ENDNODE
+@NODE B38B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}DEPTH@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Depth@{fg text} (Bitmap#) 
+Modes: Amiga or Blitz
+
+This function returns the depth of the specified Blitz2 bitmap object.
+@ENDNODE
+@NODE B38C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}CLICKMOUSE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ClickMouse@{fg text}  
+Modes: Amiga or Blitz
+
+Similar to Mousewait, this command halts program execution until the 
+user clicks the mouse.  There must must be a separate mouseclick for 
+each CLICKMOUSE command, unlike Mousewait, which will continue through 
+without pausing if the left mouse button was already being pressed.    
+@{fg shine}
+NOTE:  Avoid using this command in Amiga mode, as it seriously degrades 
+       multitasking.
+@{fg text}
+@ENDNODE
+@NODE BA0B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DecodeSound@{fg text}
+--------------------------------------------------------------------------
+Syntax   : DecodeSound Sound#,MemoryLocation
+Library  : audiolib
+
+Description:
+DecodeSound similar to the other new Decode commands allows the programmer
+to include sound files within their program's object code.
+@ENDNODE
+@NODE BA0C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}SetPeriod@{fg text}
+--------------------------------------------------------------------------
+Syntax   : SetPeriod Sound#,Period
+Library  : audiolib
+
+Description:
+Hmmm, not sure why we never included this command in the original 
+audiolib, SetPeriod simply allows the user to override the frequence 
+information (period) of the sound object after it has been loaded. To 
+alter a sound's pitch while playing programmers should hit the audio 
+hardware direct (hardware locations are listed at the back of the 
+reference manual).
+@ENDNODE
+

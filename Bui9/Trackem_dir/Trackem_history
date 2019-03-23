@@ -1,0 +1,16 @@
+                                  TRACKEM HISTORY
+                                 -----------------
+V0.90A - 07-03-1995
+
+*- Added WILDCARDS for doing searches. before it simply matched ANYWHERE in the
+   file name, now you can search the front, back or anywhere.
+
+*- Fixed a problem with returned times from doing tracks.
+
+*- Removed unused sort routines until fixed, cut program size down a bit.
+
+*- Code tidying up.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+V0.87x - First Public Release!

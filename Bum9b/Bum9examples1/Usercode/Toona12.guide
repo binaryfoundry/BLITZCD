@@ -1,0 +1,165 @@
+@database AGW
+@master Temp:Toona.guide
+@$VER: 1.0
+@author "Jason Sheldon"
+@(c) "Jason Sheldon 1996"
+@remark Created with Heddley v1.1 (c) Edd Dumbill 1994
+
+@node "MAIN" "Welcome to AGW Documentation"
+@next "Introduction"
+
+			Toona
+		     Guitar Tuner
+	    v1.2 Written by Jason Sheldon
+	    =============================
+
+	@{"Introduction" link "Introduction" 0}
+	@{"Usage" link "USE" 0}
+	@{"Gadgets" link "GADGETS" 0}
+	@{"Distribution" link "DISTRIBUTION" 0}
+	@{"Registering" link "DISTRIBUTION" 0}
+	@{"Suggestions" link "Suggestions" 0}
+	@{"DISCLAIMER" link "DISCLAIMER" 0}
+	@{"History" link "HISTORY" 0}
+@endnode
+
+@node "Introduction" "Introduction to AmigaGuide Writer"
+
+    Toona is a program which allows you to tune a guitar (either bass or
+lead) easily and quickly.  It is very simple to use, and to be honest,
+doesn't really need any explanation whatsoever.  It's just that I was bored,
+so I thought... "Ahh, I could do some documentation..."
+
+There are no installation instructions, just place in the drawer of your
+choice.  Double click on the "Toona.exe" icon to get started.
+
+Guitar Tuner (or Toona) is NOT guaranteed to tune your guitar, that is down
+to you.  However, it does help, especially if you are tone deaf.
+
+
+Best Regards,
+
+@{"Jazzie" link "DISTRIBUTION" 0}
+@endnode
+
+@node "USE" "Using Toona"
+@next "Gadgets"
+@prev "Introduction"
+
+	Toona is sOOOOoooo simple to use, I don't know why I'm telling you.
+	Anyway, here goes..
+
+	To start tuning your guitar, firstly choose the type of guitar you
+	have.  (Either LEAD or BASS).
+
+	Before you shout "Hey!! Bass guitars only have 4 strings", I left
+	the six strings in because there ARE 6 string bass guitars of
+	course.
+
+	The only difference between the bass and lead option is the octave.
+
+	Choose which string you want to tune, and then turn the sound on.
+
+	Adjust volume as necessary.
+
+	Move onto next string, and repeat as necessary.
+@endnode
+
+@node "Gadgets" "Gadgets Commands"
+@next "DISTRIBUTION"
+@prev "USE"
+
+  The following is a list of Gadget commands (from left to right)
+
+  Sound ON/OFF  - Turns audio channels on or off.
+  Intermittant  - Turns 'pulse' mode on or off.
+  Bass/Lead     - Changes the guitar type (Well, changes octave actually)
+  String        - Changes the pitch for whichever string you wish to
+		  tune.
+  Volume        - A standard Volume slider, ranging from 0-63
+  Pulse Timing  - Changes the timing delay for the intermittant button.
+		  This makes tuning a bit easier.... thats all.
+
+  To Quit "Toona", simply close the window....
+@endnode
+
+@node "Suggestions" "Suggestions"
+
+ I am always glad to hear of suggestions or improvements to "Toona".
+ (Even happier to receive them already done!)
+
+
+ Please read the @{"distribution" link "DISTRIBUTION" 0} details before running the program.
+@endnode
+
+@node "DISTRIBUTION" "Distribution and ShareWare Information"
+@next "Suggestions"
+@prev "Gadgets"
+
+    Toona is Shareware, and you may distribute the source and executable
+    freely, as long as the instructions are kept in the source code.
+
+    Inclusion on ANY magazine* coverdisk (including documentation, source
+    and executable) is permitted as long as 12 months subscription is
+    issued to me, at the address below, starting from the date of
+    inclusion on the cover disk.
+
+    Failiure to comply with the above point will result in a very angry
+    letter to the publishing house....Oh, and probably a letter to my
+    solicitor.  :-)
+
+    This is simply because I feel shareware authors are being screwed by
+    so many magazines....  And besides, there was an interested thread
+    on Cix regarding this very subject....
+
+
+    * Includes (But not limiting to!):-
+      Amiga Format
+      CU Amiga
+      Amiga User International
+      Future Music (Why don't they do Amiga stuff on the CD's????)
+
+    The ONLY magazine permitted to distribute this freely is the Blitz
+    User Magazine.  (Don't ask me what would happen if a magazine cover
+    mounted an issue of BUM on the cover....)  :-)
+
+    There is no registration fee as such, but you could E-Mail me a handy
+    utility if you feel like it...
+
+	       Jason Sheldon
+	       382 Woodend Road
+	       Wednesfield
+	       Wolverhampton
+	       West Midlands
+	       WV11 1YD
+	       United Kingdom
+
+	       EMail: jazzie1@cix.compulink.co.uk
+
+
+	For any money you will receive :
+
+		Gratitude.
+
+@endnode
+
+@node "Disclaimer" "Disclaimer"
+@next "MAIN"
+@prev "DISTRIBUTION"
+Disclaimer:
+
+  No warranties of any kind are made to the functionality of this
+  program. You are using it ENTIRELY at your own risk.
+@endnode
+
+@node "HISTORY" "History"
+@next "MAIN"
+@prev "Disclaimer"
+
+ 1.2: 15th Feb '96 - Minor bug fix, volume now restored when switching
+		     off intermittant mode when quiet.
+
+ 1.1: 14th Feb '96 - Added an 'intermittant' mode to make tuning easier.
+ 1.0: 13th Feb '96 - Initial Release.
+@endnode
+

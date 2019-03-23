@@ -1,0 +1,207 @@
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_Window: ( ti_Tag = $80080002 )
+
+Specify in ti_Data a pointer to a Window
+to associate the requester with.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_Screen: ( ti_Tag = $80080028 )
+
+Specify in ti_Data a pointer to a Screen
+to associate the requester with.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_PubScreenName: ( ti_Tag = $80080029 )
+
+Specify in ti_Data a pointer to a null
+terminated string, the name of the Public
+Screen to associate the requester with.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_PrivateIDCMP: ( ti_Tag = $8008002A )
+
+Specify in ti_Data a True boolean to
+request that ASL does not use the
+calling Window's IDCMP port.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_IntuiMsgFunc: ( ti_Tag = $80080046 )
+
+Specify in ti_Data a pointer to a 
+Function to handle IntuiMessages.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_SleepWindow: ( ti_Tag = $80080046 )
+
+Specify in ti_Data a True boolean
+to ask ASL to block input in the window
+specified by ASLFO_Window, whilst the
+requester is open.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_UserData: ( ti_Tag = $80080034 )
+
+Specify in ti_Data anything that is to be
+placed in fr_UserData.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_TextAttr: ( ti_Tag = $80080033 )
+
+Specify in ti_Data a pointer to the 
+TextAttr structure for the font to be 
+used for the requester.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_Locale: ( ti_Tag = $80080032 )
+
+Specify in ti_Data the Locale that
+ASL should use for the text.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_TitleText: ( ti_Tag = $80080001 )
+
+Specify in ti_Data a pointer to the 
+null terminated string which will
+be the title of the requester.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_PositiveText: ( ti_Tag = $80080012 )
+
+Specify a pointer to a null terminated
+string in ti_Data, to provide the text for
+the "OK" gadget.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_NegativeText: ( ti_Tag = $80080013 )
+
+Specify a pointer to a null terminated
+string in ti_Data, to provide the text for
+the "Cancel" gadget.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_Flags: ( ti_Tag = $80080014 )
+
+"OR" together the following flags in ti_Data:
+
+FOF_DOFRONTPEN     ( = $ 1 )
+FOF_DOBACKPEN      ( = $ 2 )
+FOF_DOSTYLE        ( = $ 4 )
+FOF_DODRAWMODE     ( = $ 8 )
+FOF_FIXEDWIDTHONLY ( = $10 )
+FOF_PRIVATEIDCMP   ( = $20 )
+FOF_INTUIFUNC      ( = $40 )
+FOF_FILTERFUNC     ( = $80 )
+
+See the Tag equivalents for descriptions.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_DoFrontPen: ( ti_Tag = $8008002C )
+
+Specify a True boolean in ti_Data to
+enable font color selection gadget.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_DoBackPen: ( ti_Tag = $8008002D )
+
+Specify a True boolean in ti_Data to
+enable font background color 
+selection gadget.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_DoStyle: ( ti_Tag = $8008002E )
+
+Specify a True boolean in ti_Data to
+enable font style selection gadgets.
+
+
+ASL FontRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFO_DoDrawMode: ( ti_Tag = $8008002F )
+
+Specify a True boolean in ti_Data to
+enable the font drawmode cycle gadget.
+font style selection gadget.
+

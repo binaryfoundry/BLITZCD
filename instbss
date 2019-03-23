@@ -1,0 +1,3 @@
+stack 20000
+cd BlitzCD:Bss1/
+installer Install "RWE Blitz Support Suite" AVERAGE english NOPRETEND

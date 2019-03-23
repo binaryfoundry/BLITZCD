@@ -1,0 +1,574 @@
+@DATABASE "NewTED V2.1 AmigaGuide® Documentation"
+@REMARK $VER: Ted.Guide 2.1 (21.11.95)
+@NODE MAIN "Ted Version 2.1"
+
+                              TED VERSION 2.1
+                              ---------------
+
+	        	     @{"Introduction    " link INTRODUCTION}
+			     @{"Requirements    " link REQUIREMENTS}
+			     @{"Installation    " link INSTALLATION}
+			     @{"Whats New       " link WHATSNEW}
+
+			     @{"The Author      " link THEAUTHOR}
+			     @{"Known Bugs      " link KNOWNBUGS}
+			     @{"Foreign Users   " link FOREIGN}
+
+			     @{"The Future      " link FUTURE}
+			     @{"Version Details " link VERSIONDETAILS}
+
+@ENDNODE MAIN
+
+@NODE INTRODUCTION "Introduction to Ted"
+
+Ted V2.1 is an update to the integrated text editor, Ted, which is
+supplied as part of the Blitz Basic 2 package.
+
+The old version of Ted (OldTed) had many problems :
+(I hope you dont take this personally Mark!)
+
+		·	Hardware Level Blitter Usage
+		·	Would not work on graphics cards
+		·	Non-standard Cut/Copy/Paste
+		·	Dated preferences requester
+		·	Awkward file requesters
+		·	Painfully slow at saving
+		·	Restricted to 2 prese fonts
+		·	1.3 look Menus
+
+Ted will work stand-alone (eg, without Blitz 2) but it is a bit
+of a waste of time - you should realy use CygnusEd or GoldEd for
+writing your C or Assembler!
+
+
+This version of Ted has been upgraded from the original assembler
+source provided by Acid Software, but significant portions of the
+program have been re-written or added.
+
+Work was carried out at the request of Acid Software by
+@{"Leading Edge Software" link THEAUTHOR} (the company responsible for ShapeZ,Reflective
+Images Libraries,LES Debugger v1.21 & v2.1 and the LES MapEditor)
+
+Blitz Basic 2 and the Old Ted was written by Mark Sibly and is published
+by Acid Software.
+
+@ENDNODE INTRODUCTION
+
+
+@NODE REQUIREMENTS "What you need"
+
+                               REQUIREMENTS
+                               ------------
+
+NewTed requires an Amiga with Kickstart/Workbench V2.0 or higher.
+To use ASL Font & Screen requesters, Kickstart/Workbench V2.1 or
+higher is needed.
+
+NewTed has been tested on :
+
+		A1200 with Blizzard 1230 Turbo Mark II@50Mhz
+		A4000/040 with PicolloSD64 Graphics Card
+
+Also, you should have a legitimate version of Blitz Basic 2
+installed, and the assignment Blitz2: pointing to the directory
+where Blitz Basic 2 and Ted reside.
+
+@ENDNODE REQUIREMENTS
+
+@NODE INSTALLATION "Installation"
+
+                               INSTALLATION
+                               ------------
+
+Either double-click on the Install icon, or, if you prefer manual
+installation, copy the files Ted and Ted.info into Blitz2:
+
+If a file called Blitz2:TedOld does not exist, Blitz2:Ted
+will be renamed to Blitz2:TedOld (including the icon) before
+the new version of Ted is copied to Blitz2:
+
+@ENDNODE INSTALLATION
+
+
+@NODE WHATSNEW "Well, was it worth me downloading?"
+
+                                 WHATS NEW
+                                 ---------
+
+Here is the list of changes/improvements to NewTed compared with
+the last release of OldTed :
+
+		·	ASL FileRequesters for Loading/Saving
+		·	Clipboard based Cut/Copy/Paste
+		·	GadTools @{"Preferences Requester" link PREFS}
+		·	GadTools Menus
+		·	100% OS Legal Drawing/Scrolling Routines
+		·	Works On Graphics Cards
+		·	Works In Any ScreenMode (min 640 pixels wide)
+		·	Use any non-proportional font (max. 8 pixels wide)
+		·	File Patterns inside filerequesters
+		·	Font Requester
+		·	Screenmode Requester
+		·	Adjustable Mouse-Label Size
+		·	Undelete last deleted line
+		·	'MODIFIED' flag displayed
+		·	Save entire file as ASCII Text
+		·	500% Faster Saving
+		·	Automatic-Indentation
+
+@ENDNODE WHATSNEW
+
+@NODE PREFS "All New Preferences"
+
+                                PREFERENCES
+                                -----------
+
+NewTED uses the file ENVARC:TED.prefs to hold current preferences.
+To bring up the prefs requester, select the Prefs..item from the Project
+menu.
+
+
+	·	Use WB Pal	-	Use the same palette as Workbench
+	·	Clone WB	-	Use the same screen attributes as
+	·				Workbench
+	·	Auto Indent	-	Automatically move cursor to same
+	·				position as first character on
+	·				previous line
+	·	File Patterns	-	Enable/Disable filepatterns inside
+	·				the file requesters
+	·	ASL Dimensions	-	Specify custom ASL x/y/width/height
+	·				values for all ASL Requesters.
+	·	X		-	X Position of ASL Requesters
+	·	Y		-	Y Position of ASL Requesters
+	·	Width		-	Width of ASL Requesters
+	·	Height		-	Height of ASL Requesters
+	·	R G B		-	Alter RED/GREEN/BLUE component value
+	·				for current colour
+	·	Text		-	Select colour to use for normal text
+	·	Token		-	Select colour to use for token text
+	·	Tokenise	-	Tokenise into Blitz commands
+	·	Create Icons	-	Create icons with saved files
+	·	Quick Save	-	Toggle turbo-saving
+
+If you have OS2.1 or higher :
+
+	·	Choose Font	-	Select font to use
+	·	Choose Screen	-	Select screenmode to use
+	·	Label Size	-	Set size of 'mouseable' labels
+	·	Horiz Margin	-	Set size of horizontal scroll margin
+	·	Vert Margin	-	Set size of vertical scroll margin
+
+
+
+else
+
+	·	Width		-	Screen Width
+	·	Height		-	Screen Height
+	·	ModeID		-	Screen ModeID (Decimal!)
+	·	Font		-	Name Of Font
+	·	Size		-	Font Size
+
+@ENDNODE PREFS
+
+@NODE THEAUTHOR "Me"
+
+                                THE AUTHOR
+                                ----------
+
+As you have probably already read, the original Ted was written by
+Mark Sibly.
+
+The NewTed has been written by Steven Matty of Leading Edge Software.
+
+HOWEVER, All intellectual property & distribution rights belong to
+Acid Software.
+
+To contact me, you can email me at the following address :
+
+		steven.matty@gecm.com		(until Sept 96)
+		stevem@ldngedge.demon.co.uk	(from Nov 95)
+		sis3147@sis.port.ac.uk		(from Oct 96)
+
+or via Snail Mail :
+
+		67 Farringdon Road
+		Havant
+		Hants
+		PO9 2LP
+		ENGLAND
+
+or telephone (after 5.30pm please)
+
+		+44 1705 641462			(outside UK)
+		01705 641462			(UK only)
+
+
+Should you desire to contact Leading Edge Software, you can email
+Nigel Hughes on,
+
+		ngh94@aber.ac.uk
+
+or telephone:
+		+44 1972 622453			(outside UK)
+		01972 622453			(UK only)
+
+@ENDNODE THEAUTHOR
+
+
+@NODE KNOWNBUGS "BUGS"
+
+                                KNOWN BUGS
+                                ----------
+
+	·	When inside a highlighted area, if you try to
+		join to lines together, the highlighting will
+		be incorrect
+
+	·	Sometimes, cuts/copies to the clipboard have a
+		couple of extra characters on the end
+
+@ENDNODE KNOWNBUGS
+
+@NODE FOREIGN "Umlauts"
+
+                               FOREIGN USERS
+                               -------------
+
+If your language has characters additional to the English A-Z,
+you will find that any 'umlauts',for example Ë and Ü
+will not be accepted by Ted. This is due to the fact
+that all characters with ASCII values of 128 or higher
+are treated as tokens (Blitz commands) and will not be displayed
+correctly. At present, nothing can be done to avoid this.
+
+I understand the importance of such a feature, and I am working
+on a solution - so stay tuned!
+
+@ENDNODE FOREIGN
+
+@NODE FUTURE "In my crystal ball.."
+
+                                THE FUTURE
+                                ----------
+
+What will happen to Ted now? Well, the features that Leading Edge
+hope to add, include :
+
+                ·       External,configurable menus
+                ·       Multiple document-editing
+                ·       Open on Workbench Screen
+                ·       Umlautes!
+                ·       Scrollable label-list
+                ·       Faster loading times
+                ·       ANY size font
+                ·       AREXX port
+                ·       Toolbox (ala FinalWriter etc)
+                ·       Faster text operations (find etc)
+                ·       Faster importing of ASCII text files
+
+However, all this depends on the response we get from YOU, the user!
+
+Please report ANY bugs (except those listed in the @{"bugs" link KNOWNBUGS}
+section to either our Leading Edge address or to me directly.
+(1see @{"The Author" link THEAUTHOR}
+
+In addition, we hope to obtain the rights to update Blitz 2 into the
+21st century, including a PC version as well as multiple-platform-compiler
+modules (and other great stuff such as Linker, ARexx, Editor-independant)
+
+@ENDNODE FUTURE
+
+@NODE VERSIONDETAILS "Versions"
+
+Here is the version history (oldest first) pulled straight from the
+source code (except all swearing as been replaced by <OOPS!> :)
+
+; $VER: TED v2.1 (1.11.95)
+;
+; TED, Blitz2 text editor.
+; Original version (V1.1) written by Mark Sibly of Acid Software
+;
+; Revised and updated by Steven Matty of Leading Edge Software
+;
+;
+; Revision History
+; ~~~~~~~~~~~~~~~~
+;
+
+; 23/8/95    - Just got source from Acid. Changed all 
+;                OS calls to standard (_FunctionName) format
+;
+;            - Tidied up calcscreen code
+;            - ASL Library is now used for ALL file requests
+;            - Replaced NEW/ABOUT with EasyRequest() calls
+;            - Fixed 3D Look for FIND/GOTO requesters
+;            - Added 'UNDO LINE DELETE' OPTION
+; 24/8/95    - Disabled UNDELETE line due to crashes
+;              Removed Copper coloursplit at top of screen
+;
+;            - Fixed bug in load/save operations which
+;              resulted in crash upon exit. Mouse Pointer
+;              operations now do NOTHING.
+;
+;            - Blitter operations no longer performed
+;              on screens bitmap. Function bitmaptowindow
+;              added. (set osblits to 1)
+;
+;
+;            - Removed all hardware hitting Blitter code!
+;              Now peforms scrolling on the RastPort
+;              (only works if using screens bitmap!)
+;
+;            - Should now work in *ANY* screenmode!
+;
+;            - Re-enabled UNDELETE line (it wasnt that
+;               at fault)
+;
+;            - Enabled ESCAPE/RETURN keyboard shortcuts
+;              in easyreq() function.
+;            - Fixed BLOCK menu <OOPS!>-ups
+;            - Fixed (AGAIN) UNDELETE/DELETE line
+;            - Added PASTE FILE menu option which
+;              pastes last FILE BLOCK without bringing
+;              up another filerequester
+;              FILESIZE=41368 bytes!
+
+; 25/8/95    - Fixed scrolling up when screen half way down
+;              (modified getmousexy,invertarea to check for -y)
+;            - Added FilePatterns to load/save/block requesters
+;              (uses different patterns for Ted/BlitzTed)
+;            - Renamed included files to begin with prefix TED_
+;
+;            - Started to replace Find/Replace with my own
+;              routine. (Doesnot work as yet)
+;              Set newfind to 0 to disable it
+
+; 27/8/95    - Fixed bug in scroll/up down. Ported some blitter
+;              code in from old Ted to fix it.
+;              (NOTE:This was not blitting gfx, but data of
+;               some kind)
+
+; 28/8/95    - Replaced Busy/Normal pointer calls to SetPointerA
+;              **WARNING** this is an OS3.0 function so will need
+;              to be replaced/have alternate function for lower
+;              OS revisions
+;
+;            - Attempted to replace soft-return with hard return
+;              Did not work correctly. (see commented out lines
+;              at return: routine)
+;            - Attempted to add function to 'backspace' two lines
+;              together - crashes. Routine commented out (see
+;              charnot30: routine)
+
+; 30/8/95    - Fixed ANOTHER bug in scroll routines.
+;              (apparently, I need to fill the next new line
+;               with Spaces with blitter..)
+
+
+; 1/9/95     - Began to utilize off-screen bitmap for text
+;              rendering.
+;              PROBLEM: Unable at present to replace the
+;                       AllocBitMap() call with InitBitMap()
+;                       and (AllocMem or AllocRaster)
+;              also, unable to get cursor to appear..
+;                      
+;            - Fixed bug in Acid's macros (their openlibrary
+;              MACROs called OldOpenLibrary (hence version
+;              ignored) whereas for my ASL open, I forgot
+;              to set D0->NULL and I was calling OpenLibrary)
+
+; 2/9/95      - Cursor now appearing, also fixed vertical
+;              scrolling.
+;              PROBLEM: Since we are drawing onto a bitmap
+;              which is never scrolled, we need to clear
+;              unused areas.....hmmm SLLOOOOWW
+
+
+; 5/9/95      - Fixed vertical scrolling (AGAIN!)
+;             - Need to fix horizontal scrolling with blocks
+;             - Replace commands which print a single line
+;               of text to use PrintIText()
+
+; 7/9/95      - Coding resumed after death of my dog, Snoopy.
+;	      - REALLY fixed vertical scrolling (AGAIN!!)
+;             - Horiz. block scrolling then worked
+;             - Fixed bug in showthisitem. (Had my intuitext
+;               structure inside some code!)
+
+; 8/9/95      - PrintIText almost fully in (TO BE TESTED!)
+;             - Problems with highlight block
+;               (text overwriting, and horiz scrolling with
+;                block, needs to call invertarea)
+;             - BUGS: Tokens are not printed in correct
+;               colour - need to find out if current letter
+;               is part of a token...
+;             - Started to introduce new prefs GUI
+;             - BUG: showaline() does not handle empty lines properly
+;               (copies to much to buffer...how do I stop?)
+;               ANSWER: call DETOK only when we hit a token!
+
+
+; 9/9/95      - Text printing sped up in 2 ways..
+;               Replaced PrintIText() with Text()
+;               tokprint: no longer calls findtoken
+;             - Added more of preferences gui.
+;             - Altered TED to use new prefs file
+;               (TED now uses new variables for...
+;                       Custom ASL file requester size
+;                       Tokenising
+;                       Horizontal Scroll Margin
+;                       Vertical Scroll Margin
+;                       Create Info files
+;             - TED now handles any 8x? font  (to be tested!)
+
+; 10/9/95     - Added keyboard shortcuts to Prefs requester
+;             - If V38 ASL library is not available, then
+;               the ScreenMode and Font buttons are replaced
+;               with width/height/modeid integer gadgets,
+;               fontname string gadget, and fontsize integer
+;               gadget
+;             - All gadgets (except ScreenMode & Font) are used
+;               in Ted.
+;             - Fixed cleanup bug : was trying to do window
+;               operations after window was closed 
+
+; 11/9/95     - Fixed BIG text storage <OOPS!> up as a result of
+;               new text printing/handling. APPEARS to be fixed
+;             - Fixed bug when setting def_tokenising in TED.
+;               (was moving 1 instead of -1)
+;             - Mouseable labels are now Text()'d
+;             - Removed illegal scrolling of line when
+;               inserting/deleting characters....
+;             - TED will now use the font specified in the prefs file
+;               (defaults to topaz if none specified)
+;             - Fixed bug in printing mouseables (if a mouseable
+;               label was bigger than the limit, it would crash)
+
+; 12/9/95     - Added FULL support for custom fonts. Now uses
+;               ASLFontRequester (or the gadgets in V36/V37).
+;             - Added FULL support for custom screenmode. Now uses
+;               ASLScreenRequester (or the gadgets in V36/V37).
+;             - Fixed bug in mouseables - it wasnt possible to click on
+;               them!
+;             - Custom font not always used!
+;             - The stats window nolonger returns line#<0
+;             - The cursor has changed colour!!???
+;             - Got my 030 back....yyeehhhaaarrr!!
+;             - AAARRGH!! SA_LikeWorkbench is V39!!
+;             - Now clone the WB Screen by copying width/height/modeID
+;             - Font bug now fixed (perhaps SA_LikeWorkbench clones
+;               the font?)
+;             - Added palette config buttons
+;             - PROBLEM: Unable to get it to update as I drag
+;               the slider
+;
+;             - PROBLEM: TED crashes after 16 runs...
+;             - FIXED: TED crashes ; the rawed.obj is at fault
+;               (the original TED crashes), now use my own raw2asc code
+;             - FIXED: TABs
+;
+;             - PROBLEM: The font is not always being used.....
+;             - FIXED: I have to open the font myself before I openscreen.
+
+; 13/9/95     - Added basic support for ClipBoard.
+;             - Altered menu options to use cut/copy/paste
+;             - Need to modify Blitz2 Compile shortcut, since 'X' is
+;               used for Cut.
+;             - CUT implemented
+;             - COPY implemented
+;             - PASTE implemented
+;             - Replaced menus with GADTOOLS MENUS
+;               (Blitz menus are inside TED, until I can alter
+;                Blitz's menus structures..)
+
+; 14/9/95     - Added OS friendly block highlighting (NIGHTMARE)
+;               (does not handle HORIZ scrolling correctly yet)
+;             - Fixed ClipBoard problem
+;             - AARGGH..Clipboard CUT/COPY not fixed..
+
+; 15/9/95     - Sorted problem with CUT/COPY (I was forgetting
+;               to set io_Data for the IFF header...)
+;             - Added About LES to the About requeter...
+;             - Added a toggle for detoking cuts/copies to clipboard
+;             - Added NEWCLI (which works)
+;             - Added SAVE-ASCII (to be tested)
+;             - Added enabling/disable of block.. menu items
+
+; 16/9/95     - Sorted out inserting/deleting text inside block
+;               as well as when a line is changed and reprinted
+;             - Rewrote save ascii, now works
+;             - Fixed bug when cancelling prefs (does not
+;               show the old palette)
+
+; 19/9/95     - Fixing a few highlighting bugs
+;             - Insert/Delete chars inside block should now work (TEST)
+;             - Scroll screen up should now highlight bottom line
+;               if necessary. (TEST)
+
+; 20/9/95     - Vertical scrolling now works with blocks of text
+
+; 21/9/95     - "Save As..." now checks for existance of file and
+;               requests confirmation if necessary.
+;             - Added "Change Dir..." menu option to CD into required
+;               directory before running programs (external menu)...
+;               (no actual code yet...)
+
+; 25/9/95     - Fixed bug where bottom line is not cleared
+;
+; 26/9/95     - Fixed block highlighting bug
+;
+; 27/9/95     - Fixed bug in showthisitem
+;             - Clips are now optionally detoked
+;             - Change Dir now works
+;             - AutoScroll attribute is now copied (if clonewb set)
+;
+; 30/9/95     - Fixed major bugs in ClipBoard cutting
+;               (option to detoke clips had to be removed)
+;
+; 1/10/95     - Fixed bug with typing inside highlighted block
+;             - Fixed bug in showall
+;             - Fixed bug in copy/cut (was not adjusting for curstop)
+;             - Put Delete-EOL menu item back in
+;             - KillEOL now prints tokens correctly
+;             - Fixed bugs in file requester routines
+;             - Fixed bug in single-line block scrolling (left/right)
+;             - Added auto-indent
+;             - Fixed bugs in cut/copy (with TED standalone)
+;             - Fixed bug when status-bar was active window (missing IDCMPs)
+;
+; 8/10/95     - Fixed bug (def_labelsize was not copied to mousecols)
+;             - Fixed bug (mouselabels area was created even if no mouseables)
+;             - Fixed bug (filerequester checked fpatt!=0 instead of fpatt<0)
+;             - Fixed bug in mainedit (blflg was tested, but not set to 0 b4)
+;
+; 10/10/95    - Added toggle filepatterns option
+;             - Fixed bug with filepatterns
+;
+; 11/10/95    - Fixed MAJOR bug in findtoke (crash if token not found!)
+;
+; 16/10/95    - Fixed bug when inserting lines inside a block
+;
+; 20/10/95    - Fixed bug when file was empty, showall would still try
+;               to print a page of text..
+;             - Fixed layout problem if ASL<38
+;             - Adjusted version information to indicate V2.1
+;
+; 24/10/95    - Added FAST saving. Now saves Blitzbombers102 in 1 second!
+;               Worked FIRST time...or did it?
+; 27/10/95    - Changed TED screen version string to 2.1...
+;
+; 28/10/95    - Fixed bug in FAST saving.. :)
+;               <OOPS!> idiot I was, putting 2 dc.l's inside some code..
+;             - Fixed that <OOPS!> bug in Cut/copy where top/bottom x
+;               are over text that does not exist
+;               (eg, top line A has 10 chars and top of block is at column
+;                15..)
+; 01/11/95    - REALLY fixed the cut/copy bug...
+;             - Bug when starty is same is cursy in cut/copy fixed
+;
+; 02/11/95    - REALLY REALLY fixed the cut/copy bug...
+;
+; 21/11/95    - Fixed <OOPS!> god-awful bug with Fonts.. Was not copying
+;               def_fontsize to ysize when opening font!
+
+@ENDNODE VERSIONHISTORY

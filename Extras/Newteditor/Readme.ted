@@ -1,0 +1,82 @@
+								20/10/95
+								~~~~~~~~
+
+New Features For Ted V2.1
+=========================
+
+	o	Fully OS Legal Drawing/Scrolling/Blitting Routines
+	o	Works On Graphics Cards
+	o	Works In Any ScreenMode (min 640 pixels wide)
+	o	Works In Any 8-Wide monospaced font
+	o	Requires OS2.0 or higher
+	o	Uses ASL FileRequesters
+	o	Uses ASL FontRequester (OS2.1 required)
+	o	Uses ASL ScreenModeRequester (OS2.1 required)
+	o	Uses File Patterns				
+	o	Custom ASL Sizes   				
+	o	Adjustable Mouse-Label Size			
+	o	Revamped OS2.0 Look GadTools Prefs Requester
+	o	Uses GadTools Menus
+	o	Clipboard Based Cut/Copy/Paste
+	o	MODIFIED status shown on screen
+	o	Save entire file as ASCII
+	o	'Undelete' last deleted line
+
+
+The Preferences Requester
+=========================
+
+	Use WB Pal	-	Use the same palette as Workbench
+	Clone WB	-	Use the same screen attributes as
+				Workbench
+	Auto Indent	-	Automatically move cursor to same
+				position as first character on
+				previous line
+	File Patterns	-	Enable/Disable filepatterns inside
+				the file requesters
+	ASL Dimensions	-	Specify custom ASL x/y/width/height
+				values for all ASL Requesters.
+	X		-	X Position of ASL Requesters
+	Y		-	Y Position of ASL Requesters
+	Width		-	Width of ASL Requesters
+	Height		-	Height of ASL Requesters
+	R G B		-	Alter RED/GREEN/BLUE component value
+				for current colour
+	Text		-	Select colour to use for normal text
+	Token		-	Select colour to use for token text
+	Tokenise	-	Tokenise into Blitz commands
+	Create Icons	-	Create icons with saved files
+
+Screen/Font settings:
+----------------------------------------------------------
+(OS2.1 or above)
+
+	Choose Font	-	Select font to use
+	Choose Screen	-	Select screenmode to use
+
+(if OS2.0 only)
+
+	Width		-	Screen Width
+	Height		-	Screen Height
+	ModeID		-	Screen ModeID
+	Font		-	Name Of Font
+	Size		-	Font Size
+----------------------------------------------------------
+
+	Label Size	-	Set size of 'mouseable' labels
+	Horiz Margin	-	Set size of horizontal scroll margin
+	Vert Margin	-	Set size of vertical scroll margin
+
+
+
+SAVE			-	Save & Use current settings
+USE			-	Use (but not save) current settings
+CANCEL			-	Revert back to settings as they were
+				before Prefs... menu item selected.
+
+
+
+
+                   Steven Matty (Programmer of TED V2.1)
+                           Leading Edge Software
+

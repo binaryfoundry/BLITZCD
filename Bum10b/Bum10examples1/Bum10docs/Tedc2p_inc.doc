@@ -1,0 +1,277 @@
+;
+; Chunky To planar Include file (BUM10 beta release) - Ted Bailey
+;
+;
+; - Why an include file ? So people can look at the source code and
+;   optimise it Of cOz... 
+;
+; - Performs chunky to planar conversion using the processor only so
+;   it's more suited to fast Amigas...
+;
+; - Uses a big look-up table (from 32K for the 16 colour version upto 
+;   1MB for the 256 colour version!)
+;
+; - The 16 and 32 colour versions should work on any Amiga and the 64
+;   colour version should work on ECS/AGA Amigas. The 128 and 256 colour
+;   versions are for AGA Amigas only
+;
+; - Only works for 320*256 display sizes at the moment
+;
+; - See the example BUM10Examples2:TedsDemos/C2P_Example.bb2 and also
+;   the documents within the include file itself Chnk2pln.bb2
+;
+;
+;Ted Bailey - September '96
+
+
+
+                            Command List
+                            ------------
+
+       chtabinit2xN{chnktable.l,numcolors.w} 
+       chpl_256_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+       chpl_128_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+       chpl_64_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+       chpl_32_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+       chpl_16_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+       chcls2x1{chnkbuffr.l}
+       chplt2x1{chnkbuffr.l,x.w,y.w,c.w}
+       chcls2x2{chnkbuffr.l}
+       chplt2x2{chnkbuffr.l,x.w,y.w,c.w}
+
+
+
+chtabinit2xN{chnktable.l,numcolors.w} 
+-------------------------------------
+
+This routine must be called once before calling any of the chunky to
+planar routines.
+
+chnktable.l - address of previously initialised Acid Bank Object which
+              holds the chunky pre-calc table (see below)...
+              i.e. chnktable.l=Peek.l(Addr Bank(0))  
+
+numcolors.w - can be 16,32,64,128,256 (16,32=All Amigas  64=ECS/AGA
+              128,256=AGA)
+
+
+
+chpl_256_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+-------------------------------------------------------------
+chpl_128_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l}
+------------------------------------------------------------- 
+chpl_64_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l} 
+------------------------------------------------------------
+chpl_32_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l}
+------------------------------------------------------------ 
+chpl_16_2xN{numpixels.l,chnkbuffr.l,bmppointr.l,chnktable.l}
+------------------------------------------------------------ 
+
+The five chunky to planar routines. These are the routines that
+convert the previously initialised chunky buffer data onto the display
+bitmap. 
+
+numpixels.l - determines whether 2x1 or 2x2 modes are used and can be
+              either ((160*256)/16)-1 for 2x1 or ((160*128)/16)-1 for
+              2x2
+
+chnkbuffr.l - start address of previously initialised Acid Chunky Objects
+              grey map data... i.e. chnkbuffr.l=Peek.l(Addr Chunky(0)+8)  
+
+bmppointr.l - start address of previously initialised display Bitmap 
+              data... i.e. bmppointr.l=Peek.l(Addr Bitmap(0)+8)  
+
+chnktable.l - address of previously initialised Acid Bank Object which
+              holds the chunky pre-calc table...
+              i.e. chnktable.l=Peek.l(Addr Bank(0))  
+
+
+
+chcls2x1{chnkbuffr.l}
+---------------------
+chcls2x2{chnkbuffr.l}
+---------------------
+
+Small routines to quickly clear the chunky buffer(s). 
+
+chnkbuffr.l - start address of previously initialised Acid Chunky Objects
+              grey map data... i.e. chnkbuffr.l=Peek.l(Addr Chunky(0)+8)  
+
+
+
+chplt2x1{chnkbuffr.l,x.w,y.w,c.w}
+---------------------------------
+chplt2x2{chnkbuffr.l,x.w,y.w,c.w}
+---------------------------------
+
+Small routines to quickly plot a 'pixel' in the chunky buffer(s). The 
+routine does not clip so don't plot outside the chunky buffers limits.
+
+chnkbuffr.l - start address of previously initialised Acid Chunky Objects
+              grey map data... i.e. chnkbuffr.l=Peek.l(Addr Chunky(0)+8)  
+
+x.w, y.w    - x co-ordinate (can be 0->159)
+              y co-ordinate (can be 0->127 for 2x1 or 0->255 for 2x2)
+
+c.w         - colour (can be 0->#numcols-1) 
+
+
+
+
+Ok so how do I use them ?
+-------------------------
+
+- The following code outlines how to initalise a chunky display and the
+  chunky to planar coversion routines
+
+
+#aga=0                   ; 1=aga (all versions), 0=ecs (64,32,16 versions)
+
+#numcols=32              ; can be 16,32,64,128 or 256
+#pixhite=2               ; can be 1,2
+
+
+INCLUDE "chnk2pln.bb2"   ; the 'tInEzZ
+
+
+Select #numcols
+  ;
+  Case 16
+    ;
+    n_planes.b=4                       ;number of bitplanes for bitmap and
+    ;                                  ;display
+    If #aga=1                          ;
+      cl_flags.l=$13004                ;display flags for InitCoplist
+    Else                               ;
+      cl_flags.l=$0004                 ;
+    EndIf                              ;
+    ;
+    InitBank 0,4096*4*2,1              ;initialise chunky table memory space
+    ;                                  ;preferably in Fast Ram
+  Case 32
+    ;
+    n_planes.b=5
+    ;
+    If #aga=1
+      cl_flags.l=$13005
+    Else
+      cl_flags.l=$0005
+    EndIf
+    ;
+    InitBank 0,8192*8*2,1
+    ;
+  Case 64
+    ;
+    n_planes.b=6
+    ;
+    If #aga=1
+      cl_flags.l=$13006
+    Else
+      cl_flags.l=$0046                 ;ECS HalfBrite mode
+    EndIf
+    ;
+    InitBank 0,16384*8*2,1
+    ;
+  Case 128
+    ;
+    n_planes.b=7
+    ;
+    If #aga=1
+      cl_flags.l=$13007
+    Else
+      End
+    EndIf
+    ;
+    InitBank 0,32768*8*2,1
+    ;
+  Case 256
+    ;
+    n_planes.b=8
+    ;
+    If #aga=1
+      cl_flags.l=$13008
+    Else
+      End
+    EndIf
+    ;
+    InitBank 0,65536*8*2,1             ;erk.. 1Mb lookup table!
+End Select
+
+
+Select #pixhite
+  Case 1
+    ;
+    ;2x1 mode
+    ;
+    InitChunky 0,160,256,2                       ;chunky buffer
+    ;
+    InitCopList 0,40,256,cl_flags,sprt,cols,0    ;320*256 display
+    ;
+    numpixels.l=((160*256)/16)-1
+    ;
+  Case 2
+    ;
+    ;2x2 mode - get the copper to double the pixel height by using the
+    ;           command DisplayDblScan
+    ;
+    InitChunky 0,160,128,2                       ;chunky buffer
+    ;
+    InitCopList 0,40,256,cl_flags,sprt,cols,-2   ;320*256 display with enough
+    ;                                            ;custom copper space for the
+    ;                                            ;scanline doubling
+    DisplayDblScan 0,1
+    ;
+    numpixels.l=((160*128)/16)-1
+    ;
+End Select
+
+
+BitMap 0,320,256,n_planes             ;the display bitmap
+
+InitPalette 0,#numcols                
+
+
+chnkbuffr.l=Peek.l(Addr Chunky(0)+8)  ;address of chunkybuffers' grey map data
+chnktable.l=Peek.l(Addr Bank(0))      ;address of precalc'd chunky table
+bmppointr.l=Peek.l(Addr BitMap(0)+8)  ;address of bitmaps' data
+
+chtabinit2xN{chnktable,#numcols}      ;do the chunky table precalculation
+                                      ;just the once
+
+
+VWait 50:BLITZ
+
+CreateDisplay 0:DisplayPalette 0,0
+
+
+Repeat
+  VWait
+  DisplayBitMap 0,0
+
+  CNIF #numcols=16
+    chpl_16_2xN{numpixels,chnkbuffr,bmppointr,chnktable}
+  CEND
+  CNIF #numcols=32
+    chpl_32_2xN{numpixels,chnkbuffr,bmppointr,chnktable}
+  CEND
+  CNIF #numcols=64
+    chpl_64_2xN{numpixels,chnkbuffr,bmppointr,chnktable}
+  CEND
+  CNIF #numcols=128
+    chpl_128_2xN{numpixels,chnkbuffr,bmppointr,chnktable}
+  CEND
+  CNIF #numcols=256
+    chpl_256_2xN{numpixels,chnkbuffr,bmppointr,chnktable}
+  CEND
+
+Until Joyb(0)
+
+Free CopList 0                         ;clean up and quit
+Free Palette 0                         ;
+Free BitMap 1                          ;
+Free BitMap 0                          ;
+                                       ;
+FreeBank 0                             ;
+FreeChunky 0                           ;
+                                       ;
+End                                    ;

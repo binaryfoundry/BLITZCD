@@ -1,0 +1,223 @@
+;Multitudinous Installer
+
+(set one "sys:wbstartup")
+(set two "S:")
+
+(set #Welcome-Pirate
+(cat "\nWelcome to the Multitudinous Installer\n\n"
+        "Multitudinous V5.3 is\n"
+        "(c) Copyright 1995.\n"
+        "Programmed in Blitz II.\n"
+        "By K.Winspear.\n\n"
+        "See Doc for more info?"
+))
+
+(message #Welcome-Pirate)
+
+(set vc-dest
+(askdir
+   (prompt "Please select the Directory where you would like to install"
+           " Multitudinous V5.3. ")
+   (help @askdir-help)
+   (default one)
+   )
+)
+
+   (set one vc-dest)
+
+(
+(working "Installing Multitudinous V5.3 Program")
+(copyfiles
+        (prompt "")
+        (help @copyfiles-help)
+        (source "Multitudinous:Multitudinous")
+        (dest one)
+        (infos)
+)
+)
+
+(set name
+(askdir
+   (prompt "Please select the Directory where you would like to install"
+           " Multitudinous.Guide ")
+   (help @askdir-help)
+   (default two)
+   )
+)
+
+   (set two name)
+
+(
+(working "Installing Multitudinous.Guide")
+(copyfiles
+        (prompt "")
+        (help @copyfiles-help)
+        (source "Multitudinous:Multitudinous.Guide")
+        (dest name)
+        (infos)
+        (confirm)
+)
+)
+
+
+;(
+;(working "Installing Multitudinous-Editor Program")
+;(copyfiles
+;        (prompt "Copy Multitudinous Editor To:- C:")
+;        (help @copyfiles-help)
+;        (source "Multitudinous:c/Multitudinous-Editor")
+;        (dest "C:")
+;        (infos)
+;)
+;)
+
+
+
+(
+(working "Installing Multitudinous.Configs")
+(copyfiles
+        (prompt "Copying Configfiles ")
+        (help @copyfiles-help)
+        (source "Multitudinous:")
+        (dest one)
+        (pattern "mconfigs#?")
+;        (confirm)
+)
+)
+
+
+(copyfiles
+                (prompt "Copying/blanker")
+                (help @copyfonts-help)
+                (source "Multitudinous:c/blankette2")
+                (dest "c:")
+)
+
+
+
+(if (NOT (exists "fonts:topaz/11"))
+         (copyfiles
+                (prompt "Copying/Topaz.Font 11")
+                (help @copyfonts-help)
+                (source "Multitudinous:Fonts")
+                (dest "fonts:")
+                (pattern "topaz.#?")
+        )
+)
+(
+(working "Installing Topaz.Font")
+(copyfiles
+        (prompt "Copying Topaz.Font 11")
+        (help @copyfiles-help)
+        (source "Multitudinous:fonts/")
+        (dest "sys:fonts")
+        (pattern "topaz")
+        (infos)
+)
+)
+
+(if (NOT (exists "fonts:gtbmenu"))
+         (copyfiles
+                (prompt "Copying/GTBMENU.Font")
+                (help @copyfonts-help)
+                (source "Multitudinous:Fonts")
+                (dest "fonts:")
+                (pattern "gtbmenu.#?")
+        )
+)
+(
+(working "Installing GTBMENU.Font")
+(copyfiles
+        (prompt "Copying GTBMENU.Font")
+        (help @copyfiles-help)
+        (source "Multitudinous:fonts/")
+        (dest "sys:fonts")
+        (pattern "gtbmenu")
+        (infos)
+)
+)
+
+
+
+(complete 75)
+(if (NOT (exists "fonts:2001"))
+         (copyfiles
+                (prompt "Copying/2001.Font")
+                (help @copyfonts-help)
+                (source "Multitudinous:Fonts")
+                (dest "fonts:")
+                (pattern "2001.#?")
+        )
+)
+(
+(working "Installing 2001.Font")
+(copyfiles
+        (prompt "Copying 2001.Font")
+        (help @copyfiles-help)
+        (source "Multitudinous:fonts/")
+        (dest "sys:fonts")
+        (pattern "2001")
+        (infos)
+)
+)
+(complete 80)
+(if (NOT (exists "fonts:Helvetica"))
+         (copyfiles
+                (prompt "Copying/helvetica.Font")
+                (help @copyfonts-help)
+                (source "Multitudinous:Fonts")
+                (dest "fonts:")
+                (pattern "helvetica.#?")
+        )
+)
+(
+(working "Installing helvetica.Font")
+(copyfiles
+        (prompt "Copying helvetica.Font")
+        (help @copyfiles-help)
+        (source "Multitudinous:fonts/")
+        (dest "sys:fonts")
+        (pattern "helvetica")
+        (infos)
+)
+)
+(complete 80)
+
+
+;(if (NOT (exists "SYS:C/ppmore"))
+;        (copyfiles
+;                (prompt "Copy PPMore to read Multitudinous.Doc from HD?")
+;                (help @copyfiles-help)
+;                (source "Multitudinous:C/ppmore")
+;                (dest "c:ppmore")
+;                (files)
+;                (infos)
+;                (confirm)
+;        )
+;)
+
+(complete 80)
+(if (NOT (exists "LIBS:commodities.library"))
+        (copylib
+                (prompt "Copying/Updating AmigaGUIDE.Library")
+                (help @copylib-help)
+                (source "Multitudinous:libs/commodities.library")
+                (dest "Libs:")
+        )
+)
+(complete 90)
+(if (NOT (exists "LIBS:parm.library"))
+        (copylib
+                (prompt "Copying/Updating Parm.Library")
+                (help @copylib-help)
+                (source "Multitudinous:libs/parm.library")
+                (dest "Libs:")
+        )
+)
+(complete 100)
+
+
+(set @default-dest vc-dest)
+
+
+(exit)

@@ -1,0 +1,154 @@
+@database K-Blitz Start.guide (Version 2.1Beta)
+
+@node Main "Welcome"
+
+
+      Bienvenue sur K-Blitz Start... Un utilitaire pour démarrer Blitz
+
+
+   @{"          Copyrights          " link "copyrights" 0}    Comment le Vendre
+   @{"         Quai que çait        " link "description" 0}       Description
+   @{"         Installation         " link "installation" 0}    Comment installer et
+                                    et utiliser.
+   @{"       Histoire / Auteur      " link "history" 0}  La longue vie de K-Blitz Start
+                                    et de son auteur.
+
+
+      K  K GGGG PPPP
+      K K  G    P  P
+      KK   G GG PPPP
+      K K  G  G P
+      K  K GGGG P    Corporation
+
+@endnode
+
+@node copyrights "Copyrights"
+
+   C-1996 Gabriel Klein    (KGP Corporation)
+
+   Si vous utilisez ce programme, vous devez m'envoyer une carte postale.
+   Vous pouvez distribuer ce programme comme vous voulez. (Y compris le
+   vendre pour une somme astronomique ou le mettre dans votre journal
+   favori...)
+
+   N.B.: Si vous voulez mettre ce programme dans votre journal,
+   contactez-moi auparavent pour reçevoir la dernière version avec votre
+   nom. Il serait sympas de m'envoyer un exemplaire ou de m'abonner quelque
+   temps.
+
+   N.B.': Si votre ordinateur saute pendant l'utilisation de ce programme.
+   Si vous faites une dépression suite à l'écrassement ACCIDENTEL de cet
+   utilitaire. Ou tout autre dommage matériel ou psychique, je ne peux pas
+   être tenu pour responsable.
+
+   ATTENTION, quelques enfanticides se sont déclaré lorsque les parents
+   remarquaient le temps passé sous Blitz Basic par leur progéniture.
+
+
+@endnode
+
+@node description "J'suis curieux moi."
+
+   C'est un programme pour Blitz Basic.
+
+   - Assignations automatiques (Blitz2:, Include:, BlitzLibs:, Blitz Programmes:.
+   - Compteur du temps passé a utiliser Blitz.
+   - Compteur du temps passé depuis le début de la session.
+   - Compteur du temps passé sous une source.
+   - Chargement d'une source 'démarrage' automatiquement.
+   - Possibilité de charger la dernière source utilisée si elle est dans le
+     même tiroir que la source 'démarrage'.
+
+C'est tout.
+
+A Faire: Help... Comment faire dans la version 2.1 de TEd
+
+   - AppIcon qui permet de charger un fichier en le mettant dans une AppIcon.
+   - Chargement de la source démarrage même si elle se trouve dans un autre
+     tiroir.
+
+
+@endnode
+
+@node installation "Installation"
+
+   Mettez l'icône du programme où vous voulez (je conseille à côté de Blitz
+  Basic).
+   Démarrez ce programme. Si le fichier (oÙ vous êtes)/K-Blitz Drawer/K-Blitz Start
+  n'existe pas, vous entrez dans le menu prefs. Sinon pressez 'Alt' pendant
+  le chargement du programme pour y accéder.
+
+   Une série de requester ReqTools.Library (C-Nico François) apparaissent:
+   - Un AppMenu existe pour quitter cet utils avant de quitter blitz et pour
+     donner quelques info. Ici donnez son nom.
+   - Donnez ici la locatisation complète de Blitz2 (Blitz2:Blitz2).
+   - Vous pouvez soit charger une source fixe, ou soit la dernière source
+     chargée. La dernière source chargée doit se trouver dans le même
+     répertoire que la source par défaut. Si elle n'existe pas (ex: autre
+     répertoire...,) alors la source par défaut est chargée.
+   - Ce requester demande la source... et le chemin en même temps.
+   - Un compteur vous disant depuis combien de temps vous êtes sous blitz
+     (Total et session en cours) peut être affiché grâce à cette option.
+     Si vous mettez 'Oui, visible' une fenetre apparaitra. Si vous mettez
+     'Oui, mais invisible', le compteur peut être vu par l'AppMenu.
+     'Pas de compteur' est assez claire comme option :-)
+   - Idem pour un compteur vous disant depuis combien de temps vous êtes
+     sous une source. Le nom du programme s'enregistre dans K-Blitz Drawer
+     qui se trouve au même endroit que le programme qui a été démarré.
+     Passez-y de temps en temps pour faire un nettoyage de printemps.
+   - Les 6 requester suivants causent de l'apparence de cette fenêtre. Si
+     vous sortez de la fênetre, alors une erreur arrivera et le programme
+     quittera lorsqu'il mettra cette fenêtre sur l'écran Blitz...
+     Mes prefs sont: PosX:250, PosY:4, GrandX:400, GrandY:12, CouleurE:2,
+                     CouleurF:0.
+  - Quelques assigns vous sont ensuite demandée...
+  - Un menu 'About/Info' vous est présenté avec trois options.
+    Elle sont assez explicatifs...
+   
+  C'est aussi simple que ça....
+
+  Technique: Comment j'ai fait.
+             Les assigns sont très simple a faire, il y a une fonction pour.
+             Je liste tous les écrans. Si un écran à un nom commançant par
+             Blitz, c'est surement le bon. J'ai donc l'adresse Intuition de
+             l'écran en cours.
+             J'ouvre une fenetre ( Poke.l AddrEcranBlitz.l,Addr Screen (0):
+             Use Screen (0):Window 0,...: Poke.l AddrEcranBlitz.l,0 )
+             Si on a l'adresse intuition de l'écran, il est facile d'avoir
+             le nom du fichier en cours (qui s'affiche 'File: ***.bb2').
+             Malheureusement, pas le chemin... (ça explique des choses).
+             Accès séquentiel et le tours est joué. :-)
+
+             Nb: Blitz ne reconnait pas au chargement les fichiers avec un
+                 espace (ex: K-Blitz Start.bb2). Il ne verra que 'K-Blitz'
+                 Même l'ajout de ".." ne donne rien :-((((((( .
+
+@endnode
+
+@node history "Histoire"
+
+Version 1.0
+Nom: K-Blitz Assign. Fait que les assigns.
+
+Version 2.1 Alpha Juillet 1996:
+Première version distribuée. Pourquoi? je ne le sais pas.
+Change le nom et l'appel 'K-Blitz Start' car ne fait pas que les assigns.
+
+Version 2.1 Beta, Aout 1996:
+Version Beta car il est possible qu'il reste de petits bugs. Version bien
+plus Intuitive que la version Alpha. Ne trafique plus quelques données dans
+la mémoire (par exemple, les menus).
+
+Auteur:
+~~~~~~~
+
+   Envoyez votre petite carte postale (ou votre gros paquet remplis de
+   friandises) à:
+
+   Klein Gabriel
+   1081 Montpreveyres
+   Suisse
+
+   BBS: Number One BBS, 0041:(0)27 221 900. Pseudo KGP
+
+@endnode

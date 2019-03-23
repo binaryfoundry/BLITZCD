@@ -1,0 +1,111 @@
+
+                    D O C U M E N T A T I O N
+
+                                to
+
+                             GUI2BB2
+
+------------------------------------------------------------------
+
+Prolog
+~~~~~~
+GUI2BB2  is  a  tool for GadToolsBox (GTB).  GTB is written by Jan
+van  den Baard and it is used to create grafic user interfaces for
+programs.    The  programs  then  use  menus  and  gadget  of  the
+gadtools.library, which is included in the AmigaOs since V2.0.  In
+this  way  created  user  interfaces,  can be convert by GTB, into
+ASM-,  C-  or  OBERON-sources.  It is also possible to save into a
+kind  of  IFF-File.   The  used  format has nothing to do with the
+IFF-Grafix-Format   !    GUI2BB2   convert   this   IFF-File  into
+BlitzBasicII  Sourcecode.  It uses the gadtools-commands, wich are
+included since BB2-V1.6
+
+
+Installation
+~~~~~~~~~~~~
+There  is  not much to install.  Just copy the program to a place,
+where you will find it, when you need it :-)
+
+
+Using
+~~~~
+You  can  start  GUI2BB2 from CLI or from Workbench.  After start,
+the  programmwindow  will be displayed.  The window is splittet in
+four  parts.   In the upper part you can say, wich elements of the
+gui-File  should  be  convertet.   You can also change the kind of
+source  you  want  create  for  screen  and  windows  (normal-  or
+taglistversion)
+In  the left-middle part you can choose the source and destination
+filenames.   Under  the  "?"  buttons,  you find ASL-Requesters to
+choose the filenames.
+In   the   right-middle  part  you  can  do  some  actions.
+With  "Start-GTB"  you  start the GadToolsBox-Programm.  First you
+have   to   edit  Prefs  !!!!   If  GUI-File  does  not  exist,  a
+standard-gui-file will be created, before starting GTB.
+With  the  "Convert"  button, you start the converting of GUI-File
+into BB2-File.
+With  "Edit-BB2"  you  start  the  Texteditor  for the BB2-Source.
+First you have to edit Prefs !
+With "Prefs" you open the Prefs-window.
+In the lower part, the programm will display messages and infos.
+
+
+Misc
+~~~~
+GUI2BB2  create and use a config-file (s:gui2bb2.pref).  It`s just
+a simple ascii-text-file, wich includes path- and filenames.
+
+
+Known Bugs
+~~~~~~~~~~
+Only  screens,  windows,  gadgets  and bevelboxes will be convert.
+Menus  will  not  be convert.  Also the used fonts in the gui-file
+will not converted !
+
+
+History
+~~~~~~~
+* = New option
++ = Updating
+- = Bugfixing
+
+??.??.1993  V1.0  The first cli-only-version, just for private use
+
+??.??.1993  V1.1  The Version for the WOC`93 in cologne
+                  * With GUI now. GUI created with gui2bb2,
+                    of course
+                  * Sourceswitcher for screens, windows, gadgets
+                  * Screentags-switch
+                  * ASL-Filerequester
+
+02.01.1994  V1.2  The Version for BlitzPD#2
+                  * StartID`s now
+                  * all gadgets are now with shortcuts
+
+18.11.1995  V2.0  First AmiNet - Version
+                  + New GUI
+                  - Bugs in itemcounts removed
+
+29.11.1995  V2.1  Updates and bugfixes
+                  + Now Windowtags-Source possible
+                  - Listview with "ShowSelected-Stringgadget" (Join function in GTB)
+                  - Shortcuts correct now ! (oops)
+
+07.04.1996  V2.2  News, News, News ...
+                  * Start of GTB from GUI2BB2 possible
+                  * Start of BB2-Editor from GUI2BB2 possible
+                  * Prefs-Window
+                  * Creates a standard-gui-file, if gui-file doesn`t exist
+                  * Window is locked while extern calls
+
+Support
+~~~~~~~
+Updates will be post into the aminet at dev/basic.
+
+My EMail is     zippo@edina.xnc.com
+
+You can send gifts and money to
+Peter Liebetrau
+Biberstrasse 13
+50678 Koeln (Cologne)
+Germany

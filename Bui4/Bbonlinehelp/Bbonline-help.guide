@@ -1,0 +1,202 @@
+@database "BBOnLineHelp.guide"
+@width 80
+@node "Main"
+                        Blitz Basic OnLine-Help V1.0
+
+                         (c) Kevin Winspear, 1996
+
+                            Released: 1/2/1996
+
+
+			@{"    " link "Legal Stuff" } Legal Stuff
+			@{"    " link "Limits" } Demo Limitations
+			@{"    " link "History" } History
+			@{"    " link "Introduction" } Introduction
+			@{"    " link "HelpLib" } HelpLib
+			@{"    " link "Installation" } Installation
+			@{"    " link "Register" } Registration
+			@{"    " link "Thanks" } Thanks
+			@{"    " link "Registration_Form" } Registration Form
+			@{"    " link "Bugs" } Bugs
+			@{"    " link "Update} Third Party Commands
+
+
+@endnode
+@node "LEGAL STUFF"
+
+LEGAL STUFF
+------------
+
+You use this program at your own risk!  I accept nothing, except money. :)
+
+@endnode
+@node "Limits"
+
+Limitations.
+-----------
+
+As this is the first version, this program does not reconize all the Blitz
+Basic and Third Party Commands, these are as follows:-
+
+ o  BBOnLine-Help V1.0, only reconizes 445 commands. 
+
+ o  BBOnLine-Help V1.1, reconizes all Blitz Basic Commands and all Third
+    party commands.
+
+These features are available in the FULL version.
+@endnode
+@node "Register"
+
+Register.
+---------
+
+So you like this little program then?  In that case, why not take the time
+to register for it and receive the full version?
+                                                                             
+If you have a printer, you can simply print out the @{"Registration Form" link Registration_Form} and
+send it completed with a donation of £6.00 (UK) or £9.00 (other) to me, and
+I will RUSH you a registered version of BBOnLine-Help v1.1 or later 
+version if there is one.
+
+@endnode
+@node "History"
+
+History.
+--------
+
+ o  V1.0 445 Blitz Basic commands.
+
+@endnode
+@node "Introduction"
+
+Introduction.
+-------------
+
+BBOnLine-Help V1.0 is a replacement of the original OnLine-help program,
+which I and many others just don't like, I won't go into depth, I'll just
+say the original help program did not included the third party commands.
+
+So BBOnLine-Help was born...
+
+Once installed and your in Blitz Editor you just press the HOTKEYS, (Right
+Amiga - Help) and BBOnLine-Help will be called up and if command you need
+help on exists in the Blitz2.Guide, BBOnLine-Help will call up
+Blitz2.Guide, on the other hand if the command dose not exists in the
+Blitz2.Guide, BBOnLine-Help will notify you of the fact.
+
+@endnode
+@node "Installation"
+
+Installation.
+-------------
+
+To install BBOnLine-Help, all you have to do is rename the help program in
+Blitz2: directory to something like oldhelp and then copy BBOnLine-help
+which the icon name is also called help and Blitz2.Guide into Blitz2:
+directory, Don't forget to read about the @{" HelpLib " link "HelpLib" }
+
+@endnode
+
+@node "Registration_Form"
+
+Registration Form.
+------------------
+
+Please RUSH me BBOnLine-Help v1.01 or newer version.
+
+Name: _____________________________________________
+
+Registration Name: ________________________________
+
+Address: __________________________________________
+
+         __________________________________________
+         
+         _____________________ Postcode: __________
+
+Telephone: _(_____)________________________________
+
+I require ____ copies of BBOnLine-Help and enclose the relevant donation of 
+£6.00(ukp) per copy, overseas £9.00
+
+Please send your orders to:-  Tornado Software
+                              10 Colenso Street
+                              Hartlepool
+                              Cleveland
+                              TS26 9BD
+                              England
+
+Please make cheques / P.O's Payable to Kevin Winspear.
+
+@endnode
+@node "Bugs"
+
+BUGS
+----
+
+If you find one, drop me a line at the registration address.  Don't
+forget to tell me what you did to get BBOnLine-Help to fail.
+
+Cheers for now...
+
+Kevin.
+
+@endnode
+@node "Thanks"
+
+A big THANKS to..
+
+Matthew Tillett, The cool programmer `ere Down South', for his ideas and 
+supporting Blitz.
+ 
+Lee Packham, The cool programmer `ere also Down South', for his help using
+Pub-Screens within Blitz.
+
+Am I the only programmer 'ere up North'???
+        
+                        Anyone I've forgotten..
+
+@endnode
+@node "Update"
+
+If you like this program, Please help me to keep BBOnLine-Help updated,
+send your Blitz librarys to me, So I can add them to BBOnLine-Help.
+
+If you send me a new library I do not have, I will add it to BBOnLine-Help
+and send it to you FREE... You only have to pay for P+P.
+
+
+
+@endnode
+@node "HelpLib"
+
+                              Help Library
+
+                                 V1.0
+
+                        (C)1996 Kevin Winspear
+
+  This library is only small and it only has one purpose, if you are
+programming away and want to find a command to do something and you don't
+know what the command's name exactly is, or even if there is a command to
+do what you want, all you do is type ' help ' and then press Blitz
+HotKeys, this will bring up an A - Z Index.
+
+NOTE! THIS COMMAND WILL NOT LET YOU COMPILE A PROGRAM...
+
+If you forget to delete the command ' help ' and try to compile your
+program you will get the Error message ' Syntax Error ' to remind you to 
+delete the ' help ' command.
+
+  To install:- copy "Help.obj" to your "BlitzLibs:userlibs/"
+directory and Run MakeDefLibs. 
+
+
+
+HISTORY
+-------
+
+V1.0    Original library, for BBOnLine-Help.
+
+@endnode
+

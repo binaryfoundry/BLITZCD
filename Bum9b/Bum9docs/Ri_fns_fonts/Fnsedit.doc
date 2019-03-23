@@ -1,0 +1,67 @@
+FNS Editor v0.1
+===============
+
+
+This is just a VERY quick doc for this brilliant program (ego-trip time!).
+
+
+Usage: Double click from Workbench
+
+	or
+
+       Run from CLI
+
+If running from the CLI you can give a parameter specifying a EXISTING font
+to edit (give name and full path).
+
+Basically, this prog allows you create/edit/save my FNS font files.  In
+addition, it allows you to grab Amiga fonts as FNS fonts.  It uses
+Intuition throughout so you shouldn't have any problems getting to grips
+with how it looks.
+
+Main Window
+-=-=-=-=-=-
+
+  From here you can load/save fonts and do global adjustments to the font
+currently being edited.  You can have upto 8 FNS fonts loaded at any one
+time, the currently active font is named in the window and is shown in the
+example text window.  Use the menus to change fonts if you have more than
+one loaded.
+  Clicking on the EDIT gadget or select EDIT from the menu EDIT will take
+you to the font edit window.
+
+Font Edit Window
+-=-=-=-=-=-=-=-=
+
+  This is where you can actually edit (or draw if you're feeling brave)
+your font.  The window is split up into two parts: on the left is the zoom
+area which gives you an enlarged view of the current character and on the
+right is the action window which gives you some gadgets to play with.
+
+  All the gadgets should be fairly easy to understand, I should say, though,
+that the width is used when printing the character and should be set so
+that there is a blank gap on the right of the current character.  Confused?
+Well just click on Auto_W (auto width) which will calculate exactly how
+wide the character should be automatically.  Note: at the moment the SWAP
+gadget does bugger all - nevermind.......
+
+  To draw, just move into the boxed area inside the zoom area and press a
+button.  Left mouse button draws whilst right mouse button deletes (sorry -
+no colour fonts are supported yet, maybe soon if there's demand.....).  Four
+basic drawing modes are available: freehand, line, box and bar; select each
+by clicking on its icon in the botton right hand corner of the edit window.
+
+  Change characters by: using the scroll bar, clicking on the '---->' or
+'<----" gadgets or pressing the key you want to edit on the keyboard.
+
+
+  That's all I can be bothered to write as my eyes are going all funny from
+sitting in front of this computer for too long.
+  If you like this program and want to use it but can't figure out how the
+f*** it works them please mail me and I'll try to come up with some better
+instructions for it than this rubbish.
+
+
+
+Steve Mc     SIS3149@SIS.PORT.AC.UK
+	     26/05/94

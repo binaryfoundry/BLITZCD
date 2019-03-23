@@ -1,0 +1,252 @@
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Zoom: ( ti_Tag=$8000007D )
+
+Specify a pointer to an array of four 
+WORDS in ti_Data to set the LeftEdge,
+TopEdge, Width and Height values for the
+"zoomed" window. 
+This implies that a Zoom gadget is required.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_MouseQueue: ( ti_Tag=$8000007E )
+
+Specify an initial value for the mouse
+message backlog limit for this window
+in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_BackFill: ( ti_Tag=$8000007F )
+
+Specify a pointer to a Hook structure in
+ti_Data for the window's layer.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_RptQueue: ( ti_Tag=$80000080 )
+
+Specify an initial value for the repeat
+key backlog limit for this window in ti_Data.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_SizeGadget: ( ti_Tag=$80000081 )
+
+Specify a boolean in ti_Data as to
+whether or not a Size gadget is to be
+included in the window.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_DragBar: ( ti_Tag=$80000082 )
+
+Specify a boolean in ti_Data as to
+whether or not the title bar of the window
+is a drag gadget.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_DepthGadget: ( ti_Tag=$80000083 )
+
+Specify a boolean in ti_Data as to
+whether or not a Depth gadget is to
+be included in the window.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_CloseGadget: ( ti_Tag=$80000084 )
+
+Specify a boolean in ti_Data as to
+whether or not a Close gadget is to
+be included in the window.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Backdrop: ( ti_Tag=$80000085 )
+
+Specify a boolean in ti_Data as to
+whether or not the window is to be
+a Backdrop window.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_ReportMouse: ( ti_Tag=$80000086 )
+
+Specify a boolean in ti_Data as to
+whether or not the application wants
+to receive mouse movement events.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_NoCareRefresh: ( ti_Tag=$80000087 )
+
+Specify a True boolean in ti_Data to disable
+IDCMP_REFRESHWINDOW events.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Borderless: ( ti_Tag=$80000088 )
+
+Specify a True boolean in ti_Data to disable
+open the window with no borders rendered by
+Intuition.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_Activate: ( ti_Tag=$80000089 )
+
+Specify a boolean in ti_Data as to whether
+of not the window is to become active when
+opened.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_RMBTrap: ( ti_Tag=$8000008A )
+
+Specify a True boolean in ti_Data to
+disable the menus in the window and receive
+IDCMP_MOUSEBUTTONS messages when RMB is
+pressed.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_SimpleRefresh: ( ti_Tag=$8000008C )
+
+The application will take full
+responsibility for updating the window.
+
+NB. Only specify if True.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_SmartRefresh: ( ti_Tag=$8000008D )
+
+Intuition handles all window updating except
+for parts of the window revealed when the window
+is sized larger.
+
+NB. Only specify if True.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_SizeBRight: ( ti_Tag=$8000008E )
+
+Specify a boolean True to place the
+size gadget in the right border.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_SizeBBottom: ( ti_Tag=$8000008F )
+
+Specify a boolean True to place the
+size gadget in the bottom border.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_AutoAdjust: ( ti_Tag=$80000090 )
+
+Specify a boolean True to allow Intuition
+to change the window's position and dimensions
+in order to fit it on a screen.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_GimmeZeroZero: ( ti_Tag=$80000091 )
+
+Specify a boolean True create a
+GimmeZeroZero type window.
+
+
+Window Attribute Tags
+=====================
+
+Usage: OpenWindowTagList_/Windowtags
+
+WA_MenuHelp: ( ti_Tag=$80000091 )
+
+Specify a True boolean in ti_Data to enable
+IDCMP_MENUHELP events, which occur when a
+user presses Help on a menu item.
+

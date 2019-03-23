@@ -1,0 +1,16 @@
+You will find RIGTMenuLib.obj in this archive. 
+You must place it in your Blitzlibs:Userlibs drawer from your work
+disk, and then run the 'MakeDefLibs' executable to update your deflibs
+file to include the new commands.
+If you have this installed already, then you can disregard this and use it
+already. If the menu commands appear as ???, then you have not installed it
+correctly. Follow the above routine to install it again.
+
+For more information, read the 'RIGTMenuLib.doc'.
+
+	Yours
+	
+		Simon Archer
+
+ 
+

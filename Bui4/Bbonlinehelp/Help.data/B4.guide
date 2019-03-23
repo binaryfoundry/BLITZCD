@@ -1,0 +1,314 @@
+@DATABASE "B4.guide"
+
+@NODE B481
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}XOR@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Xor@{fg text} (expression,expression) 
+Modes: Amiga or Blitz
+
+Returns Exclusive OR of two expressions This function returns the 
+"exclusive-OR" or the two supplied arguments. For example, Xor(255,170)
+will return 85, and Xor(-1) will return 0.
+@ENDNODE
+@NODE B482
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}LARGEST.L@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Largest.l@{fg text} (Long Integer1,Long Integer2)
+Modes: Amiga or Blitz
+
+This function will return the larger of the two supplied long integers.
+For example, Largest.l(255,20045) would return 20045.
+@ENDNODE
+@NODE B484
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}LARGEST.Q@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Largest.q@{fg text} (Quick1,Quick2)
+Modes: Amiga or Blitz
+
+Identical to the function @{" Largest.l " link B482} except that
+it accepts quick-type variables or expressions.
+@ENDNODE
+@NODE B485
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SMALLEST.Q@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Smallest.q@{fg text} (Quick1,Quick2)
+Modes: Amiga or Blitz
+
+Identical to @{" Smallest " link B487} but uses quick-types.
+@ENDNODE
+@NODE B486
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}LARGEST@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Largest@{fg text} (Integer1,Integer2)
+Modes: Amiga or Blitz
+
+This is the fastest "Largest()" function.  Note that if passed floats
+or quick-types, the fraction will be cut off.  See description for
+@{" Largest.l " link B482} and @{" Largest.q " link B484
+@ENDNODE
+@NODE B487
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SMALLEST@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Smallest@{fg text} (Integer1,Integer2)
+Modes: Amiga or Blitz
+
+Like @{" Smallest.l " link B483} and @{" Smallest.q " link B485}
+with less accuracy, but faster than the long-integer and 
+quick-type versions.
+@ENDNODE
+@NODE B488 
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}AVG.L@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Avg.l@{fg text} (Long Integer 1,Long Integer 2)
+Modes: Amiga or Blitz
+
+This function will return the average of two long-integers (although
+the fraction is cut off.)  Thus, Avg.l(5,15)=10, and Avg.l(1,2)=1.
+(Since fractions will be cut off with this function, you may wish to
+use the quick-type version of this function for more accuracy.)
+@ENDNODE
+@NODE B489
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: BlitColl
+--------------------------------------------------------------------------
+@{fg text}Syntax: BlitColl (Shape#,x,y)
+Modes: Amiga/Blitz
+
+Description:
+BlitColl is a fast way of collision detection when blitting shapes. 
+BlitColl returns -1 if a collision occurs, 0 if no collision. A 
+collision occurs if any pixel on the current BitMap is non zero where 
+your shape would have been blitted.
+
+ShapesHit is faster but less accurate as it checks only the rectangular 
+area of each shape, where as BlitColl takes into account the shape of 
+the shape and of course1bcan not tell you what shapeyou have collided 
+with.
+
+@{fg shine}Note:@{fg text} make sure only things that you want to 
+collide with have been drawn on the BitMap e.g. don't Blit your ship and
+then try BlitColl!
+@ENDNODE
+@NODE B48A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}AVG@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Avg@{fg text} (Integer1,Integer2)
+Modes: Amiga or Blitz
+
+See the description for @{" Avg.l " link ELM_AVGL}.
+This version is the fastest Avg() function available.
+@ENDNODE
+@NODE B48B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}RRANDOMIZE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}RRandomize@{fg text} Seed
+Modes: Amiga or Blitz
+
+Given a float-type expression or variable, RRandomize will "seed" the
+reproducible random number generator.  The sequence of pseudo-random
+numbers produced by @{" RRND " link B48C} will be the same for each 
+seed given it. If you require trully random numbers, try "RRandomize 
+Ticks."
+@ENDNODE
+@NODE B48C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}RRND@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}RRnd@{fg text} (Low,High)
+Modes: Amiga or Blitz
+
+Given a range such as (1,6) this function will return a random number
+based on the seed given it by @{" RRandomize " link B48B}
+These sets of "random" numbers can be repeated if you provide the same
+seed.  This can be useful in games, etc. so that using "RRandomize 
+Level#" and then using the RRnd() function to randomly draw the screen,
+each time the player returns to that particular level, it will be the 
+same.
+@ENDNODE
+@NODE B48D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}HEX#@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Hex#@{fg text} (HexString$)
+Modes: Amiga or Blitz
+
+This function accepts hexadecimal value stored in a string and returns 
+the decimal value.
+@ENDNODE
+@NODE B48E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}BIN#@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Bin#@{fg text} (BinString$)
+Modes: Amiga or Blitz
+
+This function accepts binary value stored in a string and returns the
+decimal value.
+@ENDNODE
+@NODE B808
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SpriteMode@{fg text}
+--------------------------------------------------------------------------
+Syntax: SpriteMode mode
+ 
+For use with the capabilities of the new Display library SpriteMode is 
+used to define the width of sprites to be used in the program. The mode
+values 0, 1 and 2 correspong to the widths 16, 32 and 64.
+@ENDNODE
+@NODE B80D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetBPLCON0
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetBPLCON0 Default
+Modes: Amiga/Blitz
+
+Description:
+The SetBPLCON0 command has been added for advanced control of Slice 
+display modes. The BPLCON0 hardware register is on page A4-1 of the 
+reference manual (appendix 4). The bits of interest are as follows:
+
+bit#1-ERSY external sync (for genlock enabling)
+bit#2-LACE interlace mode
+bit#3-LPEN light pen enable
+ 
+Example:
+
+; 
+; Blitz Interlaced Slice Example using BPLCON0
+; 
+BitMap 0,640,512,4
+; use SetBPLCON0 4 to set the lace bit on when slice is created 
+SetBPLCON0 4                               ;set lace bit
+
+BLITZ 
+;bitmap width=1280 so slice's bitmap modulos miss each 2nd line 
+Slice 0,44,640,256,$fffb,4,8,8,1280,1280   ;cludge the modulo 
+;every vertical blank either show odd lines or even lines 
+;depending on the long frame bit of VPOSR hardware register 
+SetInt 5
+	If Peek($dff004)<0 Show 0,0,0 Else Show 0,0,1 
+End SetInt
+;draw lines to prove it 
+For i=1 To 1000 
+	Line Rnd(640),Rnd(512),Rnd(640),Rnd(512),Rnd(16)
+Next
+;
+MouseWait 
+@ENDNODE
+@NODE BB88
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: ReMap
+--------------------------------------------------------------------------
+@{fg text}Syntax: ReMap colour#0,colour#1[,Bitmap]
+Modes: Amiga/Blitz
+Library: Sis2dLib
+
+Description:
+ReMap is used to change all the pixels on a BitMap in one colour to 
+another colour. The optional BitMap parameter will copy all the pixels 
+in Colour#0 to their new colour on the new bitmap.
+@ENDNODE
+@NODE BB8A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: Poly & Polyf@{fg text}
+--------------------------------------------------------------------------
+Syntax: Poly  numpoints,*coords.w,color
+        Polyf numpoints,*coords.w,color[,color2]
+Modes: Amiga/Blitz
+
+Description:
+Poly & Polyf are bitmap based commands such as Box and Line. They draw
+polygons (unfilled and filled respectively) using coordinates from an 
+array or newtype of words. Polyf has an optional parameter color2, if 
+used this colour will be used if the coordinates are listed in anti-
+clockwise order, useful for 3D type applications. If color2= -1 then the
+polygon is not drawn if the verticies are listed in anti-clockwise 
+order.
+
+@{fg shine}Example:@{fg text}
+
+	NEWTYPE .tri:x0.w:y0:x1:y1:x2:y2:End NEWTYPE
+	BLITZ
+	BitMap 0,320,256,3
+	Slice 0,44,3:Show 0
+	While Joyb(0)=0
+    	  a.tri\x0=Rnd(320),Rnd(256),Rnd(320),Rnd(256),Rnd(320),Rnd(256)
+	  Polyf 3,a,1+Rnd(7)
+	Wend
+@ENDNODE
+@NODE BB8B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: Poly & Polyf@{fg text}
+--------------------------------------------------------------------------
+Syntax: Poly  numpoints,*coords.w,color
+        Polyf numpoints,*coords.w,color[,color2]
+Modes: Amiga/Blitz
+
+Description:
+Poly & Polyf are bitmap based commands such as Box and Line. They draw
+polygons (unfilled and filled respectively) using coordinates from an 
+array or newtype of words. Polyf has an optional parameter color2, if 
+used this colour will be used if the coordinates are listed in anti-
+clockwise order, useful for 3D type applications. If color2= -1 then the
+polygon is not drawn if the verticies are listed in anti-clockwise 
+order.
+
+@{fg shine}Example:@{fg text}
+
+	NEWTYPE .tri:x0.w:y0:x1:y1:x2:y2:End NEWTYPE
+	BLITZ
+	BitMap 0,320,256,3
+	Slice 0,44,3:Show 0
+	While Joyb(0)=0
+    	  a.tri\x0=Rnd(320),Rnd(256),Rnd(320),Rnd(256),Rnd(320),Rnd(256)
+	  Polyf 3,a,1+Rnd(7)
+	Wend
+@ENDNODE
+@NODE BB8C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: BitPlanesBitMap@{fg text}
+--------------------------------------------------------------------------
+Syntax: BitPlanesBitMap SrcBitMap, DestBitMap, PlanePick
+Modes: Amiga/Blitz
+
+Description:
+BitPlanesBitMap creates a `dummy' bitmap from the SrcBitMap with only 
+the bitplanes specified by the PlanePick mask. This is useful for shadow
+effects etc. where blitting speed can be speed up because of the fewer 
+bitplanes involved
+@ENDNODE
+@NODE BB8D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: ClipBlit@{fg text}
+--------------------------------------------------------------------------
+Syntax: ClipBlit Shape#,X,Y
+Modes: Amiga/Blitz
+
+Description:
+ClipBlit is the same as the Blit command except ClipBlit will clip the 
+shape to the inside of the used bitmap, all blit commands in Blitz2 are
+due to be expanded with this feature. 
+@ENDNODE
+@NODE BB8E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}ClipBlitMode@{fg text}
+--------------------------------------------------------------------------
+Syntax   : ClipBlitMode BPLCON0
+Library  : 2dlib
+
+Description:
+Same as BlitMode except applies to the ClipBlit command. Another oversight
+now fixed.
+@ENDNODE
+
+
+

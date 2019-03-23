@@ -1,0 +1,500 @@
+                           ELMOREDOSLIB Version 2.2
+
+                      Copyright © 1995 HeadSoft Software
+                         Written by Richard T. Elmore
+
+                               126 State St. #20
+                              Spearfish, SD 57783
+
+                              Tel: (605) 348-3337
+                       E-mail: relmore@silver.sdsmt.edu
+
+
+Note: This version of the library will not function for v36 (2.04) and below
+of the OS. Furthermore, you will note that some command names are preceeded 
+by an asterisk. This indicates that either the command is new to this
+release or was enhanced/bugfixed since the last (Bum6) release.
+
+
+*Command: CHDIR
+---------------
+Syntax: CHDIR "Path:"  -or-
+        IF CHDIR("Path:") Then...
+
+This command will change the current working directory for ALL disk-related
+commands. Used as a function, a value of TRUE will be returned if the
+directory change was successful, or FALSE if it was unsuccessful.
+
+
+*Function: CurrentDir$
+----------------------
+Syntax: a$=CurrentDir$
+
+This function returns a string containing the full pathname of the current
+directory. This function replaces the "PATHLOCK" function from earlier
+releases of this library.
+
+
+*Command: COPYFILE
+------------------
+Syntax: COPYFILE "First","SECOND" -or-
+        IF COPYFILE("FIRST","SECOND") Then...
+
+This command will copy files, much like the CLI command "Copy." In the
+function form, it will return TRUE for success, and FALSE for failure. Note
+that the speed at which it copies can be increased by increasing the
+"CopyBuffer," which defaults to 4096 bytes. (See below)
+
+
+*Statement: SetCopyBuffer
+-------------------------
+Syntax: SetCopyBuffer BUFFERSIZE
+
+This statement is used to set the size of the COPYFILE command's memory
+buffer. The default size is 4096 bytes, but this can be adjusted from 1024
+bytes to nearly all your free memory. A larger buffer will normally increase
+the speed at which the COPYFILE command operates, but only up to the size of
+the largest file you're copying. For example, if the largest file you need
+to copy is 25000 bytes, then it will be useless to set the COPYBUFFER above
+25000.
+
+
+*Command: NAMEFILE
+------------------
+Syntax: NAMEFILE "Oldname","Newname"  -or-
+        IF NAMEFILE("Oldname","Newname") Then...
+
+This command returns FALSE for failure, TRUE for success: The file "oldname"
+is renamed to "newname," if possible, and may be moved to other directories
+within the same volume. It is not possible to use NAMEFILE to move a file
+from one volume to another, however. (See the MOVEFILE command)
+
+
+*Command: MOVEFILE
+------------------
+Syntax: MOVEFILE "Oldname","Newname" -or-
+        IF MOVEFILE("Oldname","Newname") Then...
+
+This command returns FALSE for failure, TRUE for success: This command is
+intelligent, and will attempt to rename the given filename if it is on the
+same volume, otherwise it will copy the file to the new location and
+afterwards delete the original.
+
+
+Command: MAKEDIR
+----------------
+Syntax: MAKEDIR "Path:Dir" -or-
+        IF MAKEDIR("Path:Dir") Then...
+
+This command will attempt to create a new directory with the given pathname.
+It is only possible to create one level at a time, however. For example,
+MAKEDIR will fail if you attempt to MAKEDIR "RAM:New/Data" if the directory
+"RAM:New" does not yet exist. Used as a function, MAKEDIR returns TRUE for
+success, and FALSE for failure.
+
+
+*Command: MOREENTRIES
+---------------------
+Syntax: MOREENTRIES -or-
+        IF MOREENTRIES Then...
+
+This command will read the next entry in the current directory for
+inspection with other "ENTRY" commands. Used within a loop, it is easy to
+read an entire directory with these commands, similar to the "DIR" or "LIST"
+commands of AmigaDOS. (See below. An example follows)
+
+
+Function: ENTRYNAME$
+--------------------
+Syntax: n$=ENTRYNAME$
+
+This function returns the name of the current directory entry. If used
+before the fist "MOREENTRIES" command, it will return the name of the last
+EXAMINEd directory or file.
+
+
+Function: ENTRYDIR
+------------------
+Syntax: If ENTRYDIR Then...
+
+This function returns TRUE if the last EXAMINEd object is a directory, or
+FALSE if it is a file.
+
+
+*Function: ENTRYBITS$
+---------------------
+Syntax: n$=ENTRYBITS$
+
+This function returns a string containing the protection-bits status of the
+current file or directory.  An example may be "----RWED" the same format as
+given by the AmigaDOS "LIST" command.  Possible bit settings are HSARWED:
+H=HIDDEN,  S=SCRIPT,  A=ARCHIVED,  R=READABLE, W=WRITEABLE, E=EXECUTEABLE,
+D=DELETEABLE.  Any bits that are not set will have the "-" character in
+their place.
+
+
+Function: ENTRYSIZE
+-------------------
+Syntax: n.l=ENTRYSIZE
+
+This function returns the size in bytes of the current directory entry.
+Note that sub-directories return a size of zero whether they are empty or
+not.
+
+
+Function: ENTRYDATE
+-------------------
+Syntax: d$=DATE$(ENTRYDATE)
+
+This function returns the date the current entry was last modified, in the
+same format as SYSTEMDATE uses. (The number of days since 1/1/1978) Thus,
+you may use the DATE$ and DATEFORMAT commands to translate it into a string
+with a more human-readable string.
+
+
+Function: ENTRYHOUR, ENTRYMINS, ENTRYSECS
+-----------------------------------------
+Syntax: h=ENTRYHOUR:m=ENTRYMINS:s=ENTRYSECS
+
+ENTRYHOUR:
+This function is related to ENTRYDATE, above, but returns the hour of the
+day (0-23) at which the entry was last modified.
+
+ENTRYMINS:
+Returns the minute (0-59) of the time at which the entry was modified.
+
+ENTRYSECS:
+Returns the second (0-59) of the time at which the entry was modified.
+
+
+
+Function: ENTRYCOMMENT$
+-----------------------
+Syntax: c$=ENTRYCOMMENT$
+
+This function will return the string containing the filenote for the current
+directory entry, or "" if there is none.
+
+
+Statement: NOMOREENTRIES
+------------------------
+Syntax: NOMOREENTRIES
+
+The EXAMINE command "locks" the examined directory (or file) until the last
+entry has been examined. In previous versions of the library, it was
+therefore not possible to alter the locked directory or file until the last
+MOREENTRIES() function had been called or the program had ended. This
+statement allows you to prematurely terminate the lock.
+
+
+
+*********************
+* DIRECTORY EXAMPLE *
+*********************
+
+This example will list the entries in RAM: in a format very similar to the
+AmigaDOS "LIST" command. Note that you need to "ChDir" to a directory in
+order to read it from the first entry again.
+
+
+ChDir "RAM:"
+
+While MoreEntries
+ Print LSet$(EntryName$,30)
+ If EntryDIR then Print "Dir  " Else Print LSet$(Str$(EntrySize),6)
+ Print EntryBits$," ",Date$(EntryDate)," "
+ Print EntryHour,":",Right$("0"+Str$(EntryMins),2),":"
+ NPrint Right$("0"+Str$(EntrySecs),2)
+Wend
+
+MouseWait
+
+End
+
+
+Command: ANALYZEDISK
+--------------------
+Syntax: ANALYZEDISK "DRIVE:" -or-
+        IF ANALYZEDISK "DRIVE:" Then...
+
+This command returns FALSE if the specified device or pathname was not
+valid. If successful, details about the specified drive can be read with
+the following "DISK" functions. The values for these functions will not
+change until ANALYZEDISK is executed again, either on the same drive or
+another one. Note: If given a full pathname, such as "DF0:System/Utilities"
+this command will still know enough to analyze the disk "DF0:"
+
+
+Function: DISKUNIT
+------------------
+Syntax: n=DISKUNIT
+
+This function will return the unit number of the most recently analyzed
+disk. DF0: for example, would return zero, while DF1: would return 1.
+
+
+Function: DISKERRS
+------------------
+Syntax: n=DISKERRS
+
+This function will return the number of soft errors DOS knows about on
+the last analyzed disk. This should normally be zero.
+
+
+Function: DISKCAPACITY
+----------------------
+Syntax: n=DISKCAPACITY
+
+This function returns the capacity in bytes of the last analyzed drive.
+For example, a fastfilesystem-formatted disk's max capacity is 837K, so
+DISKCAPACITY would return 857904, which divided by 1024 is 837.
+
+
+Function: DISKUSED
+------------------
+Syntax: n=DISKUSED
+
+This function returns the number of bytes actually in-use on the last
+analyzed drive.
+
+
+Function: DISKFREE
+------------------
+Syntax: n=DISKFREE
+
+The opposite of DISKUSED, DISKFREE returns the number of bytes free on the
+disk.  This function would be very useful, for example, in a program that
+needed to save information to disk. You would be able to first determine if
+the specified SAVE disk had sufficient space.
+
+
+Function: DISKBLOCKS
+--------------------
+Syntax: n=DISKBLOCKS
+
+This function returns the number of bytes each block on a disk uses, making
+it possible to convert the byte-values of the above functions to number of
+blocks.
+
+
+*Function: DISKSTATE
+--------------------
+Syntax: state=DISKSTATE
+
+Returns the state of the last-analyzed drive:
+
+0 - Disk is Write-Protected
+1 - Disk is Validating
+2 - Disk is Validated (i.e. normal)
+
+
+*Function: DISKTYPE$
+-------------------
+Syntax: id$=DISKTYPE$
+
+This function returns a string indicating the format-ID of the last analyze
+disk.
+
+
+*Command: GETASSIGNS
+--------------------
+Syntax: GETASSIGNS <type>  -or- 
+        IF GETASSIGNS(<type>) Then...
+
+This command reads the current list of assigns, devices, or volumes as
+indicated by <type>:
+
+0=Devices    (Such as DH0: SER: CON: etc.)
+1=Directories  (Such as S: DEVS: FONTS: etc.)
+2=Volumes    (Such as Work: Workbench: etc.)
+
+The strings may be read in with the ASSIGN$ function.
+
+
+*Function: ASSIGN$
+------------------
+Syntax: a$=ASSIGN$
+
+This function returns the next item in the assignment list (see GETASSIGNS)
+or null. A null string indicates that there are no more entries in the list.
+
+Example:
+
+If GetAssigns(2)
+ Repeat
+  a$=Assign$
+  If a$ Then NPrint a$
+ Until a$=""
+EndIf
+
+
+*Command: SetFileComment
+------------------------
+Syntax: SetFileComment file$,text$  -or- 
+        IF SetFileComment(file$,text$) Then...
+
+This command is the reverse of ENTRYCOMMENT$--- it lets you write the
+comment to the specified filename.
+
+
+*Command: SetBits
+-----------------
+Syntax: SetBits bits$,bits$  -or-  If SetBits(bits$,bits) Then...
+
+This command is the reverse of ENTRYBITS$. You may specify the protection
+bits of the named file (case insensitive) from H, S, P, A, R, W, E, and D.
+
+Example:
+
+If SetBits("RWED","RAM:Myprog")=0 Then Goto Failed
+
+
+*Command: SetWildString
+-----------------------
+Syntax: SetWildString pat$  -or-  If SetWildString(pat$) Then...
+
+Finally! Easy pattern-matching! This command defines the wildcard pattern
+to be used by the MatchWild() function (below.) As a function, it will
+return one of the following values:
+
+0- Function failed
+
+1- Successful, string contained valid wildcard pattern
+
+2- Successful, but string contained no wildcard characters (possibly only
+   a filename, etc.)
+
+The pattern-matching method is identical to the LIST command, file
+requesters, etc.
+
+
+*Function: MatchWild
+--------------------
+Syntax: <match?>=MatchWild(text$)
+
+This function returns TRUE if the supplied string matches the pattern
+defined by SetWildString.
+
+
+*Function: DosError$
+--------------------
+Syntax: error$=DosError$
+
+This function returns a string explaining the reason for failure of the
+last DOS action... ("object is in use", etc.)
+
+
+*Function: FilePart$
+--------------------
+Syntax: f$=FilePart$(pathstring$)
+
+This function splits the given string and returns the filename portion...
+For example, FilePart$("Dh0:S/User-Startup") would return "User-Startup".
+
+
+*Function: PathPart$
+--------------------
+Syntax: p$=PathPart$(pathstring$)
+
+This function works similarly to FilePart$() but returns the Pathname within
+the specified string. PathPart$("Dh0:S/User-Startup") would return "Dh0:S".
+
+
+*Function: FullPath$
+--------------------
+Syntax: a$=FullPath$(path$,file$)
+
+This function combines the directory and filenames supplied in a DOS 
+compatible manner... FullPath$("DH0:S","User-Startup") would return
+"DH0:S/User-Startup".
+
+
+*Function: GetLocal$
+--------------------
+Syntax: v$=GetLocal$(name$)
+
+The value of the named DOS local-variable will be returned as a string.
+(See CLI command, "SET", "SETENV" etc.)
+
+
+*Function: GetEnv$
+------------------
+Syntax: v$=GetEnv$(name$)
+
+The environmental DOS variable will be returned in a string.
+
+
+*Command: SetLocal
+------------------
+Syntax: SetLocal name$,value$  -or- 
+        IF SetLocal(name$,value$) Then...
+
+This command will attempt to set the value of the DOS local-variable
+specified.
+
+
+*Command: SetEnv
+----------------
+Syntax: SetEnv name$,value$  -or-
+        IF SetEnv(name$,value$) Then...
+
+This command will attempt to set the value of the DOS environmental variable
+specified. (The value is copied to a file in the ENV: directory.)
+
+
+*Command: UnSetLocal
+--------------------
+Syntax: UnSetLocal name$  -or- 
+        IF UnSetLocal(name$) Then...
+
+This command removes the specified local DOS variable.
+
+
+*Command: UnSetEnv
+------------------
+Syntax: UnSetEnv name$  -or- 
+        IF UnSetEnv(name$) Then...
+
+This command removes the specified environmental DOS variable.
+
+
+*Command: Run
+-------------
+Syntax: Run filename$,args$[,stacksize.l]  -or-
+        *Process=Run(filename$,args$[,stacksize])
+
+This command runs the specified executeable program as a background
+process.
+
+
+*Statement: Exec
+----------------
+Syntax: Exec command$
+
+The specified commandline will be executed. Note that miniature scripts may
+be created by separating individual commandlines by CHR$(10).
+
+
+*Function: ComparePaths
+-----------------------
+Syntax: result=ComparePaths(pathname1$,pathname2$)
+
+This function compares the supplied pathnames and returns:
+
+0 = The files or directories specified by the two pathnames are unrelated.
+1 = The files or directories specified by the two pathnames are really the
+    same file (for example, "SYS:C/Dir" and "C:dir" are the same thing.)
+2 = The files or directories specified are not the same file (or directory)
+    but they do reside on the same volume.
+
+
+*Command: Assign
+----------------
+Syntax: Assign name$,pathname$  -or- 
+        IF Assign(name$,path$) Then...
+
+This command creates a new assign (similar to the SYS:C/Assign command.)
+For example, Assign "Blitz2:","DH4:Prg/Blitz2".
+
+Note that the trailing colon on the new ASSIGN name (Blitz2: in the above
+example) is optional.

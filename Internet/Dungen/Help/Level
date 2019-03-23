@@ -1,0 +1,6 @@
+   Level will change the current level of the dungeon you are working on.
+This value cannot be more than the setting of N Levels. Note that the
+width, height, room, room min, and room max can be different for each
+level.
+   When clicking on the arrow buttons to change the value, a left click
+changes it by 1 and a right click changes it by 5.

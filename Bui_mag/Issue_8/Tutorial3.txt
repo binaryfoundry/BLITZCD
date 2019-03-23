@@ -1,0 +1,118 @@
+COVERDISK GUI
+
+(C) BUI
+
+BY KEVIN WINSPEAR
+
+
+
+Well, what have I got for you this month?  Well a few of you wanted to know have I got the coverdisk GUI program to not only change the mouse pointer but how to only change the pointer only when it's over a gadget.
+
+
+
+Some of you might think this is very basic, but we have to provide for the beginners as well as all you brain boxes out there.
+
+
+
+So I wrote this little program for the people who what to know such things.
+
+
+
+WBStartup         ;Start from Workbench
+
+NoCli                      ;Close Blitz CLI
+
+CloseEd                    ;Close Blitz Editor
+
+FindScreen 0         ;Find Workbench Screen
+
+
+
+;Open Window
+
+Window 0,50,50,200,100,$100e,"Pointer Test..",0,1
+
+
+
+;Descode our shapes for the pointer.
+
+DecodeShapes 0,?shapes
+
+
+
+;Draw a box
+
+WBox 20,40,180,60,3
+
+
+
+;The variable p=0 if the pointer is in the box, else p=1
+
+p=0
+
+
+
+.Loop                      ;Start of our Loop
+
+Repeat
+
+Vwait                      ;Make sure things run smooth
+
+  ev.l=Event         ;ev=Wait for an event but don't hold up the program
+
+
+
+;While the pointer is within the MouseX and MouseY area
+
+;change the mouse pointer to shape 1.
+
+While WMouseX=>20  AND  WMouseX<=180  AND  WMouseY=>40  AND WMouseY<=60 
+
+;Keep Mouse has Hand until out of box
+
+VWait
+
+If p=0           ;p=0 so change the pointer to 1 and p=1
+
+WPointer 1:p=1
+
+EndIf
+
+Wend
+
+
+
+;Now p=1 and we are not within the area so change the pointer
+
+;back to 0
+
+If p=1
+
+WPointer 0:p=0
+
+EndIf
+
+
+
+;Repeat until one clicks on the close gadget.
+
+Until ev=$200
+
+End
+
+
+
+;We Store everything at the end of the source code..
+
+;Include our Pointer Shapes.
+
+._Storage
+
+
+
+  shapes:
+
+  IncBin "Pointer.shape"
+
+[Kevin Winspear]
+

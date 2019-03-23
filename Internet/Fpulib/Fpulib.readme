@@ -1,0 +1,51 @@
+Short:    An fast FPU-Library for Blitz2
+Uploader: RMazur@LFS.OL.NI.SCHULE.DE    (till end of june 1997)
+Author:   RMazur@LFS.OL.NI.SCHULE.DE    (till end of june 1997)
+Type:     dev/basic
+
+
+
+
+
+                         MazFpuLib V1.0
+
+
+
+This  archive is an extension to the Blitz2 language by Acid Software.
+If you're not a Blitz2 programmer, don't bother downloading this archive!
+
+
+This library allows you to use directly your FPU (no other libraries necessary).
+
+
+1. The commands are:
+
+     z.f=FSin(x.f)         ;All functions need a Rad-Value
+     z.f=FCos(x.f)
+     z.f=FTan(x.f)
+
+     z.f=FASin(x.f)
+     z.f=FACos(x.f)
+     z.f=FATan(x.f)
+
+     z.f=FRad(x.f)        ;Converts Deg to Rad  z=x*Pi/180
+     z.f=FDeg(x.f)        ;Converts Rad to Deg  z=x*180/Pi
+
+     
+     z.f=FPow(x.f,y.f)     ;z=x^y
+
+     z.f=FSqr(x.f)
+
+     z.f=FLog(x.f)
+     z.f=FLog10(x.f)
+
+
+
+2. The library number is 35.
+
+3. All commands are 100% compatible to the standard commands. For example
+   the FSqr(-4) is defined as: FSqr(4)=2
+
+
+4. If you like it, or you want to use it, or you want to get the sourcecode
+   or specially if you know how to write an IsFpu-command then please e-mail me.

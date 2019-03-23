@@ -1,0 +1,247 @@
+@DATABASE "C7.guide"
+
+@NODE C782
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: InitCopList@{fg text}
+--------------------------------------------------------------------------
+Syntax: InitCopList CopList#,ypos,height,type,sprites,colors,
+        customs[,widthadjust]
+ 
+InitCopList is used to create a CopList for use with the CreateDisplay
+command. The ypos, height parameters define the section of screen. 
+Sprites, colors and customs will allocate instructions for that many 
+sprites (always=8!) colors (yes, as many as 256!) and custom copper 
+instructions (to be used by the new DisplayFX library currently in 
+devlopment).
+ 
+The widthadjust parameter is currently not implemented, for display 
+widths other than standard see the DisplayAdjust command. The following
+constants make up the type parameter, add the number of bitplanes to the
+total to make up the type parameter.
+ 
+#smoothscroll=$10  #dualplayfield=$20 #extrahalfbrite=$40  #ham=$80
+#lores=$000        #hires=$100        #super=$200
+#loressprites=$400 #hiressprites=$800 #supersprites=$c00
+#fmode0=$0000      #fmode1=$1000      #fmode2=$2000         #fmode3=$3000
+ 
+For displays on non-AGA machines only #fmode0 and #loressprites are 
+allowed. More documentation, examples and fixes will be published soon 
+for creating displays. 
+@ENDNODE 
+@NODE C783
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: CreateDisplay@{fg text}
+--------------------------------------------------------------------------
+Syntax: CreateDisplay CopList#[,CopList#..]
+
+CreateDisplay is used to setup a new screen display with the new display
+library. Any number of CopLists can be passed to CreateDisplay although
+at present they must be in order of vertical position and not overlap. 
+CreateDisplay then links the CopLists together using internal pointers, 
+bitmaps, colours and sprites attached to coplists are not affected.
+@ENDNODE
+@NODE C785
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: DisplaySprite@{fg text}
+--------------------------------------------------------------------------
+Syntax: DisplaySprite CopList#,Sprite#,X,Y,Sprite Channel
+ 
+DisplaySprite is similar to the slice libraries ShowSprite command with
+the added advantage of super hires positioning and extra wide sprite 
+handling. 
+
+See also @{" SpriteMode " link BUM_SPRITEMODE}.
+@ENDNODE
+@NODE C786
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: DisplayPalette@{fg text}
+--------------------------------------------------------------------------
+Syntax: DisplayPalette CopList#,Palette# [,coloroffset]
+ 
+DisplayPalette copies colour information from a Palette to the CopList
+specified.
+@ENDNODE
+@NODE C787
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: DisplayControls@{fg text}
+--------------------------------------------------------------------------
+Syntax: DisplayControls CopList#,BPLCON2,BPLCON3,BPLCON4
+ 
+DisplayControls allows access to the more remote options available in 
+the Amiga's display system. The following are the most important bits 
+from these registers (still unpublished by Commodore!*()@GYU&^)
+
+Bit| BPLCON2                    | BPLCON3                | BPLCON4
+---+----------------------------+------------------------+------------------
+15 | *                          | BANK2 * active colour  | BPLAM7 xor with
+   |                            |         bank           |        bitplans
+---+----------------------------+------------------------+------------------
+14 | ZDBPSEL2  which bitplane   | BANK1 *                | BPLAM6 DMA for
+   |           for ZD           |                        |        altering
+---+----------------------------+------------------------+------------------
+13 | ZDBPSEL1                   | BANK0 *                | BPLAM5 effective
+   |                            |                        |        colour
+---+----------------------------+------------------------+------------------
+12 | ZDBPSEL0                   | PF2OF2  col-offset for | BPLAM4 look up
+   |                            |         playfield 2    |
+---+----------------------------+------------------------+------------------
+11 | ZDBPEN    makes above bp   | PF2OF1                 | BPLAM3
+   |           hit ZD           |                        |
+---+----------------------------+------------------------+------------------
+10 | ZDCTEN    ZD is bit#15 of  | PF2OF0                 | BPLAM2
+   |           colour           |                        |
+---+----------------------------+------------------------+------------------
+09 | KILLEHB   *                | LOCT * palette hi/lo   | BPLAM1
+   |                            |        nibble mode     |
+---+----------------------------+------------------------+------------------
+08 | RDRAM=0   *                |                        | BPLAM0
+---+----------------------------+------------------------+------------------
+07 | SOGEN     ! sync on green  + SPRES1 * sprites-      | ESPRM7 high order
+   |                            |          resolution    |        color
+---+----------------------------+------------------------+------------------
+06 | PF2PRI    H playfield 1/2  | SPRES0 *               | ESPRM6 offset for
+   |           priority         |                        |        even
+---+----------------------------+------------------------+------------------ 
+05 | PF2P2     H playfield/     | BRDRBLANK border is    | ESPRM5 sprites
+   |           sprite priority  |           black        |
+---+----------------------------+------------------------+------------------
+04 | PF2P1                      | BRDNTRAN  border       | ESPRM4
+   |                            |           hits ZD      |
+---+----------------------------+------------------------+------------------
+03 | PF1P0                      |                        | OSPRM7 high order
+   |                            |                        |        color
+---+----------------------------+------------------------+------------------
+02 | PF1P2                      | ZDCLCKEN  ZD=14Mhz     | OSPRM6 offset for
+   |                            |           clock        |        odd
+---+----------------------------+------------------------+------------------
+01 | PF1P1                      | BRDSPRT   sprites in   | OSPRM5 sprites
+   |                            |           borders!     |
+---+----------------------------+------------------------+------------------
+00 | PF1P0                      | EXTBLKEN  wo blank     | OSPRM4
+   |                            |           outputl      |
+---+----------------------------+------------------------+------------------
+
+!  - Don't touch
+H  - See standard hardware reference manual
+*  - controlled by display library
+ZD - any reference to ZD is only a guess (just sold my genlock)
+@ENDNODE
+@NODE C788
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: DisplayAdjust@{fg text}
+--------------------------------------------------------------------------
+Syntax: DisplayAdjust CopList#,fetchwid,ddfstrt,ddfstop,diwstrt,diwstop
+ 
+Temporary control of display registers until I get the widthadjust 
+parameter working with InitCopList. Currently only standard width 
+displays are available but you can modify the width manually (just stick
+a screwdriver in the back of your 1084) or with some knowledge of 
+Commodores AGA circuitry.
+ 
+Anyway, before I start going on about why they couldn't just give us 
+byte per pixel instead of 8 darn bitplanes (CD32 to the rescue!) see 
+the cover disk for more information...
+@ENDNODE
+@NODE C789
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}CustomColors@{fg text}
+--------------------------------------------------------------------------
+Syntax   : CustomColors CopList#,CCOffset,YPos,Palette,startcol,numcols 
+Library  : displaylib
+
+Using the custom copper space in a display, CustomColors will alter the 
+displays palette at the given YPos. The number of customcops required is 
+either 2+numcols for ecs displays and 2+n+n+n/16 for aga displays. In aga, 
+numcols must be a multiple of 32.
+
+Note that large AGA palette changes may take several lines of the display 
+to be complete.
+@ENDNODE
+@NODE C78A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}CustomString@{fg text}
+--------------------------------------------------------------------------
+Syntax   : CustomString CopList#,CCOffset,YPos,Copper$
+Library  : displaylib
+
+Description:
+CustomString allows the user to insert their own copper commands 
+(contained in a string) into the display's copper list at a given vertical
+position. The amount of space required is equal to the number of copper 
+instructions in the Copper$ (length of string divide by 4) plus 2 which of 
+course have to be allocated with InitCopList before CustomString is used.
+@ENDNODE
+@NODE C78B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DisplayDblScan@{fg text}
+--------------------------------------------------------------------------
+Syntax   : DisplayDblScan CopList#,Mode[,copoffset]
+Library  : displaylib
+
+Description:
+DisplayDblScan is used to divide the vertical resolution of the display by
+2,4,8 or 16 using Modes 1,2,3 and 4. This is most useful for fast bitmap
+based zooms. A Mode of 0 will return the display to 100% magnification.
+
+As with the DisplayRainbow, DisplayRGB, DisplayUser and DisplayScroll
+commands DisplayDblScan uses the new line by line copper control of the
+display library. To initialise this mode a negative parameter is used
+in the CustomCops parameter of the InitCopList command. DisplayDblScan
+requires 2 copper instructions per line (make CustomCops=-2).
+@ENDNODE
+@NODE C78C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DisplayRainbow@{fg text}
+--------------------------------------------------------------------------
+Syntax   : DisplayRainbow CopList#,Register,Palette[,copoffset]
+Library  : displaylib
+
+Description:
+DisplayRainbow is used to alter a certain colour register vertically down
+a display. It simple maps each colour in a palette to the coresponding
+vertical position of the display. ECS displays require one copper 
+instruction per line while AGA displays require 4.
+@ENDNODE
+@NODE C78D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DisplayRGB@{fg text}
+--------------------------------------------------------------------------
+Syntax   : DisplayRGB CopList#,Register,line,r,g,b[,copoffset]
+Library  : displaylib
+
+Description:
+DisplayRGB is a single line version of DisplayRainbow allowing the 
+programmer to alter any register of any particular line. As with 
+DisplayRainbow ECS displays require 1 copper instruction while AGA 
+requires 4.
+@ENDNODE
+@NODE C78E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DisplayUser@{fg text}
+--------------------------------------------------------------------------
+Syntax   : DisplayUser CopList#,Line,String[,Offset]
+Library  : displaylib
+
+Description:
+DisplayUser allows the programmer to use their own Copper$ at any line of
+the display. Of course copper instructions have to be allocated with the
+number of copper instructions in the InitCoplist multiplied by -1.
+@ENDNODE
+@NODE C78F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DisplayScroll@{fg text}
+--------------------------------------------------------------------------
+Statement: DisplayScroll CopList#,&xpos.q(n),&xpos.q(n)[,Offset]
+Library  : displaylib
+
+Description:
+DisplayScroll allows the program to dynamically display any part of a 
+bitmap on any line of the display. DisplayScroll should always follow the 
+DisplayBitMap command. The parameters are two arrays holding a list of 
+xoffsets that represent the difference in horizontal position from the line 
+above. AGA machines are able to use the fractional part of each entry for 
+super hiresolution positioning of the bitmap. Three instructions per line 
+are required for the DisplayScroll command.
+@ENDNODE
+
+

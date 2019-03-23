@@ -1,0 +1,191 @@
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_Locale: ( ti_Tag = $80080032 )
+
+Specify in ti_Data the Locale that
+ASL should use for the text.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_PositiveText: ( ti_Tag = $80080012 )
+
+Specify a pointer to a null terminated
+string in ti_Data, to provide the text for
+the "OK" gadget.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_NegativeText: ( ti_Tag = $80080013 )
+
+Specify a pointer to a null terminated
+string in ti_Data, to provide the text for
+the "Cancel" gadget.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_Flags1: ( ti_Tag = $80080014 )
+
+"OR" together the following flags in ti_Data:
+
+FRF_FILTERFUNC    ( = $80 )
+FRF_INTUIFUNC     ( = $40 )
+FRF_DOSAVEMODE    ( = $20 )
+FRF_PRIVATEIDCMP  ( = $10 )
+FRF_DOMULTISELECT ( = $ 8 )
+FRF_DOPATTERNS    ( = $ 1 )
+
+See the Tag equivalents for descriptions.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_Flags2: ( ti_Tag = $80080016 )
+
+"OR" together the following flags in ti_Data:
+
+FRF_DRAWERSONLY   ( = $1 )
+FRF_FILTERDRAWERS ( = $2 )
+FRF_REJECTICONS   ( = $4 )
+
+See the Tag equivalents for descriptions.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_DoSaveMode: ( ti_Tag = $8008002C )
+
+Specify a True boolean in ti_Data to get
+an ASL Save requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_DoMultiSelect: ( ti_Tag = $8008002D )
+
+Specify a True boolean in ti_Data to get
+a MultiSelect capable requester.
+
+Entries chosen will be specified by:
+
+fr_NumArgs = number of entries chosen.
+fr_ArgList = pointer to array of WBArg structs.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_DoPatterns: ( ti_Tag = $8008002E )
+
+Specify a True boolean in ti_Data to get
+a requester with a Patterns gadget.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_DrawersOnly: ( ti_Tag = $8008002F )
+
+Specify a True boolean in ti_Data to get
+a requester with no file entries.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_FilterFunc: ( ti_Tag = $80080031 )
+
+Specify a pointer to a custom Hook function 
+to be used for filtering files.
+(See the RKM's for more details).
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_RejectIcons: ( ti_Tag = $8008003C )
+
+Specify a True boolean in ti_Data to
+prohibit the display of .info files 
+in the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_RejectPattern: ( ti_Tag = $8008003D )
+
+Specify a True boolean in ti_Data to
+prohibit the display of files matching
+the pattern in the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_AcceptPattern: ( ti_Tag = $8008003E )
+
+Specify a True boolean in ti_Data to
+only display files matching the pattern 
+in the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_FilterDrawers: ( ti_Tag = $8008003F )
+
+Specify a True boolean in ti_Data to
+also apply the pattern filter to drawers
+in the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_HookFunc: ( ti_Tag = $8008003F )
+
+Specify a pointer to a custom function
+as a combined callback function.
+(See the RKM's for more details).
+

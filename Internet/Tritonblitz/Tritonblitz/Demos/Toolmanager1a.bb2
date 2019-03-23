@@ -1,0 +1,212 @@
+;/*
+; *  Triton - The object oriented GUI creation system For the AMIGA
+; *  Written by Stefan Zeiger in 1993-1995
+; *
+; *  (c) 1993-1995 by Stefan Zeiger
+; *  You are hereby allowed To Use this source OR parts
+; *  of it For creating programs For AmigaOS which Use the
+; *  Triton GUI creation system. All other rights reserved.
+; *
+; *  Toolmanager1.c - Looks like the original ToolManager
+; *
+; */
+
+; useful Runtime-Error-Routine which closes all windows if a error
+; appears. So you don't need to restart your machine every time :-)
+
+NoCli:WBStartup
+
+SetErr
+
+  ErrFail
+  If project.l Then TR_CloseProject_ project
+  If application.l Then TR_DeleteApp_ application
+  End
+
+End SetErr
+
+INCLUDE "blitz2:bbincludes/libraries/triton.bb2"
+
+; This is an example on how to use DBaselib for TRITON Listviews
+; DBaselib is (W) by Graham .A. Kennedy (gakennedy@cix.compulink.co.uk)
+; and (C) by ACID.
+; For more information about DBaseLib read its documentation.
+
+NEWTYPE .LVItem
+
+  text.b[20]
+
+End NEWTYPE
+
+#text = 20    ; maxlen for the LV-Text-Lines.
+
+Dim cycle_entries.l(8)
+DEFTYPE .LVItem LVNodes
+
+ok.b=DBInit (1,1,1,LVNodes,20)      ; initialize Database to LV-Text
+
+If ok<>1                            ; if it fails, stop the program
+
+  r=Request("Error","Could not create database","End")
+  End
+
+EndIf
+
+InitTagList 1,200                   ; init Window-Taglist
+InitTagList 2,10                    ; init application-taglist
+
+cycle_entries(1)=Null("Exec")
+cycle_entries(2)=Null("Image")
+cycle_entries(3)=Null("Sound")
+cycle_entries(4)=Null("Menu")
+cycle_entries(5)=Null("Icon")
+cycle_entries(6)=Null("Docs")
+cycle_entries(7)=Null("Access")
+cycle_entries(8)=0                  ; last one MUST be zero!
+
+  StrToFls "2024View",LVNodes\text,#text      : DBadd 1,LVNodes
+  StrToFls "Add to archive",LVNodes\text,#text: DBadd 1,LVNodes
+  StrToFls "DeleteTool",LVNodes\text,#text    : DBadd 1,LVNodes
+  StrToFls "Edit text",LVNodes\text,#text     : DBadd 1,LVNodes
+  StrToFls "Env",LVNodes\text,#text           : DBadd 1,LVNodes
+  StrToFls "Exchange",LVNodes\text,#text      : DBadd 1,LVNodes
+  StrToFls "Multiview",LVNodes\text,#text     : DBadd 1,LVNodes
+
+Use TagList 2
+
+AddTags #TRCA_Name,Null("ToolManagerGUIDemo1")
+AddTags #TRCA_LongName,Null("ToolManager-GUI Demo 1")
+AddTags #TRCA_Info,Null("Looks like the original")
+AddTags #TAG_END,0
+
+Use TagList 1
+
+AddTags !WindowID{1},!WindowPosition{#TRWP_BELOWTITLEBAR}
+
+; to activate the quickhelp function, use the macro
+; !QuickHelpOn{true|false}
+; you can change this value by setting the appropriate
+; value with TR_SetAttribute_
+
+AddTags !WindowTitle{Null("ToolManager GUI demo 1")},!QuickHelpOn{True}
+AddTags !WindowFlags{#TRWF_NOSIZEGADGET OR #TRWF_NODELZIP OR #TRWF_NOZIPGADGET OR #TRWF_NOESCCLOSE}
+AddTags !WindowBackfillNone
+
+AddTags !VertGroupA
+AddTags   !Space
+AddTags   !HorizGroupAC
+AddTags     !Space
+AddTags       !TextID{Null("_Object Type"),1}
+AddTags       !Space
+AddTags       !CycleGadget{&cycle_entries(1),0,1}
+AddTags       !Space
+AddTags     !EndGroup
+AddTags   !Space
+
+AddTags   !HorizGroupAC
+AddTags     !Space
+AddTags     !VertGroupAC
+AddTags       !CenteredTextID{Null("Object List"),2}
+AddTags       !Space
+AddTags       !ListSSCN{DBlistaddr(1),2,0,0}
+AddTags     !EndGroup
+
+AddTags     !Space
+AddTags     !VertGroupA
+AddTags       !TextN{Null("")}
+AddTags       !Space
+AddTags       !Button{Null("Top"),3},!QuickHelp{Null("Move to the top of the list")}
+
+; the quickhelpstring must follow the button immediately!
+
+AddTags       !Space
+AddTags       !Button{Null("Up"),4},!QuickHelp{Null("Move up one item")}
+AddTags       !Space
+AddTags       !Button{Null("Down"),5},!QuickHelp{Null("Move down one item")}
+AddTags       !Space
+AddTags       !Button{Null("Bottom"),6},!QuickHelp{Null("Move to the last item")}
+AddTags       !Space
+AddTags       !Button{Null("So_rt"),7},!QuickHelp{Null("Sort alphabetically")}
+AddTags     !EndGroup
+AddTags     !Space
+AddTags   !EndGroup
+AddTags   !Space
+AddTags   !HorizGroupEA
+AddTags     !Space
+AddTags     !Button{Null("_New..."),8},!QuickHelp{Null("Create new item")}
+AddTags     !Space
+AddTags     !Button{Null("_Edit..."),9},!QuickHelp{Null("Edit highlited item")}
+AddTags     !Space
+AddTags     !Button{Null("Co_py"),10},!QuickHelp{Null("Copy highlited item")}
+AddTags     !Space
+AddTags     !Button{Null("Remove"),11},!QuickHelp{Null("Remove highlited item")}
+AddTags     !Space
+AddTags   !EndGroup
+
+AddTags   !Space
+AddTags   !HorizGroupEA
+AddTags     !Space
+AddTags     !Button{Null("_Save"),12},!QuickHelp{Null("Save list")}
+AddTags     !Space
+AddTags     !Button{Null("_Use"),13},!QuickHelp{Null("Use list")}
+AddTags     !Space
+AddTags     !Button{Null("_Test"),14},!QuickHelp{Null("Test list")}
+AddTags     !Space
+AddTags     !Button{Null("_Cancel"),15},!QuickHelp{Null("Cancel changes")}
+AddTags     !Space
+AddTags   !EndGroup
+AddTags   !Space
+AddTags !EndGroup
+AddTags #TAG_END,0
+
+; ----------------------------------------------------------------
+;         Here starts the main routine
+; ----------------------------------------------------------------
+
+Use TagList 2
+
+application.l=TR_CreateApp_(TagList)
+
+If (application)
+
+  Use TagList 1
+
+  project.l=TR_OpenProject_(application,TagList)
+
+  If (project)
+    user_closed=0
+
+      While (user_closed=0)
+
+        TR_Wait_ application,0
+
+        *trmsg.TR_Message=TR_GetMsg_(application)
+
+        While (*trmsg)
+
+          If (*trmsg\trm_Project=project)
+            Select *trmsg\trm_Class
+
+              Case #TRMS_CLOSEWINDOW
+                user_closed=True
+              End Select
+          EndIf
+
+          TR_ReplyMsg_ *trmsg
+
+          *trmsg=TR_GetMsg_(application)
+        End While
+      End While
+    TR_CloseProject_ project
+  Else
+    NPrint "Unable to create the project"
+  EndIf
+
+    TR_DeleteApp_ application
+
+Else
+  NPrint "Unable to create application"
+EndIf
+
+End
+

@@ -1,0 +1,69 @@
+
+(welcome)
+
+(set PROGNAME "BlitzBank")
+
+(set path
+   (askdir
+      (prompt ("In which Directory Would you like to install %s ?" PROGNAME) )
+      (help
+         "all files will be copied directly to this directory."
+      )
+      (default "dh1:")
+   )
+)
+
+; Install main program files
+
+(set path.source (pathonly @icon) )
+
+(copyfiles
+   (prompt ("Copying Files To %s" path))
+   (help   "")
+   (choices
+   "datas"
+   "Doc"
+   "Doc.info"
+   "BlitzBank"
+   "BlitzBank.prefs"
+   "BlitzBank.im"
+   "BlitzBank.info"
+   "BlitzBank.tap"
+   "Exemple.cpt"
+   "Exemple.cpt.info")
+   (source path.source)
+   (dest path)
+)
+
+(complete 80)
+
+(copyfiles
+   (prompt "Copying Fonts")
+   (help ""
+   )
+   (choices "BlitzBank" "BlitzBank.font" )
+   (source "fonts/")
+   (dest "FONTS:")
+   (infos)
+   (optional nofail)
+)
+
+(complete 90)
+
+(startup
+   PROGNAME
+   (prompt "I am going to update your User-Startup..."
+
+   )
+   (help
+      "Select PROCEED to have the Assign command in your User-Startup."
+   )
+   (command ("assign blitzbank: %s" path))
+)
+
+(complete 100)
+
+(exit
+   "Now, reboot your Amiga and double click on BlitzBank... "
+   ("in the directory %s" path)
+)

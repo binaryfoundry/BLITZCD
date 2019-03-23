@@ -1,0 +1,175 @@
+\INTRODUCTION
+
+                 Introduction to the Blitz 2 PD library.
+
+
+Acid Software plan to release many disks similar to this in the future. They
+will be sent to various PD libraries and uploaded to bulletin boards as they
+are finished
+
+Please do not distribute these programs other than making a copy of the
+entire disk.
+
+We have included the Blitz 2 source code to the programs in ascii format.
+
+Owners of Blitz 2 feel free to hack and plunder your way into the programs,
+if you make any worthwhile changes please send them down to us.
+
+Members of the Blitz User club will have the opportunity to contribute
+to the Blitz 2 PD disks and we will attempt to offer prizes and rewards
+to those contributions that help establish the Blitz 2 PD disks as the
+premium PD collection.
+
+Thanks go to Mark, Paul and Rod for all the work gone into Disks 1 & 2.
+
+If you'd like to get in touch write to:
+
+Acid Software
+10 St Kevins Arcade
+Karangahape Road
+Auckland
+New Zealand
+
+Fax 64-9-358-1658   (64 is for New Zealand)
+
+
+
+
+Enjoy!
+
+
+
+Simon Armstrong
+
+
+
+\DEFENDER
+
+                              **************
+                              *            *
+                              *  DEFENDER  *
+                              *            *
+                              **************
+
+
+  Welcome to yet another Amiga version of Defender. With this version, I have
+attempted to faithfully recreate the original Williams/Eugene Jarvis
+masterpiece. Sorry ARC, but your attempt just didn't do it for me!
+
+  Both Defender and it's excellent successor Stargate have long been
+favourites of mine, and I think today's game designers could learn a lot
+more from having a close look at what made those games so enjoyable
+instead of spending time on new but ultimately pointless graphic effects.
+  In fact, it could be argued that the power of today's computer hardware
+is forcing programmers and designers away from basic game design, and into
+a special effects contest.
+  However, with the advent of shareware, things may very well be looking up.
+  I fully support the idea of shareware, and strongly urge all other
+programmers and consumers to also offer their support. If you play a decent
+shareware game, THEN SEND THE DUDE SOME BUCKS!
+
+  Anyway, onto the technical side of things...
+
+  The ASCII source code for this game may be found in the 'defender'
+directory under the filename 'defender.src'.
+
+  To get the game to run so smoothly, I have used an interupt driven
+animation routine dedicated solely to moving the player, aliens and
+explosions. All decision making, collision detection etc is made outside
+of this interupt routine, by a 'background task'. This set up means that
+all animation is maintained at a 50 frames a second rate, while the
+background task simply goes as fast as it can. This does introduce the
+possibillity of an alien being moved more often than checked, but in my
+opinion, this a good compromise for a game of this type. What do you think?
+
+  All elements of the game (aliens, lasers, explosions etc) are kept in
+Blitz 2 'list' arrays, making adding or deleting elements very easy. However,
+due to the interupt routine, care must be taken by the background task when
+it wants to add a new element. Since an interupt may occur at any time, the
+possibility of an interupt occuring when an alien is only 'half' initialized
+arises. To avoid this, the 'alloff' and 'allon' subroutines allow the
+background task to disable interupts breifly, add and fully initialize a
+game element, and then re-enable interupts. If an interupt was to occur
+during initialization, the interupt will instead occur when interupts are
+re-enabled.
+
+  Please note that the 'alloff' and 'allon' subroutines in Defender only
+disable and enable the vertical blank interupt.
+
+  Defender also includes many display tricks available due to Blitz 2's
+'Blitz' mode, which allows such effects as the smooth scrolling mountains
+and the double buffering.
+
+  The mountains on the scanner were produced using dualplayfield mode. The
+score and scanner blips are drawn onto the front playfield, while the back
+playfield is smoothly moved back and forth with the mountains drawn on it.
+Since colour 0 on a front playfield allows the back playfield to show
+through, I have set colour 7 to black, filled in the front playfield with
+colour 7, and punched out a colour 0 'hole' to allow the mountains to show
+through in their correct position.
+
+  The main game also uses dualplayfield mode, with the stars and mountains
+drawn onto the back playfield, and the aliens, lasers and explosions
+drawn onto the front playfield. This allows the use of the super quick
+'UnQueue' command for erasing the front playfield graphics without
+disrupting any back playfield graphics.
+
+
+  Oh, by the way, the keyboard controls for Defender are:
+
+  A           -> Up
+  Z           -> Down
+  SPACE BAR   -> Reverse
+  /           -> thrust
+  RIGHT SHIFT -> fire
+  RETURN      -> smart bomb (also for joystick mode)
+
+
+  Have fun,
+           Mark Sibly
+
+
+
+\ZOMBIE APOCALYPSE
+
+                        *************************
+                        *                       *
+                        *   ZOMBIE APOCALYPSE.  *
+                        *   ==================  *
+                        *                       *
+                        *************************
+
+
+  NOTE: You will need at least 1 Meg of memory to play zombie apocalypse
+
+
+Once Upon a Time...
+-------------------
+
+Zombie apocalypse is set in a city of the future, a future where a nuclear
+explosion has caused vast amounts of the population to mutate into
+ferocious killer zombies. You, as one of the remaining unmutated survivors,
+must destory all traces of the zombies armed with only an automatic weapon
+and a handfull of grenades.
+
+
+So What?
+---------
+
+Zombie Apocalypse was written in Blitz Basic 2 and uses the `BLITZ' mode
+for faster operation. The game is in 32 colours and a large number of
+zombies (which are 48 pixels wide and 48 pixels high!) can be drawn to the
+screen to a 50th with no flicker. This demonstrates the speed of Blitz
+Basic 2.
+
+
+The ASCII source code for this game may be found in the 'zombies' directory
+under the file name 'zombies.src'.
+
+Bye bye,
+
+        Paul Andrews.
+
+
+********************************* THE END **********************************
+

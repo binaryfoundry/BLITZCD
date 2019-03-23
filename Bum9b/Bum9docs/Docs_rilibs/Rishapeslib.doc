@@ -1,0 +1,115 @@
+-----------------------------------------------------------------------------
+====                  RI Shapes Library V1.03 (C) 1996                   ====
+-----------------------------------------------------------------------------
+
+                          Written By Steven Matty
+       			     And Nigel Hughes.
+                        ©1996 Red When Excited Ltd
+
+Introduction
+============
+A library providing miscellaneous extra commands for use with the native
+Blitz shape object. Features a new file format which supports compression
+and palette encoding.
+
+
+
+Statement/Function : CludgeShapes
+-------------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : [success]=CludgeShapes(shape#,numshapes,address)
+
+   This allows the creation of shapes through INCBIN statements. It
+allocates chip memory for each shape and copies the data into this.
+It does the same as LoadShapes except it grabs shapes from memory.
+
+EXAMPLE:
+	suc=BLoad("myshapes",0)
+	suc=CludgeShapes(0,50,Start(0))
+	MouseWait
+	End
+
+Statement: LESaveShapes
+-------------------------------------------------------------------------------
+Modes:  Amiga
+Syntax: LESaveShapes shapenum#,shapenum#,filename$[,palette#]
+
+    This saves shapes and a palette in an IFF type file (not an picture). The
+palette can be saved along with the shape file. If no palette is passed or the
+passed palette is empty, no palette data will be saved.
+
+Statement: LELoadShapes
+-------------------------------------------------------------------------------
+Modes:  Amiga
+Syntax: LELoadShapes shapenum#,[shapenum#,]filename$[,palette#]
+
+    This attempt to load shapes from an LEShapes file, if there is a palette
+saved in the shape file this will be loaded into the specified palette. You can
+miss out an upper shape limit or a palette number or both! 
+
+			!!!!WARNING!!!!
+    Due to a limitation of the Blitz library system you cannot use the following
+form of the command:
+
+		LELoadShapes 0,"shapesfile",0
+
+You will get a "Can't convert types error". To get around this simply do:
+
+		LELoadShapes 0,Max Shape,"shapesfile",0
+
+
+Statement: LECludgeShapes
+------------------------------------------------------------------------------
+Modes: Amiga/Blitz
+Syntax: LECludgeShapes shape#,shape#,address,palette#
+
+    This command decodes a shape file (that may have a palette) saved by
+LESaveShapes. It can cope with compresses or uncompressed data, and conforms
+with Acids standards for indicating that a shape has been cludged. 
+If you wish to decompress as many shapes as are in the shapes file you may
+do:
+
+	LECludgeShapes shape#,Maximum Shapes-1,address,palette#
+
+This will decode all the shapes in the file with NO OVERRUN like acids library.
+
+!IMPORTANT!
+-----------
+
+    There are some considerations with where in memory you want to place you 
+LEShapes file to be Cludged. If you're shapes file is:
+
+	1) Cached to CHIP MEM and
+	2) UNCOMPRESSED
+
+Then Cludge shapes will not create a second copy of the shapes data. There is no
+point caching a compressed LEShapes file to Chip MEM. I would recommed caching
+compressed files to fast mem.
+
+
+Statement: LECompressShapes
+------------------------------------------------------------------------------
+Modes: Amiga
+Syntax: LECompressShapes Boolean
+
+    By default LESaveShapes compresses shapes in a shape file. The compressor is
+quite intelligent in that if the compressed shape is larger (oxymoron any one?)
+than the orginal (this can happen, honest) it saves the full data from the old
+shape. 
+
+   If you wish to turn shape compression on or off, call LECompressShapes with
+the correct parameter. 
+
+   Below is a small table comparing the same shape files stored in 3 different
+ways. For very small shape files (1-3 shapes) you may find turning compression
+off result in the saving of a few bytes. The bigger the file, the larger the
+saving.
+ ______________________________________________________________________________________
+|Shapes| Acids SaveShapes | LESaveShapes NO COMPRESSION | LESaveShapes WITH COMPRESSION|
+|--------------------------------------------------------------------------------------|
+| 400  |    76912  bytes  |          68940 bytes        |          54091 bytes         |
+|--------------------------------------------------------------------------------------|
+| 223  |    43008  bytes  |          38576 bytes        |          35646 bytes         |
+`--------------------------------------------------------------------------------------'
+
+

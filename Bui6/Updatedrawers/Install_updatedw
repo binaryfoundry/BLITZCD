@@ -1,0 +1,25 @@
+Echo "Welcome To Update Drawers V1 Installation Script"
+Echo "(C)1996 Lee Packham"
+Echo ""
+Echo "Copying Main Program To C:..." NOLINE
+Copy >NIL: UpdateDw C:
+Echo "DONE!!"
+lab pathent
+Echo "Enter Path To Instal Script: " NOLINE
+
+Set >NIL: UpdateDwPath ?
+
+IF $UpdateDwPath eq ""
+	Skip pathent BACK
+ENDIF
+
+Echo "Copying Script To $UpdateDwPath..." NOLINE
+Copy >NIL: UpdateDrawers $UpdateDwPath
+Copy >NIL: UpdateDrawers.info $UpdateDwPath
+Echo "DONE!!"
+
+Unset >NIL: UpdateDwPath
+
+Echo ""
+Echo "Finished..."
+Endcli

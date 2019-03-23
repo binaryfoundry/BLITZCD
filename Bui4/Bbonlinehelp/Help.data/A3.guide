@@ -1,0 +1,353 @@
+@DATABASE "A3.guide"
+
+@NODE A301
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PrtText@{fg text}
+--------------------------------------------------------------------------
+Syntax: PrtText <STRING>
+
+Mode  : AMIGA
+
+Description:
+
+PrtText: Prints the text 'STRING' at your printer...
+         It' s the same like WriteFile(0,"PRT:"), but why have the AMIGA
+         a own printer.device...
+         So I think we should use it, right?
+@ENDNODE
+@NODE A302
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: Hardcopy@{fg text}
+--------------------------------------------------------------------------
+Syntax: Hardcopy ScreenPointer,X,Y,Width,Height,PrtWidth,PrtHeight,Flags
+
+Mode  : AMIGA
+
+Description:
+Prints the screen or a part of it at your printer.
+
+ScreenPointer: Adress of the screen (Addr Screen(x))
+X............: \ Are the corners of the screen where we
+Y............: / want to start printing it to paper...
+Width........: Width of the screen part you want to print
+Height.......: Height of the screen part you want to print
+PrtWidth.....: Width of the print(on the paper)
+PrtHeight....: Height of the print(on the paper)
+Flags........: Printerflags...
+               Have a look to a documantation aout it, the most 
+               importent(?) ones:
+
+               $40  - Centre graphic
+               $10  - Weidth= Maximum
+               $20  - Height = Maximum
+               $100,$200,$300,$400 - Printing quality($400 = Heighest)
+
+Bugs:
+
+Hm, it seems that the flags are not 100% taken...I haven' t find out 
+why, but might be you do...I still working on it! But however, it 
+works..
+
+BTW: This library is copyright 1992/93 by Andre Bergmann.
+     Use it on your own risk, I don' t take the responsibility for using 
+     it! This source is PD, feel free to update it!
+     Please send me updates done by you and Bug Reports!
+  
+Andre Bergmann
+Am Pannesbusch 39a
+42281 Wuppertal 2
+Germany
+Tel: 0049/0202/702606
+@ENDNODE
+@NODE A303
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PrtCommand@{fg text}
+--------------------------------------------------------------------------
+Syntax: PrtCommand Command,Para1,Para2,Para3,Para4
+
+Modes : AMIGA
+
+Description:
+Send a ESC-Sequence to the printer.
+
+Command: Escape-Sequence
+
+Para1 - Para 4: Parameters for ESC-Sequence
+
+Beispiel: PrtCommand 6,0,0,0,0 ;Kursiv on
+          PrtCommand 7,0,0,0,0 ;Kursiv off
+@ENDNODE
+@NODE A304
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: CheckPrt@{fg text}
+--------------------------------------------------------------------------
+Syntax: status.b=CheckPrt
+
+Modes : AMIGA/BLITZ
+
+Description:
+Checks the state of the Printer and return it.
+
+status: -1 = Printer Off
+        -3 = Printer Offline
+        -4 = Printer On
+Bugs:
+
+I had exculded this Routine, because it doesn' t worked 100%...I have 
+now reincluded it and compiled with the newest version of the BB2 
+compiler...It seems that it now works 100%...
+@ENDNODE
+@NODE A482
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: DeIce@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga
+Syntax: DeIce source_address,dest_address
+	suc=DeIce (source_address,dest_address)
+
+This is a command from my (Stephen McNamara) past.
+It is used to unpack data files packed by my favourite Atari ST packer -
+PACK ICE v2.40.  I've put it into Blitz because still have loads of 
+files that I've packed with it.  To use it, source_address should 
+(obviously) contain the address of the data, dest_address should be 
+where to unpack the data to.  In the function form, this command returns
+either 0 for unpack failed or -1 for success.
+
+@{fg shine}Note:@{fg text} The size of the data unpacked is the long 
+word at source_address+8 (I think, or is it 4?) if anybody is 
+interested......
+@ENDNODE
+@NODE A483
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: UnpackIFF@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: UnpackIFF address.l,bitmap#[,lines]
+	suc=UnpackIFF (address.l,bitmap#[,lines])
+
+This command is used to unpack an IFF picture file from memory onto a
+bitmap.  Address.l should point to the START of the iff file header in
+memory (either CHIP or FAST mem can be used), bitmap should be the 
+number of a previously initialised bitmap.  The optional lines parameter
+allows you to specify the number of lines to unpack from the IFF file.
+
+This command checks the size of the bitmap against the size of the IFF
+before it unpacks the IFF onto it.  Checks are made for width, height 
+and depth of the bitmap and the IFF and the following is done:
+
+(size=WIDTH, HEIGHT and DEPTH)
+
+		BITMAP 'size' < IFF 'size' : unpack aborted
+		BITMAP 'size' = IFF 'size' : pic is unpacked
+		BITMAP 'size' > IFF 'size' : pic is unpacked
+
+  Extra aborts can be caused by:
+		- not using a previously installed bitmap
+		- given the optional lines parameter as 0 or less
+		- not giving ADDRESS.l as a pointer to a valid IFF ILBM
+		  header
+
+When using the optional parameter, you should note that if you try to
+unpack more lines than the IFF has, the unpack routine will 
+automatically stop at the last line of the IFF.  It will not reject the 
+UnpackIFF command.
+
+@{fg shine}NOTE:@{fg text} you should save your IFF pictures with the STENCIL OFF because at
+the moment this routine does not check to see if STENCIL data is present
+in the IFF file.
+@ENDNODE
+@NODE A484
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: ILBMPalette@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: ILBMPalette address.l,palette#
+	suc=ILBMPalette (address.l,palette#)
+
+This command is used to grab the palette from a IFF picture file held in
+memory (CHIP or FAST mem).  Address.l should be given as the address of
+either an IFF file in memory or a CMAP chunk in memory.  When you use 
+the SAVE PALETTE command from inside an art program (e.g. DPaint) or 
+from inside Blitz2, the program saves out a CMAP chunk which gives 
+details about the palette.  The CMAP chunk is also saved with IFF 
+picture files to give the palette of the picture.
+
+This command will look at the address you gave and try and find a CMAP
+chunk from the address given to address+5120.  If it finds a chunk it 
+will grab the palette into the given palette object.  If the palette 
+object already contains palette information then this information is 
+deleted. This routine looks in the CMAP chunk and reserves the palette 
+object to have the same number of colour entries.
+
+This command will fail if it doesn't find a CMAP chunk.
+@ENDNODE
+@NODE A485
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statment: ILBMGrab@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: ILBMGrab address.l,bitmap#,palette#
+
+This command lets you grab both the palette and the graphics from an IFF
+picture file with just one command.  It returns to success parameter to
+say whether or not it succeeded in grabbing the data, so if you need to 
+know if the grabbing was successful you'll have to use the separate 
+commands for grabbing palettes and graphics.
+
+  @{fg shine}NOTE:@{fg text} this command essentially just calls both @{" UnpackIFF " link A483} and 
+  @{" ILBMPalette " link A484}
+  so everything said about these commands is relevent for ILBMGrab.
+@ENDNODE
+@NODE A486
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statment/Function: LoadIFF@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga
+Syntax: LoadIFF filename$,bitmap#[,palette#]
+	suc=LoadIFF (filename$,bitmap#[,palette#])
+
+This command is a direct replacement for Blitz2's LoadBitmap. It is a
+lot faster than Blitz's command since it loads the file into memory and
+then unpacks it from there.  Thus you need to ensure that you have 
+enough free memory to load the IFF into before trying to use this 
+command.
+
+This command is also more stable than Blitz's since it checks for the
+existence of the file before trying to load it in.
+
+The optional parameter allows you to load in the palette of the IFF
+picture.  Refer to UnpackIFF and ILBMPalette for more information about
+unpacking the graphics and grabbing the palettes.
+
+@{fg shine}IMPORTANT NOTE:@{fg text} to use this command you must have 
+our @{" FUNC " link FUNCMAIN} library installed in your copy of Blitz2.  
+Use of this command without this library will probably lead to a bad crash 
+of your Amiga!
+@ENDNODE
+@NODE A487
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ChunkHeader@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga
+Syntax: val.l=ChunkHeader (A$)
+
+This command was put in by me (Stephen McNamara) before I realised Blitz
+already had a command that does exactly the same.  I've left it in just
+because I want to.  It is useful when looking through IFF files for 
+chunks (e.g. ILBM, CMAP, etc.) as it gives you a longword value to look 
+for in memory to find the chunk.  The string should be a four character 
+string (e.g. CMAP), you'll be returned the longword value of the string.
+This command does the job of the following bit of Blitz2 code:
+
+		a$="CMAP"
+		val.l=Peek.l(&a$)
+@ENDNODE
+@NODE A601
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Bank@{fg text}
+--------------------------------------------------------------------------
+Syntax  : Bank(Bank#)
+
+Returns the memory location of the given memory Bank, replaces the older
+and more stupidly named BankLoc command.
+@ENDNODE
+@NODE A608
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}AllocMem@{fg text}
+--------------------------------------------------------------------------
+Syntax:   MemoryBlock=AllocMem(Size,Type)
+
+Description:
+Unlike calling Exec's AllocMem_ command directly Blitz2 will automatically
+free any allocated memory when the program ends. Programmers are advised
+to use the InitBank command.
+
+Flags that can be used with the memory type parameter are:
+
+1=public    ;fast is present
+2=chipmem
+65536=clear ;clears all memory allocated with 0's
+@ENDNODE
+@NODE A609
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Command: @{fg shine}FreeMem@{fg text}
+--------------------------------------------------------------------------
+Syntax:  FreeMem MemoryBlock,ByteSize
+         (long)    (long)
+
+Description:
+Deallocates memory obtained with AllocMem
+@ENDNODE
+@NODE A802
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ASLFileRequest$@{fg text}
+--------------------------------------------------------------------------
+Syntax: ASLFileRequest$ (Title$,Pathname$,Filename$ [,Pattern$] 
+                         [,x,y,w,h] )
+ 
+The ASL File Requester is nice. Except for the highlight bar being 
+invisible on directories you get to use keyboard for everything, stick 
+in a pattern$ to hide certain files and of course you get what ever size
+you want. I made it call the Blitz2 file requester if the program is 
+running under 1.3 (isn't that nice!). There is a fix that patches the 
+ReqTools file requester but that doesn't have the date field.
+ 
+I couldn't get the Save-Only tag or the "Create Directory" option 
+working maybe next upgrade.
+
+@{fg shine}EXAMPLE:@{fg text}
+
+MaxLen pa$=192 
+MaxLen fi$=192 
+ 
+FindScreen 0 
+ 
+f$=ASLFileRequest$("test",pa$,fi$,"#?.bb",0,0,640,256) 
+ 
+If f$ 
+     NPrint f$ 
+Else 
+     NPrint "failed" 
+EndIf 
+ 
+MouseWait  
+@ENDNODE
+@NODE A803
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ASLScreenRequest@{fg text}
+--------------------------------------------------------------------------
+Syntax: ASLScreenRequest (enable_flags)
+ 
+Those who are just getting to grips with 2.0 and above will find this 
+command makes your programs look really good, however I haven't got time
+to explain the difficulties of developing programs that work in all 
+screen resolutions (what are ya?).
+
+@{fg shine}EXAMPLE:@{fg text}
+ 
+#width=1:#height=2:#depth=4:#overscan=8:#scroll=16
+ 
+NEWTYPE .screeninfo 
+     id.l 
+     width.l 
+     height.l 
+     depth.w 
+     overscan.w 
+     autoscroll.w 
+     bmapwidth.l 
+     bmapheight.l 
+End NEWTYPE 
+ 
+FindScreen 0 
+ 
+*sc.screeninfo=ASLScreenRequest(31) 
+ 
+If *sc 
+     NPrint *sc\width," ",*sc\height," ",*sc\depth 
+Else 
+     NPrint "cancelled" 
+EndIf 
+MouseWait 
+@ENDNODE
+
+

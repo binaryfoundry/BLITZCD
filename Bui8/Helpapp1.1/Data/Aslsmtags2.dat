@@ -1,0 +1,226 @@
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialLeftEdge: ( ti_Tag = $80080003 )
+
+Specify in ti_Data the initial 
+horizontal position of the requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialTopEdge: ( ti_Tag = $80080004 )
+
+Specify in ti_Data the initial 
+vertical position of the requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialWidth: ( ti_Tag = $80080005 )
+
+Specify in ti_Data the initial width 
+of the requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialHeight: ( ti_Tag = $80080006 )
+
+Specify in ti_Data the initial height
+of the requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialDisplayID: ( ti_Tag = $80080064 )
+
+Specify in ti_Data a ULONG Display ID
+which is to be the default in the 
+requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialDisplayWidth: ( ti_Tag = $80080065 )
+
+Specify in ti_Data the Display width
+which is to be the default in the 
+requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialDisplayHeight: ( ti_Tag = $80080066 )
+
+Specify in ti_Data the Display height
+which is to be the default in the 
+requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialDisplayDepth: ( ti_Tag = $80080067 )
+
+Specify in ti_Data the Display depth
+which is to be the default in the 
+requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialOverscanType: ( ti_Tag = $80080068 )
+
+Specify in ti_Data the Overscan type
+which is to be the default in the 
+requester.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialAutoScroll: ( ti_Tag = $80080069 )
+
+Specify in ti_Data the Autoscroll state
+which is to be the default in the 
+requester. (Boolean on/off).
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialInfoOpened: ( ti_Tag = $8008006A )
+
+Specify in ti_Data a True boolean to have the
+Info window opened initially.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialInfoLeftEdge: ( ti_Tag = $8008006B )
+
+Specify in ti_Data the initial horizontal
+position of the Info window.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_InitialInfoTopEdge: ( ti_Tag = $8008006C )
+
+Specify in ti_Data the initial vertical
+position of the Info window.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_DoWidth: ( ti_Tag = $8008006D )
+
+Specify a True boolean in ti_Data to get
+a requester with a Width gadget.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_DoHeight: ( ti_Tag = $8008006E )
+
+Specify a True boolean in ti_Data to get
+a requester with a Width gadget.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_DoHeight: ( ti_Tag = $8008006F )
+
+Specify a True boolean in ti_Data to get
+a requester with a Depth gadget.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_DoOverscanType: ( ti_Tag = $80080070 )
+
+Specify a True boolean in ti_Data to get
+a requester with an Overscan type gadget.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_DoAutoScroll: ( ti_Tag = $80080071 )
+
+Specify a True boolean in ti_Data to get
+a requester with an AutoScroll gadget.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_PropertyFlags: ( ti_Tag = $80080072 )
+
+Specify in ti_Data the properties that
+the ScreenMode must have.
+
+
+ASL ScreenRequester Tags
+========================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLSM_PropertyMask: ( ti_Tag = $80080071 )
+
+Specify in ti_Data a mask for the Screen
+properties to limit those looked at.
+

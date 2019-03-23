@@ -1,0 +1,4 @@
+   Room Max sets the maximum dimension of any of the rooms in a randomly
+generated level.
+   When clicking on the arrow buttons to change the value, a left click
+changes it by 1 and a right click changes it by 5.

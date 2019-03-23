@@ -1,0 +1,334 @@
+@DATABASE "A7.guide"
+
+@NODE A701
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: SystemDate
+--------------------------------------------------------------------------
+@{fg text}Syntax: SystemDate  
+Modes: Amiga
+
+Description:
+SystemDate returns the system date as the number of days passed since 
+1/1/1978.
+
+@{fg shine}Example:@{fg text}
+
+;
+; date/time test
+;
+
+Dim d$(6):Restore daynames:For i=0 To 6:Read d$(i):Next
+Dim m$(12):Restore monthnames:For i=1 To 12:Read m$(i):Next
+
+NPrint Date$(SystemDate)
+NPrint d$(WeekDay)," ",Days," ",m$(Months)," ",Years
+NPrint Hours,":",Mins,":",Secs
+NPrint "press mouse to quit"
+MouseWait
+
+daynames:
+	Data$ SUNDAY,MONDAY,TUESDAY,WEDNESDAY
+	Data$ THURSDAY,FRIDAY,SATURDAY
+monthnames:
+	Data$ JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC
+@ENDNODE
+@NODE A702
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: Date$
+--------------------------------------------------------------------------
+@{fg text}Syntax: Date$ (days)
+Modes: Amiga
+
+Description:
+Date$ converts the format returned by SystemDate (days passed since 
+1/1/1978) into a string format of dd/mm/yyyy or mm/dd/yyyy depending on
+the dateformat (defaults to 0).
+@ENDNODE
+@NODE A703
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: NumDays
+--------------------------------------------------------------------------
+@{fg text}Syntax: NumDays (date$)
+Modes: Amiga
+
+Description:
+Numdays converts a Date$ in the above format to the day count format, 
+where numdays is the number of days since 1/1/1978.
+@ENDNODE
+@NODE A704
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: DateFormat
+--------------------------------------------------------------------------
+@{fg text}Syntax: DateFormat format# ; 0 or 1
+Modes: Amiga
+
+Description:
+DateFormat configures the way both date$ and numdays treat a string 
+representation of the date: 0=dd/mm/yyyy and 1=mm/dd/yyyy
+@ENDNODE
+@NODE A705
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Days Months Years & WeekDay
+--------------------------------------------------------------------------
+@{fg text}Syntax: Days Months Years & WeekDay  
+Modes: Amiga
+
+Description:
+Days Months and Years each return the particular value relevant to the 
+last call to SystemDate. They are most useful for when the program needs
+to format the output of the date other than that produced by date$. 
+WeekDay returns which day of the week it is with Sunday=0 through to 
+Saturday=6.
+@ENDNODE
+@NODE A706
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Days Months Years & WeekDay
+--------------------------------------------------------------------------
+@{fg text}Syntax: Days Months Years & WeekDay  
+Modes: Amiga
+
+Description:
+Days Months and Years each return the particular value relevant to the 
+last call to SystemDate. They are most useful for when the program needs
+to format the output of the date other than that produced by date$. 
+WeekDay returns which day of the week it is with Sunday=0 through to 
+Saturday=6.
+@ENDNODE
+@NODE A707
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Days Months Years & WeekDay
+--------------------------------------------------------------------------
+@{fg text}Syntax: Days Months Years & WeekDay  
+Modes: Amiga
+
+Description:
+Days Months and Years each return the particular value relevant to the 
+last call to SystemDate. They are most useful for when the program needs
+to format the output of the date other than that produced by date$. 
+WeekDay returns which day of the week it is with Sunday=0 through to 
+Saturday=6.
+@ENDNODE
+@NODE A708
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Days Months Years & WeekDay
+--------------------------------------------------------------------------
+@{fg text}Syntax: Days Months Years & WeekDay  
+Modes: Amiga
+
+Description:
+Days Months and Years each return the particular value relevant to the 
+last call to SystemDate. They are most useful for when the program needs
+to format the output of the date other than that produced by date$. 
+WeekDay returns which day of the week it is with Sunday=0 through to 
+Saturday=6.
+@ENDNODE
+@NODE A709
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Hours  Mins & Secs
+--------------------------------------------------------------------------
+@{fg text}Syntax: Hours Mins & Secs
+Modes: Amiga
+
+Description:
+Hours, Mins and Secs return the time of day when SystemDate was last 
+called.
+@ENDNODE
+@NODE A70A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Hours  Mins & Secs
+--------------------------------------------------------------------------
+@{fg text}Syntax: Hours Mins & Secs
+Modes: Amiga
+
+Description:
+Hours, Mins and Secs return the time of day when SystemDate was last 
+called.
+@ENDNODE
+@NODE A70B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: Hours  Mins & Secs
+--------------------------------------------------------------------------
+@{fg text}Syntax: Hours Mins & Secs
+Modes: Amiga
+
+Description:
+Hours, Mins and Secs return the time of day when SystemDate was last 
+called.
+@ENDNODE
+@NODE A781
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ReqFileRequest@{fg text}
+--------------------------------------------------------------------------
+Modes :  Amiga Syntax :  pathname$=ReqFileRequest([title$[,flags]])
+
+This opens up the standard file requester. If <title$> is given then
+the text will appear on the requester title bar.
+The optional <flags> parameter specifies a flag setting (see below)
+for use. If this is omitted then the last flag setting is used.
+@ENDNODE
+@NODE A782
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ReqFileLoc@{fg text}
+------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : memorylocation.l=ReqFileLoc
+
+This simply returns the address in memory where the Req.Library file 
+requester stucture is located.
+@ENDNODE
+@NODE A783
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: ReqOutput@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : ReqOutput windownumber
+
+This command sets the ReqLib.library to put all requesters onto the
+window specified by <windownumber>. If this command is not called
+then the requesters will appear on the Default Public Screen.
+@ENDNODE
+@NODE A901
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: LoadMedModule
+--------------------------------------------------------------------------
+@{fg text}Syntax: LoadMedModule MedModule# Name
+Modes: Amiga
+
+Description:
+The LoadMedModule command loads any version 4 channel Octamed module. 
+The following routines support upto and including version 3 of the 
+Amiganut's Med standard.
+
+The number of MedModules loaded in memory at one time is only limited 
+by the MedModules maximum set in the Blitz2 Options requester. Like any 
+Blitz commands that access files LoadMedModule can only be used in 
+AmigaMode.
+@ENDNODE
+@NODE A902
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: StartMedModule
+--------------------------------------------------------------------------
+@{fg text}Syntax: StartMedModule MedModule#
+Modes: Amiga/Blitz
+
+Description:
+StartMedModule is responsible for initialising the module including 
+linking after it is loaded from disk using the LoadMedModule command. It
+can also be used to restart a module from the beginning.
+@ENDNODE
+@NODE A903
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PlayMed@{fg text}
+---------------------------------------------------------------------------
+Modes: Amiga/Blitz
+
+Description:
+PlayMed is responsible for playing the current MedModule, it must be 
+called every 50th of a second either on an interupt (#5) or after a 
+VWait in a program loop.
+@ENDNODE
+@NODE A904
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: StopMed
+--------------------------------------------------------------------------
+@{fg text}Syntax: StopMed
+Modes: Amiga/Blitz
+
+Description:
+StopMed will cause any med module to stop playing. This not only means 
+that PlayMed will have no affect until the next StartMedModule but 
+silences the audio channels so they are not left ringing as is the 
+effect when PlayMed is not called every vertical blank.
+@ENDNODE
+@NODE A905
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: JumpMed
+--------------------------------------------------------------------------
+@{fg text}Syntax: JumpMed Pattern#
+Modes: Amiga/Blitz
+
+Description:
+JumpMed will change the pattern being played in the current module.
+@ENDNODE
+@NODE A906
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetMedVolume
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetMedVolume Volume
+Modes: Amiga/Blitz
+
+Description:
+SetMedVolume changes the overall volume that the Med Library plays the 
+module, all the audio channels are affected. This is most useful for 
+fading out music by slowly decreasing the volume from 64 to 0.
+@ENDNODE
+@NODE A907
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: GetMedVolume
+--------------------------------------------------------------------------
+@{fg text}Syntax: GetMedVolume Channel#
+Modes: Amiga/Blitz
+
+Description:
+GetMedVolume returns the current volume setting of the specified audio 
+channel. This is useful for graphic effects that you may wish to sync 
+to certain channels of the music playing.
+@ENDNODE
+@NODE A908
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: GetMedNote
+--------------------------------------------------------------------------
+@{fg text}Syntax: GetMedNote Channel#
+Modes: Amiga/Blitz
+
+Description:
+GetMedNote returns the current note playing from the specified channel.
+As with GetMedVolume this is useful for producing graphics effects 
+synced to the music the Med Library is playing.
+@ENDNODE
+@NODE A909
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: GetMedInstr
+--------------------------------------------------------------------------
+@{fg text}Syntax: GetMedInstr Channel
+Modes: Amiga/Blitz
+
+Description:
+GetMedInstr returns the current instrument playing through the specified
+audio channel.
+@ENDNODE
+@NODE A90A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetMedMask
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetMedMask Channel Mask
+Modes: Amiga/Blitz
+
+Description:
+SetMedMask allows the user to mask out audio channels needed by sound 
+effects stopping the Med Library using them.
+@ENDNODE
+@NODE A90B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}DecodeMedModule@{fg text}
+--------------------------------------------------------------------------
+Syntax   : DecodeMedModule MedModule#,MemoryLocation
+Library  : medlib
+
+Description:
+DecodeMedModule replaces the cludgemedmodule, as med modules are not 
+packed but used raw, DecodeMedModule simply checks to see the 
+memorylocation passed is in ChipMem (if not it copies the data to chip) 
+and points the Blitz2 MedModule object to that memory.
+@ENDNODE
+@NODE A991
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Gfx_Base@{fg text}
+--------------------------------------------------------------------------
+Syntax  : gl.l=Gfx_Base
+
+Description:
+This Returns pointer to Graphics.Library used in jsr calls
+@ENDNODE
+
+

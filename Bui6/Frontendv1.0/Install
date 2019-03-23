@@ -1,0 +1,89 @@
+;;$VER: Install 1.1 (11.3.96)
+;;
+;;   $Filename: Install $
+;;   $Version: 1.1 $
+;;   $Date: 11.3.96 $
+;;
+;;   Installer script to install FrontEnd.
+;;   
+;;   © Copyright 1996 Arturo Roa Ros.
+;;
+;============================================================================================
+;; English
+
+(copyfiles
+	(prompt "Copy FrontEnd to C:.")
+	(help "I need to copy FrontEnd to C:")
+	(source "")
+	(choices "FrontEnd")
+	(dest "C:")
+	(confirm)
+	(infos)
+)
+(set directorio
+        (askdir
+              (prompt "Where dou you want FrontEnd?\n")
+              (help "Choose the path where create a directory to FrontEnd.\nIf it dosn't exixts, choose Create New Directory.")
+              (default "WORK:")
+        )
+)
+(copyfiles
+        (prompt "Copy files.")
+	(help "There will be copied files to the destination directory.")
+        (source "")
+        (choices "Data" "Docs" "Examples" "FrontEndPrefs")
+        (dest directorio)
+        (confirm)
+	(infos)
+)
+(copyfiles
+	(prompt "Copy Catalogs.")
+        (help "If you copy this catalogs you can use FrontEnd in your language (only español at the moment).")
+	(source "catalogs/")
+	(choices "español")
+	(dest "LOCALE:catalogs/")
+	(confirm)
+	(infos)  
+)
+(copyfiles
+	(prompt "Copy Fonts.")
+        (help "You have to copy this fonts if you want to use FrontEnd.")
+	(source "Fonts/")
+	(choices "XEN" "XEN.font")
+	(dest "FONTS:")
+	(confirm)
+	(infos)  
+)
+(set n
+	(askbool
+		(prompt "Do you want to decompress the source code of the program?")
+		(help "If you choose Yes the Blitz Basic II source code will be decompressed in the destination directory. To decompress the code you need have Lzx in C:")
+	)
+)
+(if (= n 1) 
+	(run "Lzx x -M -x BlitzSource.lzx ram:"
+		(help "Decompresing BlitzSource.lzx")
+		(prompt "Decompresing BlitzSource.lzx to RAM:")
+	)
+)
+(if (= n 1) 
+	(copyfiles
+		(prompt "Copying Source to "directorio)
+		(help   "The Source is copied to "directorio)
+		(source "Ram:")
+		(dest directorio)
+		(choices "BlitzSource")
+		(confirm)
+		(infos)
+	)
+)
+(if (= n 1) 
+	(run "delete Ram:BlitzSource ALL" 
+		(prompt "Deleting Ram:BlitzSource")
+		(help "lo")
+		(confirm)
+	)
+)
+(message "Instalation of FrontEnd V1.0 has finished, you can found FrontEnd in "directorio)
+(exit "" (quiet))
+;;================================================================================================

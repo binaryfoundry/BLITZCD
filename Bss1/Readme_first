@@ -1,0 +1,275 @@
+@DATABASE SupportSuite
+@AUTHOR Red When Excited Ltd
+@REMARK $VER: Introduction.GUIDE 2.5
+
+@NODE MAIN "Welcome to the Blitz Support Suite"
+
+@TOC OVERVIEW
+                            @{u}@{b}Blitz Support Suite@{ub}@{uu}
+
+
+            @{u}(C) 1996 Red When Excited Ltd. All Rights Reserved@{uu}
+
+			     @{"Introduction    " link INTRODUCTION}
+			     @{"Requirements    " link REQUIREMENTS}
+			     @{"Installation    " link INSTALLATION}
+
+			     @{"Overview        " link OVERVIEW}
+
+			     @{"Troubleshooting " link TROUBLESHOOTING}
+
+			     @{"Copyright       " link COPYRIGHT}
+			     @{"Credits         " link CREDITS}
+
+			     @{"Red When Excited" link RWE}
+
+@ENDNODE MAIN
+
+
+
+@NODE INTRODUCTION "Welcome..."
+
+                               @{u}@{b}Introduction@{uu}@{ub}
+
+Thank you for buying the Blitz Support Suite. We are confident that you'll find
+this to be the most useful piece of development software for your Blitz Basic
+creations.
+
+@{u}Background@{uu}
+
+During the development of our first commercial game - "BlitzBombers", we wrote
+various utilities to assist us. When development of BlitzBombers was complete,
+we looked at the Blitz scene and realised the need for a collection of high
+quality development tools for Blitz programmers. We then set about adding a
+large number of features to the utilities.
+
+Before BlitzBombers was complete, we were contracted by Acid Software to work
+on the Blitz text-editor 'TED'. We had to remove all OS Illegal functions from
+TED as well as adding new features such as OS 2 file requesters. We delivered
+the finished TED to Acid in September 1995, but work hasn't stopped. We have
+spent the past few months adding some very powerful features to bring TED
+up-to-date with the current batch of programmer's text-editor, whilst still
+providing a close link with Blitz. Thus SuperTED was born.
+
+The Blitz Support Suite is a collection of some the finest development tools
+for the Amiga (not just specific to Blitz) and we hope your life as a developer
+will be made much easier thanks to the supplied tools.
+
+@ENDNODE INTRODUCTION
+
+
+@NODE REQUIREMENTS "What do I need?"
+
+                               @{u}@{b}Requirements@{uu}@{ub}
+
+The Blitz Support Suite will work on any Amiga running Kickstart v2.04 or higher.
+A Hard Drive (with at least 3Mb free) is required for REDHelp, REDDebugger and
+REDBlitzLibs.
+
+Whilst some components of the Blitz Support Suite will work on any Amiga with
+at least 1Mb of RAM, we recommend at least 2Mb.
+
+Floppy drive only Amiga owners can still use REDShapeZ, REDMapEditor and SuperTED.
+
+@ENDNODE REQUIREMENTS
+
+@NODE INSTALLATION "Installation..."
+
+                               @{u}@{b}Installation@{uu}@{ub}
+
+
+Installation is very simple. Just double-click on the INSTALL icon and follow on screen
+prompts. Alternatively, click @{"here" system "BSS_DISK1:InstallFiles/Programs/Installer >NIL: SCRIPT INSTALL APPNAME BlitzSupportSuite NOLOG NOPRETEND DEFUSER AVERAGE"} 
+
+@ENDNODE INSTALLATION
+
+
+@NODE RWE "Red When Excited"
+
+                      @{b}@{u}How To Contact Red When Excited@{ub}@{uu}
+
+
+				Red When Excited Ltd,
+				2 Slimmons Drive,
+				St. Albans,
+				Herts.
+				AL4 9AS.
+				ENGLAND.
+
+If you have Internet access, e-mail us :
+
+                      redwhen@ldngedge.demon.co.uk
+
+or point your browser at our WorldWideWeb page :
+
+                   http://www.aber.ac.uk/~ngh94/rwe.html
+
+@ENDNODE RWE
+
+@NODE TROUBLESHOOTING "Troubleshooting..."
+
+                              @{b}@{u}Troubleshooting@{ub}@{uu}
+
+If you are experiencing problems with any part of Blitz Support Suite, the
+following tips might prove helpful :
+
+
+                                  @{u}General@{uu}
+
+Q) 1 or more of the applications does not have an AREXX port, even though
+   it is supposed to.
+
+A) You must have RexxMast (located in the SYS:System folder) running before
+   using any of the Blitz Support Suite tools.
+
+
+Q) I can't get the online help to appear under REDMapEditor and REDDebugger.
+
+A) Either :
+
+	1) The relevant documentation was not installed
+		- you should re-install the documentation via the
+		  Blitz Support Suite installation program
+
+	2) RexxMast is not running
+		- Drag the file RexxMast (located in the System folder on your
+		  Workbench partition) into the WBStartup folder. You will then
+		  need to reboot your Amiga after saving any important data.
+
+
+                                 @{u}SuperTED@{uu}
+
+Q) SuperTED crashes whenever I run Blitz 2
+
+A) Older versions of MCX and MCP have problems co-existing with SuperTED.
+   You should either remove MCX/MCP from your WBStartup folder or upgrade
+   to a newer version (the latest versions should be available from your
+   local PD supplier or from the Aminet FTP sites)
+
+@ENDNODE TROUBLESHOOTING
+
+@NODE OVERVIEW "Overview"
+
+                                 @{b}@{u}Overview@{ub}@{uu}
+
+The Blitz Support Suite is a collection of the following utilities.
+
+Once you have completed the installation process, click on a button to view the
+respective documentation :
+
+
+                        @{" REDDebugger   " link Blitz2:REDHelp/REDDebugger/REDDebugger.GUIDE/MAIN}
+
+                        @{" REDBlitzLibs  " link Blitz2:REDHelp/REDBlitzLibs/REDBlitzLibs.GUIDE/MAIN}
+
+                        @{" REDMapEditor  " link Blitz2:REDHelp/REDMapEditor/REDMapEditor.GUIDE/MAIN}
+
+                        @{" REDShapeZ     " link Blitz2:REDHelp/REDShapeZ/REDShapeZ.GUIDE/MAIN}
+
+                        @{" SuperTED      " link Blitz2:REDHelp/SuperTED/SuperTED.GUIDE/MAIN}
+
+
+In addition, we have supplied the following tools :
+
+                        @{" MenuED        " link Blitz2:REDHelp/SuperTED/MenuED.GUIDE/MAIN}
+                        @{" TEDDock       " link Blitz2:REDHelp/SuperTED/TEDDock.GUIDE/MAIN}
+                        @{" REDCalc       " link Blitz2:REDHelp/SuperTED/REDCalc.GUIDE/MAIN}
+			@{" FDScanner     " link Blitz2:REDHelp/SuperTED/FDScanner.GUIDE/MAIN}
+
+@ENDNODE OVERVIEW
+
+@NODE CREDITS "Credits"
+
+                    @{b}@{u}Credits For The Blitz Support Suite@{ub}@{uu}
+
+The Blitz Support Suite was written by :
+
+
+			REDDebugger	-	Stephen McNamara
+			REDMapEditor	-	Stephen McNamara
+
+			REDShapeZ	-	Nigel Hughes
+			REDCalc		-	Nigel Hughes
+
+			REDBlitzLibs	-	Stephen McNamara
+						Steven Matty
+						Nigel Hughes
+
+			SuperTED	-	Steven Matty
+			MenuED		-	Steven Matty
+
+			TEDDock		-	Mark Tiffany
+
+			FDSCanner	-	Stephen McNamara
+
+
+Red When Excited would like to thank the following people :
+
+		Timo Suoranta	-	BETA Testing
+		Steve Green	-	Suggestions
+		Ted Bailey	-	Elite Coder :)
+		Simon Armstrong	-	Permission to distribute SuperTED
+					+ Blitz Docs
+		VIScorp		-	Saving the Amiga...?
+
+@ENDNODE CREDITS
+
+@NODE COPYRIGHT "Copyright Information..."
+
+
+                                 @{b}@{u}Copyright@{ub}@{uu}
+
+           ** THIS APPLIES TO THE BLITZ SUPPORT SUITE IN FULL **
+
+This product and all associated documentation is the property of
+Red When Excited Ltd.
+
+Unauthorised duplicaton, lending and hiring is strictly prohibited.
+
+
+                                @{b}@{u}Disclaimer@{ub}@{uu}
+
+
+   THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+HOLDER AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE
+COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+   IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY REDISTRIBUTE THE
+PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS
+OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR
+THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
+PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGES.
+
+@ENDNODE COPYRIGHT
+
+@REMARK PLEASE DONT PIRATE THIS LOVELY PRODUCT!
+
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd
+@REMARK COPYRIGHT 1996 Red When Excited Ltd

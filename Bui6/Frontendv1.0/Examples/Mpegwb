@@ -1,0 +1,10 @@
+*******************************************************************************
+* Fichero de preferencias generado por FrontEnd Prefs V1.0  © Arturo Roa 1996 *
+*******************************************************************************
+PROGRAMA: Trabajo:Utilidades/Visores/MpegInt/mp
+OPCIONES: -dither gray8 -loop -quiet
+STACK: 4096
+REQUESTER: 0
+FILTRO: #?.(MPG|MPEG)
+TITULO: Selecciona el MPG a ver.
+PRIMERO: 1

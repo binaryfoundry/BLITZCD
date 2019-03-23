@@ -1,0 +1,73 @@
+EDITORIAL
+
+(C) BUI
+
+By MATTHEW TILLETT
+
+
+
+Well this has been an accomplishment, finally I have produced a long
+
+awaited magazine dedicated to you, the users of Blitz basic. This issue
+
+has been hard work, it can only get easier (I kid myself). With your help
+
+each issue will get better. This month, we don't really have a lot in store
+
+for you, the coverdisk has some useful programs on and some sample
+
+code sent in by some reader's, and the magazine has some tutorials and
+
+other useful bit's, but it really lacks some input from the readers. We are
+
+really desperate for any material from you, write a letter, write an advert,
+
+write a tutorial, send some code, send a program, just do something to
+
+really fill the next issue. I would like to take this opportunity to thank
+
+David Worswick for sending in lots of sample code and two smashing
+
+games, Kevin Winspear for his programs and constant support and ideas,
+
+Lee Packham for his programs, libraries and tutorial, and you for reading
+
+this magazine. With a bit of hard work, we will make this mag the next
+
+best thing to Blitz basic.
+
+
+
+If you want to send us an article, some source code, a letter or
+
+anything to go on the cover disk, please try to get it to us before the
+
+first day of the month as this is our deadline date. If it arrives after
+
+this day, your submission will be considered for the next months
+
+issue.
+
+Send your submissions to:- Blitz, Matthew Tillett, 27 Hillside
+
+Avenue, Worlingham, Beccles, Suffolk, NR34 7AJ, England.
+
+
+
+
+
+Magazine layout: Matthew Tillett
+
+
+
+Coverdisk: Matthew Tillett
+
+Greetings & Thank's go to: Everyone that gave me their support, and who
+
+supplied any information or media articles for this issue of the magazine.
+
+
+
+Production: This magazine was produced one Pentium 100 and Ricoh LP1200
+
+printer. There is a good reason behind this, honest!

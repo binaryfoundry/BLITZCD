@@ -1,0 +1,47 @@
+Readers Letter - We Answer It...
+
+--------------------------------
+
+
+
+1.. How do I get to display all the screen modes & all the screen colours in Amiga mode.  I have tried using the screen command, but it only allows you to use Depth to a max of 5 in lores.  Any more and it flips to "Can't open screen".  I need flexibility
+
+
+
+2.. Is there an easy way to find out shapes in a shapes file loaded in by "Loadshapes" contains.  Is the information actually contained in the file? The way I do it at the moment is to start at the start shapes number I am loading in and then check its ex
+
+
+
+3.. The bitmap size I am using is 560 x 560 in Lores.  Is that the max permissible in lores?  The Blitz manual is not very good at telling you the limits in respect of the parameters for the different resolutions and bitmap sizes.
+
+Mr D Coe, Essex.
+
+
+
+1.. May I suggest you order a back issue, if you haven't already got it, of Vol
+
+1 Issue 5 March 1996. This contains the tutorial of PUBSCREENS. You can
+
+adjust this to open a CUSTOMSCREEN by taking everything out to do with
+
+PUBSCREENS. You can then adjust the depth tag (#SA_Depth) accordingly.
+
+Although this shouldn't be a problem with Blitz V2.10. I thought they updated the command to cope with AGA/AAA. Strange, huh?
+
+
+
+2.. I'm still pondering over this one. Obviously you want to find how many shapes are in a file. Well, after some further investigation of a true Shapes file (that is one that was saved using Blitz), I find that at the beginning of each shape you either h
+
+
+
+3.. I'm sorry but this one has thrown me. A BITMAP can be any size you want,
+
+memory permitting of course. So I assume that you are either running out of memory OR you mean that you wish to open a DISPLAY or SLICE larger than this size. According to the AMIGA ROM Kernal Reference Manual the maximum size of a LowRes (NOT Lores AM*S 
+
+I hope this little lot has helped you. If not contact me with source code
+
+that I can debug or sort out for you, OR FULL details with snippets of code
+
+AND tell me what your setup is e.g. mine is an A500, 1MB Chip, 4MB Fast,
+
+509MB SCSI-II Harddisk. This would help a lot!                           Lee Packham.

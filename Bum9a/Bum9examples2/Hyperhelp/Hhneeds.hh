@@ -1,0 +1,10 @@
+[b][c]What you need for HyperHelp 2.0[b][c][t Needs][h]
+You will need the following things :[p]
+* An Amiga with enough memory :)[e]
+* Some space to put the program[e]
+* A font called Topaz, size 8 and 11[e]
+* ptreplay.library (if you want to be able to play PT-mods)[e]
+* sidplay.library 1.1+ (if you want to be able to play SIDs)[e]
+* player61.library (for player6.1 module support, if you want it)[p]
+* hhwait.iff and hhnormal.iff (the pointers)
+That's it.[p][L hhh|idx]Back to the Index[L]

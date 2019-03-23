@@ -1,0 +1,493 @@
+Making The Most Out Of Blitz Basic 2
+
+(C) BUI
+
+BY LEE PACKHAM
+
+
+
+Taking His Head Out Of His  School Books, Lee Packham Gives A Few Tips For Gadtools Gadgets!
+
+
+
+I'm here YET again!  This time with a bit of code I came up with about four months ago. This code simply changes the gadtools list on a window without closing the window. This is ideal for say preferences windows where you can divide it into sections with
+
+
+
+Again, the quality of this tutorial is poor. This is, apart from lack of ideas, due to the fact that my GCSE's are now 3 weeks away. So revise is the order of the day. Please wish me luck!
+
+
+
+Anyway here is some source code to look at.  It doesn't need any extra residents.  This tutorial example is as follows:-
+
+
+
+;MultiGads.bb2 Example
+
+;Written By Lee Packham (12/12/95)
+
+;
+
+;Improved slightly for BUI (23/05/96)
+
+
+
+NoCli
+
+CloseEd
+
+
+
+test$=""
+
+
+
+WbToScreen 0
+
+
+
+;Open a nice window that
+
+;fills the screen
+
+Window 0,0,0,320,128,$140e,"",0,1
+
+
+
+;Set the first list as
+
+;0 for starters and go and
+
+;set it up
+
+gadlist=0
+
+Gosub redowin
+
+
+
+;MAIN LOOP
+
+Repeat
+
+  VWait
+
+  ev.l=Event
+
+  Select ev
+
+    Case $200
+
+      exit=True
+
+    Case $40
+
+      Select GadgetHit
+
+        ;Cycle gadget
+
+        ;changes the list and
+
+        ;redraws the window
+
+        Case 1
+
+          gadlist=EventCode
+
+          Gosub redowin
+
+
+
+        ;List one's button
+
+        Case 10
+
+          WTitle "Option Set 1",""
+
+
+
+        ;List two's button
+
+        Case 20
+
+          WTitle "Option Set 2",""
+
+
+
+        ;List three's string
+
+        Case 30
+
+          test$=GTGetString(2,30)
+
+          WTitle "Option Set 3",""
+
+      End Select
+
+  End Select
+
+Until exit=True
+
+
+
+DetachGTList 2
+
+CloseWindow 0
+
+Free Screen 0
+
+
+
+Free GTList 2
+
+
+
+End
+
+
+
+.redowin
+
+;First of all I'll check if a
+
+;GTList has been attached before
+
+;if so, remove it from the window
+
+;and Free it
+
+If attached=True
+
+  DetachGTList 2 ;} Get rid of the GTList
+
+  InnerCls       ;} from the window.
+
+  Free GTList 2  ;}
+
+EndIf
+
+
+
+;The selection between the gads, at
+
+;the moment, is the Cycle gadget, this
+
+;is set to Number 1. The default option,
+
+;[,active] at the end of line is set
+
+;to whatever the gadlist is
+
+GTCycle 2,1,100,0,200,13,"Option Set:",0,"Guide File|More Options|Hotkey",gadlist
+
+
+
+;Select what list I need to place...
+
+Select gadlist
+
+  Case 0
+
+    ;First list starts from number 10...
+
+    ;place all GUI code for option list
+
+    ;one here
+
+    GTButton 2,10,0,20,200,13,"A Test Button 1",0
+
+  Case 1
+
+    ;Second list starts from number 20...
+
+    ;place all the GUI code for open list
+
+    ;two here
+
+    GTButton 2,20,0,20,300,13,"A Test Button 2",0
+
+  Case 2
+
+    ;Duh!?!!
+
+    GTString 2,30,0,20,100,13,"",0,256,test$
+
+End Select
+
+
+
+;Finally, attach the list
+
+;and set the variable
+
+;saying so...
+
+AttachGTList 2,0
+
+attached=True
+
+
+
+; BYE BYE
+
+Return
+
+
+
+Short, but sweet! As you can see, it is a VERY simple preferences window.  Which is rather tacky, but it works. Now for a breakdown of the code...
+
+
+
+NoCli
+
+CloseEd
+
+
+
+test$=""
+
+
+
+WbToScreen 0
+
+
+
+;Open a nice window that
+
+;fills the screen
+
+Window 0,0,0,320,128,$140e,"",0,1
+
+
+
+This is the startup code.  The real part to note is test$="".  This is the data variable that is used as the default text for a string gadget in one of the pages of gadgets.
+
+
+
+;Set the first list as
+
+;0 for starters and go and
+
+;set it up
+
+gadlist=0
+
+Gosub redowin
+
+
+
+This code tells redowin that we want page 0 the gadgets.  The code goes like this for redowin...
+
+
+
+.redowin
+
+;First of all I'll check if a
+
+;GTList has been attached before
+
+;if so, remove it from the window
+
+;and Free it
+
+If attached=True
+
+  DetachGTList 2 ;} Get rid of the GTList
+
+  InnerCls       ;} from the window.
+
+  Free GTList 2  ;}
+
+EndIf
+
+
+
+This first part of this subroutine frees the list from the window before we attempt to attach another one.  It also clears the window.
+
+
+
+;The selection between the gads, at
+
+;the moment, is the Cycle gadget, this
+
+;is set to Number 1. The default option,
+
+;[,active] at the end of line is set
+
+;to whatever the gadlist is
+
+GTCycle 2,1,100,0,200,13,"Option Set:",0,"Guide File|More Options|Hotkey",gadlist
+
+
+
+As you can see, this gadget is used as a page selector.  It instantly selects the default as the current activated page so that it stays up to date.
+
+
+
+;Select what list I need to place...
+
+Select gadlist
+
+  Case 0
+
+    ;First list starts from number 10...
+
+    ;place all GUI code for option list
+
+    ;one here
+
+    GTButton 2,10,0,20,200,13,"A Test Button 1",0
+
+  Case 1
+
+    ;Second list starts from number 20...
+
+    ;place all the GUI code for open list
+
+    ;two here
+
+    GTButton 2,20,0,20,300,13,"A Test Button 2",0
+
+  Case 2
+
+    ;Duh!?!!
+
+    GTString 2,30,0,20,100,13,"",0,256,test$
+
+End Select
+
+
+
+This part sorts out what gadgets need to be created.  No gadget number is used twice so that you know which gadget it is in the main loop.  The main thing to note is the string gadget automatically fills itself with test$.  So that if you change the infor
+
+
+
+;Finally, attach the list
+
+;and set the variable
+
+;saying so...
+
+AttachGTList 2,0
+
+attached=True
+
+
+
+; BYE BYE
+
+Return
+
+
+
+This last snippet of the routines simply puts the gadget list onto the window and sets the variable to tell the redowin routine (if called again) to automatically free the list first.
+
+
+
+Now to the main loop...
+
+
+
+;MAIN LOOP
+
+Repeat
+
+  VWait
+
+  ev.l=Event
+
+  Select ev
+
+    Case $200
+
+      exit=True
+
+    Case $40
+
+      Select GadgetHit
+
+        ;Cycle gadget
+
+        ;changes the list and
+
+        ;redraws the window
+
+        Case 1
+
+          gadlist=EventCode
+
+          Gosub redowin
+
+
+
+        ;List one's button
+
+        Case 10
+
+          WTitle "Option Set 1",""
+
+
+
+        ;List two's button
+
+        Case 20
+
+          WTitle "Option Set 2",""
+
+
+
+        ;List three's string
+
+        Case 30
+
+          test$=GTGetString(2,30)
+
+          WTitle "Option Set 3",""
+
+      End Select
+
+  End Select
+
+Until exit=True
+
+
+
+Pretty standard really.  Notice that if you select the cycle gadget, it changes the page of gadgets.  Another thing to note is that when you enter a string into the string gadget, it stores it as the default string for the gadget in case it ever needs to 
+
+
+
+DetachGTList 2
+
+CloseWindow 0
+
+Free Screen 0
+
+
+
+Free GTList 2
+
+
+
+End
+
+
+
+I think you can guess what this does! It simply exits the program!
+
+
+
+Well, that's it for this month.  I don't know about next months tutorial.
+
+This is because I need to think of something to do and also I will be in the middle of my exams.  I would like some feedback from you the reader.  Do you like my tutorials?  Do you want more?  Want do you want to be covered?
+
+
+
+I must have some fans somewhere.  So PLEASE write to me, even to say hello.  A quick plug now.  Password Rememberer V3 is nearly finished and I'm looking for Beta testers as well as ideas.  It is much better than before and will be released as BUI Ware.  
+
+
+
+Anyway, hope to see you next month...
+
+
+
+[Lee Packham]

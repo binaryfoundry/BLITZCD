@@ -1,0 +1,331 @@
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Left: ( ti_Tag=$80000021 )
+
+Specify the Screen's initial position horizontally
+in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Top: ( ti_Tag=$80000022 )
+
+Specify the Screen's initial position vertically
+in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Width: ( ti_Tag=$80000023 )
+
+Specify the Screen's Width in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Height: ( ti_Tag=$80000024 )
+
+Specify the Screen's Height in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Depth: ( ti_Tag=$80000025 )
+
+Specify the Screen's Depth in ti_Data.
+( Depth is the number of bitplanes )
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_DetailPen: ( ti_Tag=$80000026 )
+
+Specify the DetailPen for Intuition to use
+in rendering details in the screen titlebar
+and menus, using ti_Data.
+
+( Use SA_Pens for V36 or more, to get more
+  control of pen specification ).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_BlockPen: ( ti_Tag=$80000027 )
+
+Specify the BlockPen for Intuition to use
+in rendering details in the screen titlebar
+and menus, using ti_Data.
+
+( Use SA_Pens for V36 or more, to get more
+  control of pen specification ).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Title: ( ti_Tag=$80000028 )
+
+Specify the default screen title as a
+pointer to a null terminated string
+in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Colors: ( ti_Tag=$80000029 )
+
+Specify the initial screen palette colors
+as a pointer to an array of ColorSpec
+structures in ti_Data. ( Terminated
+by a ColorSpec with ColorIndex=-1 ).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_ErrorCode: ( ti_Tag=$8000002A )
+
+Provide Intuition with a place to put a more
+specific errorcode from opening the screen
+by providing a pointer to a LONG in ti_Data.
+
+( See the Errorcodes Page for details ).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Font: ( ti_Tag=$8000002B )
+
+Provide a font for the Screen by giving
+a pointer to a TextAttr structure in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_SysFont: ( ti_Tag=$8000002C )
+
+Alternative to SA_Font, specify 0 or 1 in
+ti_Data as follows:
+
+0: User's preferred fixed width font (default)
+1: User's preferred font (may be proportional)
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Type: ( ti_Tag=$8000002D )
+
+Specify either PUBLICSCREEN or CUSTOMSCREEN
+in ti_Data.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_BitMap: ( ti_Tag=$8000002E )
+
+Provide a pointer to a custom BitMap structure
+in ti_Data. Implies screen Type of CUSTOMBITMAP.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_PubName: ( ti_Tag=$8000002F )
+
+Provide a pointer to a null terminated string
+for a Public Screen. Implies that Screen Type
+is PUBLICSCREEN. (nb. Specify SA_PubName tag
+before SA_PubSig and SA_PubTask).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_PubSig: ( ti_Tag=$80000030 )
+
+Provide a signal for notification that the last 
+window has closed on a public screen, in ti_Data.
+( Must specify before SA_PubTask ).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_PubSig: ( ti_Tag=$80000031 )
+
+Provide a pointer to a Task structure in ti_Data
+for notification that the last window has closed 
+on a public screen.
+
+( Must specify after SA_PubSig ).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_DisplayID: ( ti_Tag=$80000032 )
+
+Provide a LONG mode id to specify the screenmode
+in ti_Data.
+
+Mode IDs are defined in:
+
+V37      : graphics/displayinfo.h
+V39 & up : graphics/modeid.h
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_DClip: ( ti_Tag=$80000033 )
+
+Specify a custom display clip. Ti_Data is
+a pointer to a Rectangle structure.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Overscan: ( ti_Tag=$80000034 )
+
+Request a standard overscan region.
+( Don't use with SA_DClip ).
+
+Ti_Data is one of:
+
+OSCAN_MAX
+OSCAN_STANDARD
+OSCAN_TEXT
+OSCAN_VIDEO
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_ShowTitle: ( ti_Tag=$80000036 )
+
+Ti_Data is a boolean value to specify
+whether the screen's titlebar is rendered.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Behind: ( ti_Tag=$80000037 )
+
+Ti_Data is a boolean value to specify
+whether the screen should be opened behind
+all other screens in the system.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Quiet: ( ti_Tag=$80000038 )
+
+Ti_Data is a boolean value to specify whether
+Intuition rendering ( titlebar, depth gadgets )
+should be disabled. The Gadgets and dragging
+still function, but are not visible.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_AutoScroll: ( ti_Tag=$80000039 )
+
+Ti_Data is a boolean value to specify
+whether the screen should be opened with
+AutoScroll.
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_Pens: ( ti_Tag=$8000003A )
+
+Specify the Pens for the screen. This tag also
+enables the newer, 3d look for the screen.
+
+ti_Data contains a pointer to a UWORD array,
+terminated by ~1. (NOT 1).
+
+To get a default palette with the new look,
+give SA_Pens an empty UWORD array. (Just
+the terminator in it).
+
+
+Screen Attribute Tags
+=====================
+
+Usage: OpenScreenTagList_/Screentags
+
+SA_FullPalette: ( ti_Tag=$8000003B )
+
+ti_Data is a boolean flag specifying whether to
+initialise the color table to the entire
+preferences palette.
+

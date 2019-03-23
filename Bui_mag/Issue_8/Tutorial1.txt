@@ -1,0 +1,297 @@
+TUTORIAL - STOPPING MORE THAN ONE PROGRAM LOADING
+
+(C) BUI
+
+BY MATTHEW TILLETT
+
+
+
+Another day, another month...  Well this month I thought I would show you a small, but very useful bit of code, that you can add to all your programs.  The code itself is very simple, but at the same time, of incredible use.  So what is it all about?  Wel
+
+
+
+The code to this tutorial can be found on the coverdisk and unpacked by clicking on the relevant button on the GUI Menu System (or archives/2prog.lzx).
+
+
+
+Heres the listing of the code for you to have a browse at:-
+
+
+
+NoCli:WBStartup
+
+
+
+FindScreen 0
+
+
+
+; Check to see if the port "B.U.I" is open.
+
+fp.l=FindPort_("B.U.I")
+
+If fp=0                               ; If port not open...
+
+  port.l=CreateMsgPort("B.U.I")       ; ...Create it :)
+
+
+
+  ; So the port was open!!  Oh dear, we better not run this prog again.
+
+  Else
+
+  Gosub two_prog_error
+
+  End
+
+EndIf
+
+
+
+; Our mini prog starts here...
+
+Window 0,100,100,25*8,21,$100e,"Hello!!",0,1
+
+Print Centre$("Just one copy running?",24)
+
+Repeat
+
+ev.l=WaitEvent
+
+Until ev=$200
+
+End
+
+; Our code ends here...
+
+
+
+; Routine for if more than one copy is running.
+
+.two_prog_error:
+
+bodytext$="Tut!!  I aint running more than one copy!"+Chr$(10)+Chr$(10)
+
+bodytext$+Centre$("I am gonna exit...",41)
+
+ret.l=RTEZRequest("",bodytext$,"Bye")
+
+Return
+
+
+
+The program don't really need explaining, but I best say a few lines for any of you that may be a bit boggled.
+
+
+
+   First of all we need to search for a "Message Port" this is done with the following line:-
+
+
+
+fp.l=FindPort_("B.U.I")
+
+
+
+   Now if the port we are searching for is not found, a 0 (nill) will be returned to our "longed" variable, "fp".  If the port is found, the value returned will be the memory location of the Message Port.  An important point to make is that Message Ports 
+
+
+
+   Next we need to check if the port that we were looking for was found, this is done in the following manner:-
+
+
+
+If fp=0                               
+
+
+
+   In this instance, because we are running our program for the very first time, the port was not found, so the value returned to our variable "fp" was 0 (nill).
+
+
+
+   Now because our port was not found, we need to create one, this is done by the following:-
+
+
+
+port.l=CreateMsgPort("B.U.I")       
+
+
+
+   When you create a Message Port, it is important that the variable you use is of Long type, as shown in the above line of code.  It is also a good idea to check to see if the port was opened when you try and open a Message Port by doing the following:-
+
+
+
+port.l=CreateMsgPort("B.U.I")       ; ...Create it :)
+
+If port=0 gosub port_open_error
+
+
+
+   So now we have successfully created our Message Port, the next few lines of our code are skipped until the "EndIf", terminating our "If" and our little program runs.
+
+
+
+   Now compile the program as an EXE and then run it from Workbench,.  Don't Exit the program, run it again.  You will get a little requester pop on the screen informing you that the program is already running one copy running.
+
+
+
+   Now this is done by the lines:-
+
+
+
+  Else
+
+  Gosub two_prog_error
+
+  End
+
+
+
+This is because we have just run the program again and first of all it searches for the Message Port as it did before, but this time the Message Port was found, so the value returned to our variable "fp" was greater than 0 (nill).  The value returned was 
+
+
+
+   It is good practice to remove everything you created in a program when you exit it, so it is best to add the line:-
+
+
+
+DeleteMsgPort Port
+
+
+
+(Add this line before the terminating "End" command).  It is not essential to add this line because when Blitz exits a program the Message Port is automatically closed, but as I said, it is good practice.
+
+
+
+   Now, not only can you use this code to stop more than one copy of your programs running, you can also use the code to tell you how many copies of your program are running.  All you would have to do is make the necessary changes to the code:-
+
+
+
+NoCli:WBStartup
+
+
+
+FindScreen 0
+
+
+
+; Check to see if the port "B.U.I" is open.
+
+Repeat   
+
+  fp.l=FindPort_("B.U.I."+Str$(loop)) 
+
+  If fp>0 Then loop+1
+
+  If loop=2
+
+    Gosub two_prog_error
+
+    End
+
+  EndIf
+
+Until fp=0
+
+If fp=0                               ; If port not open...
+
+  port.l=CreateMsgPort("B.U.I."+Str$(loop))
+
+EndIf
+
+
+
+; Our mini prog starts here...
+
+Window 0,100,100,25*8,21,$100e,"Program "+Str$(loop),0,1
+
+Print "Copies running="+Str$+(loop)
+
+Repeat
+
+ev.l=WaitEvent
+
+Until ev=$200
+
+End
+
+; Our code ends here...
+
+
+
+; Routine for if more than one copy is running.
+
+.two_prog_error:
+
+bodytext$="Tut!!  I aint running more than two copies!"+Chr$(10)+Chr$(10)
+
+bodytext$+Centre$("I am gonna exit...",41)
+
+ret.l=RTEZRequest("",bodytext$,"Bye")
+
+Return
+
+
+
+(The lines that are bolded are the new lines / edited lines that need to be changed).  We start off with the following new routine:-
+
+
+
+Repeat   
+
+  fp.l=FindPort_("B.U.I."+Str$(loop)) 
+
+  If fp>0 Then loop+1
+
+  If loop=2
+
+    Gosub two_prog_error
+
+    End
+
+  EndIf
+
+Until fp=0
+
+
+
+   What we have done is started a conditional loop, that will repeat, and repeat until the condition of "fp" equals zero "Until fp=0".  Again in this loop we search for the Message Port and if the Message Port is not found (we know this because "fp" will 
+
+
+
+If fp>0 Then loop+1
+
+
+
+   If the Message Port was found (the value of "fp" would be returned as the memory location of the Message Port, which is greater than 0 (nill)) the routine would loop round until the Message Port was not found.  Now if this program was run from Workbenc
+
+
+
+  If loop=2
+
+    Gosub two_prog_error
+
+    End
+
+  EndIf
+
+
+
+   Would have been executed and the program flow would have been redirected to the error routine.  Upon returning from this "error" routine, the program would exit.  Allowing only two copies of the program to run.  If the value of the variable "loop" did 
+
+
+
+  port.l=CreateMsgPort("B.U.I."+Str$(loop)) 
+
+
+
+   You will notice the command "Str$(loop)" added to the command "CreateMsgPort".  This simply converts the value of the variable "loop" into a "string" and use it to add to the Message Port name.  So each time our program runs, it creates the Message Por
+
+
+
+   Once you have made all the changes to the code, compile it and then run it form its icon  on Workbench.  Remember, run it several times before you close any of the programs.
+
+
+
+Okay, that just about wraps it up from me this month, if you have any problems / queries, please don't hesitate to contact us.  Next month, I am going to be showing you how to write "BBS Doors" for the Bulletin Board System, Xenolink.
+
+[Matthew Tillett]

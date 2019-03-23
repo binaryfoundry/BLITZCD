@@ -1,0 +1,21 @@
+Short:        source for Music selector
+Uploader:     camge@ix.netcom.com
+Author:       Curt Esser
+Type:         dev/blitz
+Requires:     Blitz Basic
+              at least one 4 channel Med or Octamed music module
+Distribution: Freely distributable
+
+ This is the Blitz source code for a simple preferences editor.  It was used
+to allow the user to load and test music modules to be used with my games.  These
+are then saved as a prefs file which the games will use to load & play the sel-
+ected module with the game instead of the default module.  This would be helpful
+to a beginning Blitz programmer to see how to go about this kind of thing.
+ If you like the icons, you can find a whole set of Blitz icons on Aminet in
+the pix/icon drawer (actually 2 sets, one for Magic Workbench and one for
+NewIcons)
+
+Later,
+
+Curt
+

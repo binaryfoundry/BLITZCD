@@ -1,0 +1,59 @@
+/* B */
+PARSE ARG lib cmd port screen agport aph
+OPTIONS RESULTS
+OPTIONS FAILAT 255
+SIGNAL ON FAILURE
+cmd1="Blitz2:RedHelp/AGSHOW >NIL: <NIL: "
+cmd2="LINK "
+IF SUBSTR(cmd,LENGTH(cmd),1)="_" THEN DO
+  cmd=SUBSTR(cmd,1,LENGTH(cmd)-1)
+END
+IF(cmd~="!" & lib~="!") THEN DO
+	cmd1=cmd1||lib||" DOCUMENT "||cmd
+	cmd2=cmd2||lib||"/"||cmd
+END
+IF(cmd="!" & lib="!") THEN DO
+	cmd1=cmd1||"Blitz2:REDHelp/REDBlitzLibs/REDBlitzLibs.GUIDE DOCUMENT MAIN"
+	cmd2=cmd2||"Blitz2:REDHelp/REDBlitzLibs/REDBlitzLibs.GUIDE/MAIN"
+END
+IF(cmd~="!" & lib="!") THEN DO
+	tempfile="Blitz2:RedHelp/"||cmd||".GUIDE"
+	a=OPEN(hf,tempfile,"R")
+	if a=0 then do
+		ADDRESS VALUE port
+		HELPTEXT
+		myhelptext=RESULT
+		ADDRESS "REXX"
+		a=OPEN(hf,tempfile,"W")
+		a=WRITELN(hf,"@DATABASE Command Help")
+		a=WRITELN(hf,'@NODE MAIN "'||cmd||'"')
+		a=WRITELN(hf,"")
+		a=WRITELN(hf,"@{fg shine}Command : "||cmd||"@{fg text}")
+		a=WRITELN(hf,"--------------------------------------------------------------------------------")
+		a=WRITELN(hf,"@{b}USAGE   : @{ub}"||myhelptext)
+		a=WRITELN(hf,"")
+		a=WRITELN(hf,"@ENDNODE MAIN")
+		a=WRITELN(hf,"")
+		a=CLOSE(hf)
+	end
+	cmd1="Blitz2:RedHelp/AGShow >NIL: <NIL: "
+	cmd2="LINK "
+	lib=tempfile
+	cmd="!"
+END
+IF(cmd="!" & lib~="!") THEN DO
+	cmd1=cmd1||lib||" DOCUMENT MAIN"
+	cmd2=cmd2||lib||"/MAIN"
+END
+cmd1=cmd1||" PORTNAME "||agport||" PUBSCREEN "||screen
+IF aph="YES" THEN DO
+	address VALUE agport||'.1'
+	cmd2
+END
+IF aph="NO" THEN DO
+	address "COMMAND"
+	cmd1
+END
+EXIT 0
+failure:
+EXIT 0

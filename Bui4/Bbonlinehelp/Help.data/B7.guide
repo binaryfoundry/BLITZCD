@@ -1,0 +1,361 @@
+@DATABASE "B7.guide"
+
+@NODE B781
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function/Statement: @{fg shine}Incsound@{fg text}
+--------------------------------------------------------------------------
+Syntax: success=IncSound(Sound#, ?Label)
+        IncSound Sound#, ?Label
+
+Description:
+Ensure you put the question mark before the label name or you'll have
+errors!  The actual include-object should be INCBINed directly after the
+label, and be careful to put an END statement somewhere above your INCBIN
+data or you'll crash!
+
+@{fg shine}Example:@{fg text}
+
+If IncSound(0,?Mysound)=False Then End  ;Unpack the sound or end!
+
+Sound 0,15  ;Play it back!
+Mousewait   ;pause for the user....
+End
+
+Mysound:
+IncBin "RAM:SoundEffect.isfx"
+
+NOTE:  In the above example the FUNCTION version was used so you could
+test it with an IF/THEN statement to see if it was successful...  If
+you don't think you'll need to be so careful, the STATEMENT version would
+be:
+
+@{fg shine}Example:@{fg text}
+
+IncSound 0,?Mysound  ;Unpack the sound (Note no parentheses for 
+                                       statement!)
+Sound 0,15  ;Play it back!
+Mousewait   ;pause for the user....
+End
+@ENDNODE
+@NODE B782
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function/Statement: @{fg shine}IncBitmap@{fg text}
+--------------------------------------------------------------------------
+Syntax: success=IncBitmap(bitmap#,?Label)
+        IncBitmap bitmap#,?Label
+
+Description:
+Nearly identical in useage to IncSound (above) Note that if the bitmap 
+already exists, it should be the same dimensions such as 640x256x4 or 
+IncBitmap will return FALSE (for failure) if you don't know for sure, you
+can let IncBitmap create the bitmap exactly like it was Included by doing 
+FREE BITMAP 0 or some such before you INCBITMAP it.
+
+@{fg shine}Example:@{fg text}
+
+Blitz
+If IncBitmap(0,?Mypicture)=0 Then End
+Slice 0,32,4
+Show 0
+Mousewait:end
+
+Mypicture:
+IncBin "RAM:Picture.ibmp"
+@ENDNODE
+@NODE B783
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function/Statement: @{fg shine}IncMod@{fg text}
+--------------------------------------------------------------------------
+Syntax: success=IncMod(ST-NT Module#,?Label)
+        IncMod Module#,?Label
+
+Description:
+Like the above examples, only for music mods. You could then use 
+StartModule etc. just as if you had loaded it from disk.
+
+----------- NOTE: This function is a bit buggy, so it has
+            been temporarily disabled with this release of
+            the library!  (Sorry!) --------------------------------
+@ENDNODE
+@NODE B784
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function/Statement: @{fg shine}IncMed@{fg text}
+--------------------------------------------------------------------------
+Syntax: success=IncMed(MEDModule#,?Label)
+        IncMed MedModule#,?Label
+
+Description:
+For including MED modules.  Usage is otherwise the same as IncMod.
+@ENDNODE
+@NODE B785
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function/Statement: @{fg shine}IncShape@{fg text}
+--------------------------------------------------------------------------
+Syntax: success=IncShape(Shape#,?Label[,Cookiecut?])
+                IncShape Shape#,?Label[,Cookiecut?]
+                                          ^^^^
+                                   OPTIONAL DUMMY VALUE
+
+Description:
+The one you've been waiting for!  Will retrieve the shape# for BLITTING...
+Along with the command below, IncNextShape, you can even include several
+shapes in one step!  I will be adding multiple shapes as an option in the
+INCLUDE-UTIL program as well... For now, just INCBIN as many shapes as you
+want (only need label for the first one)
+
+@{fg shine}Note:@{fg text} If you don't need a cookiecut for the shape, you can leave out the
+CookieCut parameter.  Any number placed in the cookiecut parameter will
+cause a cookiecut to be made for the shape when it is made however.  If
+you plan to do BLITs etc. you should always use the cookiecut.
+@ENDNODE
+@NODE B786
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IncNextShape@{fg text}
+--------------------------------------------------------------------------
+Syntax  : success=IncNextShape [CookieCut?]
+                               ^^^^^^^^^^^^
+                          OPTIONAL DUMMY VALUE
+
+@{fg shine}Example:@{fg text}
+
+;Include shape #0
+ IncShape(0,?Shapes,1)
+;Will loop 3 times from shape #1 to #3 in this case
+While IncNextShape(1):Wend
+;(Do your blitting stuff etc. here)
+End
+
+Shapes:
+IncBin "Shape0.ISHP"
+IncBin "Shape1.ISHP"
+IncBin "Shape2.ISHP"
+IncBin "Shape3.ISHP"
+
+;(Note this is a FUNCTION only, no statement version)
+@ENDNODE
+@NODE B787
+Function: @{fg shine}IncDataAbs@{fg text}
+--------------------------------------------------------------------------
+Syntax  : bytesize=IncDataAbs(?Label,Destination Address)
+
+Description:
+
+***********************************************************
+**                                                       **
+**  A D V A N C E D :  Use with caution!                 **
+**                                                       **
+***********************************************************
+
+This command will unpack the binary data directly to the area of memory
+you specify, so if you're not sure what you're doing you'll probably
+GURU the Amiga!  However, it is very useful to fill arrays, uncrunch data
+directly to Banks, or whatever.  Just be careful!
+
+It will return zero for failure, or the number of bytes in the binary
+object.  I'll provide a better example of making use of this function
+later....  (Filling up array variables, etc.)
+
+InitBank 0,1000,0
+size.l=IncDataAbs(?Binary,BankLoc(0))
+Mousewait:End
+
+Binary:
+IncBin "binarydata.IBIN"
+@ENDNODE
+@NODE B788
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IncData@{fg text}
+--------------------------------------------------------------------------
+Syntax  : Address=IncData(?Label,memory type)
+
+Description:
+This allows you to include BINARY data for any number of uses that
+aren't provided with the other functions.  Memory types are:
+
+0-  Any kind of memory (preferably FAST RAM)
+2-  CHIP RAM ONLY!
+
+This function will return the address of the binary data in
+memory, or 0 for failure....
+
+
+Example of including a pure ASM routine object file for execution:
+
+asmloc.l=IncData(?mlroutine,0)
+Call asmloc
+End
+
+mlroutine:
+IncBin "Ram:MLRoutine.IBIN"
+@ENDNODE
+@NODE B789
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FreeIncData@{fg text}
+--------------------------------------------------------------------------
+Syntax   : FreeIncData Size,Address
+
+Description:
+If you wanted to free up the memory allocated by the above IncData
+function, here is how you'd do it:
+
+  FreeIncData IncSize(?mlroutine),asmloc
+@ENDNODE
+@NODE B78A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function/Statement: @{fg shine}SaveIncData@{fg text}
+--------------------------------------------------------------------------
+Syntax: success=SaveIncData(Filename$,?Label)
+        SaveIncData Filename$,?Label
+
+Description:
+This will write to disk the unpacked version of whatever BINARY
+include-object you specify.  One good use of this is to save
+programs to RAM and then EXECUTE them, and DELETE them again.
+
+Of course there are hundreds of uses....
+
+  If SaveIncData("Ram:newfile",?executeable)=0 Then End
+  Execute_ "Ram:Newfile"
+  KillFile "Ram:Newfile"
+  End
+
+  executeable:
+  IncBin "myprog.ibin"
+@ENDNODE
+@NODE B78B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IncText$@{fg text}
+--------------------------------------------------------------------------
+Syntax  : string$=IncText$(?Label[,optional length])
+
+Description:
+Used with BINARY include types....  You can then put whole text files
+into strings.  The optional LENGTH will limit then string length to
+whatever number you want, similar to the LEFT$ function.
+It will only return a null-string "" in case of failure.
+
+@{fg shine}Example:@{fg text}
+
+a$=IncText$(?text)
+Nprint a$
+b$=IncText$(?text2,32)
+Nprint b$
+Mousewait:End
+
+text:
+IncBin "Message.IBIN"
+
+text2:
+IncBin "Greetz.IBIN"
+@ENDNODE
+@NODE B78C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IncSize@{fg text}
+--------------------------------------------------------------------------
+Syntax  : size.l=IncSize(?Label)
+
+Description:
+Returns the size in bytes of the BINARY object at the specified label
+Among other uses, you need it if you want to FREE the uncrunched
+binary data.  (It will automatically be freed when your program ends)
+@ENDNODE
+@NODE C00E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SortList@{fg text}
+--------------------------------------------------------------------------
+Syntax: SortList Arrayname()
+ 
+The SortList command is used to rearrange the order of elements in a 
+Blitz2 linked list. The order in which the items are sorted depends on 
+the first field of the linked list type which must be a single integer 
+word. Sorting criteria will be extended in future releases.
+@ENDNODE
+@NODE C301
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: LoadFont@{fg text}
+--------------------------------------------------------------------------
+Syntax: LoadFont IntuiFont#,Fontname.font$,Y size [,style]
+
+The LoadFont command has been extended with an optional style
+parameter. The following constants may be combined:
+
+#underlined=1
+#bold=2
+#italic=4
+#extended=8 ;wider than normal
+#colour=64  ;hmm use colour version I suppose
+@ENDNODE
+@NODE CB08
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: Block
+--------------------------------------------------------------------------
+@{fg text}Syntax: Block Shape#,X,Y
+Modes: Amiga/Blitz
+
+Description:
+Block is an extremely fast version of the Blit command with some 
+restrictions. Block should only be used with shapes that are 16,32,48,
+64... pixels wide and that are being blitted to an x position of 0,16,
+32,48,64... 
+
+Note that the height and y destination of the shape are not limited by
+the Block command. Block is intended for use with map type displays.
+@ENDNODE
+@NODE D20A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}PopInput & PopOutput@{fg text}
+--------------------------------------------------------------------------
+Library  : inputoutputlib
+
+Description:
+After input or output has been re-directed (eg using windowoutput/
+fileoutput), these two commands may be used to return the channel to it's 
+previous condition. 
+@ENDNODE
+@NODE D20B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}PopInput & PopOutput@{fg text}
+--------------------------------------------------------------------------
+Library  : inputoutputlib
+
+Description:
+After input or output has been re-directed (eg using windowoutput/
+fileoutput), these two commands may be used to return the channel to it's 
+previous condition. 
+@ENDNODE
+@NODE DF05
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}GameB@{fg text}
+--------------------------------------------------------------------------
+Syntax  : GameB(por#) 
+Library : gameiolib
+
+Description:
+Returns button state of cd32 style game controllers - values returned are:
+
+1  = play/pause
+2  = reverse
+4  = forward
+8  = green
+16 = yellow
+32 = red
+64 = blue
+
+If more than one button is held down, values are added together. For 
+example, a value of 6 means both the forward (4) and reverse (2) buttons 
+are held down. Use an 'and' to isolate the status of a single button, like
+this -
+
+;check RED button on port 1...
+;
+if gameb(1) & 32
+  ;
+  ;RED button is down...
+  ;
+else
+  ;
+  ;RED button is NOT down...
+  ;
+endif
+@ENDNODE
+

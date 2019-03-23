@@ -1,0 +1,49 @@
+2B3D CUBE DEMO
+
+This is a standard cube spinning around. It shows how to get an object up
+on the screen and make it do something.
+
+All demos use the same controls for moving objects. Actually it's not the
+objects that move around, but camera's viewpoint.
+
+LEFT ARROW	- turn left
+RIGHT ARROW	- turn right
+
+UP ARROW	- go forward
+DOWN ARROW	- move back
+
+"Q"			- move upwards
+"A"             - move down
+
+'1'			- increase speed
+'2'             - decrease speed
+
+
+2B3D Demo 1
+
+This little demo shows few 3d objects spinning around. Letter A is an example
+of a one sided polygon. It will not be rendered if the polygon's back is
+facing a viewer. It is useful with concave objects (like presented cube and
+pyramid) where some of the polygons, ones facing away, can be removed.
+
+Letter T is an example of an object made up of two sided polygons. polygons
+will be rendered no matter which way they are facing.
+
+Cube and a pyramid are both made up of one sided polygons. The scene uses
+default light source created at 3d world initiation. Light source can be
+changed using CreateLightSource(), but I found this setting to be most
+effective visually.
+
+
+2B3D DEMO 2
+
+This is an attempt to create a 3d environment, with ability to walk around
+a bit. The background bitmap I created in a rush, so it probably looks that
+way. Nevertheless, it looks better than no bitmap at all in the background,
+and it serves as an example how to manipulate bitmaps using TouchPalette()
+function.
+
+Now, if it only was synchrinized with 3d camera movement and scrolled
+around a bit...
+
+

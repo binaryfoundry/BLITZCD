@@ -1,0 +1,33 @@
+SuperTed Review
+
+(C) BUI
+
+BY LEE PACKHAM
+
+
+
+This New TED Offers So Much More But Is It Worth It? Lee Packham Checks It Out...
+
+First all there was TED. The original editor for Blitz2 and it looked pretty
+
+good and was reliable. With BUM 8 they bought out NewTED. They said it was so wonderful but it had so many bugs in it that it made it completely
+
+unusable.
+
+Now there's SuperTED (on this month's coverdisk). This version offers all the features of NewTED with all the bugs fixed. So they said...
+
+I personally own an A500, KS2.04/KS3, 509MB SCSI, 1MB Chip, 4MB Fast. This is the machine it was tested on for this review. I go to load it up and what to I get. No errors, good. NewTED crashed upon loading on my machine. I went to go to the menus and to 
+
+Good, it works. So let's go and load some code. Up comes the nice ASL requester with no problems. Now to decide what code to load, so I load the
+
+source for my command library. When it loads, I get a nice GURU. Thanks very much! Straight back to OldTED
+
+It might not work on my machine. It may work on yours. If it worked I might
+
+of rated it higher. In this review, it just refused to co-"operate" with a very simple task. A definet No-No. Nice Try!
+
+Price: FREE
+
+Supplier: On The CoverDisk
+
+Rating: 0/10

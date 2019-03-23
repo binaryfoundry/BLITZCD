@@ -1,0 +1,5 @@
+Please copy the MIKESMAPLIB.OBJ file to your Blitzlibs:userlibs/ draw and
+run make deflibs from the CLI.
+
+Sorry that the file has been included on the disk this way, but is was a
+mistake.

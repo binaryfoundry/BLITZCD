@@ -1,0 +1,123 @@
+@database UpdateDrawers
+@master Blitz2Progs:UpdateDrawers/Old/UpdateDrawers.Guide
+@$VER: 1.0
+@author "Lee Packham"
+@(c) "1996 Lee Packham"
+@remark Created with Heddley v1.1 (c) Edd Dumbill 1994
+
+@node "Main" "Update Drawers V1 - Documentation"
+                              Update Drawers V2
+                              ©1996 Lee Packham
+
+Table Of Contents...
+
+     @{"Introduction" link "Introduction" 0}
+     @{"Disclaimer" link "Disclaimer" 0}               READ ME NOW!!!!!
+     @{"System Requirements" link "SystemRequirements" 0}
+     @{"Installation" link "Installation" 0}
+     @{"How To Use Update Drawers" link "Usage" 0}
+
+     @{"What Is To Come?" link "Future" 0}
+     @{"Contacting Author" link "Author" 0}
+     @{"Known Bugs" link "Bugs" 0}
+@endnode
+
+@node "Introduction" "Introduction"
+This program is a nice freeware program which is still under development. It
+was so good that when I wrote the first version, I just HAD to release it.
+
+Why is it so good then? Well, what this program does is the same thing that
+the MagicWB Update Drawers does. That is, copy the def_drawer.info from your
+ENV: to replace all your drawer icons on your harddisk. The problem with it
+though was that as it only copied the icon, when you opened the drawer up
+you had to resize and set all the viewmodes of that drawer all over again.
+If you have a BIG harddisk like mine this is very annoying!
+
+This is where Update Drawers V2 comes in. Instead of just copying the icon
+across, it keeps all the original attributes of the original and only
+changes the image. Saving all the hassle of resizing and snapshotting all
+your drawers again. 
+
+So, in my opinion, this program is extremely useful indeed!
+
+Now it has a full GUI and is capable of handling drawer names which contain
+spaces. As it is only one executable it is a lot easier to user!
+@endnode
+
+@node "Disclaimer" "Disclaimer"
+The following MUST be read before using the program. You have to agree to
+the following...
+
+THE AUTHOR, LEE PACKHAM, ACCEPTS NO RESPONSIBLILITY FOR DAMAGE CAUSED BY
+THIS SOFTWARE THROUGH CORRECT OR INCORRECT USE AND WILL THEREFORE NOT BE
+LIABLE TO COMPENSATE FOR ANY SUCH DAMAGE IF CAUSED. THE PROGRAM, CODE AND
+DOCUMENTATION ARE COPYRIGHT 1996 LEE PACKHAM AND WAS WRITTEN USING THE BLITZ
+BASIC 2 PACKAGE WHICH IS COPYRIGHT 1994 ACID SOFTWARE.
+
+Update Drawers is to be distributed is freeware. This means that anybody can
+use it and can include it in any package they want AS LONG as the following
+rules are kept to...
+
+          1. The files in this archives are not to be edited in any way
+             whatsoever by ANYBODY apart from me.
+
+          2. All the files must be included in any distribution.
+
+          3. If the files are to be archived. All files
+             must be included.
+
+Keep to these rules and your be fine!
+@endnode
+
+@node "SystemRequirements" "System Requirements"
+Update Drawers V2 requires at least KS2.04 or above. 1MB of memory is
+recommended for updating lots of icons at once. The program now requires the
+ReqTools library which is ©1994 Nico Fançois which IS NOT included in this
+archive.
+@endnode
+
+@node "Installation" "Installation"
+There is no longer an install script as I don't feel it is needed anymore.
+Simply put the program where you like, it doesn't need any special assigns
+or anything added to the s:user-startup so copy it where you like.
+@endnode
+
+@node "Usage" "How To Use Update Drawers"
+To update any drawers simply double-click on the UpdateDrawers icon. A
+window will then open allowing you to select the directory you wish to
+update via the file button and string gadget.
+
+There is also a checkbox which allows you to select whether you wish to
+update the drawers recursively. This means that it goes through the
+sub-directories of the directory selected as well as the directory
+selected.
+
+Then, simply hit the GO button and Update Drawers will do it's stuff. There
+is no cancel button as of yet, so be sure you want to start.
+@endnode
+
+@node "Future" "What Is To Come?"
+I don't know, got any ideas. Contact me and give me suggestions. Although I
+feel this program is now finished, I will happily implement any ideas you
+have.
+@endnode
+
+@node "Author" "Contacting Author"
+Why not write to me with bugs, suggestion or just general chitter chatter
+and swapping. I'm always on the look out for new contacts!
+
+Address:-  Lee Packham
+           212 Upper Shoreham Road
+           Shoreham-By-Sea
+           West Sussex
+           BN43 6BG
+
+Voice:-    +44-1273-465335
+
+E-Mail:-   jools@saxon.seuk.com
+@endnode
+
+@node "Bugs" "Known Bugs"
+There are now NO bugs as far as I know!
+@endnode
+

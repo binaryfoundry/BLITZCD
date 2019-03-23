@@ -1,0 +1,49 @@
+COVERDISK
+
+(C) BUI
+
+
+
+BlitzBench By Jon Berg.  BlitzBench  is  not  Alternative Workbench but with if the author puts more work into it who knows.
+
+
+
+Dialling Codes By Julian  Wright.  Ever  wanted  to  know where a phone number is located, now you can with Dialling Code.
+
+
+
+HelpApp By Rupert Henson. What to know all the Window flags are?  Now you can with HelpApp.
+
+
+
+PGC By R. Sutcliffe. It's a platform games core. Plus Link a little demo of how to make a little character run in eight directions.
+
+
+
+Shape Editor By Aaron Sethi. Make all your Blitz Shapes with this Blitz Shape Editor, very easy to use.
+
+
+
+Woogies By John Cassar. A very good game, for all you game lovers out there. You'll enjoy this game.
+
+
+
+Kevin Explains By Kevin  Winspear.  Find  out  how  to change the mouse pointer. Just like the GUI on the BUI CoverDisk.
+
+
+
+Mat Explains By Matthew Tillet.  How  dose  one  use message ports? Mat explains how.
+
+
+
+UpDateDrawers By Lee Packham. Here's the update of Lee's UpdateDrawers program.
+
+
+
+
+
+Loading...
+
+Put your coverdisk in "DF0:" and double click on the disk icon.  When the window has opened on your Workbench screen, double click on the icon of the world.
+
+We will from now on be using our own custom frontend for the coverdisk.  It is very easy to use and will unpack the files you want unpacked from a simple click.  Help is at hand by clicking "HELP".

@@ -1,0 +1,386 @@
+@DATABASE "C5.guide"
+
+@NODE C501
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: Window@{fg text}
+--------------------------------------------------------------------------
+Syntax: Window Window#,x,y,width,height,flags,title$,dpen,bpen[,gadgetlist#
+        [,bitmap#]]
+
+The Window library has been extended to handle super bitmap windows. 
+Super-BitMap windows allow the window to have it's own bitmap which can
+actually be larger than the window. The two main benefits of this 
+feature are the window's ability to refresh itself and the ability to 
+scroll around a large area "inside" the bitmap.
+
+To attach a BitMap to a Window set the SuperBitMap flag in the flags 
+field and include the BitMap# to be attached.
+@ENDNODE
+@NODE C53B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: WTitle@{fg text}
+--------------------------------------------------------------------------
+Syntax: WTitle windowtitle$,screentitle$
+ 
+WTitle is used to alter both the current window's title bar and it's 
+screens title bar. Useful for displaying important stats such as program
+status etc. 
+@ENDNODE
+@NODE C53C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: CloseWindow@{fg text}
+--------------------------------------------------------------------------
+Syntax: CloseWindow Window#
+ 
+CloseWindow has been added for convenience. Same as Free Window but a 
+little more intuitive (added for those that have complained about such
+matters).
+@ENDNODE
+@NODE C53D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: WPrintScroll@{fg text}
+--------------------------------------------------------------------------
+Syntax: WPrintScroll
+
+
+WPrintScroll will scroll the current window upwards if the text cursor 
+is below the bottom of the window and adjust the cursor accordingly. 
+Presently WPrintScroll only works with windows opened with the gimme00
+flag set (#gimmezerozero=$400).
+@ENDNODE
+@NODE C53E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: WBlit@{fg text}
+--------------------------------------------------------------------------
+Syntax: WBlit Shape#,x,y
+ 
+WBlit can be used to blit any shape to the current window. Completely 
+system friendly this command will completely clip the shape to fit 
+inside the visible part of the window. Use GimmeZeroZero windows for 
+clean clipping when the window has title/sizing gadgets.
+@ENDNODE
+@NODE C540
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: EventCode & EventQualifier@{fg text}
+--------------------------------------------------------------------------
+Syntax: EventCode & EventQualifier
+ 
+EventCode returns the actual code of the last Event received by your 
+program, EventQualifier returns the contents of the Qualifier field. Of 
+use with the new GadTools library and some other low level event 
+handling requirements. 
+@ENDNODE
+@NODE C541
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: EventCode & EventQualifier@{fg text}
+--------------------------------------------------------------------------
+Syntax: EventCode & EventQualifier
+ 
+EventCode returns the actual code of the last Event received by your 
+program, EventQualifier returns the contents of the Qualifier field. Of 
+use with the new GadTools library and some other low level event 
+handling requirements. 
+@ENDNODE
+@NODE C542
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PositionSuperBitMap@{fg text}
+--------------------------------------------------------------------------
+Syntax: PositionSuperBitMap x,y
+
+PositionSuperBitMap is used to display a certain area of the bitmap in a
+super bitmap window.
+
+@{fg shine}Example:@{fg text}
+
+     ; 
+     ; super bitmap example 
+     ; 
+
+     ;create large bimtap for our superbitmap window
+
+     width=320:height=200 
+     BitMap 0,width,height,2
+     Circlef 160,100,160,100,1 : Box 0,0,width-1,height-1,3 
+
+     FindScreen 0
+     
+     ;two sliders for the borders (see new gadget flags next page)
+
+     PropGadget 0,3,-8,$18000+4+8+64,1,-20,8 
+     PropGadget 0,-14,10,$11000+2+16+128,2,12,-20 
+
+     ;reporting of mousemoves means we can track the propgadget as it is
+      moved
+
+     AddIDCMP $10 
+     SizeLimits 32,32,width+22,height+20 
+     Window 0,0,0,100,100,$1489,"HELLO",1,2,0,0 
+     Gosub drawsuper 
+     Repeat 
+       ev.l=WaitEvent 
+       If ev=2 Then Gosub dosize 
+       If ev=$20 Then Gosub domove 
+     Until ev=$200 
+     End 
+
+     dosize: 
+       SetHProp 0,1,posx/width,InnerWidth/width 
+       SetVProp 0,2,posy/height,InnerHeight/height 
+       Redraw 0,1:Redraw 0,2:Goto drawsuper 
+
+     domove: 
+       Repeat:Gosub drawsuper:Until WaitEvent<>$10:Return 
+
+     drawsuper: 
+       ww=width-InnerWidth:hh=height-InnerHeight 
+       posx=QLimit(HPropPot(0,1)*(ww+1),0,ww) 
+       posy=QLimit(VPropPot(0,2)*(hh+1),0,hh) 
+       PositionSuperBitMap posx,posy 
+     Return 
+@ENDNODE
+@NODE C543
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: GetSuperBitMap & PutSuperBitMap@{fg text}
+--------------------------------------------------------------------------
+Syntax: GetSuperBitMap & PutSuperBitMap
+
+After rendering changes to a superbitmap window thebitmap attached can 
+also be updated with the GetSuperBitMap. After rendering changes to a 
+bitmap the superbitmap window can be refreshed with the PutSuperBitMap 
+command. Both commands work with the currently used window.
+@ENDNODE
+@NODE C544
+@{fg shine}Statement: GetSuperBitMap & PutSuperBitMap@{fg text}
+--------------------------------------------------------------------------
+Syntax: GetSuperBitMap & PutSuperBitMap
+
+After rendering changes to a superbitmap window thebitmap attached can 
+also be updated with the GetSuperBitMap. After rendering changes to a 
+bitmap the superbitmap window can be refreshed with the PutSuperBitMap 
+command. Both commands work with the currently used window.
+@ENDNODE
+@NODE C604
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: ShapeGadget
+--------------------------------------------------------------------------
+@{fg text}Syntax: ShapeGadget GadgetList#,X,Y,Flags,Id,Shape#[,Shape#]
+Mode: Amiga
+
+Description:
+The ShapeGadget command allows you to create gadgets with graphic 
+imagery. The Shape# parameter refers to a shape object containing the 
+graphics you wish the gadget to contain.
+
+The ShapeGadget command has been extended to allow an alternative image 
+to be displayed when the gadget is selected. All other parameters are 
+identical to those in TextGadget.
+
+Example:
+
+; 
+;ShapeGadget example
+; 
+Screen 0,3
+ScreensBitMap 0,0 
+;generate 2 shapes for our shape gadget 
+Cls:Circlef 15,15,15,2:Circlef 8,8,9,5,3:Circlef 24,8,9,2,3 
+GetaShape 1,0,0,32,32:Circlef 24,8,9,5,3:GetaShape 0,0,0,32,32
+;
+ShapeGadget 0,148,50,0,1,0,1
+TextGadget 0,140,180,0,2,"EXIT" 
+Window 0,0,0,320,200,$100f,"ClickMe",1,2,0
+
+Repeat
+Until WaitEvent=64 AND GadgetHit=2
+@ENDNODE
+@NODE C61C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: ButtonGroup
+--------------------------------------------------------------------------
+@{fg text}Syntax: ButtonGroup Group
+Modes: Amiga
+
+Description:
+ButtonGroup allows you to determine which 'group' a number of button 
+type gadgets belong to. Following the execution of ButtonGroup, any 
+button gadgets created will be identified as belonging to the specified
+group. The upshot of all this is that button gadgets are only mutually 
+exclusive to other button gadgets within the same group.
+
+'Group' must be a positive number greater than 0. Any button gadgets 
+created before a 'ButtonGroup' command is executed will belong to group
+1.
+@ENDNODE
+@NODE C61D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: GadgetStatus
+--------------------------------------------------------------------------
+@{fg text}Syntax: GadgetStatus(GadgetList#,Id)
+Modes: Amiga
+
+Description:
+GadgetStatus may be used to determine the status of the specified 
+gadget. In the case of 'toggle' type gadget, GadgetStatus will return 
+true (-1) if the gadget is currently on, or false (0) if the gadget is 
+currently off.
+
+In the case of a cycling text gadget, GadgetStatus will return a value 
+of 1 or greater representing the currently displayed text within the 
+gadget.
+@ENDNODE
+@NODE C61E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ButtonId
+--------------------------------------------------------------------------
+@{fg text}Syntax: ButtonId(GadgetList#,ButtonGroup)
+Modes: Amiga
+
+Description:
+ButtonId may be used to determine which gadget within a group of button
+type gadgets is currently selected. The value returned will be the 
+GadgetId of the button gadget currently selected.
+@ENDNODE
+@NODE C61F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statements: Enable & Disable
+--------------------------------------------------------------------------
+@{fg text}Syntax: Enable GadgetList#,Id  & Disable GadgetList#,Id
+Modes: Amiga
+
+Description:
+A gadget when disabled is covered by a "mesh" and can not be accessed 
+by the user. The commands Enable and Disable allow the programmer to 
+access this feature of Intuition.
+@ENDNODE
+@NODE C620
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statements: Enable & Disable
+--------------------------------------------------------------------------
+@{fg text}Syntax: Enable GadgetList#,Id  & Disable GadgetList#,Id
+Modes: Amiga
+
+Description:
+A gadget when disabled is covered by a "mesh" and can not be accessed 
+by the user. The commands Enable and Disable allow the programmer to 
+access this feature of Intuition.
+@ENDNODE
+@NODE C621
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetGadgetStatus
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetGadgetStatus GadgetList#,Id,Value  
+Modes: Amiga
+
+Description:
+SetGadgetStatus is used to set a cycling text gadget to a particular 
+value, once set ReDraw should be used to refresh the gadget to reflect 
+it's new value.
+@ENDNODE
+@NODE C68E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: AttachGTList@{fg text}
+--------------------------------------------------------------------------
+Syntax: AttachGTList GTList#,Window#
+ 
+The AttchGTList command is used to attach a set of GadTools gadgets to a
+Window after it has been opened.
+@ENDNODE
+@NODE C68F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: GTTags@{fg text}
+--------------------------------------------------------------------------
+Syntax: GTTags Tag,Value [,Tag,Value...]
+ 
+The GTTags command can be used prior to initialisation of any of the 12
+gadtools gadgets to preset any relevant Tag fields. The following are 
+some useful Tags that can be used with GTTags:
+
+#tag=$80080000
+#GTCB_Checked=#tag+4      ; State of checkbox
+#GTLV_Top=#tag+5          ; Top visible item in listview
+#GTLV_ReadOnly=#tag+7     ; Set TRUE if listview is to be ReadOnly
+#GTMX_Active=#tag+10      ; Active one in mx gadget
+#GTTX_Text=#tag+11        ; Text to display
+#GTNM_Number=#tag+13      ; Number to display
+#GTCY_Active=#tag+15      ; The active one in the cycle gad
+#GTPA_Color=#tag+17       ; Palette color
+#GTPA_ColorOffset=#tag+18 ; First color to use in palette
+#GTSC_Top=#tag+21         ; Top visible in scroller
+#GTSC_Total=#tag+22       ; Total in scroller area
+#GTSC_Visible=#tag+23     ; Number visible in scroller
+#GTSL_Level=#tag+40       ; Slider level
+#GTSL_MaxLevelLen=#tag+41 ; Max length of printed level
+#GTSL_LevelFormat=#tag+42 ;* Format string for level
+#GTSL_LevelPlace=#tag+43  ;* Where level should be placed
+#GTLV_Selected=#tag+54    ; Set ordinal number of selected
+#GTMX_Spacing=#tag+61     ;* Added to font height to
+
+All of the above except for those marked * can be set after 
+initialisation of the Gadget using the GTSetAttrs command. The following 
+is an example of creating a slider gadget with a numeric display:
+
+f$="%2ld" : GTTags #GTSLLevelFormat, &f$, #GTSLMaxLevelLen, 4
+GTSlider 2,10,320,120,200,20,"GTSLIDER",2,0,10
+@ENDNODE
+@NODE C690
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: GTGadPtr@{fg text}
+--------------------------------------------------------------------------
+Syntax: GTGadPtr (GTList#,id)
+ 
+GTGadPtr returns the actual location of the specified GadTools gadget in
+memory.
+@ENDNODE
+@NODE C691
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: GTBevelBox@{fg text}
+--------------------------------------------------------------------------
+Syntax: GTBevelBox GTList#,x,y,w,h,flags
+ 
+GTBevelBox is the GadTools library equivalent of the Borders command and
+can be used to render frames and boxes in the currently used Window.
+@ENDNODE
+@NODE C692
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: GTChangeList@{fg text}
+---------------------------------------------------------------------------
+Syntax: GTChangeList GTList#,id [ ,List() ]
+ 
+GTChangeList must be used whenever a List attached to a GTListView needs
+to be modified. Call GTChangeList without the List() parameter to free 
+the List, modify it then reattache it with another call to GTChangeList
+this time using the List() parameter.
+@ENDNODE
+@NODE C693
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: GTSetAttrs@{fg text}
+--------------------------------------------------------------------------
+Syntax: GTSetAttrs GTList#,id [,Tag,Value...]
+ 
+GTSetAttrs can be used to modify the status of certain GadTools gadgets 
+with the relevant Tags. See GTTags for more information on the use of 
+Tags with the GadTools library.
+@ENDNODE
+@NODE C69D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}GTStatus@{fg text}
+--------------------------------------------------------------------------
+Syntax  : GTStatus(GTList#,Id)
+Library : bbgtlib
+
+Description:
+GTStatus returns the status of and gadtools toggle gadgets, a value
+of 1 means the the gadget is selected, 0 deselected.
+@ENDNODE
+@NODE C69E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}GTArrowSize@{fg text}
+--------------------------------------------------------------------------
+Syntax   : GTArrowSize size
+Library  : bbgtlib
+
+Description:
+Allows the size of GTScroller arrows to be preset. Default size is 16.
+@ENDNODE
+
+

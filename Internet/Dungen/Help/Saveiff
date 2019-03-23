@@ -1,0 +1,12 @@
+   This saves your work as an IFF file. It will append the level number to
+the file name you supply and save each level as a separate image. When
+checking for file overwrites, only the 1st level is checked for. For
+example if you give a save name of "Test" it will check to see if a file
+named "Test1" exists. Keep this in mind if you are saving a 10 level
+dungeon and make sure you don't have some file named "Test9" in the
+directory that you don't wish to have overwritten. The program is set up
+this way because it would be rather annoying to save a 20 level dungeon in
+IFF format, then make some changes and want to save it again with the same
+name. You would have to answer the "Overwrite File?" requester 20 times!
+But it would be even more annoying to write over a file you wanted to keep.
+So check the file names in the directory first please.

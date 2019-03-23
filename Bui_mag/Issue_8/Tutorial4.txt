@@ -1,0 +1,435 @@
+BUILDING A FILE REQUESTER
+
+(C) BUI
+
+BY JACK PRITCHARD
+
+
+
+In this article, (the first one I've ever written by the way), I' m going to attempt to give you a quick tutorial on how to go about writing your very own file requester.
+
+
+
+Well, I'm actually only going to tell you how get a directory list and a device list.  These two aspects of file requesters are probably the trickiest and definitely the most important.  The rest of it is pretty
+
+straight forward.  However, if you really can't be bothered you can muck about with the file requester source code that I've written on the disk.
+
+      
+
+Using Blitz2 you do of course have access to not only the built-in Blitz requester but also the ASL requester.  These are perfectly ok and for 99% of the time they will suffice.  But wouldn't you like to have your own?  Design it yourself and to be able t
+
+      
+
+Right then, here goes.
+
+      
+
+The most important thing that any file requester needs to be able to do is to get a directory list.  This is a complete list of all the files and directories in any given path.  A good example of this is the DIR command from the C: directory.
+
+      
+
+Typing DIR DF0: will give you a complete list of everything that is in the DF0: drive.  DIR DF0:c/ will show you the entire C: directory and so on.  Your file requester also needs to be able to do this.
+
+      
+
+As luck would have it there are a couple of routines in the intuition library that will help you do just
+
+that.  They are Examine() & ExNext().
+
+      
+
+Take a look at the following piece of code and then we'll see what it does and how it all works.
+
+      
+
+DEFTYPE .l
+
+      
+
+name$="DF0:"+Chr$(0)     ; A NULL terminated string.
+
+
+
+lock=Lock_(&name$,-2)    ; Attempt to lock onto it.
+
+
+
+If lock>0                ; Did we do it?
+
+      
+
+  adr=AllocMem_(400,$10000) ; Allocate some memory for
+
+                            ; Examine() & ExNext().
+
+  If adr>0
+
+
+
+    If Examine_(lock,adr)<>0
+
+      DType=Peek.l(adr+4)          ; DirEntryType.
+
+      DFile$=Peek$(adr+8)          ; FileName.
+
+      DFileSize=Peek.l(adr+124)    ; Size.
+
+
+
+      While ExNext_(lock,adr)<>0
+
+        DType=Peek.l(adr+4)        ; DirEntryType.
+
+        DFile$=Peek$(adr+8)        ; FileName.
+
+        DSize=Peek.l(adr+124)      ; Size.
+
+      Wend
+
+    EndIf
+
+  EndIf
+
+        
+
+  UnLock_(lock)
+
+  FreeMem_ adr,400
+
+EndIf
+
+      
+
+The first thing we need to do is to create a string that will hold the path or directory etc. that we want to examine.  In this case we are taking a look at the disk in drive DF0:  Notice that the string name$ is ended with CHR$(0).  This is  because the 
+
+      
+
+Once we have Locked onto DF0: we can then begin to examine it.  We do this by first allocating an area of memory to hold the information be are about to collect.
+
+      
+
+adr=AllocMem_(400,$10000) will attempt to allocate 400 bytes of system memory for us to use.  $10000 indicates that the memory should be filled with zero's and of any type.
+
+
+
+Once we have successfully obtained a lock on DF0: and we have allocated 400 bytes of memory, we can then get on with the business of reading the files in.  We do this by next using the Examine() routine which will take a look at the the root directory we 
+
+      
+
+After Examine() has done its bit we then move onto the
+
+      
+
+  While ExNext_(lock,adr)<>0
+
+    ...
+
+  Wend
+
+        
+
+piece of code.  ExNext() works in the same way as Examine() except it will read into our memory block the next file or directory after DF0:.  When ExNext() runs
+
+out of files i.e. when it has read in the whole directory, it will return 0.  This way we can use it in
+
+a While Wend loop to build up a complete directory list.
+
+        
+
+The Examine() & ExNext() routines return a huge amount if information about the file they are currently looking at.  However, for the purpose of this tutorial we are only really interested in three things.
+
+      
+
+In the example above they appear as..
+
+      
+
+  DType=Peek.l(adr+4)          ; DirEntryType.
+
+  DFile$=Peek$(adr+8)          ; FileName.
+
+  DFileSize=Peek.l(adr+124)    ; Size.
+
+
+
+DType is the Directory Type.  If DType is 0 or greater then we are looking at a directory, lower than 0 and its a file.  The actual values are 2 for a directory and -3 for a file.
+
+      
+
+DFile$ is the actual filename or directory name and should be no greater than 108 characters.
+
+      
+
+DFileSize will return the size in bytes of the file that is being looked at.
+
+      
+
+Obviously using the above example you would need somewhere to store your directory list when it is finished so that you could then go on to display it in your file requester.
+
+      
+
+In Blitz2 the best way to do this is to use an array of:-
+
+
+
+NEWTYPE such as..
+
+      
+
+NEWTYPE .DirList
+
+  DType.l
+
+  DFile$
+
+  DFileSize.l
+
+End NEWTYPE
+
+      
+
+Dim DList.DirList(400)
+
+      
+
+The Examine() example could then be expanded to..
+
+      
+
+DEFTYPE .l
+
+
+
+NEWTYPE .DirList
+
+  DType.l
+
+  DFile$
+
+  DFileSize.l
+
+End NEWTYPE
+
+      
+
+Dim DList.DirList(400)
+
+
+
+Statement DirList{name$}
+
+  SHARED DList()
+
+              
+
+  name$+Chr$(0)     
+
+
+
+  lock=Lock_(&name$,-2)    
+
+
+
+  If lock>0                
+
+      
+
+    adr=AllocMem_(400,$10000)
+
+                                  
+
+    If adr>0
+
+
+
+      If Examine_(lock,adr)<>0
+
+        DList(inc)\DType=Peek.l(adr+4) 
+
+        DList(inc)\DFile$=Peek$(adr+8) 
+
+        DList(inc)\DFileSize=Peek.l(adr+124)
+
+
+
+        While ExNext_(lock,adr)<>0 and inc<400
+
+          inc+1
+
+              
+
+          DList(inc)\DType=Peek.l(adr+4)
+
+          DList(inc)\DFile$=Peek$(adr+8)
+
+          DList(inc)\DSize=Peek.l(adr+124)
+
+        Wend
+
+      EndIf
+
+    EndIf
+
+        
+
+    UnLock_(lock)
+
+    FreeMem_ adr,400
+
+  EndIf
+
+End Statement
+
+      
+
+This way every file and directory that the DirList statement reads will be saved in our array.  We can then go on to display the contents of the array in the file requesters main display.
+
+      
+
+Also, with the above example you are no longer limited to just reading DF0:.  Simply pass the path that you want to read by using.  DirList{path$} where path$ could be C: or DH1:Work/ etc.
+
+      
+
+Armed with a decent dirlist routine you should have very little trouble in building your own file requester.
+
+However, have you ever noticed that on most requesters that when you click the right mouse button you get an entire list of all the devices, volumes & assigns in your system from which you can simply select?  Right then.  Let's right one.
+
+
+
+DEFTYPE .l
+
+      
+
+Dim DevList$(200)
+
+      
+
+Statement DevList{}
+
+  SHARED DevList$()
+
+        
+
+  If DosBase>0
+
+    inc=1
+
+
+
+    rootnode=Peek.l(DosBase+34)
+
+    dosinfo=Peek.l(rootnode+24)*4
+
+    devlist=Peek.l(dosinfo+4)*4
+
+
+
+    While devlist<>0 AND inc<200
+
+      devname=Peek.l(devlist+40)*4
+
+
+
+      s$=Peek$(devname+1)
+
+      If s$<>"CON" AND s$<>"RAW" AND s$<>"SER" AND 
+
+        s$<>"PAR" AND s$<>"PRT" AND s$<>"PIPE"
+
+              
+
+        ; The above two lines should be typed as one.
+
+              
+
+        Select Peek.l(devlist+4)
+
+        Case 0
+
+          a$="(Device)"
+
+        Case 1
+
+          a$="(Assign)"
+
+        Case 2
+
+          a$="(Volume)"
+
+        End Select
+
+              
+
+        DevList$(inc)=s$+":"+a$
+
+
+
+        inc+1
+
+      EndIf
+
+       devlist=Peek.l(devlist)*4
+
+    Wend
+
+
+
+    dirsize-1
+
+    If dirsize<1
+
+      dirsize=1
+
+    EndIf
+
+  EndIf
+
+End Statement
+
+
+
+The above DevList{} statement will make a complete list of all the devices etc. in your system and load them into the DevList$() array.  Depending on what is in the array it will be ended with either (Device), (Assign) or (Volume).
+
+      
+
+For those of you who are brave enough to read how it all works then here goes...
+
+      
+
+First of all you get a hold of the dosbase address, from there you locate the pointer to the rootnode structure which itself contains a BCPL pointer to the dosinfo structure.  Inside the dosinfo structure there is a pointer to the devlist structure.
+
+      
+
+The first address of this structure contains a BCPL pointer to the next device in the list or 0.  There is also a BCPL string which contains the device itself.  Another longword contains the current device.  This is 0 for a device, 1 a directory & 2 for a
+
+      
+
+Simply keep reading through until the first address of the current devlist structure returns 0 indicating that there are no more devices to read.
+
+
+
+OK then, understand all that? Yes? No? Well whatever, it doesn't really matter as long as get the basics of how it all works from the examples.  With the examples for the dirlist and the devlist and not forgetting the source code on the disk you should be
+
+      
+
+If you really get stuck and need a bit more help then you can write to me (sending your source code as well) with a pre paid envelope at..
+
+      
+
+  Jack Pritchard
+
+  `HELP'
+
+  PO Box 65
+
+  Gosport
+
+  Hampshire
+
+  PO12 4YB
+
+        
+
+Good Luck!!        
+
+[Jack Pritchard]

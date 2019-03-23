@@ -1,0 +1,11 @@
+   This is a tool for gamemasters to take some of the work out of preparing
+for their game. It is faster than drawing maps with a ruler by hand. Much
+faster if you are content to use some of the randomly generated maps.
+   I've included the ability to save your work in IFF format in case you
+need to use a paint program to add additional components; or if you have
+a color printer and want to add something other than B&W elements.
+   Experiment with generating just one level at first. Adjust the width,
+height and room parameters until you get a feel for how they affect the
+look of the floorplans.
+   Pressing the Esc key is an alternate way to exit the Help screen. The
+Esc key is also the way to exit from the editor back to the control panel.

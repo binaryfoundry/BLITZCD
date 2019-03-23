@@ -1,0 +1,82 @@
+Library:
+  neilsindicatorlib #55
+
+Author:
+  Neil O'Rourke, 6 Victoria St, TAMWORTH, NSW 2340, AUSTRALIA
+
+Overview:
+  A progress indicator library, very snazzy, need gadtools and req?
+
+Commands:
+  ret.l=PICreateRequest(Title$,Min.l,Max.l [,NoGadgets])
+
+Author's Documentation:
+
+ProgressIndicatorLib Documentation
+
+Neil O'Rourke
+
+Version 1.2 (17/7/94)
+
+
+Introduction
+~~~~~~~~~~~~
+
+There have been several Progress Indicators around for a while.  Just about
+all of them have problems of one form or another.  Some need 8 colour Work-
+bench screens, none properly scale the incoming values.
+
+A progress indicator should be adaptable to the programmers need, to
+inform the user what is happening.  If creating a progress indicator is too
+hard, then the programmer will give up, and the user will suffer.
+
+Here is my solution to this.
+
+This library consists on only three commands, and requires ReqTools to run.
+The Progress Indicator is not part of ReqTools, but modeled closely on the
+one in PowerPacker and the Amiga Style Guide.  The Indicator is usable in 
+screens of 1 bitplane and up, and happily scales the data into a percentage 
+bar.
+
+For instance, suppose you are scanning through a block of memory on a byte
+by byte basis, with start address Start and end address Start+4069.
+
+To set up the requester, you'd type
+
+  PICreateRequest("Please Wait...",Start,Start+4096)
+
+and the requester takes care of every thing else.  To update the requester,
+you'd type
+
+  PIUpdateRequest(Start+Offset)
+
+and the requester scales the addresses into a displayable form.
+
+
+Commands
+~~~~~~~~
+
+ret.l=PICreateRequest(Title$,Min.l,Max.l [,NoGadgets])
+------------------------------------------------------
+
+Creates a Progress Indicator requester, locks the calling window and
+returns either True or False.  Always check this!  The requester can fail
+if there isn't enough memory, or Min>Max.
+
+Min and Max refer to what the bar actually displays.  These are unsigned
+values, so no negative numbers are allowed.
+
+If the requester has returned True, then the window that called it is now
+locked and will not accept any input from the user.  The only thing the
+user can do now is hit the Cancel gadget.
+
+If you include the NoGadgets field with any number at all, then the request
+will open up WITHOUT a Stop gadget.  Use of this feature is stronHÁ j
+
+
+
+
+
+
+ProgressIndicatorLib is written in 100% machine code, and requires WB2.0>
+to run.

@@ -1,0 +1,514 @@
+Editors Tutorial - Intuition programming made simple (I think!).
+
+(C) BUI
+
+BY MATTHEW TILLETT
+
+
+
+Before vve start, I think it is best to make it clear that I am hoping this tutorial  
+
+session not to be to complicated. The hard bit about deciding on a tutorial is to  
+
+keep it at the right level, for something that could be simple for some users,  
+
+could be a great feat for another. If you
+
+
+
+
+
+
+
+; A simple window and gadget program.
+
+
+
+find the tutorial simple and yeah, done that, drop me some mail to try and  
+
+hype it up a bit.
+
+
+
+The tutonal itself. Ok, basically in this months tutorial, we are going to deal  
+
+with windows and gadgets. If you have Workbench less than v2.04 then this  
+
+tutorial is going to be of no use to you. I suggest that you go and buy a ROM  
+
+sharer. I think it is best first of all to list the code so we have something to  
+
+refer to:
+
+
+
+
+
+
+
+; First of all, allow this to run from an icon on Workbench.
+
+WBStartup
+
+
+
+; Find the workbench screen and use it.
+
+FindScreen O
+
+
+
+; Create some gadgets.
+
+GTButton 0,1,257,20,48,14,"Quit",O
+
+GTString 0,2,125,5,180,14,"Type something",O,20
+
+
+
+; Open up a window.
+
+Window 0,0,11,320,50,$1008,"Blitz User Group",0,1
+
+
+
+; Draw gadgets on the window.
+
+AttachGTList 0,0
+
+
+
+begin:
+
+; Clear any text out of the gtstring.
+
+
+
+
+
+GTSetString 0,2,""
+
+
+
+; Now update it.
+
+Redraw 0,2
+
+
+
+
+
+; Lets use that gtstring.
+
+ActivateString 0,2
+
+
+
+
+
+; Start a loop. 
+
+
+
+Repeat 
+
+
+
+; Tell the computer to wait until  something has happened. 
+
+ev.l = WaitEvent
+
+
+
+
+
+; Has the close window gadget been hit? if so, QUIT. If  
+
+ev= $200 Then End
+
+
+
+; Have you released your mousebutton?  
+
+If ev = 64
+
+
+
+
+
+; And was it over a gadget? 
+
+
+
+Select GadgetHit 
+
+
+
+Case 1 :End 
+
+
+
+Case  2:text$=GTGetString (0,2):Gosub new_window:ref= 1 
+
+
+
+End  Select 
+
+
+
+Endif
+
+
+
+
+
+; Does the varible ref = 1 ?
+
+Until ref= 1
+
+
+
+; So ref does equal 1, well lets goto the label begin shall we.  
+
+Goto begin
+
+
+
+new_window:
+
+; Clear out any events in intuition that have que'd up
+
+FlushEvents
+
+
+
+; Create a gadgets. 
+
+
+
+GTButton  1,1,257,20,48,14,"0k",0
+
+
+
+; Open a window. Window 1,0,100,320.50,$1000,"You  
+
+typed...",O,1
+
+
+
+; Draw that gadget on the windo~
+
+AttachGTList 1,1
+
+
+
+; Print what you typed in the gtstring in the centre of the window.  
+
+WLocate 0,8:Print Centre$(text$,39)
+
+
+
+; Another loop.
+
+Repeat 
+
+
+
+; Wait for  something to happen.
+
+ev.l = WaitEvent
+
+
+
+; Exit the loop if the gadget on the previous opened window was hit.  
+
+Until GadgetHit= 1
+
+
+
+
+
+; Ok, so it was, well close the window.  
+
+CloseWindow 1 ; And free the gadget that was attached to it. Free GTList 1
+
+
+
+
+
+; Back we go to were we came from.
+
+Return
+
+
+
+
+
+
+
+If you read this code, you will see that it is fairly straight forwards,  
+
+and the comments, make it a bit easier to understand. I will pickup the  
+
+code from thc first "Repeat" command.
+
+
+
+
+
+
+
+ev l=Waitl2vent - What this does is stop the cpu in your Amiga from  
+
+dloing to much work, and l'rees it's self from running this task until  
+
+something in intuihon has happened on this program, such as your  
+
+mouse was clicked on the window somewhere. This is ho~r the  
+
+Amiga multi tasks so well. The next linc:
+
+
+
+
+
+
+
+if ev= $200 Then End - As the computer is waiting for an 'event" to
+
+happen, what will happen is if you click on the window an event will have  
+
+occurred, now if the event that happened was equal to $200 this line of text  
+
+would have heen executed. If the event did not equal $200, the line would  
+
+have simply been skipped If vou look up in your manual the event codes,  
+
+you w ill see that $200 represents thc close gadget on each window thc arniga  
+
+opens 'I'his is set of the window from when you opened up the window in  
+
+previous lines with the command:
+
+
+
+Window 0,0,11,320,50,$1008,"Blitz User Group",0,1
+
+
+
+The hit we are intcres~ed in is "$ 1 OOX", this is know as the windows flag.  
+
+The close gadget has ihe value of $8, and to activate a windo~v when opened  
+
+has the value oL' $1000. so $1000 + $8 = $10()8, which activates the  
+
+window and add a close gadget to it.
+
+
+
+The next line we come to is:-
+
+
+
+lf ev = 64 - '1'his is the cvenl resumed when you have released a mou~se  
+
+button. This will only take place if you have done so. 
+
+
+
+
+
+If we look at this whole section:-
+
+
+
+lf ev = 64
+
+Select GadgetHit
+
+Case 1 :End
+
+Case 2:text$=GTGetString (0,2):Gosub new_window:ref= 1
+
+End Select
+
+Endif
+
+
+
+If the mouse button was released then an event would have occurred $64.  
+
+When this had happened this part of the code would be executed, now we  
+
+have a command:
+
+
+
+Seiect GadgetHit - ~hat this does is remembers the result of the  
+
+expression, in our case it is "GadgetHit". Now it' we hit gadget I then the  line 
+
+"Case 1:'' would be executed and "Case 2: if we had hit gadget 2. 
+
+
+
+
+
+Pretend we hit gadget 2 so the line -
+
+
+
+
+
+Case 2:text$=GTGetString (0,2):Gosub new_window:ref= 1 would 
+
+have been executed. What this does is pick up the information we 
+
+typed in the string gadget we drew earlier with the command :
+
+
+
+
+
+GTString 0,2,125,5,180,14,"Type something",O,20
+
+
+
+And store the information in the variable text$:
+
+
+
+text$=GTGetString (0,2)
+
+
+
+Next we send the programs flow to the label new window. So look at 
+
+the line that reads "new window:".
+
+
+
+The very first command we see after the label is:-
+
+
+
+FlushEvents
+
+
+
+What this does, is all the events that have happened are qued up, if 
+
+the event has been executed then it is discarded, but if an event is in 
+
+the list and has not happened it will wait until it is it's turn. This can 
+
+cause some problems in some programs, so what we do is flush these 
+
+events out, in other words, we clear the que so it is empty.
+
+
+
+Again the next three lines create a gadget, open a window and then 
+
+draws the gadget we created on the window we just opened. Fairly 
+
+straight forwards. We then print the text that we typed in the string 
+
+gadget in the previously opened window.
+
+
+
+WLocate 0,8:Print Centre$(text$,391
+
+
+
+We now enter a repeat until loop. This loop will keep looping until the 
+
+value it requires is true, which is until the gadget in the window has 
+
+been hit. When this has happened the loop exits and carry on with the 
+
+next command. We then see:
+
+
+
+CloseWindow 1
+
+Free GTList 1
+
+
+
+Return
+
+
+
+What happens here is the window we last opened is closed and the gadget
+
+we drew on it is freed up from memory. The program then comes across
+
+the command:-
+
+
+
+Return
+
+
+
+Which returns the programs flow back to the "Gosub" it came from:-
+
+
+
+Case 2:text$ = GTGetString (0,2):Gosub new_window:ref = 1
+
+
+
+Now we come to the next part of the line:-
+
+
+
+ref = 1
+
+
+
+This sets our variable "ref" to contain the value of I
+
+
+
+The next hvo lines we skip because these are terminators of the "If" and 
+
+"Select" and we will come to:
+
+
+
+Until ref= 1
+
+
+
+Now remember our variable "ref" now contains the value of 1. So the result is 
+
+true that ref=l. The repeat loop is now terminated and we are sent straight to 
+
+the label
+
+
+
+begin:
+
+
+
+form the command:
+
+
+
+Goto begin
+
+
+
+From here the program starts all over again, until you click on the close gadget 
+
+or the gadget "QUIT". And that is it. I hope you have learnt something from 
+
+this tutorial, if you are still unsure, have a play about with it, that is the best 
+
+way to learn.
+

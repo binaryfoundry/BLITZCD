@@ -1,0 +1,305 @@
+@DATABASE "AD.guide"
+
+@NODE AD01
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: OpenSerial
+--------------------------------------------------------------------------
+@{fg text}Syntax: OpenSerial device$,unit#,baud,io_serflags
+Modes: Amiga
+
+Description:
+OpenSerial is used to configure a Serial Port for use. As with OpenFile, 
+OpenSerial is a function and returns zero if it fails. If it succeeds 
+advanced users may note the return result is the location of the IOExtSer 
+structure. 
+
+Use "serial.device" for device$. 
+
+The baud rate should be in the range of 110-292,000. The io_serflags 
+parameter includes the following flags:
+ 
+bit7: #serf_xdisabled=128 ; disable xon/xoff 
+bit6: #serf_eofmode=64    ; enable eof checking 
+bit5: #serf_shared=32     ; set if you don't need exclusive use of port
+bit4: #serf_rad_boogie=16 ; high speed mode 
+bit3: #serf_queuedbrk=8   ; if set, a break command waits for buffer
+                            empty
+bit2: #serf_7wire=4       ; if set, use 7 wire RS232
+bit1: #serf_parity_odd=2  ; select odd parity (even if not set) 
+bit0: #serf_parity_on=1   ; enable parity checking
+@ENDNODE
+@NODE AD02
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: WriteSerial
+--------------------------------------------------------------------------
+@{fg text}Syntax: WriteSerial unit#,byte
+Modes: Amiga
+  
+Description:
+WriteSerial sends one byte to the serial port. Unit# defines which 
+serial port is used. If you are sending characters use the Asc() 
+function to convert the character to a byte e.g. WriteSerial 0,asc("b").
+@ENDNODE
+@NODE AD03
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement WriteSerialString
+--------------------------------------------------------------------------
+@{fg text}Syntax: WriteSerialString unit#,string
+Modes: Amiga
+ 
+Description:
+WriteSerialString is similar to WriteSerial but sends a complete string
+to the serial port.
+@ENDNODE
+@NODE AD04
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ReadSerial
+--------------------------------------------------------------------------
+@{fg text}Syntax: ReadSerial (unit#)  returns -1 if nothing waiting
+Modes: Amiga
+
+Description:
+ReadSerial returns the next byte waiting in the serial port's read 
+buffer. If the buffer is empty it returns a -1. It is best to use a word
+type (var.w=ReadSerial(0)) as a byte will not be able to differentiate 
+between -1 and 255.
+@ENDNODE
+@NODE AD05
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ReadSerialString
+--------------------------------------------------------------------------
+@{fg text}Syntax: ReadSerialString (unit#)
+Modes: Amiga
+ 
+Description:
+ReadSerialString puts the serial port's read buffer into a string, if 
+the buffer is empty the function will return a null string (length=0).
+@ENDNODE
+@NODE AD06
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: CloseSerial
+--------------------------------------------------------------------------
+@{fg text}Syntax: CloseSerial unit#
+Modes: Amiga
+
+Description:
+The CloseSerial command will close the port, enabling other programs to
+use it. 
+
+@{fg shine}Note:@{fg text} Blitz will automatically close all ports that are opened when a program 
+ends.
+@ENDNODE
+@NODE AD07
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement SetSerialBuffer
+--------------------------------------------------------------------------
+@{fg text}Modes: Amiga
+
+Description:
+SetSerialBuffer changes the size of the ports read buffer. This may be 
+useful if your program is not always handling serial port data or is 
+receiving and processing large chunks of data. The smallest size for 
+the internal serial port (unit#0) is 64 bytes. The bufferlength variable
+is in bytes.
+@ENDNODE
+@NODE AD08
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetSerialLens
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetSerialLens unit#,readlen,writelen,stopbits
+Modes: Amiga
+ 
+Description:
+SetSerialLens allows you to change the size of characters read and 
+written by the serial device. Generally readlen=writelen and should be
+set to either 7 or 8, stopbits should be set to 1 or 2. 
+
+Default values are 8,8,1.
+@ENDNODE
+@NODE AD09
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetSerialParams
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetSerialParams unit#
+Modes: Amiga
+  
+Description:
+For advanced users, SetSerialParams tells the serial port when 
+parameters are changed. This would only be necesary if they were changed
+by poking offsets from IOExtSer which is returned by the OpenSerial 
+command.
+@ENDNODE
+@NODE AD0A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: SerialEvent
+--------------------------------------------------------------------------
+@{fg text}Syntax: SerialEvent (unit#)
+Modes: Amiga
+ 
+Description:
+SerialEvent is used when your program is handling events from more than
+1 source, Windows, ARexx etc. 
+
+This command is currently not implemented
+@ENDNODE
+@NODE AD0B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}ReadSerialMem@{fg text}
+--------------------------------------------------------------------------
+Syntax   : ReadSerialMem Unit#,Address,Length
+Library  : seriallib
+
+Description:
+ReadSerialMem will fill the given memory space with data from the
+given serial port.
+@ENDNODE
+@NODE AD0C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}WriteSerialMem@{fg text}
+--------------------------------------------------------------------------
+Syntax   : WriteSerialMem Unit#,Address,Length
+Library  : seriallib
+
+Description:
+WriteSerialMem send the given memory space out the given serial port.
+@ENDNODE
+@NODE AD81
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Command : OpenDisk@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=OpenDisk(unit#)
+
+This attempts to open unit 'unit#' of the trackdisk.device, for use with
+the other commands in this library. A return value of 0 indicates 
+failure, -1 indicates success.
+@ENDNODE
+@NODE AD82
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement : MotorOn@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : MotorOn unit#
+
+This attempts to switch the drive motor on of the previously opened
+trackdisk unit (called with OpenDisk). You must call this command
+before attempting to ReadSector/WriteSector/FormatTrack/WriteBoot
+@ENDNODE
+@NODE AD83
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement : CloseDisk@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : CloseDisk unit#
+
+This closes the trackdisk.device of the specified unit#. The Motor is
+automatically switched off if it is already on.
+@ENDNODE
+@NODE AD84
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Command : ReadSector@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]ReadSector(unit#,sector#,buffer[,numsectors])
+
+This attempts to read 'numsectors' sectors from a trackdisk device which
+has been opened with OpenDisk and has its Motor On. If numsectors is
+omitted then 1 sector is read. The data is read into the memory location
+pointed to by 'buffer'.
+
+@{fg shine}WARNING!@{fg text} Please MAKE SURE the MOTOR is _ON_ otherwise, all hell will break
+loose!!!
+@ENDNODE
+@NODE AD85
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement : MotorOff@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : MotorOff unit#
+
+This turns the drive motor of 'unit#' off.
+@ENDNODE
+@NODE AD86
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Command : WriteSector@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]WriteSector(unit#,sector#,buffer[,numsectors])
+
+This is the same as ReadSector except........... it writes! (and no, I 
+am not being lazy by not typing any decent docs)
+@ENDNODE
+@NODE AD87
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Command : FormatTrack@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]FormatTrack(unit#,track#,buffer[,numtracks])
+
+This does a TD_FORMAT on the specified track number. Buffer should point
+to the area of memory which the track should be formatted with. I don't
+know why this command exists - but hey, it might come in useful.
+@ENDNODE
+@NODE AD88
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Command : WriteBoot@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]WriteBoot(unit#[,buffer])
+
+This writes 1kilobyte of data to the bootblock of the specified disk unit.
+The optional buffer parameter should point to an area of memory with which
+to write the bootblock.
+@ENDNODE
+@NODE B905
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}SavePalette@{fg text}
+--------------------------------------------------------------------------
+Syntax   : SavePalette Palette#,FileName$
+Library  : iffmakelib
+
+Description:
+Creates a standard IFF "CMAP" file using the given Palette's colors.
+@ENDNODE
+@NODE BE15
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: Exists@{fg text}
+--------------------------------------------------------------------------
+Syntax: Exists (FileName$)
+ 
+Exists actually returns the length of the file, if 0 the file either 
+does not exist or is empty or is perhaps not a file at all! Hmmm, 
+anyway the following poke turns off the "Please Insert Volume Blah:" 
+requester so you can use Exists to wait for disk changes:
+
+     Poke.l Peek.l(Peek.l(4)+276)+184,-1
+@ENDNODE
+@NODE BE83
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SMALLEST.L@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Smallest.l@{fg text} (Long Integer1,Long Integer2)
+Modes: Amiga or Blitz
+
+This function will return the smaller of two supplied long integers.
+For example, Smallest.l(-999,5) would return -999.
+@ENDNODE
+@NODE BE8A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FORCENTSC@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ForceNTSC@{fg text}  
+Modes: Amiga or Blitz
+
+This command switches the current screen from PAL to NTSC.
+@ENDNODE
+@NODE BE8C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FORCENTSC@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ForceNTSC@{fg text}  
+Modes: Amiga or Blitz
+
+This command switches the current screen from PAL to NTSC.
+@ENDNODE
+

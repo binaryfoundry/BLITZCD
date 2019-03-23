@@ -1,0 +1,12 @@
+Echo " "
+Echo "Welcome to Duck Dodgers."
+ask "Would you like to read the docs?"
+if warn
+c:muchmore instructions.doc
+else
+endif
+Echo "Please wait while loading..."
+Echo " "
+
+  Duck.exe
+

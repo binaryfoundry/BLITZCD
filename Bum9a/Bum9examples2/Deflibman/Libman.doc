@@ -1,0 +1,65 @@
+                                 LibMan V1.02
+                                 ------------
+
+                              BB2-Library-Manager
+
+                (c) 1994-96 by BlitzBasic Distribution Germany
+
+                            Author: Peter Eisenlohr
+                        E-Mail: maniac@refugium.gun.de
+
+                          Documentation: Falk Nieder
+
+                          This Programm is FREEWARE!
+
+
+
+LibMan is a utility to help all BlitzBasic2 users creating their deflibs
+files. BlitzBasic2 is (c) by Acid Software.
+
+
+Getting started...
+------------------
+
+Just click on its icon. LibMan will automatically try to load Blitzlibs:
+and blitz2:acidlibs, if it doesn't find them, you can specify the path in
+the Preferences menu and try to load the libs again with 'Read Libs' from
+the Project Menu. You can save these setiings in ENVARC: by selecting
+'Save settings' from the Project Menu.
+
+
+What's this?!
+-------------
+
+What you can see now is a window with a list of all libs LibMan found in
+BlitzLibs: and some gadgets at the bottom of the window.
+
+The number shown after a lib is its libnum. Clashes (i.e. double libnums)
+are shown in white color.
+
+If 'ACID' appears as a libnum, the library is already included in the
+acidlibs file.
+
+You can select in which order LibMan sorts the libs, by NAME or by LibNum,
+as you prefer.
+
+What's it for?
+--------------
+
+Let's come to the main use of this program:  You can easily create deflibs
+files by selecting libs you want to have in this file (or which you don't
+want to have in this file, of course, see clashes).
+
+Just select the libs you want to include in the deflibs and click on 'Make
+Deflibs'.  LibMan will create a _new_ deflibs file (located in the drawer
+you specified in the Preferences menu, default is Blitzlibs:deflibs).
+
+If you want to select ALL libs, just click on 'All', to deselect all libs
+click on 'Clear'.
+
+With the 'Auto' function LibMan will include all libs, but automatically
+exclude all libs with double numbers or an 'ACID' libnum.
+
+
+
+That's it, now enjoy!

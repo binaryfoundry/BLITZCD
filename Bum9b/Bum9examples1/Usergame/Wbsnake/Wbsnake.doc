@@ -1,0 +1,75 @@
+
+WBSnake - The Rescaleable Workbench Snake Game
+---------------------------------------------
+
+  WBSnake may be distributed freely in its unaltered form as
+  long as no more than a reasonable price is charged for the
+  service.
+
+  Acid Software have the rights to distribute this archive
+  with BUM 9 or 10.
+
+  Copyright © 1995 Audun Vaaler.
+
+
+
+Now then, what is WBSnake?
+--------------------------
+
+WBSnake is a quite traditional 'snake' game made using Blitz
+Basic 2. It has, however, some features that hopefully
+separates it from some of the competition:
+
+
+    * As the name suggests, it runs in a Workbench window.
+
+    * The window and the graphics are fully rescaleable.
+
+    * WBSnake is automatically paused when its window is
+      deactivated. Very nice if another window suddenly
+      pops up stopping keyboard input to the WBSnake
+      window. This would normally lead to the snake
+      crashing into the nearest wall.
+
+    * Demands fairly little processor time.
+
+    * Should (I'm afraid I haven't tried) work on any
+      Amiga, with any version of Workbench.
+
+
+
+So, that's all?
+---------------
+
+Yes...
+
+WBSnake was thrown together (oh, I just love clichés :-) )
+in a couple of days, and is definitely not the world's most
+original game. It does, however, what it's supposed to do
+(in my view), namely being a small and nice Workbench game
+suitable for playing if you've nothing more sensible to do.
+
+Please feel free to give me feedback on the game. Maybe I
+should make a collection of resizeable WB-games. Or maybe
+you think this WBSnake is so bad I should avoid programming
+any more...
+
+Anyway, here's my address:
+
+    Audun Vaaler
+    Bakkebo
+    N-2040 Kløfta
+    NORWAY
+
+    e-mail: audunv@powertech.no
+
+
+My bank account number (in case i should win Acid's
+competiton) is 7108 11 10063 (bank: Den Norske Bank).
+
+
+
+
+>logout
+
+NO CARRIER...

@@ -1,0 +1,20 @@
+Short:    Fixed install script for Blitz 2 (from Ultimate Blitz Basic CD)
+Uploader: dmcminn@house-of-mojo.freeserve.co.uk
+Author:   dmcminn@house-of-mojo.freeserve.co.uk
+Type:     dev/basic
+
+ Due to the many errors in the Ultimate Blitz Basic CD install script for
+Blitz 2, I have made some changes, so that it works, and gives you a
+full install (i.e. copies the Blitzlibs files as well).
+
+Updated 1st June 1999 - Now also installs latest version of all libraries
+and fixes the acidlibs file, so no need to download the blitzfix.lha
+archive separately (also in Aminet/dev/basic).
+
+Updated 6 April 1999 - Now script runs the Blitz Support Suite install file
+and also sets the correct protection flags on the help files (so that they
+work).
+
+[) /\ \/ ][ [)   |\/| © |\/| ][ |\| |\|
+ dmcminn@house-of-mojo.freeserve.co.uk
+ http://members.xoom.com/David_McMinn

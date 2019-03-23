@@ -1,0 +1,24 @@
+Short:        source for Dungeon Explorer game
+Uploader:     camge@ix.netcom.com
+Author:       Curt Esser
+Type:         dev/blitz
+Requires:     Blitz Basic
+              games/role/DungeonEx.lha (if you want to compile and run it)
+Distribution: Freely distributable
+
+ This is the Blitz source code for my Dungeon Explorer game.
+Source for the room editor is also included.  This is a simple multi-tasking
+game with animation, sound, and music.  You may find something in here you
+can use.  If you wish to compile the game, you will also need the data files for
+the graphics, sounds, and music which are not included here.  You will need to
+download the game itself from games/role to get these.  You may use and distribute
+this source as you wish, however DO NOT distribute re-compiled versions of the
+whole game without my permission!
+ If you like the icons, you can find a whole set of Blitz icons on Aminet in
+the pix/icon drawer (actually 2 sets, one for Magic Workbench and one for
+NewIcons)
+
+Later,
+
+Curt
+

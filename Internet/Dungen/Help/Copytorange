@@ -1,0 +1,5 @@
+   Copy To Range takes the values for Level Width, Level Height, Rooms,
+Room Min and Room Max currently displayed, and copies them to the current
+Range (there are 10 ranges available). If you have multiple levels you wish
+to have the same set of values for, Copy To Range can make it go a lot
+faster than changing the settings for each level one at a time.

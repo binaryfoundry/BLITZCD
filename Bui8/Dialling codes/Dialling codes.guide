@@ -1,0 +1,276 @@
+@database "Dialling Codes.guide"
+@width 80
+@node Main "Dialling Codes Documentation"
+
+                            @{b}Dialling Codes v2.00@{ub} 
+         Utility for finding UK STD Codes and International Codes
+                            
+                    Created Sunday 5th February 1995
+
+                 © 1995 Julian Wright @{i}Freely Distributable@{ui}
+
+                         @{" Preface                " link Preface}
+                         @{" Features               " link Features}
+                         @{" PhoneDay 16th April'95 " link PhoneDay}
+                         @{" Program Usage          " link Usage}
+                         @{" Sorry, not found...    " link Errors}
+                         @{" Future Enhancements    " link Enhance}
+                         @{" About the program      " link Program}
+                         @{" Version History        " link History}
+                         @{" Contacting the Author  " link Author}
+                         @{" Distribution           " link Distrib}
+
+@endnode
+@node Preface "Preface"
+
+@{u}Preface@{uu}
+
+   Have you ever had a phone/BBS number and wondered just where it was
+located?  Well, using this little utility  you can find out just that and
+more besides...
+
+@endnode
+@node Features "Features"
+
+@{u}Features@{uu}
+
+   · New Feature: Shows ALL places that come under a particular code
+
+   · Knows the codes for over 4000 places plus BT special codes 
+
+   · Fully suppports the new @{"PhoneDay" link PhoneDay} codes
+
+   · Knows all 1,2 & 3 figure International Dialling Codes (>170 countries)
+
+   · Very fast display of information required
+
+   · Type in code and get ALL locations with that code
+
+   · Type in location and get code PLUS other locations with that code
+
+   · Displays time difference for International Codes
+
+   · No need to type in full Town/Country name
+
+   · Multi-tasking
+
+@endnode
+@node PhoneDay "PhoneDay"
+
+@{u}PhoneDay - 16th April 1995@{uu}
+
+   @{b}Area codes starting 0 will start 01@{ub}
+
+   On 16th April 1995, all UK area dialling codes will be modified. This
+change has been announced by OFTEL (the government's telecommunications
+advisory body) and is designed to ensure that Britain has enough dialling
+codes to last well into the next century.
+   Its called "PHONEDAY" - and you'll be hearing a lot more about it
+between now and next April.
+   For most people, all it means is that area codes starting with an [0]
+with start with [01] instead. So if for example you live in an 081 district
+of London, your number prefix will change to 0181; 071 will change to 0171,
+Cardiff 0222 numbers will change to 01222, and so on.
+
+@{u}New codes for Leeds, Leicester, Nottingham, Sheffield and Bristol@{uu}
+
+   In these areas, demand for new numbers is such that simply adding a 1
+won't be enough, so in these places brand new area codes are being
+introduced, and a 2 or a 9 prefix is being added to local six digit
+numbers. so:
+
+Leeds       -   0532 xxxxxx       becomes       0113 2xx xxxx
+Leicester   -   0533 xxxxxx       becomes       0116 2xx xxxx
+Nottingham  -   0602 xxxxxx       becomes       0115 9xx xxxx
+Sheffield   -   0742 xxxxxx       becomes       0114 2xx xxxx
+Bristol     -   0272 xxxxxx       becomes       0117 9xx xxxx
+
+@{u}International access code change@{uu}
+
+   The code for making overseas calls from the UK is also changing. the
+present [010] code will beome [00], as the UK joins the movement towards a
+single European code. Again, to make things simple, this will also be
+effective from 16th April 1995.
+
+@{u}The changeover period@{uu}
+
+   From August 1, 1994 until Phoneday, both new and old codes will work to
+allow these changes to be phased in. 
+
+As of v1.3 this program will tell you the new code for an area i.e. the
+codes you can use from 1st August 1994 and will have to use from 16th April
+1995 - PhoneDay
+
+@endnode
+@node Usage "Program Usage"
+
+@{u}Program Usage@{uu}
+   
+   Double-click on the icon and you will be presented with a small window.
+In this window is a text gadget box into which you can type any of the
+following:-
+
+     UK Dialling Code - Returns all places for that code
+
+     UK Town or City - Returns the code plus other places with that code
+
+     International Dialling Code - Returns the country and time difference
+
+     Country - returns the International Dialling Code and time difference
+
+   When typing in town/city or country names there is often no need to type
+in the whole name. Just type in a few characters of the name and the
+program will search through the database for the first occurance of those
+characters and display the result.
+
+  If you click on any of the places in the listview gadget the code will
+change to show any variations on the code for 3,4 or 5 figure numbers.
+
+   When requesting the country for a known International Dialling Code
+ALWAYS put a plus sign (+) in front of the number to show that it is an
+international code you're after. 
+E.g. Entering  +44    would result in    Great Britain  GMT
+     Entering  +234   would result in    Nigeria  +1 Hour
+
+   Most international phone numbers are listed like this anyway, 
+for example:  +44 (0)1234 567890
+
+@endnode
+@node Errors "Sorry, not found..."
+
+   If you get a "Sorry, not found..." message it means that a match for
+whatever you entered has not been found therefore no result can be shown.
+
+   Reasons include:
+   
+   · You mis-typed the dialling code or place name
+
+   · You typed in an old style dialling code (e.g 0234 instead of 01234)
+
+   · You forgot the '+' for International Dialling Codes
+
+   · The number you entered does not exist as a dialling code (e.g 01999)
+
+   · The country's internatioanl dialling code has more than 3 figures
+
+   Over 170 countries codes are known by the program. This includes all
+European countries, all major world-wide countries and many smaller
+countries too. If you need the code for a really small obscure country then
+maybe you'll have to wait a future release! (Or ask the operator!)
+
+@endnode
+@node Enhance "Future Enhancements"
+
+@{u}Future Enhancements@{uu}
+
+   · Codes for regions of countries esp. U.S.A
+
+   · Codes for the smaller countries
+
+   · Make the program a commodity 
+
+   · Suggestions?
+
+@endnode
+@node Program "About the Program"
+
+@{u}About the Program@{uu}
+
+    Dialling Codes v2.00 was written by me @{"Julian Wright" link Author} using Blitz
+Basic 2 by Acid Software. If anyone wants the latest version of this program
+then send a blank disk and return postage and packing to the contact address. 
+No disk, postage or packaging = No reply!!
+
+@endnode
+@node History "Version History"
+
+@{u}Version History@{uu}
+
+v1.0 : (25/3/94) Initial release
+
+v1.1 : (21/5/94) Fixed bug whereby typing a place in a mixture of upper and 
+       lower case letters (e.g. mAnChEsTeR) would give "Sorry, Not found..."
+         
+       Shortened and tidied up the code
+
+v1.2 : (26/6/94) Changed gadgets for proper GadTools gadgets
+
+v1.3 : (19/8/94) Changed all the area codes for PhoneDay
+
+v1.4 : (26/8/94) Major rewrite of the code checking routine
+       
+       Fixed a bug that appeared in V1.3 with adding PhoneDay support
+ 
+       Updated a few UK dialling codes where needed
+
+       Added "Project" menu with About and Quit options
+
+v1.5 : (09/9/94) Made the program adjust its window according to what size
+       font is being used in the system preferences. Thanks to Simon N
+       Goodwin for pointing that one out.
+
+v1.51: (29/11/94) Slight internal modifications to program code (optimizing,
+       tidying up, re-structuring). Changed the output from just printing in  
+       the window to a proper string gadget which in turn tidied up some
+       messy (but working!) programming.
+
+v1.52: (28/1/95) Updated a few dialling codes
+
+v2.00: (04/2/95) Major update hence the jump to version 2.
+
+       This version now has every dialling code in the UK plus every place
+       that comes under that code. This information is the same as you'll
+       find in the front of your telephone directory. It also includes the
+       variations on the code for 3,4 & 5 figure numbers.
+       
+       Dramatically added to the user interface. It now has 1 input string
+       gadget and 2 output text gadgets - one for the code and one for the
+       place or country/time difference. There's also a listview gadget
+       which shows all the places that come under a particular code. If you
+       click on any of the places in the listview the code gadget will show
+       any variations on the standard code for that place.
+
+       Changed the input checking routines so they are a fair bit faster.
+       This probably won't be noticable compared with previous versions due
+       to the increased number of codes to be checked.
+
+       Changed the way the code/place data is stored within the program to
+       save a considerable amount of space.
+
+       Checked every code against the latest code info from BT. Hopefully
+       now every code should be correct. Please tell me if you find any
+       that are not. Thanks to a number of users who have informed me of
+       inaccuracies in previous versions.
+@endnode
+@node Distrib "Distribution"
+
+@{u}Distributing Dialling Codes@{uu}
+
+   Dialling Codes v2.00 is @{i}freely distributable@{ui} but copyright © 1995
+by Julian Wright. The program, code and design are @{b}not@{ub} public domain,
+however, you can distribute this program freely as long as no charges
+are made apart from reasonable duplication costs and all accompanying
+files are left intact. 
+
+@{u}Including Dialling Codes on a coverdisk@{uu}
+    Any magazines wishing to use this program on their coverdisks are
+welcome to do so however, it would be nice if you could spare me a copy of
+the particular issue it appears in. Thanks!
+
+@endnode
+@node Author "Contacting the Author"
+    
+@{u}Contacting the Author@{uu}
+
+   Send comments, bug-reports, suggestions, donations(?!) to:
+
+   Julian Wright
+   21, Dudley Road,
+   Honeybourne,
+   Evesham,
+   Worcestershire
+   WR11 5XR.
+   ENGLAND.
+
+   Telephone: (01386) 832475 - after 6.30pm and before 9pm
+@endnode

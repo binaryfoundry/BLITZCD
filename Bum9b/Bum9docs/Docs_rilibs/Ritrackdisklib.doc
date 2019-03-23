@@ -1,0 +1,94 @@
+-----------------------------------------------------------------------------
+====         	     RI TrackDisk Library V1.2 (C)1996		 	 ====
+-----------------------------------------------------------------------------
+
+                          Written By Steven Matty
+                        ©1996 Red When Excited Ltd
+
+
+Introduction
+============
+Low-ish-level library for trackloaders and the like. For example,
+you can hide information on a disk track..not very useful nowadays,
+but you never know...
+
+
+
+Statement/Function : OpenDisk
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=OpenDisk(unit#)
+
+This attempts to open unit 'unit#' of the trackdisk.device, for use with
+the other Statement/Functions in this library. A return value of 0 indicates failure,
+-1 indicates success.
+
+
+Statement : MotorOn
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : MotorOn unit#
+
+This attempts to switch the drive motor on of the previously opened
+trackdisk unit (called with OpenDisk). You must call this Statement/Function
+before attempting to ReadSector/WriteSector/FormatTrack/WriteBoot
+
+
+Statement : MotorOff
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : MotorOff unit#
+
+This turns the drive motor of 'unit#' off.
+
+
+Statement/Function : ReadSector
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]ReadSector(unit#,sector#,buffer[,numsectors])
+
+This attempts to read 'numsectors' sectors from a trackdisk device which
+has been opened with OpenDisk and has its Motor On. If numsectors is
+omitted then 1 sector is read. The data is read into the memory location
+pointed to by 'buffer'.
+
+WARNING! Please MAKE SURE the MOTOR is _ON_ otherwise, all hell will break
+loose!!!
+
+
+Statement/Function : WriteSector
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]WriteSector(unit#,sector#,buffer[,numsectors])
+
+This is the same as ReadSector except........... it writes!
+(and no, I am not being lazy by not typing any decent docs)
+
+
+Statement/Function : FormatTrack
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]FormatTrack(unit#,track#,buffer[,numtracks])
+
+This does a TD_FORMAT on the specified track number. Buffer should point
+to the area of memory which the track should be formatted with. I don't
+know why this Statement/Function exists - but hey, it might come in useful.
+
+
+Statement/Function : WriteBoot
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : [success=]WriteBoot(unit#[,buffer])
+
+This writes 1k of data to the bootblock of the specified disk unit.
+The optional buffer parameter should point to an area of memory with which
+to write the bootblock.
+
+
+Statement : CloseDisk
+---------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : CloseDisk unit#
+
+This closes the trackdisk.device of the specified unit#. The Motor is
+automatically switched off if it is already on.

@@ -1,0 +1,218 @@
+@DATABASE "Documentación de FrontEnd V1.0"
+
+@NODE MAIN "Documentación de FrontEnd V1.0"
+
+                               ---------------
+                                FrontEnd V1.0
+                               ---------------
+
+                           ©  Arturo Roa Ros 1996
+ 
+@{"  Legalidades      " Link 0.}   Y demas cosas serias
+@{"  CopyRight        " Link 1.}  
+@{"  Introducción     " Link 2.}   ¿Que es FrontEnd?
+@{"  Requerimientos   " Link 3.}   ¿Que necesito?
+@{"  Instalación      " Link 4.}   ¿Como se instala esto?
+@{"  Usando FrontEnd  " Link 5.}   ¿Como se usa esto?
+@{"  Agradecimientos  " Link 6.}   Gracias muchas
+@{"  El Autor         " Link 7.}   Ese ser gris con cuatro ojos
+
+@ENDNODE
+@NODE 0. "Legalidades y demas cosas serias."
+
+Este programa es FreeWare, lo que significa que puedes hacer con el lo que 
+te de la gana, mientras cumpla las siguientes condiciones:
+
+	1°-Este programa no puede ser usado por ninguna persona de profesión
+militar.
+	2°-No se puede modificar, para su distribución, el archivo que 
+contiene el programa y sus añadidos.
+	3°-No se puede cobrar por este programa mas que un precio razonable
+por la copia, el soporte físico y la distribución, este "precio razonable"
+debe ser inferior a 4$ Americanos para la copia en diskettes e inferior a 35$
+Americanos para CD-ROMs.
+	4°-Si se desea incluir este programa en discos (Floppy o CD-ROM) de 
+revistas, se debe obtener el permiso del autor, esto se consigue mandando una 
+copia del ejemplar de la revista que contenga el programa en el disco 
+GRATUITAMENTE a el autor del programa (a excepción de Blitz User Group Magazine).
+	5°-Este programa no puede ser incluido o usado en programas 
+comerciales a menos que se consiga permiso escrito del autor del programa.
+
+Este SoftWare no tiene garantia. El autor no es responsable de ningun daño o
+perdida que pueda ocurrir debido al uso directo o indirecto de este SoftWare.
+
+@ENDNODE
+@NODE 1. "CopyRight"
+
+Este Software es de libre distribución, PERO todos los programas y documentos
+que lo componen son CopyRight de Arturo Roa Ros.
+
+                             © Arturo Roa Ros 1996
+
+@ENDNODE
+@NODE 2. "Introducción, ¿Que es FrontEnd?." 
+
+Una de las ventajas de usar un ordenador moderno y Amigable como el ordenador
+Amiga es sin duda la existencia de un interface gráfico que facilita en gran
+parte su uso. A veces el usuario de Amiga encuentra programas muy utiles pero 
+que no utilizan toda la potencialidad que supone el interface gráfico de Amiga
+(requesters de ficheros, de opciones, de texto...), y solo se pueden usar 
+desde el Shell. 
+FrontEnd ha nacido para simplificar un proceso tan tedioso como es el ejecutar
+programas como visores de animaciones, players de sonido y demas utilidades 
+que tienen una sintaxis compleja y que no tienen requester de ficheros.
+Lo mismo que hace este programa se puede conseguir desde programas como Opus
+Directory, pero hay usuarios que no se pueden permitir perder medio mega de 
+memoria cuando se trata de ver animaciones o dibujos o escuchar samples.
+
+@ENDNODE
+@NODE 3. "Requerimientos, ¿Que necesito?."
+
+Este programa requiere un ordenador Amiga con Workbench 3.x .
+Es aconsejable disco duro, ya que FrontEnd necesita su propia Font y grabar un
+programa en C:, por lo que el acceso desde diskettes seria un pelín tedioso.
+El programa requiere ReqTools.Library V38 ó superior (© Nico François).
+
+@ENDNODE
+
+@NODE 4. "Instalación, ¿Como se instala esto?."
+
+La instalación es automática ejecutando el script de instalación incluido en 
+el archivo. Si por un casual quieres hacer la instalación manualmente,es facil:
+
+Copia FrontEnd                               a C:
+Copia Fonts/XEN.font                         a FONTS:
+Copia Fonts/XEN/9                            a FONTS:
+Copia FrontEndPrefs                          a un lugar de tu disco donde lo quieras
+Copia Data (directorio)                      a el mismo directorio donde esté FrontEndPrefs
+Copia Catalogs/"TuLengua"/FrontEnd.catalog   a LOCALE:Catalogs/"TuLengua"/
+Copia Examples (directorio)                  a el mismo directorio donde esté FrontEndPrefs
+
+	FrontEnd V1.0 está localizado en español, si quieres FrontEnd 
+en tu lengua, puedes traducir el catálogo con programas como CatEdit 
+(© Rafael D'Halleweyn) o EasyCatalog (© Vektor Software Developement)
+, y mandarmelo (si quieres, ¡por supuesto!) para incluirlo en la 
+siguiente versión del programa (saldría en los créditos).
+@ENDNODE
+@NODE 5. "Usando FrontEnd, ¿Como se usa esto?."
+
+El uso de FrontEnd es facil, consiste en crear un fichero de preferencias
+para cada programa que quieras usar con FrontEnd, este fichero de 
+preferencias se crea con el programa FrontEndPrefs.
+
+FrontEndPrefs.
+Al ejecutar este programa, se abre una ventana con los gadgets:
+
+-Programa: En este gadget introducimos el programa que queremos usar con 
+FrontEnd.
+
+-Opciones: En este gadget introducimos las opciones del programa que vamos
+a usar con FrontEnd.
+
+-Requester: En este gadget seleccionamos el tipo de requesters que queremos 
+usar, ASL son los requesters de ficheros que vienen por defecto con el 
+sistema, y ReqTools son requesters mas complejos y completos que necesitan 
+la libreria ReqTools.Library (© Nico François), aconsejo este ultimo tipo.
+
+-1°: En este gadget seleccionamos que queremos que vaya primero en la 
+sintaxis del programa, las opciones o el fichero.
+
+-Stack: En este gadget hay que introducir la pila (stack) que necesita el 
+programa para ejecutarse, para la mayoria de los programas basta con dejar
+4096 bytes como pone por defecto FrontEndPrefs, pero hay algunos programas  
+que necesitan una pila diferente.
+
+-Patrón: En este gadget introducimos el patron de que queremos usar para 
+discriminar ficheros en los requesters de ficheros. Aquí solo explicar que
+por defecto (#?) muestra todos los ficheros y para mostrar solo ficheros 
+con una determinada extensión introduciriamos #?.extensión (#?.FLI #?.IFF).
+
+-Título: En este gadget introducimos el título que queremos que tenga el 
+requester de ficheros, algo así como: Selecciona la animación.
+
+-Grabar: Este gadget abre un requester de ficheros para que elijas el lugar 
+y el nombre del fichero de preferencias que vas a crear.
+
+-Cargar: Este gadget abre un requester de ficheros para que elijas un 
+fichero de preferencias creado anteriormente por FontEndPrefs y lo 
+modifiques al gusto.
+
+-Sobre: Este gadget abre una ventana que te da información del programa, 
+como el autor, la versión y la fecha de finalización.
+
+-Salir: Este gadget te deja salir del programa, evidente, ¿no?.
+
+
+Un ejemplo:
+
+Tengo un visor del animaciones llamado Xanim en C:, su sintaxis desde el
+Shell es C:Sanim +Ae +f FicheroDeAnimación y previamente he de ejecutar Stack
+20000 ya que necesita 20000 bytes de Stack. Para hacer esto desde el 
+WorkBench solo tendria que cargar FrontEndPrefs y seleccionar:
+
+En Programa: C:Sanim
+En Opciones: +Ae +f
+En Requester: El que me apetezca
+En 1°: Opciones (Ya que van antes que el nombre del fichero)
+En Stack: 20000
+En Patrón: #?
+En Título: Selecciona la animación a visionar.
+
+Grabar un fichero con un nombre como Dh1:SanimWB, salir de FrontEndPrefs y
+para ejecutar el programa hacer doble click sobre el icono del fichero 
+generado por FrontEndPrefs.
+
+	El icono por defecto del fichero de preferencias que está en el 
+directorio "Data", "FrontEndDefIcon.info", tiene como herramienta por defecto
+"C:FrontEnd", si quieres instalar el ejecutable FrontEnd en otro lugar que 
+no sea C: entonces tienes que cambiar el camino donde encontrar el ejecutable 
+FrontEnd en la herramienta por defecto.
+
+
+@ENDNODE
+@NODE 6. "Agradecimientos, gracias muchas."
+
+Este programa está realizado con BlitzBasic II el mejor basic del mundo Amiga,
+Agradecer a las personas que están desarroyando mas y mas librerias para 
+Blitz2 como pueden ser:
+ -Steven Matty.
+ -Neil O'Rourke.
+ -Richard T. Elmore.
+ -Aaron Koolen.
+ -Stephen McNamara.
+ -Andre Bergmann.
+ -Lee Packham.
+ -Kevin Winspear.
+Agradecer también su soporte a los usuarios de:
+ -Matthew Tillett y demas gentes del Blitz User Group Magazine.
+
+*************** Dedico este programa a los INSUMISOS A LOS EJERCITOS presos
+y demás PRESOS DE CONCIENCIA del mundo. ************************
+
+@ENDNODE
+@NODE 7. "Autor, ese ser gris con cuatro ojos."
+
+	El autor de este programa es Arturo Roa Ros, a continuación doy 
+mi dirección para aquellos que querais escribirme para contactar, 
+intercambiar información sobre el BlitzBasic II, Bug Reports (espero 
+que no), o lo que sea:
+
+		 Arturo Roa Ros
+		 C/F.Garralda 10 4°D
+		 Burlata  CP31600
+		 Nafarroa
+
+
+Otra dirección util, la del Blitz User Group Magazine:
+
+		Blitz (Matthew Tillett)
+		27 Hillside Avenue
+		Worlingham
+		Beccles
+		Suffolk
+		NR34 7AJ
+		England
+
+
+
+@ENDNODE

@@ -1,0 +1,45 @@
+
+				Ball Blitz
+				~~~~~~~~~~
+
+			  Written by Tim Herbert
+			    in December 1995
+
+		      Submitted to the Blitz Basic II
+                          programming competition
+		  Permission is granted to ACID software
+                  to include the included files on one of
+                  their future BUMs.
+
+E-MAIL:
+tmh@cs.nott.ac.uk (term time only, until June 1996)
+
+S-MAIL:
+160 Mains Lane,
+Poulton-le-Fylde,
+Lancs. FY6 7LB
+England
+
+Telephone (0115) 9708833 - Term time
+or (01253) 882932 - Holiday time
+
+
+
+PLAYING INSTRUCTIONS
+~~~~~~~ ~~~~~~~~~~~~
+
+Nothing to it really:
+Use the joystick to rotate the wheel at the bottom of the screen.
+Press fire to launch the ball up the screen. If it lands next
+to three or more balls of the same colour, then they are all
+blitzed! When there are no more balls left, you are moved to the
+next level.
+
+
+HINTS
+~~~~~
+
+Any balls that aren't attached to the top of the screen will fall
+down after each shot. Try and learn to take advantage of this -
+take a little more time to plan a shot, and it is sometimes possible
+to remove nearly all the balls at once!

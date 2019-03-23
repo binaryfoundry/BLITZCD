@@ -1,0 +1,433 @@
+@DATABASE "Default"
+@NODE "MAIN" "Sommaire"
+@TOC "MAIN"
+ BlitzBank  Version 1.4
+ par Thibault Richard
+
+ SOMMAIRE DE CETTE DOCUMENTATION
+
+ 1.Introduction                                     4.@{"Matériel Nécessaire" LINK "Matériel"}
+ 1.1 @{"Au sujet de BlitzBank" LINK "AuSujetDe"}
+ 1.2 @{"Renseignement légaux" LINK "légal"}                          5.@{"Bugs" LINK "Bugs"}
+ 1.3 @{"Modalités d'enregistrement" LINK "Enregistrement"}
+                                                    6.@{"Histoire De BlitzBank" LINK "Histoire"}
+ 2.@{"L'écran de BlitzBank" LINK "l'écran"}
+
+ 3.Description des menus
+ 3.1 @{"Projet" LINK "Projet"}
+ 3.2 @{"Editer" LINK "éditer"}
+ 3.3 @{"Outils" LINK "Outils"}
+ 3.4 @{"Recherche" LINK "Recherche"}
+ 3.5 @{"Préférences" LINK "Préférences"}
+@ENDNODE
+
+@NODE "Histoire" "Histoire De BlitzBank"
+@TOC "MAIN"
+1.7 Histoire De BlitzBank
+
+
+Version 1.0 ----> Version 1.1
+
+ - Bug d'impression  -> demande du nombre de ligne et de colonnes.
+ - Sauvegarde IFF des statistiques en bâtons.
+ - Correction du petit bug d'affichage des crédits et débits (-128.8999)
+ - Affichage de "Retrait" ou "Depot" au lieu d'un blanc dans la colonne catégorie des débits et retraits.
+ - Correction du bug apparaissant lorsqu'on collait un dépôt ou un retrait.
+ - Correction du bug dans les statistiques (ne prenait pas en compte les opérations en cours
+   de validation)
+ - Les copier/coller de gros blocs étaient bien trop lent  -> insertion dichotomique et tri par tas.
+ - Erreur sur le calcul des centimes des grands nombres  -> précision au centime près jusqu'à
+   21 474 836.47 !
+ - Nouvelle Option Coller Et Déplacer.
+ - Corection du bug survenant lorsqu'on modifiait la validation ou la catégorie d'une opération de dépôt ou de retrait.
+ - L'affichage des statistiques n'apparaissait pas à partir de l'an 2000 -> Bug corrigé
+ - On peut maintenant se déplacer dans le compte avec les flèches du clavier.
+ - Défilement 2 fois plus rapide.
+ - On peut maintenant scroller sur les catégories dans les statistiques en camembert.
+ - Reconnaissance et chargement des fichiers au format ABank.
+ - Nouvelle méthode de sauvegarde 2 fois plus économique avec codage du mot de passe, des dates et des
+   sommes du compte.
+ - On peut maintenant lancer un compte en cliquant sur une icône de type project. Cette icône est
+   crée à chaque sauvegarde du compte si elle n'existe pas déja.
+ - Création De l'outils de démonstration.
+ - Les écrans autres qu'en mode PAL refusaient de s'ouvrir -> Bug Corrigé.
+
+Version 1.1 ----> Version 1.2
+
+ - Supporte la palette AGA
+ - On peut maintenant déplacer toutes les fenêtres et les fermer grâce au "CloseGadget".
+ - Nouveau mode de suivi des opérations automatiques, avec gestion du nombre de virements à effectuer.
+ - Gestion et suivi des emprunts banquaires ou personnels.
+
+Version 1.2 ----> Version 1.3
+
+ - L'écran de BlitzBank s'affichait parfois avec des couleurs surprenantes --> Bug corrigé (j'avais
+   oublié de configurer les DRIPens...)
+ - BlitzBank peut s'installer désormais en francais ou en anglais (la doc n'est pas encore en anglais)
+ - Les versions précédentes ne reconnaissaient pas à chaque fois les fichiers au format ABank.
+   Cela provenait essentiellement du bloc-note (trop long) et du petit changement de format dû au
+   changement de version. Les fichiers au format ABank sont maintenant reconnus quelque soit la version.
+
+Version 1.3 ---> Version 1.4
+
+ - Correction d'un petit bug survenant lors du tri des dates.
+ - Utilisation de la locale.library (le catalog français est fourni).
+ - Utilisation de la reqtools.library, qui permet d'avoir des requester plus beaux et plus pratiques
+   qu'auparavant.
+ - Un guru survenait parfois lors de l'ouverture de BlitzBank --> bug corrigé.
+
+@ENDNODE
+
+@NODE "Avenir" "L'Avenir De BlitzBank"
+@TOC "MAIN"
+6. L'avenir de BlitzBank
+
+  l'avenir de BlitzBank est entre vos mains . Si vous êtes nombreux à vous enregistrer et
+  à réclamer des améliorations , d'autres versions seront programmées et BlitzBank grandira .
+  Sinon , il se perdra dans la masse ...
+
+  Les projets suivant sont à l'étude:
+     - gestion des comptes et plans épargne.
+     - calcul des aggios.
+     - option fusionner, pour fusionner deux comptes (utile pour deux années de compte sur ABank).
+     - import de vos propres logos de banque et de compte.
+     - traduction totale de BlitzBank en anglais et allemend (ce sera le plus dur pour moi !!).
+     - calculatrice
+     - bloc-note
+
+  Si vous avez d'autres suggestions, elle sont toutes les bien venue...
+
+@ENDNODE
+
+@NODE "AuSujetDe" "Au Sujet De ..."
+@TOC "MAIN"
+1.Introduction
+1.1 Au sujet de BlitzBank
+
+BlitzBank est un logiciel de gestion de compte banquaire très inspiré d'ABank (il peut d'ailleurs lire
+les fichiers ABank) mais programmé à 99% en BLITZBASIC .
+Il permet par simple ajout d'opération, de mettre à jour automatiquement votre compte et
+grâce à des fonctions puissantes telles que  prélèvement/versement automatique, il peut même
+les écrire à votre place !
+Ayant utilisé moi même un petit peu ABank et d'autres logiciels de gestion de compte bancaire,
+je me suis rendu compte que les améliorations que je pouvais apporter étaient nombreuses.
+Jugez plutôt vous même :
+   - gestion du jour , du mois et de l'ANNEE . (on peut aller de 1978 à 2077 !!)
+   - support du " @{"couper copier coller" LINK "éditer"} "
+   - fenêtres, écrans, cellules, gadgets et menus entièrement système (2.0+)
+   - trie automatique par date et détection de sa validité suivant un calendrier perpétuel .
+   - @{"Statistiques" LINK "Outils"} en camemberg et en batons façon ABank avec filtres précis et sauvegarde
+     au format IFF
+   - @{"Impression" LINK "Outils"} avec filtre ultra sélectif .
+   - Option de démonstration ultra-puissante. L'ordinateur vous montre lui-même automatiquement,
+     comment les principales fonctions de BlitzBank fonctionnent.
+   - En plus des opérations validées ou non par la banque , gestion de votre porte feuille
+     et donc , gestion de vos dépots et retraits de liquide .
+   - gestion des @{"prélèvements/versements automatiques" LINK "Outils"} incluant toutes les options nécessaires .
+   - gestion et suivi de vos @{"emprunts" LINK "éditer"} banquaires ou personnels, avec calcul et virement automatique
+     des remboursements suivant le taux d'intérêts et la durée de l'emprunt.
+   - Reconnaissance et lecture des fichiers au format ABank (quelque soit la version).
+   - gestion de @{"mot de passe" LINK "éditer"} .
+   - support du @{"chercher\remplacer" LINK "Recherche"} .
+   - possibilité @{"d'iconification" LINK "Outils"} .
+   - Requête de Fichiers et ScreenMode ASL (nécessite ASL.library) .
+   - Utilisation de la ReqTools.library (requesters) et de la Locale.library
+   - Supporte jusqu'à 9 @{"comptes" LINK "Comptes"} simultanément .
+   - Peut @{"jouer" LINK "Préférences"} le module au format MED que vous souhaitez .
+   - Offre un grand choix de @{"préférences" LINK "Préférences"} telles que le mode d'écran , le choix de la couleur
+     d'affichage des crédits , débits , dépots et retraits , le choix de la palette ...
+@ENDNODE
+
+@NODE "Bugs" "Bugs"
+@TOC "MAIN"
+5. Bugs
+
+  Si vous constatez un bug, vous seriez gentil d'écrire à
+
+                    Thibault Richard
+                    87,rue Emile Paladilhe
+                    93150 Le Blanc-Mesnil
+                    mail: thibault@brest.univ-paris13.fr
+
+  N.B: Si vous avez de brillantes idées pour améliorer BlitzBank, écrivez-moi aussi, je verrai si
+       je peux les inclure dans le logiciel.
+@ENDNODE
+
+@NODE "Comptes" "Comptes"
+@TOC "MAIN"
+3.6 Comptes
+
+  Ce menu permet de choisir le compte courant . Choisissez le compte que vous désirez ,
+@ENDNODE
+
+@NODE "l'écran" "L'Ecran De BlitzBank"
+@TOC "MAIN"
+2.L'écran de BlitzBank
+
+  L'écran de BlitzBank ressemble en tout point à celui d'ABank , mais avec de nouveaux gadgets
+  et des colonnes 3D avec sélection 3D .
+  A droite , se situent:
+      - le solde banque : renvoie le montant que vous avez bien en banque .
+      - le solde réel : il donne votre solde en prenant en compte les opérations non validées
+        en banque . Une opération non validée façon BlitzBank est une opération soit de façon
+        classique non validée par la banque , soit une opération sur du liquide en votre
+        possession , donc une opération sur votre portefeuille .
+      - la poche: Indique le montant de votre portefeuille (c.a.d. le montant en liquide que vous
+        possédez en poche actuellement ).
+        C'est l'opération : solde réel - solde banque - opérations en cours de validation .
+
+   A gauche se situent les deux icones de votre banque et de votre compte , ainsi que votre nom ,
+   votre numéro de compte et le type de votre compte .
+
+   Dans la partie basse se situent les colonnes nécessaires à tut programme de compte .
+   Les opérations validées sont reconnaissables par le symbole "/" , Les opérations non validées
+   n'ont aucun symbole , Les opérations en cours de validation portent le symbole ":" .
+@ENDNODE
+
+@NODE "éditer" "Editer"
+@TOC "MAIN"
+3.2 Editer
+
+   - valider : active le mode de validation. Ce mode vous permet de valider une ligne en cliquant
+     dessus . (le 3ème gadget fait la même chose) .
+   - modifier : active le mode de modification . Ce mode vous permet de modifier la date ,
+     la nature , la catégorie ou le crédit\débit d'une ligne en cliquant simplement dessus .
+     (le 4ème gadget fait la même chose) .
+   - sélectionner : active le mode de sélection . Ce mode vous permet de sélectionner une ou
+     plusieurs lignes afin d'effectuer les opérations de "couper copier coller" .
+     (le 5ème gadget fait la même chose) .
+   - Ajouter : ajoute une opération au compte courant (le 1er gadget fait la même chose ).
+     Une fenêtre s'ouvre vous demandant:
+        - la date (jjmmaa) qui sera analysée et valider par le programme
+          exemples: vous entrez 320195 , cela deviendra 010295
+                    vous entrez 000395 , cela deviendra 280295
+        - la nature de l'opération
+        - le crédit\débit (le 1er est positif, le 2nd est négatif)
+        - la categorie (à choisir dans la liste des catégories).
+        - validation: Cliquez sur la cellule cyclique pour choisir entre "opération non validée" ,
+          "opération en cours de validation" ou" opération validée" .
+          "Opération non validée" correspond à une opération faite en liquide ; cette opération
+          n'apparaît pas dans les opérations de la banque .
+          "Opération en cours de validation" correspond à une opération faisant partie des
+          opérations de votre banque , mais qui n'a pas encore été reçue par votre banque .
+          "Opération validée" correspond à une opération faisant partie des opérations de votre
+          banque .
+          si vous choisissez opération validée , vous pouvez précisez si c'est une opération
+          normale (crédit/débit), un dépot/retrait (transfert d'argent entre la banque et votre
+          poche) ou un emprunt. Si vous choisissez "emprunt", il vous sera demandé le taux d'intéret,
+          ainsi que le nombre de mensualités. Ensuite, une opération automatique sera crée, et s'occupera
+          des remboursements du prêt. Vous pourrez modifier, effacer ou même avoir des renseignements sur
+          votre emprunt par la suite (voir le chapitre sur les @{"opérations automatiques" LINK "Outils"}).
+          N.B: Si vous entrez un montant négatif pour un emprunt, cela voudra dire que c'est vous qui êtes
+          le prêteur !! Ainsi, si vous prêtez une somme à un ami, vous pourrez vous faire rembourser avec
+          intérêts !!
+   - Couper : Efface les lignes sélectionnées et les met dans le tampon (disponible uniquement
+     en mode sélection)
+   - Copier : copie les lignes sélectionnées dans le tampon (disponible uniquement en mode
+     sélection)
+   - Coller : recopie les lignes du tampon dans le compte courant . Il est ainsi possible de copier
+     des lignes d'un compte vers un autre en 3 secondes . (disponible uniquement si le tampon n'est
+     pas vide)
+   - Coller Et Déplacer : Même chose que "Coller" mais vous pouvez déterminé le déplacement en jours,
+     mois et années. Cela évite de copier une ligne et ensuite de modifer la date. (disponible uniquement
+     si le tampon n'est pas vide)
+   - Compte : ouvre une fenêtre demandant à l'utilisateur des renseignement sur le compte courant :
+     ( cette fonction est disponible également en cliquant sur l'icône de la banque ou sur celle
+       du dessous )
+     - le nom du titulaire
+     - le numéro du compte
+     - le type du compte
+     - le solde de départ
+     - le nom de la banque (à choisir parmis une liste)
+     - le genre du compte (à choisir parmis une liste) . Exemple: bureau , famille , club ...
+   - Categorie : tout comme dans ABank , vous pouvez classez vos opérations par catégorie , il
+     vous est donc possible d'éditer ces categories :
+     Une fenêtre s'ouvre et trois boutons apparaissent.Le 1er permet d'ajouter une categorie à
+     la liste , le 2nd permet de supprimer la catégorie qui est sélectionnée dans la liste ,
+     et le 3ème permet de reprendre la liste des categories d'un autre compte en mémoire .
+     (cette fonction est disponible aussi depuis le 2nd gadget )
+   - Mot De Passe : permet d'entrer votre mot de passe (vous devrez l'écrire deux fois pour plus
+     de sûreté) . Attention à ne pas l'oublier car vous ne pourriez plus entrer dans votre compte.
+     Si vous sentez que vous ne pourrez pas le retenir , ne rentrez aucun mot de passe et ainsi
+     le programme ne vous le demandera pas au chargement .
+     ( Cette fonction est disponible aussi depuis le gadget en forme de clé )
+   - Recalculer Soldes : Permet de recalculer depuis le début vos soldes . Cette option permet
+     d'être sûr de n'avoir aucune erreur dans le calcul de vos soldes , crédits et débits .
+     En effet , malgré de très nombreux tests , il se peut toujours qu'il se produise une erreur
+     dans le calcul de vos soldes . Pour remédier à cela , cette option recommence tous les
+@ENDNODE
+
+@NODE "Matériel" "Matériel Nécessaire"
+@TOC "MAIN"
+4.Matériel Nécessaire
+
+  BlitzBank fonctionne sur tout Amiga muni du système 2.0 ou + ainsi que 1,5 méga de mémoire.
+  BlitzBank fonctionne sur tous les 680x0, mais il est tout de même recommandé d'avoir
+  un 68020 ou + avec de la mémoire fast, pour que les affichages soient plus rapides.
+  Pour que certaines fonctions (telles que le prélèvement\versement automatique) , il est
+  indispensable de posséder une horloge ou de rentrer la date avant de lancer BlitzBank .
+  Tous les tests ont été effectués sur un A1200 muni d'un disque dur et d'une carte
+  accélératrice BLIZZARD , sur un A2000 avec 2.0 sans disque dur,  et sur un A4000 .
+  Si vous constatez une anomalie sur d'autres configurations , vous
+  seriez très gentil de @{"prévenir l'auteur" LINK "Bugs"} pour que les corrections soient effectuées .
+
+@ENDNODE
+
+@NODE "Enregistrement" "Modalités D'Enregistrement"
+@TOC "MAIN"
+1.3 Modalités d'enregistrement
+
+  BlitzBank est SHAREWARE , pour vous enregistrer , envoyez 100 FF à
+
+                    THIBAULT Richard
+                    87,rue Emile Paladilhe
+                    93150 Le Blanc-Menil
+                    (chèques à l'ordre de Thibault Richard)
+                    (n'oubliez pas votre adresse si différente du chèque !!)
+
+   Vous recevrez un fichier clé à mettre avec l'executable blitzbank qui permettra au programme
+   de vous reconnaître comme utilisateur enregistré.
+   Si vous désirez obtenir par la suite une version supérieure à cette version 1.4,
+   il vous suffira de vous procurer cette version dans le DP et de reprendre simplement votre
+   ancien fichier clé . Cette nouvelle version vous reconnatra comme la précédente .
+
+@ENDNODE
+
+@NODE "Projet" "Projet"
+@TOC "MAIN"
+3.Description des menus
+3.1 Projet
+
+   - Ouvrir Nouveau: ouvre un nouveau compte
+   - Charger : Charge un compte à l'endroit du compte courant.
+               Reconnaît aussi les fichiers au format ABank.
+   - Ouvrir et Charger : ouvre nouveau compte et charge un compte à cet endroit.
+               Reconnaît aussi les fichiers au format ABank.
+   - Sauver : sauvegarde le compte courant sous son nom courant.
+   - Sauver sous : sauvegarde le compte courant avec demande du fichier.
+   - Fermer : Ferme le compte courant.
+   - utilisateur : Donne des renseignements sur l'utilisateur.
+   - A propos de : Donne des renseignements sur la version de BlitzBank.
+   - Quitter : Quitter BlitzBank.
+@ENDNODE
+
+@NODE "Outils" "Outils"
+@TOC "MAIN"
+3.3 Outils
+
+  - Statistiques : Cette fonction permet d'afficher un graphique du type camembert décrivant
+    vos opérations par catégorie . Trois boutons cycliques vous permettront de choisir d'afficher
+    uniquement les crédits ou uniquement les débits , et d'afficher les statistiques pour une
+    période donnée . Exemple: si vous sélectionner "1995" et "l'année" , vous aurez les statistiques
+    de l'année 1995 . Si vous choisissez "TOUT" et "Janvier" , vous aurez les statistiques de tous
+    les mois de janvier de toutes vos années de compte. Si vous choisissez "TOUT" et "l'année" ,
+    vous aurez alors les statistiques de toutes vos années de comptes entières , donc les
+    statistiques de votre compte depuis son début jusqu'à sa fin .
+    Vous pouvez sauvegarder soit la fenêtre soit le camembert seul au format IFF en cliquant sur
+    le bouton correspondant .
+    Cette fonction est disponible depuis le gadget camembert .
+  - Balance Annuelle : permet d'afficher un graphique en batons décrivant vos crédits et vos débits
+    durant une année entière (c'est à vous de sélectionner l'année souhaitée en cliquant sur la
+    cellule cyclique)
+    Vous pouvez sauvegarder le diagramme au format IFF en cliquant sur l'icone "Sauver IFF".
+    Cette fonction est disponible depuis le gadget représentant un graphique en batons.
+  - Opération Automatique:
+    Dans BlitzBank, une opération automatique vous permet d'entrer toutes les données d'une
+    opération normale ainsi que sa fréquence, et de voir cette dernière apparaître à chaque
+    fois automatiquement sans rien taper ! (cette puissante fonction devient très vite indispensable)
+    BlitzBank vous permet d'ajouter, de modifier et d'effacer un versement/prélèvement automatique .
+    Ces deux fonctions sont disponibles également depuis deux gadgets .
+    - Ajouter : vous pouvez ajouter une opération automatique de la même manière qu'une opération
+      normale mais en plus , vous définissez la période pour l'opération .
+      Ainsi si vous choisissez 010195 comme date de départ et hébdomadaire(7 jours) comme période,
+      l'opération apparaitra le 010195 la 1ère fois et ensuite tous les 7 jours automatiquement!
+      De plus, vous pouvez choisir le nombre d'opérations. Ce nombre indique le nombre de fois que
+      l'opération devra apparaître dans votre compte. Si vous choisissez 7 avec mensuel, l'opération
+      apparaîtra automatiquement tous les mois pendant 7 mois. Si vous choisissez 0, le nombre
+      d'apparition est illimité (vous pourrez toujours effacer l'opération automatique par la suite).
+    - Modifier\Effacer : vous pouvez modifier,effacer ou avoir des infos sur une opération automatique en choisissant
+      l'opération souhaitée dans la cellule cyclique et en cliquant sur "modifier", "effacer" ou "info".
+      Si vous choisissez info, une fenêtre apparaîtra vous donnant de précieux renseignements sur votre
+      opération automatique, comme par exemple, le nombre de virements restant, le coup total de ces virements...
+      Si vous choisissez effacer, cette opération sera effacer .
+      Si vous choisissez modifier, la même fenêtre que précédemment apparaîtra et vous pourrez
+      modifier ce que vous désirez . ( La date affichée correspond à la date du prochain virement.
+      Ainsi , il vous sera possible de consulter une opération automatique en appelant cette
+      fonction "modifier" juste pour connaître quand aura lieu le prochain virement d'une
+      opération automatique .)
+  - Impression : Permet une impression de votre compte avec filtre .
+    Ainsi , vous pouvez choisir d'imprimer une période quelconque , seulement les crédits ,
+    seulement telle ou telle catégorie ...
+    De plus, c'est vous qui définissez le nombre de colonnes et de lignes à imprimer. Ainsi, après
+    deux ou trois réglages, l'impression sera vraiment adaptée à votre imprimantes et à la taille
+    des caractères choisis dans les préférences du WorkBench..
+    Il vous est possible de sauvegarder le nombre de lignes et de colonnes en choisissant
+    "Sauver Préférences" dans le menu "Préférences".
+  - Iconifier : Permet d'iconifier BlitzBank . Une icône apparaît dans votre Workbench et vous
+    pouvez la déplacer ou bon vous semble . Vous pouvez revenir dans BlitzBank en sélectionnant
+    "Désiconifier" dans le menu de cette icône . Vous pouvez sauvegarder la position de cette
+    icône en sauvegardant vos préférences dans le menu "préférences" .
+  - Démo : Cette fonction active le mode démonstration. Dans ce mode, l'ordinateur devient acteur et
+    vous devenez spectateur. L'ordinateur, utilise BlitzBank lui-même pour vous montrez comment on
+    se sert des principales fonctions du logiciel. Ainsi, il déplace la souris, clique sur les boutons,
+    et tape des caractères lui-même !!
+
+@ENDNODE
+
+@NODE "Préférences" "Préférences"
+@TOC "MAIN"
+3.5 Préférences
+
+  - Mode D'Ecran : - Sous l'intitulé "initialement", vous pouvez choisir soit d'utiliser par défaut
+    un certain mode d'écran choisi par vos soins, soit de le choisir pendant le chargement.
+                   - Sous l'intitulé "maintenant", se trouve une icône qui vous permet de changer de
+    mode d'écran immédiatement, cette opération n'affecte en rien les préférences.
+  - Choisir Palette : Permet de changer les 4 premières couleurs de la palette et de choisir
+    la couleur d'affichage des crédits , debits et depots\retraits .
+  - Format Date : vous avez le choix entre plusieurs format de date :
+      020295 , 02.02.95 , 02-02-95 , 02/02/95 , 02 fev 95
+  - Milliers Séparés : vous pouvez choisir l'affichage des nombres en séparant les milliers ou non.
+  - @{"Recherche" LINK "Recherche"} :
+     - Maj=Min : si sélectionné , permet de rechercher en ne tenant pas compte des majuscules .
+     - Remplacer la ligne : si sélectionné , permet de remplacer toutes la ligne comportant
+       l'élément recherché . Si non sélectionné , permet de rempalcer uniquement ce qui a été
+       trouvé .
+  - Jouer MedModule : joue un module musical au format MED .
+  - Charger MedModule : charge un module musical au format MED .
+  - Sauver préférences : Sauve les préférences ainsi que la place de l'icône pour l'iconification
+    de BlitzBank et le nombre de lignes et de colonnes pour l'impression.
+@ENDNODE
+
+@NODE "Recherche" "Recherche"
+@TOC "MAIN"
+3.4 Recherche
+
+  - Chercher : demande une chaîne de caractère et recherche cette chaîne dans le compte courant .
+  - Chercher Encore : continue une recherche qui s'est arrêtée .
+  - Remplacer Par : demande une chaîne de caractère , et remplace la chaîne trouvée précédemment
+    par cette dernière ou remplace la ligne à qui appartient la chaîne trouvée par cette dernière
+    suivant la préférence souhaitée dans le menu @{"préférences" LINK "Préférences"} .
+  - Remplacer : remplace la chaîne trouvée précédemment par la chaîne de remplacement courante ou
+    remplace la ligne à qui appartient la chaîne trouvée par cette dernière suivant la préférence
+    souhaitée dans le menu @{"préférences" LINK "Préférences"} .
+
+@ENDNODE
+
+@NODE "légal" "Renseignements Légaux"
+@TOC "MAIN"
+1.2 Renseignements légaux
+
+   Malgré de très nombreux tests , il se peut que quelques bugs persistent .
+   Si vous utilisez ce programme , je ne pourrais être tenu responsable de tout
+   domage direct ou indirect survenu après l'utilisation de BlitzBank .
+   Vous utilisez donc BlitzBank à vos risques et périls .
+
+   La version de démonstration de BlitzBank est librement distribuable
+   dans tous les magasin de DP et autres résaux.
+   Si un magazine désire mettre BlitzBank sur sa disquette , il devra demander à l'auteur
+   sa permission .
+
+   Le fichier clé que recevra l'utilisateur enregistré NE DOIT JAMAIS être distribué ni copié .
+   L'utilisateur enregistré serait tenu responsable si son fichier clé était divulgué .
+@ENDNODE
+

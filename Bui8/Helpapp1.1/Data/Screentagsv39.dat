@@ -1,0 +1,152 @@
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_ColorMapEntries: ( ti_Tag=$8000003C )
+
+Specify the number of ColorMap entries for the screen 
+in ti_Data (Defaults to 2^depth). Must be used for
+certain V39 graphics.library features, such as
+palette-banking.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_Parent: ( ti_Tag=$8000003D )
+
+Specify a "parent" screen to attach the new
+one to in ti_Data. (Pointer to a Screen structure).
+Attached screens slide and depth-arrange together.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_Draggable: ( ti_Tag=$8000003E )
+
+Specify a boolean flag for whether the
+screen is draggable, in ti_Data.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_Exclusive: ( ti_Tag=$8000003F )
+
+Specify a boolean flag for a screen that won't
+share the display, in ti_Data.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_SharePens: ( ti_Tag=$80000040 )
+
+For those pens in the screen's DrawInfo->dri_Pens,
+Intuition obtains them in shared mode.  For 
+compatibility, Intuition obtains the other pens of a 
+public screen as PEN_EXCLUSIVE.  Screens that wish to
+manage the pens themselves should generally set
+ti_Data to TRUE.  This instructs Intuition to
+leave the other pens unallocated.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_BackFill: ( ti_Tag=$80000041 )
+
+Provide a pointer to a Hook structure in
+ti_Data to install a "backfill hook" for
+the screen's Layer_Info.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_Interleaved: ( ti_Tag=$80000042 )
+
+Specify a boolean flag for a screen to
+allocate an interleaved bitmap, in ti_Data.
+(Defaults to False).
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_Colors32: ( ti_Tag=$80000043 )
+
+Specify the screen's initial palette using 32
+bits-per-gun entries. ti_Data is a pointer
+to a table to be passed to graphics.library/LoadRGB32().
+Any color set specified here has precedence over the
+same register set by SA_Colors.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_VideoControl: ( ti_Tag=$80000044 )
+
+Specify a pointer to a Taglist that Intuition will
+pass to graphics.library/VideoControl() upon
+opening the screen.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_FrontChild: ( ti_Tag=$80000045 )
+
+Specify a pointer to an already open screen
+that is to be the child of the new screen. The
+child screen will be moved to the front of its
+family.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_BackChild: ( ti_Tag=$80000046 )
+
+Specify a pointer to an already open screen
+that is to be the child of the new screen. The
+child screen will be moved to the back of its
+family.
+
+
+Screen Attribute Tags (V39)
+=====================
+
+Usage: OpenScreenTags_/OpenScreenTagList/Screentags
+
+SA_LikeWorkbench: ( ti_Tag=$80000047 )
+
+Use ti_Data as 1 to request a screen which
+is just like the Workbench. This gives you
+the same screen mode, depth, size, colors etc.
+as the Workbench screen.
+

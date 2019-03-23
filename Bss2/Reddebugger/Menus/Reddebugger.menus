@@ -1,0 +1,3 @@
+Edit...,EXEC,~,0,run >NIL: Blitz2:PlugIns/MenuED REDDEBUGGER
+~,EXEC,~,0,~
+Token List,EXEC,~,0,run Blitz2:REDHelp/REDDebugger/TokenList %p %c

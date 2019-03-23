@@ -1,0 +1,245 @@
+;
+; RWEmathlib (BUM10 beta release) - Nigel Hughes RWE/RI
+;
+; - #rwemathlib=23
+;
+; - does maths and matrix things and some chunky drawing stuff too
+;
+; - take a look at Nigels Landscape, Sphere and Sorting demos in
+;   BUM10Examples2:UserCode2/  and my version of Nigels sphere demo
+;   in BUM10Examples2:TedsDemos/
+;
+; - Why did I have to write these 'docs' Nigel ?  :-P 
+;
+;
+;Ted Bailey - September '96
+
+
+
+                             Command List
+                             ------------
+
+       UPeek(ad.l)
+       QMULS(v1.q,v2.q)
+       MakeVector x.w,y.w,z.w,&V.Vector_Type
+       VectorMagnitude(&V.Vector_Type)
+       VectorAngle(&N.Vector_Type,&L.Vector_Type)
+       FastVectorAngle(&N.Vector_Type,&L.Vector_Type)
+       UnitVector &N.Vector_Type
+       SubtractVectors &N.Vector_Type,&L.Vector_Type,&Result.Vector_Type
+       DotProduct &N.Vector_Type,&L.Vector_Type
+       CrossProduct &N.Vector_Type,&L.Vector_Type,&Result.Vector_Type
+       ApplyMatrix &M.Matrix_Type,&V.Vector_Type,&R.Vector_Type
+       FastApply &M.Matrix_Type,&V.Vector_Type,&R.Vector_Type
+       ShellSort &array.l,items.l
+       DepthSort &Index.q,&Assoc1.l,&Assoc2.l,Items.l
+       ShellDepthSort &array.l,items.l
+       CInitDraw(Addr Chunky Object.l)
+       CDrawDone
+       CCls Colour mask
+       CLine x1,y1,x2,y2,c
+       CHLine x1,x2,y,c.b
+       CTriangle &pointlist,color.b
+       CTrianglef &pointlist,color.b
+
+
+
+
+FUNCTION: UPeek(ad.l)
+---------------------
+
+Returns a word equal to the unsigned byte at address 'ad.l'
+
+
+FUNCTION: QMULS(v1.q,v2.q)
+--------------------------
+
+Fast quick multiply for 020+ processors only 
+
+
+
+
+The Matrix Maths commands use the following three NewTypes...
+
+
+NEWTYPE .Vector_Type
+  x.w
+  y.w
+  z.w
+  s.w
+End NEWTYPE
+
+NEWTYPE .Column_Type
+  x.q
+  y.q
+  z.q
+  s.q
+End NEWTYPE
+
+NEWTYPE .Matrix_Type
+  Column.Column_Type[4]
+End NEWTYPE
+
+
+
+MakeVector x.w,y.w,z.w,&V.Vector_Type
+-------------------------------------
+
+Erm.. makes a vector ;)
+
+
+FUNCTION: VectorMagnitude(&V.Vector_Type)
+-----------------------------------------
+
+Erm.. returns the Vector Magnitude as a quick
+
+
+FUNCTION: VectorAngle(&N.Vector_Type,&L.Vector_Type)
+----------------------------------------------------
+
+Erm.. returns the Vector Angle as a quick
+
+
+FUNCTION: FastVectorAngle(&N.Vector_Type,&L.Vector_Type)
+--------------------------------------------------------
+
+As above but for 020+ processors only
+
+
+UnitVector &N.Vector_Type
+-------------------------
+
+Erm.. 
+
+
+SubtractVectors &N.Vector_Type,&L.Vector_Type,&Result.Vector_Type
+-----------------------------------------------------------------
+
+Erm.. Subtracts two vectors
+
+
+DotProduct &N.Vector_Type,&L.Vector_Type
+----------------------------------------
+
+Erm..
+
+
+CrossProduct &N.Vector_Type,&L.Vector_Type,&Result.Vector_Type
+--------------------------------------------------------------
+
+Erm..
+
+
+ApplyMatrix &M.Matrix_Type,&V.Vector_Type,&R.Vector_Type
+--------------------------------------------------------
+
+Does the fancy 3D rotation stuff I guess..
+
+
+FastApply &M.Matrix_Type,&V.Vector_Type,&R.Vector_Type
+------------------------------------------------------
+
+As above but for 020+ processors only.
+
+
+
+
+ShellSort &array.l, items.l
+---------------------------
+
+Sorts shells according to which smells of rotting fish the most..
+
+
+DepthSort &Index.q,&Assoc1.l,&Assoc2.l,Items.l
+----------------------------------------------
+
+Hmm..
+
+
+ShellDepthSort &array.l, items.l
+--------------------------------
+
+See Nigels' sorting example..
+
+
+
+
+FUNCTION: CInitDraw(AddrChunkyObject.l)
+---------------------------------------
+
+Sets up some tables and things for the drawing commands below. Returns
+TRUE if successful or FALSE if not.
+
+e.g.
+
+      InitChunky 160,128,2   ;Acid chunky command to Initialise the  
+                             ;chunky buffer
+
+                             ;If initialisation unsuccessful then quit
+                             ;because we won't be able to use any of the 
+                             ;chunky drawing commands below
+                             ; 
+      If CInitDraw(Addr Chunky(0))=False Then End
+                           
+
+CDrawDone
+---------
+
+Cleans up after CInitDraw and should be called before exiting your
+program.
+
+
+CCls ColourMask.b
+-----------------
+
+Clear the chunky buffer using an optional colour mask.
+
+
+CLine x1.w,y1.w,x2.w,y2.w,c.b
+-----------------------------
+
+Draws a Chunky line from point x1,y1 to point x2,y2 in the chunky buffer
+only (i.e. not onto the bitmap). It does not clip so don't draw outside
+the chunky buffer limits.
+
+
+CHLine x1.w,x2.w,y.w,c.b
+------------------------
+
+Draws a horizontal chunky line from x1 to x2 at position y in the chunky
+buffer only. It does not clip so don't draw outside the chunky buffer
+limits.
+
+
+CTriangle &pointlist,colour.b
+-----------------------------
+
+Similar in usage to the Acid Poly command, but draws triangles into the
+chunky buffer only. It does not clip so don't draw outside the chunky
+buffer limits.
+
+e.g.
+
+      NewType .tri                   ;triangle coordinates newtype 
+        x1.w:y1.w                    ;
+        x2.w:y2.w                    ;
+        x3.w:y3.w                    ;
+      End Newtype                    ; 	
+
+      a.tri\x1=50,100,100,50,150,100 ;'a' is now a variable of type .tri
+                                     ;so we can now pass 'a' some triangle
+                                     ;co-ordinates                                     
+
+      c.b=97                         ;colour
+   
+      CTriangle &a,c                 ;draw a triangle in the chunky buffer 
+
+
+
+CTrianglef &pointlist,color.b
+-----------------------------
+
+Similar in usage to the Acid PolyF command (see above), but draws filled
+triangles in the chunky buffer only. It does not clip so don't draw outside
+the chunky buffer limits.
+

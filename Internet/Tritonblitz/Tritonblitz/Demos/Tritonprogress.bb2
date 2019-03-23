@@ -1,0 +1,119 @@
+;/*
+; *  Triton - The object oriented GUI creation system For the AMIGA
+; *  Written by Stefan Zeiger in 1993-1995
+; *
+; *  (c) 1993-1995 by Stefan Zeiger
+; *  You are hereby allowed To Use this source OR parts
+; *  of it For creating programs For AmigaOS which Use the
+; *  Triton GUI creation system. All other rights reserved.
+; *
+; *  progind.c - Progress indicator demo
+; *
+; */ NOW WITH QUICKHELP!
+
+
+INCLUDE "blitz2:bbincludes/libraries/triton.bb2"
+
+NoCli:WBStartup
+
+#ID_MAIN_GADGET_STOP=1
+#ID_MAIN_PROGIND=2
+
+close_me.b=False
+*trmsg.TR_Message=0
+
+title$="Progress Indicator Demo"
+appname$="trProgIndDemo"
+version$="1.0"
+
+i.l=0
+
+Dim apptags.TagItem(20)
+
+InitTagList 1,100
+Use TagList 1
+
+AddTags !WindowID{1}
+AddTags !WindowTitle{Null("Progress Indicator Demo")}
+AddTags !WindowPosition{#TRWP_CENTERDISPLAY}
+AddTags !WindowFlags{#TRWF_NOCLOSEGADGET OR #TRWF_NOESCCLOSE},!QuickHelpOn{1}
+AddTags !VertGroupA,!Space,!CenteredText{Null("Working...")}
+AddTags !Space,!HorizGroupA
+AddTags !Space,!Progress{100,0,#ID_MAIN_PROGIND}
+AddTags !Space,!EndGroup
+
+AddTags !SpaceS,!HorizGroupA,!Space
+AddTags !HorizGroupSA, !TextN{Null("000%")}, !Space, !TextN{Null("050%")}, !Space, !TextN{Null("100%")}, !EndGroup
+
+AddTags !Space, !EndGroup
+AddTags !Space, !HorizGroupSA
+AddTags !Space, !ButtonE{Null("_Stop"),#ID_MAIN_GADGET_STOP},!QuickHelp{Null("Quit Progress Demo")}
+AddTags !Space, !EndGroup
+AddTags !Space, !EndGroup
+AddTags #TAG_END,0
+
+apptags(1)\ti_Tag=#TRCA_Name,&appname$
+apptags(2)\ti_Tag=#TRCA_Version,&version$
+apptags(3)\ti_Tag=#TAG_END
+
+
+application.l=TR_CreateApp_(&apptags(1))
+If application
+
+  project.l=TR_OpenProject_(application,TagList)
+
+  If (project)
+
+    user_closed=0
+    i=0
+
+      While ( (i<100) AND (user_closed=0) )
+
+        TR_Wait_ application,0
+
+        i+1
+
+        ;/* Display our progress */
+
+        TR_SetAttribute_ project,#ID_MAIN_PROGIND,#TRAT_Value,i
+
+;      /* AND Check For the 'Stop' gadget. Note that you always have To INCLUDE
+;         such a TR_GetMsg() loop, Even If there's no gadget For stopping. You
+;         have To Call TR_GetMsg() regularly so that Triton may react On the
+;         user's wishes, e.g. redrawing the Window contents after a resize. */
+
+        *trmsg=TR_GetMsg_(application)
+
+        While (*trmsg)
+
+          If (*trmsg\trm_Project=project)
+            Select *trmsg\trm_Class
+
+            Case #TRMS_CLOSEWINDOW:
+              user_closed=True
+
+            Case #TRMS_ERROR:
+              NPrint Peek$(TR_GetErrorString_(*trmsg\trm_Data))
+
+            Case #TRMS_ACTION:
+              If (*trmsg\trm_ID=#ID_MAIN_GADGET_STOP) Then user_closed=True
+            End Select
+          EndIf
+
+          TR_ReplyMsg_ *trmsg
+
+          *trmsg=TR_GetMsg_(application)
+        End While
+      End While
+
+    TR_CloseProject_(project);
+  Else
+    NPrint "Can't open window."
+  EndIf
+  TR_DeleteApp_ application
+  Free TagList 1
+Else
+  NPrint "Unable to create application"
+EndIf
+End
+

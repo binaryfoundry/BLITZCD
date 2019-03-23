@@ -1,0 +1,529 @@
+@database HELP
+@AUTHOR "Mark Tiffany"
+@index INDEX
+@remark $VER: VW.guide 1.009 (17.5.94)
+@node MAIN
+
+          *************************************************
+          *                                               *
+          *     @{B}@{I} V I R T U A L     -     W O R L D S @{UB}@{UI}     *
+          *                                               *
+          *           @{"(C) UK 1994 Mark Tiffany" link COPYRIGHT}           *
+          *                                               *
+          *************************************************
+
+@{B}            IF YOU HAVENT DONE SO ALREADY THEN @{"REGISTER!" link REGISTRATION}
+
+                      @{"IMPORTANT - README FIRST!" link FROMVW}
+
+@{I}
+@title "Virtual Worlds Help"
+   I.    Getting Started   
+            @{"Hardware Requirements" link 1_HARDWARE}
+            @{"Software Requirements" link 1_SOFTWARE}
+
+   II.   Installation    
+            @{"Floppy disk" link 2_FLOPPY}
+            @{"Hard Disk" link 2_HD}
+
+   III.  Using Virtual Worlds    
+            @{"The Menu System" link 3_MENUS}
+            @{"Preferences" link 3_PREFS}
+
+   IV.   Editing Worlds             
+            @{"Commands" link 4_COMMANDS}
+            @{"Objects" link 4_OBJECTS}
+            @{"Locations" link 4_LOCATIONS}
+            @{"Population" link 4_POPULATION}
+
+   V.    Technical Stuff
+            @{"History" link 5_HISTORY}
+            @{"Updates" link 5_UPDATES}
+
+   VI.   Credits and stuff
+            @{"Copyright" link COPYRIGHT}
+            @{"Disclaimer" link DISCLAIMER}
+            @{"REGISTRATION" link REGISTRATION}
+            @{"Thanx go to..." link THANX}
+
+@endnode
+
+@node FROMVW
+@title "Virtual Worlds Help"
+
+                  V I R T U A L   W O R L D S   H E L P
+                  =====================================
+
+   Welcome to Virtual Worlds Help.  This help file has been opened such
+that it is running concurrently with Virtual Worlds - i.e. you can nip
+back to Virtual Worlds and try something and this help file will still be
+ready for you.  To return to Virtual Worlds, click on the button in the
+top right hand corner of the screen, and do the same again to return here.
+If you close the file, then it can be reopened in the normal way.
+
+   <WARNING> If you keep using the Virtual Worlds button to get help and
+             do not close the help files, then you will end up opening
+             several copies of this file!  This will take up memory so is
+             inadvisable.
+
+   Please note that if you are using a 1.3 machine then this help file
+will appear corrupted.  This is merely due to accessing of newer functions
+that are unavailable in KickStart 1.3, and will not impair the information
+contained in the text.
+
+               @{"Okey Dokey - Lets find something out!" link MAIN}
+
+@endnode
+
+@node 1_HARDWARE
+@title "Virtual Worlds - Hardware Requirements"
+
+   To run Virtual Worlds you will need at least 1 MB of memory.  However,
+with 1 MB machines, this help file may not be accessible from within the
+Virtual Worlds program.  A hard disk is recommended, but not required -
+however a RAD: device will allow similar benefits when working on a World
+file from such a device.
+
+   Virtual Worlds requires KickStart 1.3 or greater to run.  However, the
+interface was originally designed for WB2+, and the fact that it runs on
+WB1.3 machines is an unexpected side-effect!  All features ARE accessible
+on both versions, but may be accessed in a slightly different manner.
+Virtual Worlds utilises the extra features available from 2.x upwards
+where available.
+
+   Please note - this help file is designed for WB2+.  On WB1.3 machines,
+certain features (such as italics) do not appear to be shown correctly.
+As such there may be a few 'misaligned' characters - these will not marr
+the functionality or information contained within this document.
+
+@endnode
+
+@node 1_SOFTWARE
+@title "Virtual Worlds - Software Requirements"
+
+   The only software required to run Virtual Worlds is what is supplied on
+the disk it came on.  Obviously, it requires the appropriate WorkBench 
+version, ie 1.3 or greater.
+
+   Please note that the correct version of asl.library MUST be used for
+your machine.  In the directory ASL are the 1.3 and 2.04+ libraries.  When
+Virtual Worlds is run by booting from the supplied disk, the correct file
+is automatically selected for you.  However, if running from a hard disk
+or another boot disk, then the appropriate library MUST be present in your
+libs drawer under the name of ASL.LIBRARY (as opposed to ASL204.LIBRARY.
+Virtual Worlds should then function correctly.
+
+   If you wish, you may want to remove the line SetASL from your disks
+startup-sequence, and also the ASL directory.  However, only EXACT copies
+of this disk may be distributed.  i.e., once you have deleted these files
+you may not pass it on to friends.  The reasoning behind this being that
+they may pass it on to different people with different machines, and will
+have problems with the ASL file.  If the correct ASL file is not present
+then Virtual Worlds crashes.  I don't think we want it to do that now do
+we? 
+
+@endnode
+
+@node 2_FLOPPY
+@title "Virtual Worlds - Floppy disk users"
+
+    <install to floppy program under consumption>
+
+   Floppy disk users should use the disk Virtual Worlds is distributed on,
+as this contains all the files necessary to its operation.  If booting from
+your own Workbench disk, you should ensure that the appropriate files in
+the LIBS, L, S, and FONTS directory are present on your boot disk.  The 
+use of a RAD: device is recommended if available, as this will reduce disk
+access times for the World files you are working on.
+
+   NB: Virtual Worlds looks for its config file in the S: directory.
+       Virtual Worlds will still run without it, and will create a new
+       config file if it does not find VW.Config.
+
+@endnode
+
+@node 2_HD
+@title "Virtual Worlds - Hard disk users"
+
+   Hard disk users should use the install program provided to set up Virtual
+Worlds.  Please see the @{"software requirements" link 1_SOFTWARE}.
+
+@endnode
+
+@node 3_MENUS
+@title "Virtual Worlds - Menu System"
+
+   Virtual Worlds provides two types of menus for you to use.  All features
+of Virtual Worlds are accessible from both, so there is no benefit of one
+over the other, except for personal preference.
+   The standard menu to be used with Virtual Worlds is a @{"Floating Menu" link FLOATMENU}
+which can be positioned anywhere on the screen, and the appropriate options
+selected from it.  This menu can be turned off using the @{"Preferences" link 3_PREFS}
+section.
+   The second menu type is the intuition style pull-down menus.  These are
+always available and allow you to instantly access any feature of Virtual
+Worlds.  These menus also have associated @{"keyboard shortcuts" link KEYBOARDSHORTCUTS}, which can be
+used by the power-user to edit a World quickly and efficiently.
+
+
+@endnode
+
+@node 3_PREFS
+@title "Virtual Worlds - Preferences"
+
+   Virtual Worlds can be customised to your needs through this section of the
+program.  From here, you can select whether to use a custom screen or the
+currently open Workbench screen, and also choose whether you wish to use the
+@{"floating menu" link FLOATMENU} system.
+
+   From this options screen, you can also change the variable sizes used in
+World file.  These only need to be changed if you have run out of places
+to store your information (a requester will tell you when this happens).
+For these options to work, you need to change them, and then select the save
+option.  Now you will need to quit Virtual Worlds and reload, you should now
+be able to continue with your World.
+
+   If Virtual Worlds wont load after changing something here then delete
+the VW.Config file from your s: directory and restart.  This will reset
+Virtual Worlds to its default settings.  If a file is too large for the
+current variable size settings, you will be informed and returned to
+AmigaDOS.  To load larger files, the variable settings in prefs must be
+modified to accomodate it.
+
+@endnode
+
+@node 4_COMMANDS
+
+@endnode
+
+@node 4_OBJECTS
+
+@endnode
+
+@node 4_LOCATIONS
+
+@endnode
+
+@node 4_POPULATION
+
+             SORRY - This feature is not implemented yet!
+
+@endnode
+
+@node 5_HISTORY
+@title "Virtual Worlds - A not so brief history"
+
+   Virtual worlds started out life as a little utility for myself that I
+designed to help me create my own adventures in AMOS.  I then realised
+that by fiddling with a few things, I could make an adventure creator,
+thus was born ACS, Adveenture Creator System (the running system had the
+unfortunate name of ARS) in Nov. 1988.  Around March 1989, I started
+giving ACS to my friends, and slowly it grew.
+   By the middle of 1990, ACS was beginning to look tacky.  It had
+undergone so many revisions that it was on version 2.34 and rising rapidly.
+The organisation of it all was awful, so I started again - on Inspiration.
+   This was finished in Oct. 1990, and it looked a bit WB2.0 like, but not
+the real thing (because AMOS is bloody crap - and I dont want to start
+arguing with dumb AMOS Pro fanatics - I have used BOTH and guess which I
+prefer?).  It then stayed pretty much the same, undergoing changes to take
+it to V1.36, up until about Dec. 92.   'A' level exams came and went (3 A's
+by the way), and I did nothing with Inspiration.  Nothing came of sending 
+it to magazines, but friends liked it (they would) so I was happy.
+   Then Amiga Format came along in Nov. 93 and gave me Blitz2.  I was
+hooked.  I had played with C and Pascal, but I loved Blitz2.  I borrowed
+the whole thing from a mate for a week, and wrote V1.000 of Virtual Worlds
+in that time (ie menu system, windows, file stuff, a few editing things).
+So I forked out the £50 and bought it myself, and haven't looked back 
+since.
+   Although I was at University (Physics at Birmingham), and I had very 
+little time to program, I started producing Virtual Worlds.  I bought an
+A1200 in Jan 94 and 2Megs of extra RAM in April 94, and produced the
+program you are hopefully finding at least slightly useful now.
+
+   To be honest, I really dont know why you have bothered reading this.
+   But, if you're really interested, I'll tell you about me now!
+   I'm English (and not particularly proud of it), born on 13/7/75, and
+live in a small town called Littlehampton half the year and spend the other
+half at Uni in Birmingham.  I'm 6ft1, and male, called Mark Tiffany (as if
+you hadn't guessed), and I really don't know why you're reading this.  Go 
+and do something more interesting.  Still there? Boring git.  Currently 
+(14/5/94) I am going out with Marie Sendall.  Oh yeah, I have green eyes,
+and long blonde hair.  And I wear glasses.  Look, if you really want to 
+know, write to me titling the envelope "Please Marky-Warky, tell me more -
+please?", and I'll consider replying.  Good.  Now I can stop writing this 
+twaddle and do some more programming.
+
+@endnode
+
+@node 5_UPDATES
+@title "Virtual Worlds - Update Information"
+
+   Here is a record of updates made to Virtual Worlds in reverse order.
+
+V1.010   Under Construction
+======
+
+   Effects will be implemented in this version.  Almost there anyway so it
+will probably only take a couple of weeks (at the most), ie 30/5/94.
+
+V1.009   16/5/94
+======
+
+   Floating menu now has a better 'feel' to it, and doesn't show wrong
+information any more.  Choice between default+special effect implemented.
+Double-click on Listview implemented in most cases :-
+
+      o Command Name Window  o  Command List  -> Edit Normal Effect
+                             o  Object List   -> Edit Combo. Effect
+      
+      o Object Name Window   o  Object List   -> Edit Object Description
+
+      o Location Name Window o  Location List -> Edit Location Description
+
+      o Putting objects into Object/Location
+                             o  Left hand list  -> Add item
+                             o  Right hand list -> Remove item
+
+   Words in the Vocabularly can no longer be two words -> if two or more
+words are entered then they are seperated and put into the list.
+
+   Optimised save routine now cuts out all the references to effects which
+contain no information.
+   
+   Addition of extra definitions for built in commands implemented.  (Only
+GET and PUT at the moment - more will go in later versions).
+
+   Naming of undefined items has been slightly changed to sound a bit more
+'professional'.  Whatever next?
+
+   Interface for editing effects has already been designed but not yet fully
+implemented.  (Window handling is done, just need the code to use it - Its not
+in this version so that you have something of a surprise when you see my
+interface - I think you'll like it.  Look out for it in V1.010.)
+
+V1.008   12/5/94
+======
+
+   Vocabulary bug fixed, intuition menus implemented (+shortcuts), object
+editing moved around slightly.  A few minor bug fixes here and there.
+ListView gadgets now have real-time update, and up/down arrows have continued
+movement.  Save as function implemented.  Option to remove the floating menu
+implemented.
+
+V1.007   27/4/94
+======
+
+   Nearly finished - everything implemented apart from effects and 
+population.  Vocabulary editing added (work has started on the interpreter
+and the parser is finished.  Even more object support implemented, and
+you can finally put objects in rooms.  Colours all go to nice WB2+ colours
+in the custom screen as they were supposed to, and the annoying effect
+that WB1.3 machines get with buttons (all reversed) is put straight in the
+CUSTOM screen mode.
+
+V1.006
+======
+
+   Realized that Virtual Worlds actually worked on an A500!  Fiddled with a
+few things, such as the ASL file requester so that it worked happily with
+WB1.3.
+
+V1.005
+======
+
+   More Object support added, Location work completed.  Text editor sped
+up.
+
+V1.004
+======
+
+   First version sent out for testing/evaluation.  Had lots of bugs in
+still.
+
+V1.000-V1.003
+=============
+
+   Prototype versions.  V1.003 was the first version to grace anyone elses
+Amiga.  V1.000 was written in my first week of using Blitz2, and contained
+all the menu, window,gadget handling, and command editing, all of which
+have only changed minimally since (except after V1.009 where the menu system
+was completely fixed).
+
+@endnode
+
+@node COPYRIGHT
+@title "Virtual Worlds - COPYRIGHT NOTICE"
+
+   The copyright to Virtual Worlds is held entirely with Mark Tiffany.
+Virtual Worlds may not be sold in a profit-making manner without the
+authors express permission in writing.  Virtual Worlds is shareware, and 
+as such may be copied and distibruted FREELY.  Anyone who finds this 
+program useful should @{"REGISTER" link REGISTRATION}.  Only persons who
+have registered may release the World files created by Virtual Worlds so that 
+they are available to the public (ie Public Domain/Shareware).
+
+   The editor and interpreter may be distributed freely as supplied on the
+      original disk.
+   The interpreter may be distributed along with a World file by registered
+      users only.
+
+   The distribution of ANY file CREATED by Virtual Worlds (ie your World), is
+strictly ILLEGAL if you have not registered -> If you dont register and start
+distributing your adventure then you are breaching copyright and BREAKING THE
+LAW.  I can and will follow up EVERY incident that I find of this behaviour.
+
+   This applies in kind to PD distribution companies in part.  As a PD
+distributor, you must gain written permission from me before distributing ANY
+part of Virtual Worlds.  This applies to magazines (paper AND disk based).
+
+                       @{"REGISTRATION INFORMATION" link REGISTRATION}
+
+@endnode
+
+@node DISCLAIMER
+@title "Virtual Worlds - Disclaimer"
+
+   In no way whatsoever can the author of the Virtual Worlds software
+package be held responsible for any damage or malfunction that may arise as
+a direct or indirect result of using Virtual Worlds or any of its 
+associated files.  This software is provided 'as is', and there is no 
+warranty of any form either implied or stated.
+
+@endnode
+
+@node REGISTRATION
+@title "Virtual Worlds - REGISTRATION"
+
+   Virtual Worlds is Shareware.  This means that you can copy it and
+pass it around to all your mates (please do!) as long as it is distributed
+as supplied on theoriginal disk.  If you find it useful then send @{B}£15@{UB} to:-
+
+                  Mark Tiffany
+                  37 Norfolk Road
+                  Littlehampton
+                  West Sussex
+                  BN17 5PW
+
+   Anyone who does this will not only receive the latest version, but
+also several demonstration adventure files, a document which takes you
+through making an adventure in easy to follow steps, and the source code
+(Blitz2).
+
+   Worlds created with Virtual Worlds may NOT be distributed UNLESS you
+have registerred, and I have been informed that you will be distributing
+it.  See @{"Copyright notice" link COPYRIGHT} for details.
+
+   NB: Errr, as VW is currently still in the development stage, all this
+       isnt actually available.  However, it will be eventually. (I Hope)
+
+@endnode
+
+@node THANX
+@title "Virtual Worlds - I probably couldn't have done it without them!"
+
+   Well, I'd just like to thank (in no particular order)....
+
+      Marie Sendall      (For putting up with me)
+      Amiga Format       (For giving away Blitz2)
+      Acid Software      (For an >ALMOST< excellent programming language)
+      Michael Wiedmer
+      Janne Huttunen
+      Dave Cole
+      Keith Suddick
+      Daniel Lovett
+      Adam
+      John Kenyon
+      Ian Johnson
+      Walter Scheithauer (The flatmate from hell)
+      Craig Wyatt        (For advice on population definition)
+      Matthew Ferguson   (Cheers for helping from the start (ACS!?!))
+      Matt+Chris Tiffany (For not doing much really)
+      Simon Robinson     (For just generally buggibg me)
+      David Robinson     (For giving rebirth to the Moog)
+      Mikko Makela(?)    (For the Blitz-List)
+
+@endnode
+
+@node INDEX
+@title "Virtual Worlds - INDEX"
+
+   @{"Glossary of terms" link GLOSSARY}
+
+@endnode
+
+@node GLOSSARY
+@title "Virtual Worlds - GLOSSARY"
+
+   @{"World" link WORLD}
+   @{"Command" link COMMAND}
+   @{"Object" link OBJECT}
+   @{"Location" link LOCATION}
+   @{"Effect" link EFFECT}
+
+   @{"Floating Menu" link FLOATMENU}
+
+@endnode
+
+@node WORLD
+
+   A world is the region which you are creating.  It need not be a complete
+definition of an entire world, but a small region in which your adventure 
+takes place.  Worlds are defined using @{"locations" link LOCATION} and
+@{"objects" link OBJECT}.  Inhabitants of your world are your @{"population" link POPULATION}.
+The way that the player interacts with the world is defined by @{"commands" link COMMAND}
+which are defined using @{"effects" link EFFECT}.
+
+@endnode
+
+@node COMMAND
+@endnode
+
+@node OBJECT
+@endnode
+
+@node LOCATION
+@endnode
+
+@node EFFECT
+@endnode
+
+@node KEYBOARDSHORTCUTS
+
+   Keyboard Shortcuts available in Virtual Worlds :
+
+      H  Help
+      Q  Quit
+      L  Load
+      S  Save
+      W  Save as
+      ?  Info
+
+      O  Object name
+      /  Object description
+      [  Objects inside an object
+      ]  Objects on an object
+
+      R  Location name
+      \  Location description
+      .  Location objects
+      X  Location exits
+
+      P  Population definition
+
+      V  Vocabulary
+
+      I  Interface
+
+    >I think these are right (its all from memory!) <
+
+@endnode
+
+@node FLOATMENU
+
+   These are the standard menus used in Virtual Worlds.  To select an option
+you merely click on the desired item.  Some buttons will remain depressed to
+indicate what you are doing - i.e. EDIT, COMMANDS.  They can be turned off
+through the @{"preferences" link 3_PREFS} screen.
+
+@endnode
+

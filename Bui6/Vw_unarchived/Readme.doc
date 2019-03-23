@@ -1,0 +1,101 @@
+                     Virtual Worlds Beta Toast Version
+                                   V1.009
+                              Updated 16/5/94
+
+             A RECORD OF UPDATES IS IN THE HELP FILE VW.GUIDE
+
+Hello!
+
+      Please do note that this version of Virtual Worlds is a pre-release
+version, so any bugs will (hopefully) be fixed by the time the full release
+is completed.  Just a few notes to be made though :-
+
+           o If you use a hard disk boot from that and run the install
+             program.  You can delete the ASL directory afterwards if you
+             want to save disk space.  If you do this then EVERYTHING will
+             be set up for you - all ready to go.  An option to install to
+             floppy disk should arrive soon.
+             EVERYTHING that came out of the archive can be deleted if you
+             want because EVERYTHING will have been set up for you.
+             The Installer program is provided for you - I dont know how many
+             people have this, and certainly people with floppy drives are 
+             unlikely to posses it.
+             Otherwise...
+              o If you want icons saved with data files then bung the VWProject
+                icon into your s: drawer.  A config file will be put in there by
+                VW the first time you boot as well.
+              o Put VirtualWorlds + VW.gfx in a drawer and assign VW: to it.
+              o If you dont have a times font or yours doesnt like Virtual
+                Worlds then copy the times font from the font draw.
+              o If you dont have asl.library then copy the correct version
+                to your libs: drawer -> call it ASL.LIBRARY.
+                Also -> check that you dont already have a newer version number!
+           o The online help will only work if AmigaGuide or MultiView is in
+             your sys:utilities drawer.  (AmigaGuide is available on Aminet
+             in a fish disk.)
+           o ASL.LIBRARY MUST be present in LIBS: to run Virtual Worlds.
+           o Floppy disk users should boot from a copy of Workbench, ensuring
+             that an appropriate version of ASL.LIBRARY is in the libs drawer
+             of your boot disk.  Final version will be supplied as an archive
+             that can install itself to a boot disk.
+           o PLEASE let me know if you let anyone else use VW, and PLEASE give
+             me a bit of feedback - if you detest VW then TELL ME!  I need to
+             know what you like and dislike so I can make any progress.
+           o Give me some kind of report (if you can) including :-
+
+                  Machine Running On
+                  KickStart Version
+                  AGA/ECS/OLD Gfx Chipset
+                  Free Mem + Fast Mem
+                  Hard Disk size
+                  Extra drives + other peripherals
+
+             And say whether it works of course!  A quick mention of things
+             you like/dislike/want would be greatly appreciated.
+             If you have found a bug before and its still there - tell me 
+             again!  I have a mind like a sieve, so keep reminding me if its
+             not been sorted out!  >BUG ME IF VW IS BUGGING YOU<
+
+
+   Everything else is pretty much self explanatory, but I ought to mention what
+ISNT in there so that you dont come running back and complain about it!
+
+      ALL THESE WILL GO IN AT SOME POINT :-
+
+   Exits can be opened/closed
+   Effects - I know what I want - I just have to sit down and do it now!
+   then I write an interpreter,
+   and the Interface option in conjunction with that
+   then I add the population.
+   Then if im feeling adventurous Ill make it so you can do Monkey Island style
+      things.
+
+   Feel free to suggest anything you feel I have missed / should include.
+There is a large possibility of an in-line editor as well at a later date.
+
+   By the way, the parser is actually written now - It can understand multiple
+sentences, as in ;
+
+   Get the smellly dog and eat it then throw it up. Jump on the disgusting puke
+and splash it over the black cat,white mouse and rotten pineapple and then blow
+the silver trumpet loudly.
+
+   YES - you can discern between adverbs if you really want to!
+And YES - That sentence will quite happily be split into its component parts
+- if you want to throw a few nasty ones at me I'll make sure they work.  Up
+to 50 parts can be used ( as in GET DOG. EAT IT. THROW IT UP.).
+And YES - adjectives are recognised, even though you dont put them in!  Call
+an item "BLACK FLUFFY CAT" and it will recognise any number of correct
+adjectives previous to the last word (the noun).  If it gets two matches, ie
+you enter BUTTON when there is a red and green button it will ask which one.
+Neat Eh?
+
+   Reply on e-mail to    PHY93003@ibm3090.bham.ac.uk
+   Normal mail - 37 Norfolk Road, Littlehampton, West Sussex, BN17 5PW.
+
+         Seeya.............SgtBilko (aka Mark Tiffany).
+
+   PS: If anyone can point me in the right direction for how to get the tooltype
+       info out of an icon i would be rather grateful - Blitz2 says NOTHING
+       about it!  Oh well.  Byeeeeee.
+

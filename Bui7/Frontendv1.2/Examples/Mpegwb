@@ -1,0 +1,35 @@
+*******************************************************************************
+* Fichero de preferencias generado por FrontEnd Prefs V1.2  © Arturo Roa 1996 *
+*******************************************************************************
+PROGRAMA: Trabajo:Utilidades/Visores/MpegInt/mp
+OPCIONES: 
+STACK: 4096
+REQUESTER: 0
+FILTRO: #?.(MPEG|MPG)
+TITULO: Select the MPEG you want to play.
+PRIMERO: 0
+VARIABLES: 2
+Dithering
+Select the type of dithering you want.
+Ordered
+-dither ordered
+Floid-Stemberg
+-dither fs4
+2x2
+-dither 2x2
+Gray 8
+-dither gray8
+Ham 8
+-dither ham8
+Loop
+Dou you want to play the anim infinite?
+Yes
+-loop
+No
+
+
+
+
+
+
+

@@ -1,0 +1,155 @@
+		 Documentation for MAKEFILE v1.0
+	 This program is public domain, share and enjoy.
+
+				NOTE!
+In the future, you might see a version that crunches the datas before linking
+them, as well as support for multiple directories. Please contact me if
+your interested. It would be like a portable/includeble .pkzip for your program.
+		----------------------------------------------
+			       What is Makefile?
+		----------------------------------------------
+When you'r working on large tasks, like coding games or massive utillities,
+you alsways end up with a large number of files.
+The only solution to this problem, is either to include all files in your code,
+or simply link them all into one solid file - that is parted afther loading.
+
+And thats exactly what makefile does.
+It allowes you to take all the files inside a directory, and link them
+together into one solid file. You can ofcource also UNlink them at will.
+
+You must remember that it does not 'link' them like Blink or Alink, it simply
+glues them together, and patches an info structure at top of the file.
+The info structure is very straight forward, so even the most novice programmer
+can access the lik-files.
+
+So as you can imagine, this little program will not only save you barrels
+of loading time, but it will help you keeping track of your development files.
+
+I have found this utillity to function very well when developing games, i had
+to add support for my ARVP standard in all my other game-editors, but the
+results really helped me to keep an overview of things, thus, saving time.
+
+If you have ever bought adventure games like Indiana jones and installed the
+game to your harddisk, you will see that each level of the game is one
+solid file called a .BOLT file. Now you can do exactly the same thing, the
+ARVP info structure is simple to use, you can access it from Assembler,Blitz
+Basic, Amos Basic, or whatever, with very little programing.
+
+----------------------
+Things to know about MAKEFILE
+
+1- it is not like Lharch or pkzip that allows you to link multiple directories.
+2- If it finds a directory inside its 'source directory', it will be ignored!!!
+3- It allocates memory when linking, i am working on a version that will
+   create a dummy file on your Hd, and insert the datas as it links, so no
+   memory is used. But for now, you cant link files that sums up larger than
+   your CHIPMEMORY!!
+4- Programmed in 8 houres using Blitz Basic 2 on a bog standard A1200+Hd.
+5- Dedicated to the ***<Blitz usergroup Int>****
+   For membership write to : BLITZ, Matthew Tillett
+			     27 Hillside avenue,Worlingham, Beccles
+			     Suffolk, NR34 7AJ
+			     England.
+
+6- You can contact me, the author of this program at :  Jon L.Berg,
+							Olleveien 8
+							N-3240 Andebu
+							Norway
+
+			---------------------------
+			1-2-3-HOW TO USE MAKEFILE!!
+			---------------------------
+  You are asked 3 questions when you start Makefile, here is what you do.
+
+
+If you want to link a directory into one file, do the following.
+~~     ~~~~    ~~~~
+1- when the program asks you what to do (link or Unlink), type 'l' and
+   press return.
+2- The program now want to know the 'source directory', simply type in the
+   full path of your desired directory, and press return.
+3- The program now wants to know the destination filename, simply type
+   in the filename, again with a full path, and press return.
+
+The program will now link all files in the 'source' directory into one file!
+Remember that if any other directories are present inside your source dir,
+they will be ignored!!!
+
+If you want to UNlink a previously linked file into a directory, do this.
+~~     ~~~~    ~~~~~~
+1- when the program asks you what to do (link or Unlink), type 'u' and
+   press return.
+
+2- The program now wants to know the source filename, simply type
+   in the name of a previously linked file,remember to type a full path,
+   and press return.
+
+3- The program now want to know the 'Destination directory',simply type in the
+   full path of your desired directory, and press return.
+
+Thats it, now study the very simple ARVP info header, and bolt it into your
+system!.
+------------------------------
+	THE ARVP info structure...
+
+The info structure is put on top of the glued datas so they are easy to
+access.
+
+		  # = number of files
+		  * = multiply by number of files.
+
+                  +-------------------------------------+
+                  | Long: "ARVP"  - Header start token  |
+                  +-------------------------------------+
+                  | Long: #Files  -files in link        |
+                  +-------------------------------------+
+                  | Long: *files  -Bytesize of each file|
+                  +-------------------------------------+
+                  | Byte: *files  -All filenames        |
+                  +-------------------------------------+
+                  | Long: "CBDB"  -End of info Token    |
+                  +-------------------------------------+
+                  |                                     |
+                  |         Actual file datas           |
+                  |                                     |
+                  +-------------------------------------+
+		  | Long: "EXDB"  -End of Data Token    |
+                  +-------------------------------------+
+
+
+(LONG: "ARVP")
+This is simply a longword containing the letters 'ARVP', use this to
+check and see if the file you are accessing really is a linked file.
+It also means 'start of info structure'.
+
+(Long: #files) 
+This longword contains the exact ammount of files that has been linked
+together.
+
+(Long: *files) 
+Here is a series of longword containing the bytesize of each file linked,
+if have linked 10 files, then there will be 10 longwords at this point.
+Simply read off the '#files'(above) to know how many longwords are there.
+
+(Byte: *files)
+All the names of each file linked are stored from this point, each filename
+ends with a zero-byte, or a single byte containing the value $0.
+Again you must use the '#files' to know how many filenames are there.
+
+(long: "CBDB")
+Again a longword containing letters, this means 'end of info structure', it
+is wise to check this longword, so you know you havent done anything wrong.
+
+
+*THE FILE DATAS..
+All files are stored here. They are not EVEN in any way, just simply stored
+directly - on the byte- afther each other.
+Use the 'file sizes' to know how much to store to disk, and what to call it.
+
+(long: "EXDB")
+This is the end of data token, check for this token to see that you haven't
+lost any datas in the process...
+
+
+				HOPE YOU ENJOY THIS PROGRAM!!!!
+						JON LENNART BERG. 1996.

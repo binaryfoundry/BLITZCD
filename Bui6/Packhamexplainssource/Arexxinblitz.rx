@@ -1,0 +1,13 @@
+/* ARexxInBlitz.rx Written By Lee Packham */
+
+/* ARexxExample.bb2 Test Program */
+
+/* The example program needs to be
+** running first!!!
+*/
+
+ADDRESS 'TEST.1'
+
+'PRINT This Is A Glorious Test,'
+'PRINT Done By Lee Packham!!!,'
+

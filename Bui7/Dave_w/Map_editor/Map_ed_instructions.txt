@@ -1,0 +1,104 @@
+
+
+       Super Pengo Twins
+
+          Map Editor Instructions.
+
+  To run the map editor you will need the ASL library in your LIBS drawer.
+
+  Make sure you have a copy of the MAPS drawer on disk 1 incase you overwrite
+  one of the files with a new map file that is not complete.
+
+
+
+  The main display is made up of two sections, the menu bar ( on the left )
+and the map area ( on the right ). To move between the two areas press the
+right mouse button. The cursor is controlled using the mouse.
+
+  The map area.
+  -------------
+
+  When you are in this area you can draw the current block to the screen
+by pressing the Left mouse button.
+
+  The menu area.
+  --------------
+
+  Menus are selected by moving the mouse pointer over the desired menu
+and pressing the Left mouse button.
+
+
+    MENU OPTIONS...
+    ---------------
+
+
+  Load.     Loads a previously saved map.
+  -----
+
+  Save.     Saves the current map.
+  -----
+
+
+  Gfx.      This option allows you to set the current graphic block.
+  ----      Once selected a new display will appear in the map area
+            consisting of a number of blocks. To select a block simply
+            move the mouse pointer over the required block and press
+            the left mouse button. You will then be returned to the normal
+            display. The current block is displayed below the QUIT menu
+            option.
+
+  New.      Clears the current map.
+  ----
+
+  Fill.     Fills the map with the background block.
+  -----
+
+  Quit.     Quits back to Workbench.
+  -----
+
+
+  Designing a map.
+  ----------------
+
+  RULES !!.
+  --------
+      For the map to work correctly you MUST
+
+  1   :   Make sure the map display is complete, no black areas should be
+          present.
+
+  2   :   Every block on the edge of the map should be a wall block.
+          ( the gold coloured blocks to you and me .. ).
+
+  3   :   There should be only 1 Player 1 Home ( the block with the red circle )
+          and 1 Player 2 Home ( the block with the green circle ) in the map.
+
+  4   :   The Bad dudes start from the four corners of the map so once the wall
+          has been drawn around the map leave the new corners as the background
+          graphic otherwise strange things may happen !!. The simplist way to
+          understand this is to play the game and take note where four of the
+          badies come from. this area MUST be left as the background graphic
+          ( the first block on the graphic select screen ).
+
+
+  Running a map.
+  --------------
+
+  Once a map is complete all you need to do is save the map to the MAPS drawer
+  on disk 1 as any of the original maps.
+  Before doing this make sure you have a copy of the original maps just incase
+  something goes wromg.
+
+  EG..
+      If you want to save your map as level 1 then you would need to save your
+      map as 1.map.
+
+      The maps in this drawer relate to the 20 levels in the game.
+
+
+
+
+    Enjoy...
+
+
+    David Worswick..

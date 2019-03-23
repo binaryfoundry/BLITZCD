@@ -1,0 +1,150 @@
+                      ====================
+                       BUM9 Release Notes
+                      ====================
+
+     -=* Additional documentation is on the BUM9docs disk *=-
+
+
+
+----------------------------
+New things for this release:
+----------------------------
+
+- New small debugger 
+
+- New big debugger                   (WB2.0+ amigas only)
+
+- New Teditor version 2.1            (WB2.0+ amigas only)
+
+- Acid Software Chunky library beta release        
+
+- Reflective Image libraries version 4.5  
+
+- Graham Kennedy Database library version 1.06 beta
+
+- Steve Flock CIA (pro)tracker library version 1.03
+
+- Steve Flock audio library beta release
+
+
+
+---------------------------------------------------------
+Bugs that have hopefully been squashed with this release:
+---------------------------------------------------------
+
+- Crashes when using Functions and Statements (due to the small debugger
+  not liking the new debug library - this bug would not have affected
+  advanced (large) debugger users)
+
+- NewTed's blank menu problems with Workbench 2.0/2.1
+
+- NewTed's problems when running the program MCP
+
+- Other not so obvious or nasty bugs with NewTed/BigDebugger!
+
+
+
+-----------------
+Floppy Disk Users
+-----------------
+
+This disk is a direct replacement for your Blitz2.1 program disk.
+
+Please note that you will not be able to compile some of the examples
+on the examples disks because they use additional commands contained
+in the large deflibs file. Blitz will report the error 'Token Not
+Found' and the command will appear as ????? instead of text. A 
+utility has been provided with this release, that will allow you to
+make a new deflibs file containing only the third party libraries you
+require (see Readme file on BUM9 docs disk).
+
+
+
+---------------
+Hard Disk Users
+--------------- 
+
+You will find the upgraded Blitz program files on the BUM9examples2
+disk in a directory called HardDiskUsers. 
+
+  defaultdbug  (154K) \    These 3 files are direct replacements
+  deflibs      (219K)  }-  for the files in your Blitz drawer on your
+  Ted          (57K)  /    Hard Disk.
+
+                           The large defaultdbug file is the new Blitz
+                           debugger and is for WB2.0+ Amigas only.
+
+                           The large deflibs file contains all the new and 
+                           updated libraries on the Blitzlibs disk. 
+
+                           The Ted file is the new Blitz editor V2.1 and
+                           is for WB2.0+ Amigas only.
+
+  ted.library  (1K)   }-   This file is for Ted v2.1 and must go in
+                           your Workbench Libs drawer.
+
+
+For those of you still having problems getting Blitz to run from Hard
+Disk...
+
+     1. Make a new drawer (directory) on your hard disk using the Window 
+        menu at the top of Workbench (a good name for it would be Blitz)
+        and then open the drawer by double-clicking on it's icon.
+
+        
+     2. Insert the Blitz program disk and double-click on its disk icon.
+        You can now see some of the Blitz program icons. Select Show/All
+        files from the Workbench Window menu and a lot more will appear.
+
+
+     3. Copy the followng files into your new hard disk drawer by
+        dragging the files' icons into it. 
+
+                           acidlibs
+                           Blitz2
+                           defaultdbug
+                           deflibs
+                           help
+                           help.dat
+                           Ted
+                           Userlibs
+
+
+      4. Now insert the Blitzlibs floppy disk and drag its disk icon into
+         your new hard disk drawer. This will make another drawer called
+         Blitzlibs and copy all the files on the floppy into it.
+         You should now have all the necessary Blitz files on your hard
+         disk.
+
+
+      5. The (slightly) tricky bit.. Edit your Workbench startup sequence
+         so that Blitz knows where to find its files. You can do this using
+         Ted or any other text file editor. Workbench 2/3 users should add
+         the following lines to their user-startup file found in their 
+         Workbench:S drawer, it doesn't matter if you put them in the 
+         startup-sequence file, but it's just a little tidier...
+
+
+         Assign Blitz2: <Your Hard Drive>:<Your Blitz Drawer>
+
+         Assign Blitzlibs: <Your Hard Drive>:<Your Blitz Drawer>/Blitzlibs
+
+
+         Eg.1. If your Hard Drive Partition is called Work and you called
+               your new drawer Blitz then you would add the lines...
+
+         Assign Blitz2: Work:Blitz
+
+         Assign Blitzlibs: Work:Blitz/Blitzlibs
+
+         
+         Eg.2. If you made your new Blitz drawer in an existing drawer such
+               as Work:Programming then you would add the lines...
+
+         Assign Blitz2: Work:Programming/Blitz
+
+         Assign Blitzlibs: Work:Programming/Blitz/Blitzlibs
+
+
+      6. Reset your Amiga so the assigns are active and then load Blitz...
+

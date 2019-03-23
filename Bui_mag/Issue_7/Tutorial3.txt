@@ -1,0 +1,523 @@
+GuiGads
+
+(C) BUI
+
+BY KEVIN WINSPEAR
+
+
+
+Graphic Gadget,?  What are they? Well for those of you who have seen Multitudinous, you will know what they are.  For those of you that have not gotten the slightest idea of what I am on about, read on, well, read on anyway.  Guigads are very similar to t
+
+
+
+Throughout this tutorial I'll try my best to explain, mainly we'll be using Statements and drawing lines using the WLine Command to draw the Gadgets, and we be using the WBox to colour them in, amongst other commands.  We will skip the rest of the mumbo j
+
+
+
+The following Statement has the following parameters..
+
+
+
+x=The start of the gadget, from the left side.
+
+y=How far from the top the gadget starts.
+
+x1=The width of the gadget.
+
+y1=The depth of the gadget.
+
+style.b=Gadget style.
+
+fill.b=The colour of our gadgets.
+
+
+
+Here is the ButtonFill Statement, I've Remed the Code so if you work through it you should work out what's what.
+
+
+
+  Statement ButtonFill{x,y,x1,y1,style.b,fill.b}
+
+    ; Create buttons.
+
+
+
+    Select style           ;Only one Gadget Style.
+
+    Case 3
+
+      If fill=0                          ;If fill=0 draw a
+
+        WBox x,y,x1,y1,0   ;Grey         ;Grey Gadget..
+
+      EndIf
+
+      If fill=2                          ;If fill=2 draw a
+
+        WBox x,y,x1,y1,3   ;Blue         ;Blue Gadget..
+
+      EndIf
+
+      If fill=6                          ;If fill=6 draw a
+
+        WBox x,y,x1,y1,6   ;Red          ;Red Gadget..
+
+      EndIf
+
+      If fill=8                          ;If fill=8 draw a
+
+        WBox x,y,x1,y1,8   ;Yellow       ;Yellow Gadget..
+
+      EndIf
+
+
+
+      If fill=0 OR fill=2 OR fill=4 OR fill=6 OR fill=8
+
+        WLine x,y1,x,y,x1,y,2            ;If fill=0,2,4,6,8
+
+        WLine x1,y,x1,y1,x,y1,1          ;The Draw our Gadget.
+
+        WLine x1,y,x1,y1,1
+
+      Else
+
+        WLine x,y1,x,y,x1,y,1            ;Else Draw the Gadget Pressed..
+
+        WLine x1,y,x1,y1,x,y1,2
+
+        WLine x1,y,x1,y1,2
+
+      EndIf
+
+    End Select
+
+  End Statement
+
+
+
+Try and keep all colours even because the odd colours are gadgets being pressed.
+
+
+
+The next Statement is called if we have click on one of our gadgets.
+
+
+
+The trick is, this time it calls the ButtonFill Statement but the colour is odd, therefore it draws our gadget being pressed, until we let go of the mouse, and then calls the ButtonFill again, only this time the colour is even so the ButtonFill Statement 
+
+
+
+Here is the Statement, which is called Press3, the parameters are..
+
+
+
+x=The start of the gadget, from the left side.
+
+y=How far from the top the gadget starts.
+
+x1=The width of the gadget.
+
+y1=The depth of the gadget.
+
+
+
+These parameters are exactly the same as the ButtonFill Statement, so you just copy and paste these parameters.
+
+
+
+ Statement Press3{x,y,x1,y1}
+
+
+
+    ;If one clicked on a Gadget press the gadget in..
+
+    ;Until Fred lets go of the mouse.
+
+
+
+    ButtonFill{x,y,x1,y1,3,1}         ;Draw the gadget pressed
+
+    Repeat                            ;Wait until we let go of the mouse.
+
+    Until Joyb(0)<>1
+
+    ButtonFill{x,y,x1,y1,3,4}         ;Then draw the gadget released.
+
+  End Statement
+
+
+
+Now we need a Function because we need it to return a value, letting us know if the mouse is over a gadget.
+
+
+
+This Function is called mousexy. The parameters are..
+
+
+
+x1=The start of the gadget, from the left side.
+
+y1=How far from the top the gadget starts.
+
+x2=The width of the gadget.
+
+y2=The depth of the gadget.
+
+
+
+Again these are the same as the ButtonFill so we can copy and paste these.
+
+
+
+  Function mousexy{x1,y1,x2,y2}
+
+
+
+    ;Is Fred in a Gadget area? If so return true..
+
+
+
+    If Joyb(0)=1 AND WMouseX>x1 AND WMouseX<x2 AND WMouseY>y1 AND WMouseY<y2
+
+      Function Return True
+
+    EndIf
+
+
+
+    ;If not return false.
+
+
+
+    Function Return False
+
+  End Function
+
+
+
+The next Function is our requester, Again, we use a Function because we need a return value.
+
+
+
+This Function is called "warn". The parameters are..
+
+
+
+title$=The requesters title..
+
+s1$=The first line of text.
+
+s2$=The second line of text.
+
+s3$=The third line of text.
+
+but1$=The text to go into this gadget.
+
+but2$=The text to go into the second gadget.
+
+
+
+The idea is to open a window and draw gadgets on this window, just like we do with the main window.
+
+
+
+  Function.b Warn{title$,s1$,s2$,s3$,but1$,but2$}
+
+
+
+    ;Our requester..
+
+
+
+    If title$=""
+
+      title$="A Message To You.."
+
+    EndIf
+
+
+
+        Window 2,150,80,270,70,$1800,"",0,1   ;Open Window
+
+        Menus Off:Use Window 2                ;Menus off & Use this window.
+
+
+
+     ButtonFill{0,0,269,11,3,2}         ;Blue Gadget, title bar.
+
+
+
+
+
+    text{5,2,title$,1,3}                ;Title text
+
+
+
+    ButtonFill{0,12,269,69,3,0}         ;Grey Gadget, for window.
+
+
+
+    ButtonFill{5,15,265,52,3,0}         ;Grey Gadget, for inner Window.
+
+
+
+    ButtonFill{20,55,85,66,3,2}         ;Gadget one.
+
+    text{21,57,Centre$(but1$,8),1,3}    ;Text for gadget one.
+
+
+
+    ButtonFill{185,55,250,66,3,2}       ;Gadget two.
+
+    text{186,57,Centre$(but2$,8),1,3}   ;Text for gadget two.
+
+
+
+    text{15,20,s1$,1,0}                 ;Print the three line
+
+    text{15,30,s2$,1,0}                 ;of text.
+
+    text{15,40,s3$,1,0}
+
+
+
+    Repeat
+
+      VWait
+
+      If mousexy{20,55,85,66}        ;If clicked on gadget one?
+
+        Press3{20,55,85,66}          ;Pressed..
+
+        end_=True : RetVal=0         ;Fred did..
+
+      EndIf
+
+
+
+      If mousexy{185,55,250,66}
+
+        Press3{185,55,250,66}
+
+        end_=True : RetVal=1
+
+      EndIf
+
+
+
+    Until end_
+
+
+
+    Free Window 2 :Use Window 0
+
+    Function Return RetVal         ;RetVal Return's 0 or 1
+
+  End Function
+
+
+
+This is the start of our program, it is Remed so I'll let you work your way through the code.
+
+
+
+.OpenScreen
+
+  Screen 0,0,0,640,270,4,32768,"",0,1 ;Open our Screen
+
+
+
+    RGB 0,10,10,10                    ; Grey 1
+
+    RGB 1,0,0,0                       ; Black        ;Set some
+
+    RGB 2,15,15,15                    ; White        ;Colours
+
+    RGB 3,6,8,11                      ; Blue
+
+    RGB 4,7,7,7                       ; Dark Grey
+
+    RGB 5,10,10,10                    ; Grey 2
+
+    RGB 6,15,3,6                      ; Red
+
+    RGB 7,13,13,0                     ; Yellow
+
+    RGB 8,15,13,7
+
+
+
+
+
+.OpenWindow
+
+  Window 0,0,0,640,270,$1800,"",0,2,0      ;Open one window
+
+  Menus Off                                ;and Turn Menus off.
+
+
+
+Use Window 0                               ;Use our window
+
+ButtonFill{0,0,639,13,3,2}                 ;Blue title bar
+
+ButtonFill{0,14,639,255,3,0}               ;Main Window.
+
+
+
+ButtonFill{20,20,170,30,3,2}            ;Draw Blue button
+
+text{22,22,"Click Me To Quit..",1,3}    ;Text Black on Blue
+
+ButtonFill{20,31,170,41,3,6}            ;Draw button Red
+
+text{22,33,"Gadget One",1,6}            ;Text Black on Red
+
+ButtonFill{20,42,170,52,3,8}            ;Draw button Yellow
+
+text{22,43,"Gadget Two",1,8}            ;Text Black on Yellow
+
+ButtonFill{20,53,170,63,3,0}            ;Draw button Grey
+
+text{22,55,"Gadget Three",1,0}          ;Text Black on Grey
+
+
+
+Repeat
+
+VWait                            ;Have we clicked on a gadget.
+
+If mousexy{20,20,170,30}         ;Check to see if we are the Gadget area.
+
+    Press3{20,20,170,30}         ;If so then draw it pressed.
+
+
+
+    s1$="Quit?"                         ;Our requester text.
+
+    s2$="  Are You Sure!"
+
+    s3$="     Select OK or Cancel.."
+
+
+
+    a=Warn{"Warning..",s1$,s2$,s3$,"OK","Cancel"}  ;Call up our requester.
+
+
+
+  If a=0    ;If we clicked on OK
+
+    text{200,20,"You Selected Quit, From Requester Quit",1,0}:Delay_ 
+
+40:exit=True
+
+   Else     ;Else we click on Cancel
+
+    text{200,20,"You Selected Quit, From Requester Cancel",1,0}
+
+  EndIf
+
+EndIf
+
+
+
+If mousexy{20,31,170,41}
+
+    Press3{20,31,170,41}
+
+    s1$=" Another Requester.."
+
+
+
+    s2$=""
+
+    s3$="      Click A Gadget.."
+
+    a=Warn{"A Message To You..",s1$,s2$,s3$,"One","Two"}
+
+If a=0
+
+    text{200,20,"You Selected One, From Requester One    ",1,0}
+
+  Else
+
+    text{200,20,"You Selected One, From Requester Two    ",1,0}
+
+  EndIf
+
+EndIf
+
+
+
+
+
+If mousexy{20,42,170,52}
+
+    Press3{20,42,170,52}
+
+    s1$=""
+
+    s2$="      B.U.I Is The Best..."
+
+    s3$=""
+
+    a=Warn{"The Only Support For Blitz..",s1$,s2$,s3$,"Yep!","Nop!"}
+
+If a=0
+
+    text{200,20,"You Selected Two, From Requester Yep!    ",1,0}
+
+  Else
+
+    text{200,20,"You Selected Two, From Requester Nop!    ",1,0}
+
+  EndIf
+
+EndIf
+
+
+
+
+
+If mousexy{20,53,170,63}
+
+    Press3{20,53,170,63}
+
+    s1$=""
+
+    s2$="   Last Example..."
+
+    s3$=""
+
+    a=Warn{"Select One..",s1$,s2$,s3$," 1"," 2"}
+
+If a=0
+
+    text{200,20,"You Selected Three, From Requester 1    ",1,0}
+
+  Else
+
+    text{200,20,"You Selected Three, From Requester 2    ",1,0}
+
+  EndIf
+
+EndIf
+
+
+
+
+
+Until exit=True
+
+
+
+Free Window 0:Free Screen 0:End
+
+
+
+Again all the source code is on the cover disk to save your fingers.
+
+
+
+Well I think you should get the idea form this tutorial, things can be improved, like more text lines, centre text, three gadgets. If you would like to know now how to add more text lines and centre text, write and let us know, or if you what a tutorial o

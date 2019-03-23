@@ -1,0 +1,7 @@
+   Copy To All takes the values for Level Width, Level Height, Rooms, Room
+Min and Room Max currently displayed, and copies them to all levels. Note
+that "all levels" is the number of levels you have set in the N Levels
+field. If you have N Levels set for 10 and you press Copy To All, the
+current level's values will be copied to levels 1 through 10. If you
+subsequently increase the value of N Levels, everything over level 10 will
+contain the default values.

@@ -1,0 +1,4 @@
+   Level Height sets the height for the current level. For info on
+measurements, see Level Width.
+   When clicking on the arrow buttons to change the value, a left click
+changes it by 1 and a right click changes it by 5.

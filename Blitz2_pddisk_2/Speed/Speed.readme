@@ -1,0 +1,27 @@
+    A ->      A 4 7 9 K
+    B ->         ##########
+    C ->       # 3 J #
+    D ->  ##########
+    E ->      Q 2 8 K A
+
+  Speed is a fast paced, reflex based card game.
+The aim of the game is to get rid of all your cards before the computer
+does.
+  Rows A and B are the computers card's, row C is the throw-out pile,
+and rows D and E are your cards.
+  You get rid of your cards by throwing them from row 'E' onto one of
+the two face-up cards in row C.
+  Cards are thrown from row E to row C by clicking on the card to
+throw out with the left mouse button, and then clicking on the card
+to throw onto in row C, also with the left mouse button.
+  A card may only be thrown out from row E if it is either 'one above'
+or 'one below' one of the cards in row C. For example, a '6' may only
+be thrown onto a '5' or a '7'. Likewise, an 'Ace' may only be thrown
+onto a 'King' or a '2'.
+  After a card is thrown out, it may be replaced by clicking on the last
+card in row 'D'
+  The game ends when either you or the computer has no cards left.
+  To exit speed, click the right mouse button while a game is in
+progress.
+
+Good luck!

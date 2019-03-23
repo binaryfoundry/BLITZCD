@@ -1,0 +1,46 @@
+[b][c][f fonts:topaz.font|11]An
+Example[c][b][f fonts:topaz.font|8][h][t Example Document]
+[i]This example can be used to study HyperHelp2 language. I suggest you load your
+favourite editor, and start HyperHelp, and then see what every piece of 'code'
+does.[i][h]
+[l whocares|idx]This is a link to the Index Document[l][e]
+[l hhimage.iff|img]This is a link to an 8 colour image[l][e]
+[l hhimage2.iff|img]This is a link to a 255 colour image[l][e]
+[l oops|iop]This is just blue text, because the TYPE is not recognized[l][e]
+[l hhmusic.mus|mod]This is a link to a ProTracker Module[l][e]
+[l hhplayer61.mus|p61]This is a link to a Player 6.1 Module[l][e]
+[l hhsid.mus#1|sid]This is a link to a SID song, song #1[l][e]
+[l hhsid.mus#2|sid]This is a link to a SID song, song #2[l][e]
+[l hhsid.mus#3|sid]This is a link to a SID song, song #3[l][e]
+[l hhsid.mus#4|sid]This is a link to a SID song, song #4[l][e]
+[l hhsid.mus#5|sid]This is a link to a SID song, song #5[l][e]
+[l hhsid.mus#6|sid]This is a link to a SID song, song #6[l][e]
+[l hhsid.mus#7|sid]This is a link to a SID song, song #7[l][e]
+[l hhsid.mus#8|sid]This is a link to a SID song, song #8[l][e]
+[l hhsid.mus#9|sid]This is a link to a SID song, song #9[l][e]
+[l hhsid.mus#10|sid]This is a link to a SID song, song #10[l][e]
+[l hhsid.mus#11|sid]This is a link to a SID song, song #11[l][e]
+[l hhsid.mus#12|sid]This is a link to a SID song, song #12[l][e]
+[l hhsid.mus#13|sid]This is a link to a SID song, song #13[l][e]
+[l hhsid.mus#14|sid]This is a link to a SID song, song #14[l][e]
+[l hhsid.mus#15|sid]This is a link to a SID song, song #15[l][e]
+[l hhsid.mus#16|sid]This is a link to a SID song, song #16[l][e]
+[l hhsid.mus#17|sid]This is a link to a SID song, song #17[l][e]
+[l hhsid.mus#18|sid]This is a link to a SID song, song #18[l][e]
+[l hhsid.mus#19|sid]This is a link to a SID song, song #19[l][e]
+[l hhsid.mus#20|sid]This is a link to a SID song, song #20[l][e]
+[l hhwelcome.snd|snd]This is a link to an 8SVX sample[l][p]
+[f fonts:times.font|11]This is Times Font, size 11. As you can see it is
+proportional, but hey, HyperHelp 2 can handle that sort of stuff :) Let's just
+go and see what happens if it tries to get off the screen, huh? [b] And yes, all
+the [i] styles [i] work on every [b]font, isn't that a lot [u]of fun[u] too?
+[i][f fonts:times.font|23][e]
+[c]This is Times, centered, and size 23![c]
+[i]Ending page...[eop]
+[f fonts:times.font|50]Fonts can be Scaled to any size![f fonts:topaz.font|8]
+But be careful, you can go too far![e]
+And you do not want effects like this, so be a bit careful, ok?[p][p][p]
+[l hhcommands.hh|doc]A link to a document[l][e]
+You might want a [] on your screen, so use []] for that![e]
+Hmm, this was it, i surrrrpose :)
+[l fdhdfh|idx]To the index[l][e]

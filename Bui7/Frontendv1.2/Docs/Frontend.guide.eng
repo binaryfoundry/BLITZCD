@@ -1,0 +1,241 @@
+@DATABASE "Documentation of FrontEnd V1.2"
+
+@NODE MAIN "Documentation of FrontEnd V1.2"
+
+                               ---------------
+                                FrontEnd V1.2
+                               ---------------
+
+                           ©  Arturo Roa Ros 1996
+ 
+@{"  Legalities       " Link 0.}   And more serious things
+@{"  Copyright        " Link 1.}  
+@{"  Introduction     " Link 2.}   What is FrontEnd?
+@{"  Requirements     " Link 3.}   What I need?
+@{"  Installation     " Link 4.}   How install this?
+@{"  Using FrontEnd   " Link 5.}   How use this?
+@{"  History          " Link 6.}   Long time ago...
+@{"  Acknowledgments  " Link 7.}   Thanks a lot
+@{"  Author           " Link 8.}   This grey person with four eyes
+
+@ENDNODE
+@NODE 0. "Legalities, and more serious things."
+
+This program is CardWare, this mean that you can do what you want with it,
+while you observe this conditions:
+	1st-If you use this program (often) you have to send a postcard of 
+your country or región to the author of the program.
+	2st-This program can't be used by military people.
+	3nd-Can't be modified, for distribution purposes, the archive that 
+contains the program and the adds.
+	4rd-No charge may be made for this program, other than a reasonable 
+copying fee, and/or the price of the media. This fee must not be more than 
+US 4$ for floppy disks and US 35$ for CD-ROMs.
+	5th-This program cant be included or used in commercial programs 
+without written permission of the author of the program.
+
+This Software comes with no warranty. The author is in no way responsive for 
+any damage or loss that may occur due to direct or indirect usage of this 
+Software.
+
+@ENDNODE
+@NODE 1. "Copyright"
+
+	This software is of free distribution, BUT all the programs and 
+documents are Copyright of Arturo Roa Ros.
+
+                          © Arturo Roa Ros 1996
+
+
+@ENDNODE
+@NODE 2. "Introduction, What is FrontEnd?." 
+
+	One of the advantage of use a modern and "Friendly" computer like the
+Amiga if the GUI (Graphic User Interface) that make easy his use. Sometimes 
+the user of Amiga finds programs very useful but these don't use all the 
+potential of the GUI of the Amiga (file requesters, string requesters, etc),
+and only can be used from the Shell.
+	FrontEnd has born to simplify a tedious process like execute animation
+viewers, sound players, and more utilities that have a complex syntaxis and 
+have no file requester.
+	The same thing that do this program you can do with programs like 
+DOPUS, but there are users that can't lose half megabyte of memory to view animations, 
+pictures or hear samples.
+
+
+@ENDNODE
+@NODE 3. "Requirements, What I need?."
+
+	This program requires an Amiga computer with Workbench 3.x and Hard
+Disk.  This program needs ReqTools.Library V38 or better (© Nico François).
+
+
+@ENDNODE
+
+@NODE 4. "Installation, How install this?."
+
+	The install is automatic running the install script included in 
+the archive. If you want to do the install manually, is easy:
+
+Copy FrontEnd                                   to C:
+Copy Fonts/XEN.font                             to FONTS:
+Copy Fonts/XEN/9                                to FONTS:
+Copy FrontEndPrefs                              to the place in your HD where do you want it
+Copy Data (directory)                           to the same place where FrontEndPrefs
+Copy Catalogs/"YourLanguage"/FrontEnd.catalog   to LOCALE:Catalogs/"YourLanguage"/
+Copy Examples (directory)                       to the same place where FrontEndPrefs
+Copy BlitzSource (directory)                    to the same place where FrontEndPrefs
+Copy Translator (directory)                     to the same place where FrontEndPrefs
+
+	In FrontEnd V1.2 there is only localization to spanish, if you want FrontEnd in your
+language you can find a file called FrontEnd.cd in the Translator directory that contains 
+information of how to do it.
+@ENDNODE
+@NODE 5. "Using FrontEnd, How use this?."
+
+	The use of FrontEnd is easy, you have to create a preferences file
+for every program you want to use with FrontEnd, this preferences file is
+created with FrontEndPrefs.
+
+FrontEndPrefs.
+When you execute this program, a window is opened with these gadgets:
+
+-Program: In this gadget we introduce the program that we want to use with 
+FrontEnd.
+
+-Requester: In this gadget we select the type of file requester we want to
+use, ASL are the file requester that came with the workbench, and ReqTools
+are requesters more complex and complete that need ReqTools.Library 
+(© Nico François), I advise the use of this last.
+
+-Pattern: In this gadget we introduce the pattern we want to use in the file
+requester. Here only explain that by default (#?) shows all the files, and to 
+show only files with a determined extension we have to introduce #?.extension
+(#?.FLI #?.IFF), to show more than one extension (MPG and MPEG) write the 
+extensions separated by | and betwen parenthesis, like this: #?.(MPG|MPEG).
+
+-Title: In this gadget we introduce the title we want in the file requester,
+something like: Select the animation to play.
+
+-Variables: This list give you acces to the creation of variables for FrontEnd,
+so you can create a variable to choose an option.
+
+  -New: Create a new variable, and open the window of variable's creation.
+  -Delete: Delete the variable selected.
+  -Edit: Let you edit a previously created variable with "New".
+
+     The window of Variables let you create a variable that ask the final user one option,
+like the screen mode, frames per second, loops, etc.This can be done introducing a name for the
+variable in Name (for you identification) ,a title for the requester in Title, some texts that appear
+in the gadgets of the requester and some comands introduced in Com x that correspond with the options
+introduced in Option x  (If you don't see clear this try to load the examples that are in the Examples Drawer).
+
+-1st: In this gadget we select what we want that go first in the syntax of
+the program, the options or the file.
+
+-Stack: In this gadget we introduce the stack that the program needs to be 
+executed, for the majority of the programs we can leave 4096 bytes like puts 
+FrontEndPrefs by default, but some programs needs a different stack.
+
+-Options: In this gadget we introduce the options of the program that we 
+are using with FrontEnd.
+
+-Save: This gadget opens a file requester to save a preferences file created.
+
+-Load: This gadget opens a file requester to load a preferences file created 
+previously by FrontEndPrefs, and then you can modify it.
+
+-About: This gadget opens a window with information about the program like
+the author, version and finish date.
+
+-Quit: This gadget leaves the program, obvious, or not?.
+
+
+One example:
+
+	I have a anim viewer called SAnim in C:, his syntaxis from the shell
+is C:SAnim +Ae +f - hireslace AnimationFile, and previously i have to execute Stack 20000
+because it needs 20000 bytes of stack. To do this from the workbench I only 
+have to load FrontEndPrefs and select:
+
+In Program:   C:Sanim
+In Requester: The one I prefer
+In Pattern:   #?
+In Title:     Select the anim to view.
+In Variables: I create a variable that let me choose the screen mode that I want to 
+  watch the anim. To this variable I will give a name. In Title I will put something like
+  "Choose the screen mode you like.", and in Option 1 I will put "Hires" that is the text that
+  will appear in the gadget, and in Com 1 I will put "-hireslace" that is the thing that 
+  tell the program the screen mode to use, and so many gadgets like  options you need (5 max).
+In 1st:       Options (they are before the name of the file)
+In Stack:     20000
+In Options:   +Ae +f
+
+	Save a file with a name like "Dh1:SAnimWB", quit from FrontEndPrefs
+and to execute the program double click the icon of the file generated by 
+FrontEndPrefs.
+
+	The default icon of the preferences file in the "Data" directory, 
+"FrontEndDefIcon.info" have as Default Tool "C:FrontEnd", if you want to 
+install the FrontEnd executable in other place than C: then you have to 
+change the path in the Default Tool of this icon to the new place of the 
+FrontEnd executable.
+
+
+@ENDNODE
+@NODE 6. "History, Long time ago..."
+
+-Version 1.0: The born of the creature and his arrive to the public. The English version
+have a bug, and a label for a gadget don't apear (a forget). The program is FreeWare
+
+-Version 1.2: Because the big improvement we make this jump in the version. Added the use
+of variables fully configurables. Added to the archive the files to be translated and localized
+to other languages. Maintained compatibility of the preferences file generated by FrontEnd Prefs 1.0.
+Now the program is CardWare.
+
+@ENDNODE
+@NODE 7. "Acknowledgments, Thanks a lot."
+
+	This program has been developed with Blitz Basic II, the best basic
+around the Amiga world, thanks to the people who support Blitz Basic II developing
+new libraries: 
+ -Steven Matty.
+ -Neil O'Rourke.
+ -Richard T. Elmore.
+ -Aaron Koolen.
+ -Stephen McNamara.
+ -Andre Bergmann.
+ -Lee Packham.
+ -Kevin Winspear.
+ -And the others I left.
+
+
+And the people that give support to the users:
+ -Matthew Tillett and the other people of the Blitz User Group Magazine
+  (Now Blitz User International).
+ -Amiga.InFo for be the only and the best Amiga magazine in Spain and for
+  his support to the users in the improvement of the machine all the amigans love.
+
+**********This program is dedicated to the DISOBEDIENTS TO THE ARMYS 
+prisoners and the other CONSCIENCE PRISIONERS of the world.***********
+
+
+@ENDNODE
+@NODE 8. "Author, This grey person with four eyes."
+
+	The author of this program is Arturo Roa Ros, this is my address
+to those of you that want to write me to contact, swap information about
+Blitz Basic II, Bug Reports (I think no), or anything:
+
+
+		Arturo Roa Ros
+		C/F.Garralda 10 4°D
+		Burlata  CP31600
+		Nafarroa
+		Spain
+
+                 ^
+                 |
+                 |
+My language is spanish, so don't expect good documents in english.
+@ENDNODE

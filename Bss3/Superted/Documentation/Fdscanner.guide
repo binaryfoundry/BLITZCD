@@ -1,0 +1,167 @@
+@DATABASE "FDScanner AmigaGuide Documentation v1.0"
+@REMARK $VER: FDScanner AmigaGuide Documentation v1.0
+@NODE MAIN "FDScanner"
+
+                              @{u}@{b}FDScanner V3.0@{uu}@{ub}
+
+                         (C)1996 Red When Excited
+
+
+   @{" About FDScanner         " link ABOUT}    -- What is the FDScanner?
+   @{" The Main Window         " link MAINWIN}    -- Contents of the main window
+   @{" AutoDoc Window          " link ADOCWIN}    -- Contents of the AutoDoc window
+   @{" Credits                 " link CREDITS}    -- Credits
+   @{" Configuration Saving    " link NODEconfiguration}    -- Saving The Configuration
+   @{" Red When Excited        " link RWE}    -- About Red When Excited
+@ENDNODE MAIN
+
+@NODE ABOUT "About FDScanner"
+
+                              @{u}@{b}About FDScanner@{uu}@{ub}
+
+  This program is supplied as an extra tool for use in conjunction with
+SuperTED 2.5 and other programs within the Blitz Support Suite.  Its
+purpose is to enable the user to view FD and AutoDoc files in a friendly
+way.
+
+
+                                 @{u}@{b}FD Files@{uu}@{ub}
+
+  FD files describe operating system functions contained within system
+libraries (e.g. files inside the LIBS: directory).  The FD file for a
+library tells what parameters each function in the library takes and what
+they return.  It also allows calculation of a library vector offset (LVO) for
+use when calling a library function.
+
+  The assign FD: must exist and must point to the location of your FD files
+for FDScanner to work.
+
+
+                                 @{b}@{u}AutoDocs@{ub}@{uu}
+
+  AutoDoc files describe operation system functions contained within the
+system libraries in more details that FD files.  An autodoc will contain an
+actual textual description of each function and its parameters.  In general
+if you need to find out exactly what a function does you look at the
+autodoc file.
+
+  The assign DOCS: must exist and must point to the location of your
+AutoDocs for the AutoDoc window inside the FDScanner to work.
+
+
+                               @{b}@{u}Installation@{ub}@{uu}
+
+  Installation of this program is done via the Blitz Support Suite
+Installer by selecting to install SuperTED and all its extra programs.
+FDScanner will only be installed if the Extras option is set in the
+installtion setup for SuperTED.
+@ENDNODE ABOUT
+
+@NODE MAINWIN "The Main Window"
+
+                              @{u}@{b}The Main Window@{uu}@{ub}
+
+  The main window pops up as soon as FDScanner is run.  Its contains a
+series of gadgets which allow you to select fd files to load and functions
+to get information for.
+
+  At the very top of the window is a string gadget which contains the name
+of the currently opened FD file.  To change the current file, just edit
+this name and change it to the library you wish to open.  E.g. entering
+'intuition' into this gadget will open the intuition fd file
+('fd:intuition_lib.fd').
+
+  Below the fd filename gadget are another two gadgets.  The left most one,
+which is the larger of the two, allows you to select a function to view by
+name or find the first function in the fd file that contains the letters
+typed into the gadget.  To find a function, just type the name of the
+function into this gadget and then press <RETURN>.  The right most gadget
+contains the LVO (library vector offset) of the currently selected
+function.
+
+  The next gadget down is the status gadget.  It tells you whether or not
+the last action completed okay.  An action can be a number of different
+events, e.g. opening a FD file or attempting to locate a function.
+
+  Three gadgets are located horizontally across the window just below the
+action gadget, these are:
+
+	'ADoc On/Off'	:	This cycle gadget controls whether or not
+				the AutoDoc window will open when you
+				select a function from the FD file.
+				If On the window will automatically open
+				when a new function is selected.
+
+	'About'		:	View information for this program.
+
+	'Quit'		:	Quit this program.
+
+  The final gadget on the screen is a list view gadget will contains a list
+of all functions in the currently open FD file.  Clicking on a function
+name will cause information for that function to appear at the top of the
+Main Window.
+
+
+                                 @{u}@{b}Resizing@{uu}@{ub}
+
+  The FDScanner Main Window is fully resizable.  You can drag the bottom
+right hand corner of the window out to make its contents bigger (e.g. so
+that more items are visible inside the list view gadget).  When you resize
+the window FDScanner automatically adjusts all its gadgets.
+@ENDNODE MAINWIN
+
+@NODE ADOCWIN "The AutoDoc Window"
+
+                            @{u}@{b}The AutoDoc Window@{uu}@{ub}
+
+  This window contains the current functions AutoDoc entry.  If the current
+function has no entry, or the AutoDoc file for the FD file does not exist
+the window will hold nothing.  This window only contains one gadget: a list
+view gadget that holds the information for a function.
+@ENDNODE ADOCWIN
+
+@NODE RWE "Red When Excited"
+
+                           @{u}@{b}Red When Excited@{uu}@{ub}
+
+  This program is part of the Red When Excited Blitz Support Suite.
+
+Red When Excited are:
+
+			Steven Matty
+			Stephen McNamara
+			Nigel Hughes
+			Steven Innell
+			Mike Richards
+			Mark Tiffany
+
+@ENDNODE
+
+@NODE CREDITS "FDScanner v3.0 - Credits"
+
+                              @{u}@{b}FDScanner v3.0@{uu}@{ub}
+
+                        Written by Stephen McNamara
+                                    of
+                             Red When Excited
+
+                               Release Date:
+                                 30/06/1996
+
+                               Documentation
+                             Stephen McNamara
+
+
+                            Help and criticism:
+                               Steven Matty
+
+@ENDNODE THANX
+
+@NODE NODEconfiguration "Configuration Saving"
+
+                           @{u}@{b}Configuration Saving@{uu}@{ub}
+
+  When FDScanner quits it automatically saves the name of the currently
+open FD file into a file inside ENV: and ENVARC: so that the next time it
+is run it can open up with the same FD that it quitted with.
+@ENDNODE NODEconfiguration

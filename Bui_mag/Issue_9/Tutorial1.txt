@@ -1,0 +1,41 @@
+PROJECT BUI
+
+BY PAUL BURKEY
+
+(C) BUI
+
+
+
+Welcome to the first part of my tutorial. I'm going to take you through some of the methods used in creating a game similar to Project X and R-Type. In this first part, I'll drop you straight in the deep end with the scrolling technique. It's always best 
+
+
+
+Before writing a game such as this I always spend a bit of time creating a simple map designer.  There are plenty of these programs about but I always like to make my own because it allows me to customise it to suit each individual games needs. At the mom
+
+
+
+I wanted to create a nice rainbow effect similar to Project X but due to my time restrictions for this first tutorial, I didn't have the time to get it right. May I also say that the graphics are a bit boring, again due to time restrictions. I'll consider
+
+
+
+I'm going to use a popular method of scrolling which is widely used in the Amiga games 
+
+industry. It makes use of BitMap offsets that are very easy to do and use hardly any processor time. I will be using a BitMap which is twice the size of the display. The technique is to paste a column of graphics just off the right hand side of the displa
+
+
+
+I shall leave you with just a scroll for now but before I end, I'll explain the most important thing to think about when you are designing your game and that's "frame rate"...
+
+
+
+If you want your game to run smoothly it will have to run at 50 frames a second. You will have to get all your graphics and calculations done within the 50th of a second time limit. In most games you will use a single "VWait" in your main loop. This will 
+
+
+
+I will have to contradict myself now by saying that most Shoot-em-up games such as the one I'm explaining to you in this tutorial will be made of mostly graphics work although as with every game the frame rate is still very important. Now in this game I w
+
+
+
+I'll leave you to browse through the source code and hopefully by next time you will all be ready to see how I introduce some nasties into the game and of course our own ship!! I wont explain the map maker in this tutorial because I shall be modifying it 
+
+[Paul Burkey]

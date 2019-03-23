@@ -1,0 +1,161 @@
+                                Library #99
+                       Binary Assault's Sound System
+
+
+   Note: This doc file was typed in a hurry.. I've tried to think of 
+         everything, but I might have missed a few topics.
+
+ Needed: In order to use this library, you'll need the following files in 
+         your WorkBench LIBS: directory:
+
+                             medplayer.library
+                           octamedplayer.library
+                              playsid.library
+
+         I didn't include these because I'm not sure what else the authors
+         require. All of them may be found on Aminet. If you can't find
+         them, let me know and I'll send you an archive of them.
+
+
+
+                                 Commands:
+                                 ~~~~~~~~~
+
+                                --GENERAL--
+
+SSLoadModule(#,filename)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This command loads a file to be played by one of the libraries. It returns
+a true/false condition depending on the success of the load.
+
+SSFreeModule(#)
+~~~~~~~~~~~~~~~
+ 
+Frees the memory and any pointers referencing it. Doesn't return a error 
+condition.
+
+                         --MED LIBRARY COMMANDS--
+
+SSInitMedLibrary
+~~~~~~~~~~~~~~~~
+
+Initialises the medplayer.library and prepares it for use. This will return
+an error condition depending on if the library was found and if it
+allocated itself properly.
+
+SSDeInitMedLibrary
+~~~~~~~~~~~~~~~~~~
+ 
+De-allocates the library. This doesn't remove it from memory.. Do an 'avail
+flush' from CLI if you want to remove it from memory. This does return an 
+error condition.
+
+SSPlayMedModule(#)
+~~~~~~~~~~~~~~~~~~
+
+Plays a module in memory. These are MMD0 and MMD1 modules. You must load a
+medmodule first. This also returns an error condition.
+
+SSContinueMedModule(#)
+~~~~~~~~~~~~~~~~~~~~~~
+
+Continues a med module, if stopped. Returns an error condition, but I don't
+remember why. ;)
+
+SSStopMedModule
+~~~~~~~~~~~~~~~
+
+Stops the current med module from playing.
+
+SSSetMedTempo(#)
+~~~~~~~~~~~~~~~~
+
+Allows you to change the tempo of the med playing.
+
+SSSetMedModule(#)
+~~~~~~~~~~~~~~~~~
+
+This is for multi-song med modules ONLY. Using this command allows you to
+switch between the songs.
+
+
+                       --OCTAMED LIBRARY COMMANDS--
+
+I'm going to be a bit lazy here, since they are ALMOST exactly the same as
+the med library commands. Just add 'octa' in front of med.
+
+Example: SSPlayOctaMEDModule
+
+
+                       --PLAYSID LIBRARY COMMANDS--
+
+SSInitSidLibrary
+~~~~~~~~~~~~~~~~
+
+Gets the playsid library ready for use. Returns an error condition.
+
+SSDeInitSidLibrary
+~~~~~~~~~~~~~~~~~~
+
+Opposite of SSInitSidLibrary.. (Yes, I'm in a hurry!) Returns an error
+condition.
+
+SSPlaySidSong(#,#)
+~~~~~~~~~~~~~~~~~~
+
+Plays a sid song. Note, there are songs within songs (multi-songs.) The
+second parameter allows you to pick which to play. Returns an error
+condition.
+
+SSStopSidSong
+~~~~~~~~~~~~~
+
+Stops a sid song from playing.
+
+SSPauseSidSong
+~~~~~~~~~~~~~~
+
+Pauses the current playing sid song. Use SSContinueSidSong to continue
+playing it.
+
+SSContinueSidSong
+~~~~~~~~~~~~~~~~~
+
+Unpauses the current sid song.
+
+SSSidFastForwardSong(#)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Allows you to fastforward through a song like a tape. Supply the rate as
+the parameter.
+
+SSSidRewindSidSong(#)
+~~~~~~~~~~~~~~~~~~~~~
+
+Allows you to rewind a sid song. Supply the rate as the parameter.
+
+SSDecodeSidSong(#,#)
+~~~~~~~~~~~~~~~~~~~~
+
+Decodes a song in memory. First parameter is the module#. The second is
+the length of the song. YOU MUST SUPPLY THIS PARAMETER.
+
+SSSetSidFrequency(#)
+~~~~~~~~~~~~~~~~~~~~
+
+Sets the play requency of the sid routine. Use 50 or 60 depending on which
+format you wish to use (pal or ntsc.)
+
+
+NOTES:
+
+General: Well, I've tried to add error checking to about everything.
+         Remember though... This library is a gateway to the actual
+         libraries.. I cannot forsee every possible situation that might
+         come up. USE THIS AT YOUR OWN RISK!
+
+    Sid: CPU hog. Not much more can be said.
+
+
+Crossbones/BA

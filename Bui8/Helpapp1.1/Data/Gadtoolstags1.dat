@@ -1,0 +1,269 @@
+
+GadTools Attribute Tags
+=======================
+
+Usage: CreateGadgetA/GTTags
+
+GT_VisualInfo: ( ti_Tag = $80080034 )
+
+Specify in ti_Data the result of the
+GetVisualInfo call for GadTools.
+
+
+GadTools Attribute Tags
+=======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GT_Underscore: ( ti_Tag = $80080040 )
+
+Specify in ti_Data a pointer to the
+symbol that preceeds the character 
+to be underlined in a gadget label.
+
+
+GadTools Cycle Tags
+===================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTCY_Labels: ( ti_Tag = $8008000E )
+
+Specify in ti_Data a pointer to a
+NULL pointer terminated array of
+strings to use for the Cycle choices.
+
+
+GadTools Cycle Tags
+===================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTCY_Active: ( ti_Tag = $8008000F )
+
+Specify an unsigned WORD in ti_Data,
+counting from zero, to select the initial
+active item.
+
+
+GadTools Text Tags
+==================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTTX_Text: ( ti_Tag = $8008000B )
+
+Specify a pointer to a NULL terminated
+string in ti_Data, to be used as the text
+displayed in the gadget.
+
+
+GadTools Text Tags
+==================
+
+Usage: CreateGadgetA/GTTags
+
+GTTX_CopyText: ( ti_Tag = $8008000C )
+
+Specify a True boolean to have the gadget
+take a copy the text instead of just
+using the pointer to the string later.
+
+
+GadTools Text Tags
+==================
+
+Usage: CreateGadgetA/GTTags
+
+GTTX_Border: ( ti_Tag = $80080039 )
+
+Specify a True boolean to have the text
+surrounded by a recessed border when drawn.
+
+
+GadTools CheckBox Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTCB_Checked: ( ti_Tag = $80080004 )
+
+Specify a True boolean to have the Gadget
+selected (A tick present).
+
+
+GadTools ListView Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTLV_Top: ( ti_Tag = $80080005 )
+
+Specify in ti_Data the ordinal number of
+the top item visible in the listview.
+
+
+GadTools ListView Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTLV_Labels: ( ti_Tag = $80080006 )
+
+Specify a List pointer in ti_data, to an 
+Exec List whose nodes have their ln_Name
+fields set to the items to be displayed
+in the ListView.
+
+
+GadTools ListView Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_ReadOnly: ( ti_Tag = $80080007 )
+
+Specify a boolean True in ti_Data 
+to create a readonly ListView, in which 
+items cannot be selected.
+
+
+GadTools ListView Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_ScrollWidth: ( ti_Tag = $80080008 )
+
+Specify an Unsigned WORD in ti_Data
+for the width of the scrollbar.
+
+
+GadTools ListView Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+
+GTLV_ShowSelected: ( ti_Tag = $80080035 )
+
+Specify a Gadget pointer in ti_Data as follows:
+
+NULL: A read only TEXT_KIND display of the
+      currently selected item.
+
+Pointer to STRING_KIND: Allow the user to directly
+      edit the current item.
+
+
+GadTools ListView Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTLV_Selected: ( ti_Tag = $80080036 )
+
+Specify the ordinal number of the item
+to be selected initially in the current
+selection display given by GTLV_ShowSelected.
+
+Ignored if GTLV_ShowSelected is not used.
+
+
+GadTools MutualExclude Tags
+===========================
+
+Usage: CreateGadgetA/GTTags
+
+GTMX_Labels: ( ti_Tag = $80080009 )
+
+Specify in ti_Data a pointer to a
+NULL pointer terminated array of
+strings to use for the MX choice labels.
+
+
+GadTools MutualExclude Tags
+===========================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTMX_Active: ( ti_Tag = $80080010 )
+
+Specify the ordinal number of the
+selected item in ti_Data.
+
+
+GadTools MutualExclude Tags
+===========================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTMX_Spacing: ( ti_Tag = $8008003D )
+
+Value specified in ti_Data is added to
+font height to provide spacing between
+MX choices.
+
+
+GadTools Scroller Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSC_Top: ( ti_Tag = $80080015 )
+
+Specify in ti_Data the top line or
+position visible in the area that the
+scroller represents.
+
+
+GadTools Scroller Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSC_Total: ( ti_Tag = $80080016 )
+
+Specify in ti_Data the total number of
+lines or positions that the scroller
+represents.
+
+
+GadTools Scroller Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSC_Visible: ( ti_Tag = $80080017 )
+
+Specify in ti_Data the number of
+visible lines or positions for the 
+scroller.
+
+
+GadTools Scroller Tags
+======================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSC_Arrows: ( ti_Tag = $8008003B )
+
+Specifies that arrow gadgets are
+attached to the scroller. The value in
+ti_Data gives the width of the arrows for
+a horizontal scroller, or the height for
+a vertical scroller.
+

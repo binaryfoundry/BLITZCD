@@ -1,0 +1,192 @@
+
+
+It was my fault this time, sorry...
+
+You would not believe how much trouble I've had putting this issue 
+together (again, after I lost everything!), so I won't explain ;)
+
+I hope you like this BUM as it will probably be the last one ever,
+it's certainly the last one for me anyway...
+
+
+Goodbye and thanks, you've been a lovely audience.
+
+
+
+
+Things to note:
+
+        - Most of the examples have runtime error checking on, so once you
+          know the example compiles correctly, take runtime error checking
+          off and recompile.
+
+        - A few examples on BUM10Examples2 require a good chunk of free
+          memory so 1Mb users don't even think about trying to compile
+          them.. 2Mb users will probably struggle as well with some of my
+          demos and Nigels ChunkyLandscape.bb2
+
+        - Some of the examples will not compile when running Blitz from
+          floppy disk as they use commands from libraries on the Blitzlibs
+          disk. (see BUM9 docs on how to create a new deflibs)
+
+        - If you are using Ted v1.1 don't forget to click the CD gadget on
+          the Load File Requester as quite a few of the examples need to
+          load additional data from the disk. With the new Ted v2.1 you do
+          not need to change the directory anymore as it is done
+          automatically when you load the example.
+
+
+Things I said that had to be done for BUM10:
+
+        - Get the Acid 3D library beta version from Simon (arghhh!!!)
+
+          Nope ! but Nigel has given me a nice library that handles lots
+          of '3D maths stuff' and has some chunky drawing commands.
+
+        - Write plenty of examples for Acids Chunky/Chock library
+
+          Not exactly, but I have written a complete set of c2p includes
+          to compliment the chunkylib and one example ;)
+
+        - Bug fixes to some of the Acidlibs
+
+          Hmmm.. well Steve Matty sent me four fixed Acidlibs, but since
+          I lost everything on my HD I can't create a new Acidlibs.. doh
+          (in case you wanted to know, the fixed acidlibs are bbaslib.obj,
+           bbgtlib.obj, gadgetslib.obj and windowslib.obj)
+          
+        - Bug fixes to NewTed (probably)
+
+          Yes, now it's version 2.23 and it's SuperTed not NewTed!
+
+        - Add extra documentation to the on-line help  
+
+          Nope, but at least NewTed/SuperTed users can now edit the help
+          files themselves as they're in .guide format ;)
+
+
+
+People who deserve Thanks:
+
+        - Xbones, ><>, Ralf, etc..          
+	
+        - RWE/RI
+	
+        - Everyone who has contributed to this BUM release.
+
+
+
+Ted Bailey 25/9/96  (oh dear.. )
+
+
+
+                            ===================
+                            BUM10 Disk Contents
+                            ===================
+
+
+Blitz2
+------
+
+A direct replacement for the program disk that came with your original
+Blitz2.1 package. See ReleaseNotes on the program disk for changes.
+
+
+
+Blitzlibs
+---------
+
+This contains all the latest third party libraries and the new test
+libraries. It also contains the resident files and two small Blitz
+programs to allow you to create a new deflibs file and also view the
+commands in any library.
+
+
+includes  - A new include file has been added called asmmacs.bb2. It's
+            a small (at the moment ;) collection of macros by Steven
+            Matty which add a few more commands to the Blitz assembler
+
+amigalibs - Unchanged from BUM9 
+
+otherlibs - As with BUM9 but, XBciatrackerlib is now version 1.04,
+            GKdbaselib and XBaudiolib are now in this directory instead
+            of testlibs
+
+rilibs    - Unchanged from BUM9
+  
+testlibs  - Three new userlibs - XBsoundsystemlib, RWEmathlib, PRemllib
+
+
+Sorry Hard Disk users, but there was no space to make up a new large
+deflibs file for you so use the LibMan utility from BUM9 to create one.
+The deflibs file should be around 197K if you include all the libraries
+on the Blitzlibs disk.
+
+Don't forget that the Acid chunkylib and cd32lib are on the Blitz2
+program disk in the directory Blitz2:Userlibs/Beta/ and should be copied
+into the same directory on your Hard Disk.
+ 
+
+
+BUM10Examples1
+--------------
+
+BUM10Docs - Documents for the new userlibs, my c2p stuff and the two
+            Acidlib documents that still haven't been converted to
+            'acidhelp' or amigaguide... 
+            
+UserCode1 - Lots of examples which are mainly applications related.
+
+UserGame  - Two games all with documentation/source code - An OS-friendly
+            card game by S.E.Morris (><>) and a shoot-em-up by Manfred
+            Linzner (Pink). 
+
+
+
+BUM10Examples2
+--------------
+
+TedsDemos - My chunky to planar includes, more display examples and a
+            hideous processor/blitter line draw routine, oh and an
+            application type thing - Ted_cdplayer ;)
+
+UserCode2 - Lots of display/graphics related examples - some nice things
+            by Nigel to demonstrate his new library, couple of starfields
+            by ><> and some 'demoy' examples by Pink.
+
+
+
+
+
+                            ================
+                             T H E    E N D
+                            ================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+or is it ?

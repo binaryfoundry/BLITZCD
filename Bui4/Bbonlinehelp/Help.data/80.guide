@@ -1,0 +1,328 @@
+@DATABASE "80.guide"
+
+@NODE 80D2
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statements: Runerrson & Runerrsoff@{fg text}
+--------------------------------------------------------------------------
+Syntax: Runerrson & Runerrsoff
+ 
+These two new compiler directives are for enabling and disabling error
+checking in different parts of the program, they override the settings 
+in Compiler Options.
+@ENDNODE
+@NODE 80D3
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statements: Runerrson & Runerrsoff@{fg text}
+--------------------------------------------------------------------------
+Syntax: Runerrson & Runerrsoff
+ 
+These two new compiler directives are for enabling and disabling error
+checking in different parts of the program, they override the settings 
+in Compiler Options.
+@ENDNODE
+@NODE 9C81
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: RIAnimInit@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: [suc=]RIAnimInit(address,bitmap#,palette#[,xy_offset])
+
+This command attempts to take an animation held in memory (CHIP or FAST)
+and identify it as a supported animation format.  If it identifies it 
+okay it will set up the animation by unpacking frame 1 of the anim onto 
+the specified bitmap and copying the palette to the specified palette 
+object.
+
+You must ensure that the bitmap is big and deep enough to actually hold
+the animation.  At the moment there is no checking of the bitmap size.  
+The palette object you give is automatically resized to the size of the 
+palette in the animation.
+
+The optional parameter allows you to play an animation at an offset into
+a bitmap.  Thus you could center a half screen animation on a bitmap.  
+The offset is given as a byte offset from the start of each bitplane.  
+It is calculated like this:
+
+			offset=(X/8)+(Y*(pixel_width/8))
+
+			where: X and Y are your co-ordinates
+			       pixel_width is the width of your bitmap.
+
+If used as a function, this command returns true for a successful
+initialise or false for failure.
+@ENDNODE
+@NODE 9C82
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: RINextAnimFrame@{fg text}
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: [suc=]RINextAnimFrame bitmap#
+
+This command attempts to unpack the next frame of a previously
+initialised animation onto the specified bitmap.  It returns true or 
+false to say whether it succeeded or not.
+@ENDNODE
+@NODE 9C83
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: AnimLoop@{fg text}
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: AnimLoop ON|OFF
+
+  This command allows you to control the looping mode of the animation.
+With animloop off, playback of an animation will stop at the last frame 
+of it. Any attempt to draw another frame will fail.  With it on, 
+though, the animation will loop around.
+
+@{fg shine}Note:@{fg text} you must ensure that your animation has loop frames at the end of
+it if you want to loop the animation around.  The reverse of this is 
+true for animloop off - the animation must not have loop frames if you 
+don't want it to loop around.  If you select animloop off but have 
+looping frames in your anim then the animation will end by displaying a 
+copy of frame 2 of the animation.
+@ENDNODE
+@NODE 9E81
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : AddAppWindow@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=AddAppWindow(windownumber)
+
+This command attempts to make the window specified by 'windownumber' to 
+become an AppWindow. -1 means success, 0 means failure. There is a 
+currently limit of 4 AppWindows.
+@ENDNODE
+@NODE 9E82
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : DelAppWindow/DelAppIcon/DelAppMenu@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=DelAppWindow[(number)]
+	 success=DelAppIcon[(id)]
+	 success=DelAppMenu[(id)]
+
+These commands will remove the AppWindow/AppIcon/AppMenu from the system
+and free up the associated message ports.
+
+@{fg shine}*** IMPORTANT ***@{fg text} You must call DelAppWindow BEFORE closing a window,
+or your machine will GURU!
+@ENDNODE
+@NODE 9E83
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : AddAppMenu@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=AddAppMenu(id,text$)
+
+This command tries to add 'text$' to the Tools menu of Workbench.
+ID is a unique identification number. Returns -1 for success, 0 for 
+failure. 
+
+e.g.
+	suc=AddAppMenu(0,"Blitz2")
+	If suc=0 Then End
+
+@ENDNODE
+@NODE 9E84
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : DelAppWindow/DelAppIcon/DelAppMenu@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=DelAppWindow[(number)]
+	 success=DelAppIcon[(id)]
+	 success=DelAppMenu[(id)]
+
+These commands will remove the AppWindow/AppIcon/AppMenu from the system
+and free up the associated message ports.
+
+@{fg shine}*** IMPORTANT ***@{fg text} You must call DelAppWindow BEFORE closing a window,
+or your machine will GURU!
+@ENDNODE
+@NODE 9E85
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : AddAppIcon@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=AddAppIcon(id,text$,iconname$)
+
+This command attempts to place an AppIcon onto the Workbench desktop.
+ID is a unique identification number. Text$ is text to display 
+underneath the AppIcon and Iconname$ is the name of the file to use the
+Icon imagery. -1 means success, 0 means failure.
+
+e.g.
+	suc=AddAppIcon(0,"Test","Work:Test")
+	If suc=0 Then End
+@ENDNODE
+@NODE 9E86
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : DelAppWindow/DelAppIcon/DelAppMenu@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=DelAppWindow[(number)]
+	 success=DelAppIcon[(id)]
+	 success=DelAppMenu[(id)]
+
+These commands will remove the AppWindow/AppIcon/AppMenu from the system
+and free up the associated message ports.
+
+@{fg shine}*** IMPORTANT ***@{fg text} You must call DelAppWindow BEFORE closing a window,
+or your machine will GURU!
+@ENDNODE
+@NODE 9E87
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : AppEvent@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : status=AppEvent
+
+This command checks the msg ports of any open AppIcons/AppWindows/
+AppMenus and if an event has been passed, returns -1. 0 indicates no 
+event has occurred.
+
+e.g.
+	Repeat
+	  VWait
+	Until AppEvent
+@ENDNODE
+@NODE 9F02
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}GetIconInfo@{fg text}
+--------------------------------------------------------------------------
+Syntax: boolean.w=GetIconInfo(icon#,iconname$)
+
+Description:
+This examines a .info file so you can get information about it.
+'iconname$' is the name of the icon without the .info suffix and icon# is
+the number of the IconInfo object you want to put the data under.  It will
+return FALSE (0) if it failed, or TRUE (-1) if it succeeded.
+@ENDNODE
+@NODE 9F03
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IconTool$@{fg text}
+--------------------------------------------------------------------------
+Syntax: tool$=IconTool$(icon#,toolname$)
+
+Description:
+Returns the respective data of the tooltype specified by 'toolname$' of
+IconInfo object icon#.
+
+EG
+
+If IconTool$(0,"CX_POPUP")="YES" Then Gosub PopUpWindow
+@ENDNODE
+@NODE 9F04
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IconType@{fg text}
+--------------------------------------------------------------------------
+Syntax: type.w=IconType(icon#)
+
+Description:
+Returns the type of IconInfo object icon#.
+
+EG  NPrint IconType(0)
+
+'type' is one of the list from workbench/workbench.bb2.
+@ENDNODE
+@NODE 9F06
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IconStack@{fg text}
+--------------------------------------------------------------------------
+Syntax: stackSize.l=IconStack(icon#)
+
+Description:
+Returns the stack sie setting of the icon.
+@ENDNODE
+@NODE 9F07
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}IconSubTool$@{fg text}
+--------------------------------------------------------------------------
+Syntax: boolean.w=IconSubTool$(toolname$,subtool$)
+
+Description:
+Returns TRUE (-1) or FALSE (0) if the sub tool type 'subtool$' exists
+within the tool 'toolname$'
+
+EG
+
+  If IconSubTool$(0,IconTool$(0,"FILETYPE"),"ILBM") Then file type of
+  file was ILBM.
+
+A Subtool (My word) is one that resides in a tool type but is separated by
+bars (|).  EG
+
+FILETYPE=PaintProgram|ILBM    (PaintProgram and ILBM are "Sub Tools")
+
+IconTool$ will return the PaintProgram|ILBM part and you can then use
+IconSubtool$ to see if things like ILBM or PaintProgram exist in that
+string.
+
+@{fg shine}NOTE:@{fg text} This does not require the passing if an IconInfo object, it simply
+requires 2 strings, so you can use it for other things too.
+@ENDNODE
+@NODE AF02
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: LoadAnim
+--------------------------------------------------------------------------
+@{fg text}Syntax: LoadAnim Anim#,FileName$[,Palette#]
+Modes: Amiga
+
+Description:
+The LoadAnim command will create an Anim object and load a DPaint 
+compatible animation. The ILBMInfo command can be used to find the 
+correct screensize and resolution for the anim file. The optional 
+Palette# parameter can be used to load a palette with the anims correct
+colours. 
+
+@{fg shine}Notes:@{fg text}
+unlike more advanced anim formats DPaint anims use a single static 
+palette for the entire animation. Like all other Blitz commands that
+access files the command must be executed in Amiga mode.
+@ENDNODE
+@NODE AF03
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: InitAnim
+--------------------------------------------------------------------------
+@{fg text}Syntax: InitAnim Anim#[,Bitmap#]
+Modes: Amiga/Blitz
+
+Description:
+InitAnim renders the first two frames of the Anim onto the current 
+BitMap and the BitMap specified by the second parameter. The second 
+BitMap# parameter is optional, this is to support Anims that are not in
+a double-buffered format (each frame is a delta of the last frame not 
+from two frames ago). However, the two parameter double buffered form of
+InitAnim should always be used. (hmmm don't ask me O.K.!)
+@ENDNODE
+@NODE AF04
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: NextFrame
+--------------------------------------------------------------------------
+@{fg text}Syntax: NextFrame Anim#
+Modes: Amiga/Blitz
+
+Description:
+NextFrame renders the nextframe of an Anim to the current BitMap. If 
+the last frame of an Anim has been rendered NextFrame will loop back to 
+the start of the Animation.
+@ENDNODE
+@NODE AF05
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: Frames
+--------------------------------------------------------------------------
+@{fg text}Syntax: Frames (Anim#)
+
+Description:
+The Frames() function returns the number of frames in the specified 
+Anim.
+@ENDNODE
+@NODE AF0E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: MoveScreen@{fg text}
+--------------------------------------------------------------------------
+Syntax: MoveScreen Screen#,deltax,deltay
+ 
+Move specified screen by specified amount. Good for system friendly 
+special effects.
+@ENDNODE
+

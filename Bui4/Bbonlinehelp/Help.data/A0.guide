@@ -1,0 +1,378 @@
+@DATABASE "A0.guide"
+
+
+@NODE A001
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: ZoneInit@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : ZoneInit [zone_num]|[start_zone,end_zone]
+
+This command is used to clear any zones currently set.  The optional
+parameters allow you to select either a single zone or a range of zones
+to reset.
+@ENDNODE
+@NODE A002
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Statement: Setzone@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : Setzone zone#,x1,y1,radius
+         Setzone zone#,x1,y1,x2,y2
+
+This command lets you set up zones for testing.  The first version is
+used when you want to set up a circular zone and the second when you 
+want a rectangular one.  With rectangular zones, x1,y1 should be the top
+left corner of the rectangle and x2,y2 should be the bottom left.
+
+Note: The max zone number is 255.
+      When you use this command, the zone number you give is ANDed with
+      256 so you should ensure that you give a number lower than 256 so
+      that previously defined zones don't get corrupted.
+      Zones can be defined in any order.
+      Circular zones are used in exactly the same way as rectangular
+      ones.
+@ENDNODE
+@NODE A003
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: Zone@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : a.w=Zone(x,y)
+
+This command takes the co-ordinates x,y and checks to see if they are
+inside any of the defined zones.  The zones are searched in order,
+starting at 0 and going through to 255.  This command will return the
+first zone that the co-ordinates were found to be inside, you should 
+note that both types of zones are tested (rectangular and circular).
+
+This command returns either -1 for not inside a zone or the zone number.
+@ENDNODE
+@NODE A004
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: ZoneTest@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : a.w=ZoneTest(start_num[,end_num],x,y)
+
+This command is the same as the Zone command except that it allows you
+to select either one individual zone to test or a range of zones.  You
+should, though, ensure that end_num if greater than start_num.
+
+This command returns either -1 for not inside a zone or the zone number.
+@ENDNODE
+@NODE A005
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ZoneTable@{fg text}
+-------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : ad.l=ZoneTable
+
+This function returns the address in memory of the zone information
+storage area for the current zonetable. The zones are stored one after
+the other, with each zone taking up 8 words (16 bytes) in the data area,
+making a total size of 2048 bytes.  They are stored in the following 
+way:
+
+		Rectangular:  	+0: x1
+				+2: y1
+				+4: x2
+				+6: y2
+
+		Circular:	+0: x1
+				+2: y1
+				+4: radius of zone
+				+6: -1 <-- this is set to show that the
+ 				           zone is circular.
+
+		Undefined zone:	+0: -1
+				+2: -1
+				+4: -1
+				+6: -1
+
+The first longword (4 bytes) of the zonetable is used to hold the size,
+in zones, of the table (thus the true size of the zonetable is 4+number
+of zones*8).
+@ENDNODE
+@NODE A006
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: JFire@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : jf.b=JFire(joy#)
+
+This command tests the fire button status of the joystick joy#, where
+joy# is between 1 and 4.  You should note that, as with all the joystick
+commmands, joy#=1 refers to the Amiga's joystick port, joy#=2 refers to
+the mouse port, and joy#=3 or joy#=4 refer to the four player adapter
+ ports.
+
+This command returns 0 for fire button not pressed or -1 for pressed
+@ENDNODE
+@NODE A007
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: JVert@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : jv.b=JVert(joy#)
+
+This command is used to test the vertical direction of the selected
+joystick.  It returns:
+
+		0: No vertical direction
+  	       -1: Joystick up
+	        1: Joystick down
+@ENDNODE
+@NODE A008
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: JHoriz@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : jh.b=JHoriz(joy#)
+
+This command is used to test the horizontal direction of the selected
+joystick.  It returns:
+
+		0: No horizontal direction
+  	       -1: Joystick left
+	        1: Joystick right
+@ENDNODE
+@NODE A009
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}
+Function: AllFire@{fg text}
+---------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : af.b=AllFire [(bit_pattern)]
+
+This command is used to test the fire button status of all four
+joysticks.  It returns a byte with the first four bits giving the
+joystick status, false=fire button not pressed, true=fire button 
+pressed. The following bits belong to joysticks:
+
+		bit 0: joystick 1 (joystick port)
+		bit 1: joystick 2 (mouse port)
+		bit 2: joystick 3 (four player adaptor)
+		bit 3: joystick 4 (four player adaptor)
+
+The optional bit pattern can be used to restrict the testing of the fire
+buttons.  If a bit in the pattern is clear (false) then the joystick it
+belongs to will not have its fire button tested,
+
+e.g. AllFire (%0011) will test joysticks 1 and 2 and return the
+     result.  It will return false for joysticks 3 and 4.
+
+@ENDNODE
+@NODE A00A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: ZoneTableSize@{fg text}
+-------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : size.l=ZoneTableSize
+
+This function returns the size, in zones, of the current zonetable.  It
+is equivalent of doing: size.l=peek.l(ZoneTable).
+@ENDNODE
+@NODE A00B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: NewZoneTable@{fg text}
+-------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : NewZoneTable table#,size
+
+This command will attempt to allocate a new zonetable with the given
+table number. If the table already exists it will be deleted.  The 
+maximum size for a zonetable is 65536 zones. If used as a function, this
+command will return FALSE for failure or TRUE for success.  You should 
+note that all zones are automatically reset in the new table and that 
+creating a table does not make it the current table, this must be done
+with UseZoneTable.
+
+Valid zonetable numbers range from 0 to 15.
+
+@{fg shine}IMPORTANT NOTE:@{fg text} you cannot define the size of zonetable 0.  You cannot
+use this command to alter it in any way.
+@ENDNODE
+@NODE A00C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: UseZoneTable@{fg text}
+-------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : UseZoneTable table#
+
+This command is used to change the current zonetable to the selected
+one. If used as a function, it will return TRUE for success or FALSE 
+for failure.
+
+Valid zonetable numbers range from 0 to 15.
+@ENDNODE
+@NODE A00D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement/Function: FreeZoneTable@{fg text}
+-------------------------------------------------------------------------
+Modes  : Amiga/Blitz
+Syntax : FreeZoneTable table#
+
+This command is used to free a zonetable from memory.  If used as a
+function, it will return TRUE or FALSE.  When successfully called, this
+command will free the zonetable and change the currently used zonetable
+to table number 0.
+
+Valid zonetable numbers range from 0 to 15.
+
+@{fg shine}IMPORTANT NOTE:@{fg text} you cannot free zone table 0.
+@ENDNODE
+@NODE A081 
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function:  PalRed @{fgtext}
+--------------------------------------------------------------------------
+Modes :  Amiga/Blitz Syntax:  r.w=PalRed (Colour#)
+
+This command is used to get the red value of colour number Colour#. You
+should use the PaletteInfo command to specify what palette this command
+takes its information from.
+
+The value returned will be from 0 to 15
+@ENDNODE
+@NODE A082
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: PalGreen@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: r.w=PalGreen (Colour#)
+
+This command is used to get the green value of colour number Colour#. 
+You should use the PaletteInfo command to specify what palette this 
+command takes its information from.
+
+The value returned will be from 0 to 15
+@ENDNODE
+@NODE A083
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: PalBlue@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: b.w=PalBlue (Colour#)
+
+This command is used to get the blue value of colour number Colour#. You
+should use the PaletteInfo command to specify what palette this command
+takes its information from.
+
+The value returned will be from 0 to 15
+@ENDNODE
+@NODE A084
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PaletteInfo@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: PaletteInfo Palette#
+
+This command is used to specify the palette object that all palette
+interrogations should look at.  The majority of the commands use this
+palette object as the source for their data, e.g. PalRed(1) will look at
+the red value of colour 1 of the palette last used in a PaletteInfo
+command.
+@ENDNODE
+@NODE A085
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: AGAPalRed@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: r.w=AGAPalRed (Colour#)
+
+This command is used to get the red value of colour number Colour#. You
+should use the PaletteInfo command to specify what palette this command
+takes its information from.
+
+The value returned will be from 0 to 255, this number of shades, though,
+can only be displayed on an AGA machine.
+@ENDNODE
+@NODE A086
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: AGAPalGreen@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: g.w=AGAPalGreen (Colour#)
+
+This command is used to get the green value of colour number Colour#.
+You should use the PaletteInfo command to specify what palette this 
+command takes its information from.
+
+The value returned will be from 0 to 255, this number of shades, though,
+can only be displayed on an AGA machine.
+@ENDNODE
+@NODE A087
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: AGAPalBlue@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: b.w=AGAPalBlue (Colour#)
+
+This command is used to get the blue value of colour number Colour#. You
+should use the PaletteInfo command to specify what palette this command
+takes its information from.
+
+The value returned will be from 0 to 255, this number of shades, though,
+can only be displayed on an AGA machine.
+@ENDNODE
+@NODE A088
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PalAdjust@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: PalAdjust dest_palette#,ration.q[,start_col,end_col]
+
+This command is used to multiple all the colours, or a range of colours,
+in a palette object, by a ratio.  The dest_palette# arguement is used to
+give a destination for the adjusted colour information.  This 
+destination should be a pre-reserved palette and should be AT LEAST as 
+big and the source palette.  The source palette is taken as being the 
+palette last used in the PaletteInfo command.
+
+The ratio should be given as either a quick value or a float and should
+be below one for a fade or above to lighten a palette.  If you give a 
+ratio of 1 then a palette copy will occur.
+
+The optional start and end parameters let you specify the range of
+colours to adjust.  Only this range of colours, though, will be adjusted
+and stored in the destination palette.
+@ENDNODE
+@NODE A089
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: FillPalette@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: FillPalette palette#,r,g,b[start_col,end_col]
+
+This command lets you fill a given palette object with specific r,g,b
+values.  The values given should be between 0 to and 15.  Optionally, 
+you can give start and end colour numbers to set a range for the fill.  
+You should be careful, though, because when you specify a range, no 
+checking is done (at the moment) to make sure that you don't exceed 
+the colour limit of the palette.
+
+You should note that this command does not work on the palette last
+PaletteInfo'ed.
+@ENDNODE
+@NODE A08A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: AGAFillPalette@{fg text}
+-------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: AGAFillPalette palette#,r,g,b[start_col,end_col]
+
+This command is identical to @{" FillPalette " link A089} except that it lets 
+you specify AGA shade values for the r,g,b parameters.
+
+See @{" FillPalette " link A089} for more information.
+@ENDNODE
+
+
+

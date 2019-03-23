@@ -1,0 +1,46 @@
+COVERDISK
+
+(C) BUI
+
+
+
+
+
+Loading...
+
+Put your coverdisk in "DF0:" and double click on the disk icon.  When the window has opened on your Workbench screen, double click on the icon of the world.
+
+We will from now on be using our own custom frontend for the coverdisk.  It is very easy to use and will unpack the files you want unpacked from a simple click.  Help is at hand by clicking "HELP".
+
+
+
+
+
+Superpengo Twins:- By David Worswick.  Here is another superb AGA Game.  The game is really addictive, The lads and I here at the office played It for hours.  The game is AGA, therefore you need an A1200.  Sorry if you only have an A500 or A600...  But I 
+
+
+
+Pengo Editor:-  By David Worswick.  Here's a little treat, an editor for SuperPengo Twins, now you can make your own maps.  We've already made some new maps up, (Need trying up a bit) if there's room on the next coverdisk we meet put them on for you.  If 
+
+
+
+Marbles:- By Philip Holden.  Seven precompiled programs + source code.  One of the programs is for real time ball movement in a 3D landscape with joystick control, real time shadow and real gravity.  Other programs are for texture mapped towers.  Real tim
+
+
+
+Lee's Tutorial:- By Lee Packham.  This code simply changes the gadtools list on a window without closing the window.
+
+
+
+Kev's Tutorial:- By Kevin Winspear.  For those people who want to make there own Gadgets and Requesters.  Of course if you only have a A500 then you will not be able to use GadTools.  We need your input! What tutorials would you like to see in the future 
+
+
+
+Mat's Tutorial:- By Matthew Tillett.  Learn how to control Animation's with Joy stick control.  This is a perfect beginners tutorial how to start to code a game.
+
+
+
+
+
+FrontEnd v1.2:- By Arturo Roe Ros.  Remember this program? Well the author as sent us the latest version.  There are loads of examples on  how to use this program with other programs, also the full Blitz source code is include.
+

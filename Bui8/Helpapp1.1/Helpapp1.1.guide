@@ -1,0 +1,408 @@
+@database HelpApp1.1
+@master bb:HelpApp1.1.guide
+@$VER: 1.1
+@author "Rupert Henson"
+@(c) ""
+@index Main
+@remark Created with Heddley v1.1 (c) Edd Dumbill 1994
+
+@node "Main" "HelpApp Contents"
+
+
+
+ HelpApp1.1 - BlitzBasic II Value Designer and Tag Database
+
+ Copyright Rupert Henson 1995. <rjh@cs.nott.ac.uk>
+
+
+At the moment the tool will be of main use to Blitz Basic users, who end
+up fumbling about in documentation for "flags" displayed in the title
+bar of Blitz, for example in the Window command.
+
+
+     @{"Disclaimer" link "Disclaimer" 0}
+     @{"Requirements" link "Requirements" 0}
+     @{"Installation" link "Installation" 0}
+     @{"Instructions" link "Instructions" 0}
+     @{"The Menus" link "TheMenus" 0}
+     @{"ToolTypes" link "ToolTypes" 0}
+     @{"ScreenMode ID's" link "SampleScreenmodes" 0}
+     @{"History" link "Versions" 0}
+     @{"The Future" link "Future" 0}
+     @{"Thanks to" link "Thanks" 0}
+     @{"Snail Mail" link "Snail" 0}
+@endnode
+
+@node "Disclaimer" "HelpApp Disclaimer"
+
+
+
+@{b}Message from <rjh@cs.nott.ac.uk> :-@{ub}
+
+Disclaimer: This software is provided "as is" with no warranty and I
+accept no responsibility for any resulting failure. ie. USE THIS PROGRAM
+AT YOUR OWN RISK.
+
+Just to reassure you though, I have not had any problems with it, and I
+use it quite extensively.
+
+@endnode
+
+@node "Requirements" "HelpApp Requirements"
+
+
+HelpApp Requirements:
+
+
+AT LEAST WB2, but I have not tested anything less than Workbench 3 ( My
+old A500 is 1.2, and the program needs gadtools ).
+
+PS. Don't use the Screenmode requester if you only have Kickstart 2.04/5.
+( I believe it is available from 2.1 upwards only ).
+
+The directory where HelpApp is stored should contain a "data" directory,
+containing at least these three files:
+
+"allgads.iff"   - contains the toolbar gadgets
+
+"Question.iff"   - contains question mark gadget
+
+"Tags.iff"      - contains tab graphics
+
+These should NOT be altered.
+
+HelpApp can now be renamed if necessary, but leave the other files the
+same (Please).
+
+Also found in the data directory, are numerous (30) *.idx and *.dat
+files, which are not compulsory for HelpApp to  run, but provide the
+Information for the Tag Pages. (The question mark gadgets).
+
+These should NOT be altered either, unless you know what you are doing.
+(Contact me with further tag page suggestions or amendments etc.)
+@endnode
+
+@node "Installation" "Installing HelpApp"
+
+
+Installation:
+
+
+Simply unarchive HelpApp1.1.lha to the area required. The archive
+contains the HelpApp directory and contents.
+
+Either run it from the Workbench (via the icon) or cd to the HelpApp
+directory and run it.
+
+@endnode
+
+@node "Instructions" "Instructions for use"
+
+
+Instructions:
+
+
+The toolbar consists of 6 active gadgets on the Left of the Toolbar. The
+icons represent Screens, Windows, Gadgets, GTGadgets, ASLTags and
+Display/Slice values.
+
+Choosing one of these as a "subject", brings up a set of related items
+in the form of tabs on screen.
+
+A page of "Help" is available for each Tag shown and the titles in the
+tags generally have some bearing on their contents. eg. Under Screens,
+the "V39 Tags" tag provides information on the OS3.0+ specific SA_
+Tags.
+
+
+1) "Tags" Pages:
+
+On Tag type help pages there are some Question Mark gadgets for bringing
+up further information on each Tag. The names alone may be enough for
+experienced programmers, but these extra "Cue Cards" will provide a
+reference  for what each Tag means.
+
+When a Tag Cue Card has just been seen and HelpApp is still viewing
+the appropriate page, a pres of the Insertion hotkey (See Tooltypes),
+will cause the ti_Tag value to be typed into the current window. ( ie.
+reactivate Blitz Basic and THEN use the insertion hotkey.)
+
+
+2) "Values" Pages:
+
+There are "value" string gadgets on certain help pages, so that values
+can be entered and the gadgets reflect the entered value. (This is
+useful when examining source code, and trying to work out what options
+are set by mere hex digits in the source.)
+
+When a Value has been 'created' and HelpApp is currently viewing the
+appropriate page, a press of the Insertion hotkey (See Tooltypes), will
+cause the value to be typed into the current window. ( ie. reactivate
+Blitz Basic and THEN use the insertion hotkey. )
+
+
+To the right hand side of the toolbar, are the HelpApp Control icons:
+
+a> "HIDE" hides HelpApp as a good Commodity should.
+
+b> "ABOUT" shows some program information on HelpApp.
+
+c> The up and down arrows simply move the screen position to a handy
+tucked away place lower, but still accessible, and back to the normal
+position.
+
+d> And finally, the big "X" gadget on the toolbar quits the program,
+after confirmation from the user.
+
+
+If you don't like the toolbar, (Well someone might not!), then the menus
+contain references to each Icon.
+@endnode
+
+@node "ToolTypes" "HelpApp Tooltypes"
+
+
+
+HelpApp Tooltypes:
+
+
+CX_POPUP   Standard Commodities entry:
+
+       CX_POPUP=yes    ; Shows user interface when run.
+       CX_POPUP=no     ; Doesn't
+
+       (Defaults to yes)
+
+
+CX_POPKEY  Standard Commodities Activation Hotkey.
+       HelpApp Toggles its display when Hot-key pressed
+       eg.     CX_POPKEY=ctrl alt h   (Default)
+
+
+INS_POPKEY  Specify hotkey for value insertion activation.
+       eg.     INS_POPKEY=ctrl alt i  (Default)
+
+
+SCREENMODE Specify exact screenmode to use in Dec/Hex figures:
+
+       eg. SCREENMODE=$a9004  ; for DBLPAL High Res No Flicker
+       or  SCREENMODE=692228  ; Same in Decimal.
+
+       This item can be set via the Files Menu item Screenmode.
+
+
+MAXYPOS   Specify Y-position of the screen when maximised
+          Defaults to WBHeight-256
+
+          This item can be set via the Files Menu item Set Max Y .
+
+
+MINYPOS - Specify Y-position of the screen when minimised
+          Defaults to WBHeight-45
+
+          This item can be set via the Files Menu item Set Min Y .
+
+Use the ___YPOS tooltypes to set up proper positions for the screen, in
+whatever screenmode you use.
+@endnode
+
+@node "TheMenus" "HelpApp Menus"
+
+
+The HelpApp Menus:
+
+ ____________      __________      _______________
+| File       |    | Edit     |    | Pages         |
+|------------|    |----------|    |---------------|
+| About      |    | Maximise |    | Screens       |
+| Set Min Y  |    | Minimise |    | Windows       |
+| Set Max Y  |    | Hide     |    | Gadgets       |
+| Screenmode |    ------------    | Gadtools      |
+|            |                    | ASL           |
+| Quit       |                    | Slice/Display |
+--------------                    -----------------
+
+
+File Menu:
+----------
+
+About - Diplays HelpApp version, date, messages etc.
+
+Set Min Y - Set the MINYPOS tooltype with the current screen position.
+Set Max Y - Set the MAXYPOS tooltype with the current screen position.
+
+Screenmode - Change the screenmode and set SCREENMODE tooltype.
+
+Quit - If you don't know what this does, you need SERIOUS help.
+
+
+Edit Menu:
+----------
+
+Maximise - Position screen vertically to the Maximised position.
+
+Minimise - Position screen vertically to the Minimised position.
+
+Hide - Hides HelpApp gui. (Remember, HelpApp is a commodity)
+
+Pages Menu:
+-----------
+
+Screens - Activate the Screens Pages.
+
+Windows - Activate the Windows Pages.
+
+Gadgets - Activate the Gadgets Pages.
+
+GadTools - Activate the GadTools Pages.
+
+ASL - Activate the ASL Pages.
+
+Slice/Display - Activate the Slice/Display Pages.
+
+@endnode
+
+@node "SampleScreenmodes" "Some Screenmodes"
+
+
+
+Recommended screenmodes:
+
+PAL:       High Res            = $29000
+PAL:       High Res Laced      = $29004
+NTSC:      High Res            = $19000
+NTSC:      High Res Laced      = $19004
+DBLPAL:    High Res No Flicker = $a9004
+DBLNTSC:   High Res No Flicker = $99004
+MULTISCAN: Productivity        = $39024
+
+
+@endnode
+
+@node "Versions" "HelpApp So Far"
+
+
+Version Changes so far ----------------------
+
+HelpApp 0.5 : First public release version
+
+HelpApp 0.5a : Fixed absolute path references. (Only worked on my Amiga!)
+             : Now Selects default monitor, rather than just PAL
+             : Fixed Screen Font to Topaz 8 point (avoids display mess)
+
+HelpApp 0.6  : YIPPEEE!! Its now a commodity:
+               CX_POPUP tooltype (yes/no) acts as expected
+               CX_POPKEY tooltype (hotkey definition) acts as expected
+
+               MAXYPOS and MINYPOS tooltypes added together with:
+               SCREENMODE tooltype.
+
+               2 Icons added to Toolbar: "Hide" and "About"
+
+HelpApp 1.0 : PHEW! So many, So many.....
+
+              INS_POPKEY tooltype (hotkey definition) inserts current
+              value created into the current window.
+              Added Menus for most of the main features.
+
+              New Toolbar Gadgets and associated help:
+                Gadgets : Blitz Text, String, Prop and Shape Flags
+                GadTools : Blitz flags, OS Tags, V39 Tags
+                ASL : File Tags, Font Tags, Screen Tags
+                Slice/Display : Slice Flags, Display Flags
+
+              SCREENMODE, MINYPOS, MAXYPOS tooltypes can be
+              automatically set by HelpApp from the File Menu.
+
+              Filled in all the Tags information (The question mark
+              gadgets), implemented as .idx files and .dat files for 
+              each page of tags.
+
+              HelpApp now adds itself to the Tools Menu when hidden.
+
+              The About Requester no longer pops up when HelpApp is run.
+
+              Err... HelpApp now calls itself 1.0    :-)
+
+HelpApp 1.1 : Ah yes, the dream of releasing a perfect v1.0 program
+              sadly remains just a dream :-)
+
+              Fixed the Gadgets pages 1 & 4 when typing a value in.
+
+              Fixed the WindowFlags response to a user typed value.
+
+              Cleaned up appearance (The backdrop window no longer
+              overwrites part of the title bar).
+
+              Program name independence (HelpApp can be renamed).
+
+              Insertion of ti_Tag values into current window.
+              (For those who don't use amigalibs.res)
+
+
+@endnode
+
+@node "Future" "HelpApp in the future"
+
+
+So What does the future hold for HelpApp?
+
+Well, I read my stars in a newspaper for 1995:
+
+"Your Help Application technology will be bought by Microsoft
+ for a LARGE sum and version 2 will be nearly finished by you in
+ December, on the newly released and instantly successful
+ RISC Amiga"
+
+
+Its a pity I don't believe in horoscopes  :-)
+
+
+But seriously, I believe a completely user configurable version ( With
+GUI designer of course ) will be possible, but will be a fairly major
+project, should I decide to accept it.
+
+In the meantime, optimisations, more help pages etc. should keep the
+project alive. I really ought to separate the GUI design from the
+hardcoded main program, and into datafiles. ( As done with the Tag help
+files ).
+
+
+I welcome any suggestions for features and improvements by E-Mail. Don't
+forget bug reports, if you find any bugs :-)
+
+@endnode
+
+@node "Thanks" "Thanks to these people"
+
+
+Errm.
+
+
+Thanks to Steve Mc (Hang) for all the suggestions for version 1.0
+
+Thanks to Acid Software for Blitz Basic II. 
+
+Thanks to anyone who uses HelpApp. (just let me know will ya?).
+
+Thanks to Digital Illusions for Pinball Illusions. (I can't find a
+better reason to delay HelpApp development!)
+
+@endnode
+
+@node "Snail" "My Home Address..."
+
+
+Here is my Snail Mail address for those who ain't got e-mail:
+
+
+
+       Mr Rupert Henson,
+       "Regency House",
+       14 Crown Road,
+       Great Yarmouth,
+       Norfolk.
+       NR30 2JN.
+       United Kingdom.
+
+@endnode

@@ -1,0 +1,82 @@
+                                  DunGen 2.0
+
+   I wrote the first DunGen program several years ago. I did this update
+because I wanted a higher resolution screen and some additional features
+such as multi-level generation. The original program was done in AMOS which
+has a wonderful manual but development was stopped before it included AGA
+support. This version is in Blitz which has a horrible manual but
+nevertheless provides support for AGA features.
+   The documentation is all accessed from within the program. Start it up
+and press the Help key.
+
+Disclaimer:
+
+   The author assumes no responsibility for damages or losses incured from
+the use of the program.
+
+Distribution:
+
+   DunGen is Copyright © 1997 by Mark Hemsath, all rights reserved. It may
+distributed freely as long as all files are included that are in the
+original archive, and cost is not above media duplication. Permission is
+granted to the Aminet CD collection for inclusion. Permission is also
+granted to the developers of Blitz Basic to include this source code with
+their product if they are so inclined.
+
+Installation:
+
+   Copy the files to wherever you want them making sure the help and img
+directories are in the same directory as the program. To your startup
+sequence add Assign DunGen: "program directory". The dungen.font is
+entirely optional and is not necessary for the program to work. It contains
+some Alt characters you can use in the editor. If you want to use it, copy
+it over to your FONTS: directory. For PAL Blitz users, rename cppal to cp
+and hppal to hp. These 2 files are in the img directory.
+
+Acknowledgments:
+
+   Chris Caracci, for beta testing and many excellent suggestions about the
+program design.
+
+   All the great folks on the Blitz mailing list.
+
+   The following people for some terrific library functions:
+
+   Richard T. Elmore
+   Stephen McNamara
+   Steve Matty
+   Andre Bergmann
+
+Bugs:
+
+   In the X and Y (width and height) number display on the print requester,
+you may notice a math error. When adding 1/10 of an inch to 0.9 it will
+sometimes skip 1.0 and display 1.1. The same holds true for a value of 1.1
+and subtracting 1/10 of an inch. It will display 0.9. This I would guess is
+a problem that Blitz Basic has and there's not a lot I can do about it.
+
+Further notes:
+
+   This is my first project programming in Blitz. I'm sure there are better
+ways to do some of the coding. You may find some lack of consistency in
+technique. The are a couple reasons for this. The first is I was
+experimenting to find various ways of doing things. Second, the routines
+for doing random floorplan generation are pretty much the same as the AMOS
+version I did several years ago and my coding practices have changed
+(hopefully for the better!) since then. I used some goto's within those
+routines to replace the "Pop Proc" command found in AMOS rather than doing
+a re-write. I don't think you'll find any goto's anywhere else in the
+program.
+
+Legal notes about the code:
+
+   You may use the code as you see fit with one exception. You can't make
+alterations and release another version of DunGen or a clone of it without
+receiving written permission from me. Thanks.
+
+Direct questions and comments to:
+
+   urland@infomagic.com
+
+Mark Hemsath
+March, 1997

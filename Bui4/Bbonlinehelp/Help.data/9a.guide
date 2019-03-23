@@ -1,0 +1,269 @@
+@DATABASE "9A.guide"
+
+@NODE 9A01
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Library Name: riencryptlib #55
+Authors     : ReflectiveImages, 17 Mayles Road, Southsea, Portsmouth, 
+              Hampshire, UK PO4 8NP
+OverView    : Another Reflective Images Library, good for war games?
+
+
+                                 Authors Docs:
+
+                                RIEncryptLibrary
+
+                            Date sent: 26-AUG-1994 
+
+--------------------------------------------------------------------------
+You can have this little library if you like.  Sorry there are no full 
+docs in the archive - the lib was done in a hurry for someone.  It 
+performs Enigma compression and is very cute ;-).
+The archive contains the source code for the library.  I'm sure it 
+wouldn't take you a second to have a look at it ;-).
+
+Commands in the library:
+
+  Encrypt memadr,len[,wheel1,wheel2,wheel3]
+
+This will encrypt a block of memory starting at the address and running 
+through to addresslength-1.  The optional wheel parameters allow you to
+specify the start positions of the three wheels.  If you leave these out
+then the wheels' start positions will be randomised.
+
+  GetWheel n
+
+This will tell you the position that wheel n stopped at after encrypting 
+a file.  n can range from 1 to 3 - YOU MUST REMEMBER THESE POSITIONS
+IF YOU WANT TO DECRYPT THE FILE (at the moment at least).
+
+  Decrypt memadr,len,wheel1,wheel2,wheel3
+
+Same Encrypt except that it does the opposite and the wheel positions ARE 
+NOT OPTIONAL.  The positions should be the ones you wrote down after 
+encrypting the file.  I may, in future, change it so that you can also
+specify the start wheel positions instead of the end ones (shouldn't be 
+tooooo hard ;-)).
+
+Oh well, have a look and tell us what you think............
+
+@ENDNODE
+@NODE 9A02
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}CIPHER$@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Cipher$@{fg text} (String$) 
+Modes: Amiga or Blitz
+
+The Cipher$() function will encrypt or decrypt a string passed to it.
+This is especially handy if you don't want users "zapping" your 
+executeable or data files to read it's contents.  Note that Cipher$() 
+can only decrypt strings previously created with Cipher$().
+@ENDNODE
+@NODE 9A82
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ColourRequest@{fg text}
+--------------------------------------------------------------------------
+Syntax  : Colour=ColourRequest(Colour)
+
+Description:
+This function brings up a handy little palette and allows the user to 
+select a colour using Colour as the default.
+
+Example:
+  c=ColourRequest(1)
+@ENDNODE
+@NODE 9A83
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}TextRequest@{fg text}
+--------------------------------------------------------------------------
+Syntax  : Button=TextRequest(Text,Title,Left Text[,[Middle Text,]Right Text])
+
+This brings up a text requester with Text as the message and Title in the 
+titlebar It can have 1, 2 or 3 buttons to select from The requester's 
+colours can be changed: See @{" ReqColours " link BUM7_REQCOLOURS}
+
+Left button
+Left and Right buttons
+Left, Middle and Right buttons
+
+The text in the buttons is determined by Left Text,Middle Text and Right 
+Text
+
+the value returned is
+1  left button
+2  middle button
+0  right button
+
+Button=TextRequest("I am a simple requester","Blitz Prog","Left","Middle","Right")
+@ENDNODE
+@NODE 9A84
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FileReqSize@{fg text}
+--------------------------------------------------------------------------
+Syntax   : FileReqSize Lines High,File Length,Device Length
+
+Description:
+This sets the size of the Req File Requester. The defaults are 8,16,10
+
+FileReqSize 20,25,12
+@ENDNODE
+@NODE 9A85
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ReqFileRequest$@{fg text}
+--------------------------------------------------------------------------
+Syntax:  selectedfile$=ReqFileRequest$(Title$,File$,Path$,Flags)
+
+Yes it's another file/font requester, No it won't bring up the blitz 
+requester if it fails the maximum length of File$ must be 32 and Path$ 
+must be 132 The Flags are as follows (Clipped from reqbase.i)
+
+FRQSHOWINFOB      EQU 0  =   1      ;Set this in Flags if you want .info files to show.  They default to hidden.
+FRQEXTSELECTB     EQU 1  =   2      ;Set this in Flags if you want extended select.  Default is not.
+FRQCACHINGB       EQU 2  =   4      ;Set this in Flags if you want directory caching.  Default is not.
+FRQGETFONTSB      EQU 3  =   8      ;Set this in Flags if you want a font requester rather than a file requester.
+FRQINFOGADGETB    EQU 4  =  16      ;Set this in Flags if you want a hide-info files gadget.
+FRQHIDEWILDSB     EQU 5  =  32      ;Set this in Flags if you DON'T want 'show' and 'hide' string gadgets.
+FRQABSOLUTEXYB    EQU 6  =  64      ;Use absolute x,y positions rather than centering on mouse.
+FRQCACHEPURGEB    EQU 7  = 128      ;Purge the cache whenever the directory date stamp changes if this is set.
+FRQNOHALFCACHEB   EQU 8  = 256      ;Don't cache a directory unless it is completely read in when this is set.
+FRQNOSORTB        EQU 9  = 512      ;Set this in Flags if you DON'T want sorted directories.
+FRQNODRAGB        EQU 10 =1024      ;Set this in Flags if you DON'T want a drag bar and depth gadgets.
+FRQSAVINGB        EQU 11 =2048      ;Set this bit if you are selecting a file to save to.
+FRQLOADINGB       EQU 12 =4096      ;Set this bit if you are selecting a file(s) to load from.
+                                    ;These two bits (save and load) aren't currently used for
+                                    ;anything, but they may be in the future, so you should
+                                    ;remember to set them.  Also, these bits make it easier if
+                                    ;somebody wants to customize the file requester for their
+                                    ;machine.  They can make it behave differently for loading
+                                    ;vs saving.
+FRQDIRONLYB       EQU 13 =8192      ;Allow the user to select a directory, rather than a file.
+
+Just add together what you want and use it. EG. 6 is Caching and extended 
+select
+
+Also see: @{" FileReqSize   " link 9A86}
+          @{" FileFilter    " link 9A86}
+          @{" ReqColours$   " link BUM7_REQCOLOURS$}
+          @{" FileStructure " link BUM7_FILESTRUCTURE}
+          @{" MaxSelect$    " link BUM7_MAXSELECT$}
+          @{" NextFile$     " link BUM7_NEXTFILE$}
+
+MaxLen fl$=32 : MaxLen dr$=132
+f$=ReqFileRequest$("Select a file",fl$,dr$,4)
+
+FRQEXTSELECTB is not used
+
+Returns a null string if user aborts
+@ENDNODE
+@NODE 9A87
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}TextTimeout@{fg text}
+--------------------------------------------------------------------------
+Syntax   : TextTimeout Timeout Seconds
+
+Its surpose to set the timeout for the text requester but it don't work 
+yet
+@ENDNODE
+@NODE 9A88
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}ReqColours@{fg text}
+--------------------------------------------------------------------------
+Syntax   : ReqColours Text,Detail,Block[,File,Dir,Device[,GadText,GadBox,
+                      StringName,StringBox,Frame]]
+
+Description:
+Text,Detail and Block are for both the req file requester and the text 
+requester File,Dir,Device,GadText,GadBox,StringName,StringBox and Frame 
+are only for the req file requester
+
+Try changing the colours one at a time to see what they change
+
+ReqColours 1,2,3
+ReqColours 1,2,3,3,2,1
+ReqColours 1,2,3,3,2,1,1,2,3,4,5
+@ENDNODE
+@NODE 9A89
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}GetString$@{fg text}
+--------------------------------------------------------------------------
+Syntax  : String$=GetString$(Title$,Default$,Visable size,Max length)
+
+Description:
+This brings up a string requester allowing the user to enter a string
+The maximum length and the visable length are set with Max length and 
+Visable size The default string must have a maximum length of at least 
+Max length Returns a null string if cancel is selected
+
+MaxLen d$=40
+s$=GetString$("Type something",d$,30,40)
+@ENDNODE
+@NODE 9A8A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}FileStructure@{fg text}
+--------------------------------------------------------------------------
+Syntax  : Fs.l=FileStructure
+
+Description:
+Returns a pointer to the req file requester structure
+@ENDNODE
+@NODE 9A8B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}NextFile$@{fg text}
+--------------------------------------------------------------------------
+Syntax  : f$=NextFile$
+
+Description:         
+Returns the next file in the extended file structure
+@ENDNODE
+@NODE 9A8D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ReqFontSize@{fg text}
+--------------------------------------------------------------------------
+Syntax  : sz=ReqFontSize
+
+This Returns the size of the last font selected with the font requester
+@ENDNODE
+@NODE 9A8E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Req_Base@{fg text}
+--------------------------------------------------------------------------
+Syntax  : rl.l=Req_Base
+
+This Returns pointer to Req.Library used in jsr calls
+@ENDNODE
+@NODE 9A8F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Dos_Base@{fg text}
+--------------------------------------------------------------------------
+Syntax  : dl.l=Dos_Base
+
+This Returns pointer to Dos.Library used in jsr calls
+@ENDNODE
+@NODE 9A90
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Int_Base@{fg text}
+----------------------------------------------------------------------------
+Syntax  : il.l=Int_Base
+
+Description:
+This Returns pointer to Intuition.Library used in jsr calls
+@ENDNODE
+@NODE 9A92
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Rex_Base@{fg text}
+--------------------------------------------------------------------------
+Syntax  : rxl.l=Rex_Base
+
+This Returns pointer to RexxSys.Library I think, It says RexxSysBase in 
+the req library docs
+@ENDNODE
+@NODE 9A93
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Con_Base@{fg text}
+--------------------------------------------------------------------------
+Syntax  : cl.l=Con_Base
+
+This Returns pointer to Console.device. Used for jsr calls mainly rawkey 
+to cookedkey 
+@ENDNODE
+

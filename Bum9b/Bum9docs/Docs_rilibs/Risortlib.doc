@@ -1,0 +1,88 @@
+-----------------------------------------------------------------------------
+----               RI String Sort Library V1.3 (C)1996                   ----
+-----------------------------------------------------------------------------
+
+                        Written By Stephen McNamara
+                        ©1996 Red When Excited Ltd
+
+Introduction
+============
+
+This library allows you to sort a linked list of items.  It works
+only with linked lists, and at present can only sort items into alphabetical
+order based on a string in the item.
+The sorting routine used in this library is very simple and crude.  This
+library should not be used to sort in speed critical situations due to the
+inefficiency of the sorting method.  The library will, though, be fast
+enough for most situations.
+
+
+Statement: StringSort
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: StringSort linkedlist(),sizeof.type[,offset]
+
+This is the basic sort command.  Its first parameter is a linked list, the
+second is the sizeof each item in this list (e.g. the size of they type or
+newtype that each item is).  The optional offset parameter allows you to
+specify an offset into each item, this offset should be the offset for the
+string you want to sort by.  If the offset parameter is missing, an offset
+of 0 will be assumed.
+
+This command sorts the whole of the linked list, starting from the very
+first item.
+
+Example:
+
+		Newtype.listitem
+			pad.w
+			text$
+		End Newtype
+
+		Dim List myitems.listitem(10)
+
+		AddItem myitems() : myitems()\text="Hello"
+		AddItem myitems() : myitems()\text="World"
+
+		;Sort list myitems(), string is offset 2 from start of type
+		StringSort myitems(),SizeOf.listitem,2
+
+		ResetList myitems()
+		While NextItem(myitems())
+			NPrint myitems()\text
+		Wend
+
+		MouseWait
+		End
+
+
+Function: ListBase
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: ad.l=ListBase(linkedlist())
+
+This command returns the base address of the linked list supplied.  This
+address holds data for the linked list, and pointers to the first item and
+current item in the list.  This command will not be of any use to most
+people, rather it is included for debugging purposes.
+
+
+Statement: StringSortItem
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: StringSortItem linkedlist(),sizeof.type[,offset]
+
+This is basically the same command as StringSort except that this command
+sorts the linked list from the *current* list item rather than the first
+list item.  Thus it can be used to only sort a part of a list.  Apart from
+this the command is the same as StringSort.
+
+
+Statement: StringSortDir
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: StringSortDir direction
+
+Set the direction of sorting.  A direction of zero causes strings to be
+sorted into ascending order (smallest to largest), non-zero selects
+descending order (largest to smallest).

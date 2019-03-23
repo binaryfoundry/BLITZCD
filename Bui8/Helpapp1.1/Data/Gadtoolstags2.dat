@@ -1,0 +1,231 @@
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSL_Min: ( ti_Tag = $80080026 )
+
+Specify in ti_Data the minimum
+level of the slider.
+
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSL_Max: ( ti_Tag = $80080027 )
+
+Specify in ti_Data the maximum
+level of the slider.
+
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTSL_Level: ( ti_Tag = $80080027 )
+
+Specify in ti_Data the initial
+or current level of the slider.
+
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+
+GTSL_MaxLevelLen: ( ti_Tag = $80080029 )
+
+Specify in ti_Data maximum length
+of the string to be created from the
+given level-formatting string, which
+must be provided by GTSL_LevelFormat
+when using this tg.
+
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+
+GTSL_LevelFormat: ( ti_Tag = $8008002A )
+
+Specify that the current level of the
+slider is to be displayed in real-time
+alongside the gadget.
+In ti_Data, place a pointer to a null
+terminated string including printf 
+style formatting.
+
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+
+GTSL_LevelPlace: ( ti_Tag = $8008002B )
+
+Specify in ti_Data one of the following
+constants, for the positioning of the 
+level display:
+
+PLACETEXT_LEFT
+PLACETEXT_RIGHT
+PLACETEXT_ABOVE
+PLACETEXT_BELOW
+
+
+GadTools Slider Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+
+GTSL_DispFunc: ( ti_Tag = $8008002C )
+
+Specify a pointer to a Function, to convert
+the slider level into a level to display.
+See Rom Kernal Manuals for more details.
+
+
+GadTools String Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTST_String: ( ti_Tag = $8008002D )
+
+Specify a pointer to a Null terminated
+string to be the default in the string
+gadget.
+
+
+GadTools String Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+
+GTST_MaxChars: ( ti_Tag = $8008002E )
+
+Specify in ti_Data an unsigned word
+representing the maximum number of
+characters that the text entry gadget 
+will allow.
+
+
+GadTools String Tags
+====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTST_EditHook: ( ti_Tag = $80080037 )
+
+Provide a pointer to a custom editing 
+Hook for a String gadget.
+
+
+GadTools BevelBox Tags
+======================
+
+Usage: GTBevelBox/DrawBevelB
+
+GTBB_Recessed: ( ti_Tag = $80080033 )
+
+Provide a boolean True in ti_Data to 
+draw a recessed box, False gives 
+a raised box.
+
+
+GadTools Integer Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTIN_Number: ( ti_Tag = $8008002F )
+
+Provide an Unsigned Long in ti_Data
+representing the initial/current
+integer in the number-entry gadget.
+
+
+GadTools Integer Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+
+GTIN_MaxChars: ( ti_Tag = $80080030 )
+
+Specify in ti_Data an unsigned word
+representing the maximum number of
+digits that the number entry gadget 
+will allow.
+
+
+GadTools Palette Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+
+GTPA_Depth: ( ti_Tag = $80080010 )
+
+Specify in ti_Data an unsigned word
+to dictate the number of bitplanes
+the palette represents.
+
+
+GadTools Palette Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+       GT_SetGadgetAttrsA_/GTSetAttrs
+
+GTPA_Color: ( ti_Tag = $80080011 )
+
+Specify the initial/current selected
+color of the palette, in ti_Data.
+
+
+GadTools Palette Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+
+GTPA_ColorOffset: ( ti_Tag = $80080012 )
+
+Specify in ti_Data, the first color to
+use in the palette.
+
+
+GadTools Palette Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+
+GTPA_IndicatorWidth: ( ti_Tag = $80080013 )
+
+Specify in ti_Data, the required width of
+the current color indicator. This Tag implies
+that an indicator is needed above the color
+selection squares.
+
+
+GadTools Palette Tags
+=====================
+
+Usage: CreateGadgetA/GTTags
+
+GTPA_IndicatorHeight: ( ti_Tag = $80080014 )
+
+Specify in ti_Data, the required height of
+the current color indicator. This Tag implies
+that an indicator is needed above the color
+selection squares.
+

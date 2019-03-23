@@ -1,0 +1,6 @@
+   Scale has 3 settings. Scale Dungeon, Scale Off, and Scale All. These
+control where the scale dots are drawn. Scale dots are there so you can
+measure distances while guiding a group of players through a dungeon. Scale
+All will fill the entire level with dots. Scale Off will turn dots off
+completely (in case you want to print to graph paper). Scale Dungeon will
+put dots only where a dungeon graphic is drawn.

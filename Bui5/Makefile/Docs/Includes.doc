@@ -1,0 +1,146 @@
+This is a set of includefiles, that have prooven their worth with me
+over the  years.   They  are  all  very  simple, and you are probably better
+off editing  them  yourself,  to your needs and desired.
+Basicly, its just a set  of  routines  that are boring to write from time
+to time.  I hope you like  them,  and  that  you  add  a  lot  of  nice stuff
+to your includes.
+;-----------------------------------------------------
+  IncName:  string/spacesort.bb  |String$
+  Type   :  Function.S
+ 
+  If you use str$() to turn a value into an string, you always get an extra
+  character (space), simply pass it onto the spacesort{} function, and it
+  returns your string value totaly clean.
+  Also great for testing commands passed to your program.
+  Ex:   a$=spacesort{par$(1)+par$(2)}
+        if a$="testingon" then goto do_on... etc,,,
+  Make use of it!
+ -----------------------------------------------------
+  IncName: string/remove.bb      |String$/String$
+  Type   : Function.S
+ 
+  This is a really great function, if you have a string, and want to remove a
+  word, or a character, then simply pass on your string, and the word to remove
+  and it will return your processed string!
+  Ex: a$="How are you?"
+      a$=remove{a$,"you?"}
+      (A$ is now -> "How are ")
+ -----------------------------------------------------
+  IncName: string/pokestring.bb |Adresse.l/String$
+  Type   : statement
+ 
+ A very nice little routine, and easy to convert to Assembly!. Takes a string
+ and put it into memory. Great when dealing with large stringbased structures.
+ 
+  Ex: pokestring{adr.l,"Hello"+chr$(0)}
+ -----------------------------------------------------
+  IncName: String/Tabsort.bb   |String$
+  type   : statement
+ 
+  If you (like us all) at some time make a routine for loading in textfiles,
+  be it a preferences file or a document, then this is a nice little
+  routine. It scans through a string and looks for any tabulator marks.
+  If it finds any, they will be erased!
+  Thus, you can profile your own textlook.
+  Easy to extend!
+  Ex: a$=tabsort{text_file_string$}
+ 
+ -----------------------------------------------------
+  IncName: getfontWidth.bb   |string$/size.w
+  Type   : function.w
+ 
+  Well, im not realy done with this one, but if you take close look at
+  the .font files, you will find a word containg the calculation width
+  of the fontbase. This width tells you the width of a character in
+  LOW-CASE!!, That means you will have to scan through your textline
+  looking for Upper-case characters, as they are larger!.
+  I have found that adding (Width/2) usualy works with UpperCase characters.
+  Note! This function will load the font into memory to read off the width,
+  the memory is then freed!, its silly i know, but its just a betha-cetha
+  version.
+  Ex: fontwidth.w=getfontwidth{"times",16}
+ 
+ -----------------------------------------------------
+  IncName: BmapHandler.bb |Variable
+  Type   : Statement
+
+  Ever wanted to close all your screens or bitmaps at once?, This is
+  exactly what this routine does. It also makes two constants -
+  <Bitmaps> & <Screens>
+  Its very simple to use!
+  Ex:  closeall{#bitmaps}    <-- this will free all bitmaps
+       closeall{#screens}    <-- this will free all intui screens!
+ 
+ -----------------------------------------------------
+  IncName: Finish_mouse.bb
+  Type   : Statement
+
+  Well, this might seem like a silly thing, but it waits until the
+  user has let go of the left/right mousebutton. Even a complete
+  amos user could write this!, but its handy! and booring to write.
+  EX:  finish_mouse{}
+ -----------------------------------------------------
+  IncName: BOLT/Getlinks.bb  |Variable.
+  Type   : function.L
+
+  When you use my makefile utillity, you need some easy way to handle them.
+  Simply allocate some memory, and bload the bolt file in.
+  To find out how many files are stored in the Bolt file, use this
+  function.
+
+  Ex: adr.l=allocmem{filesize,2}
+      bload "filename",adr.l
+      linked_files.l=getlinks{adr.l}
+      ...
+ -----------------------------------------------------
+  IncName: BOLT/getlink_name.bb |variable/Variable
+  Type   : function.S
+
+  EX:   adr.l=allocmem{filesize,2}
+        bload "filename",adr.l
+	name$=getlink_name{1,adr}
+
+  Since each Bolt file stores the original filenames within its
+  structure, use this function to extract a filename. Use "getlinks{}"
+  to find out how many filenames are there.
+  This will return "*" if you passed a non-registrated pointer.
+ -----------------------------------------------------
+  IncName: Bolt/Getlink_size.bb |variable/Variable
+  Type   : Function.L
+
+  To get the bytesize of one of the linked files, use this.
+  Again remember to use "Getlinks{}" to find out how many files
+  are in the BOLT. If you pass either 0 or >links, then -1 will be
+  returned.
+
+  Ex:  adr.l=allocmem{filesize,2}
+       bload "filename",adr.l
+       files_linked.l=getlinks{}
+       filesize.l=getlink_size{1,adr}
+       
+  The example would return the filesize of file number 1 in your bolt
+  file!.
+ ------------------------------------------------------
+  Incname: Bolt/getlink_addr.bb |variable/variable
+  Type   : function.L
+
+  This is used when you want to save out an linked file to ramdisk or
+  floppy disk. Simply pass on the adresse of your bolt structure, as well
+  as the number of the linked-file (scan the names list for more info).
+  You will then be given the correct adresse of your file, then simply
+  use the "getlink_size{}" to know the length of the file.
+
+  Ex:  adr.l=allocmem{filesize,2}
+       bload "filename",adr.l
+       files_linked.l=getlinks{}
+       filesize.l=getlink_size{1,adr.l}
+       filename$ =getlink_name{1,adr.l}
+       base.l=getlink_addr{1,adr.l}
+       bsave "ram:"+filename$,base.l,filesize.l
+
+  This example would save out file number 1 to ramdisk, under its original
+  filename.
+ -------------------------------------------------------
+
+
+

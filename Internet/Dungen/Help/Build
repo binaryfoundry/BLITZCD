@@ -1,0 +1,12 @@
+   Build will randomly generate dungeon levels based upon how you have
+set everything up. When you perform a build, the display will show the
+level being generated and the pass number. Each pass represents one attempt
+to draw all the rooms, the doors, and the halls between rooms. This display
+may not stay on the screen long enough to even see if you have a small
+number of rooms in proportion to the width and height set for the level.
+Room Min and Max can effect this as well. If you are trying to draw 15
+rooms with a max width of 20 in a 30 X 30 dungeon it may not do so well. If
+the generating process reaches 99 passes and does not succeed, a requester
+will pop up asking if you wish to keep the levels that were drawn. If you
+answer yes, the next build will start at the level which failed. A no
+response will erase all levels.

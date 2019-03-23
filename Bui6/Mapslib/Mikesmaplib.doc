@@ -1,0 +1,98 @@
+
+                    "MikesMapLibrary"
+
+    LibNum = 15 (In development)
+
+    Developed by: Michael Milne of SUNTEAM
+
+    Purpose: To allow the easy use of BG mapping commands for storage of
+             BG info.
+
+
+    Version: 1.00 (10/10/94) Basic init routine and info fetching.
+             1.01 (26/10/94) Plotting and Getting added.
+
+
+    Future developments to come:
+             1.10 (??/??/??) Loading & Saving of maps as files.
+             1.11 (??/??/??) De-Cludging of maps from memory.
+             1.20 (??/??/??) Autodraw of maps to a screen.
+
+
+    COMMANDS:
+
+            InitMap width,height
+            MapWidth
+            MapHeight
+            MapAdr
+            MapLen
+            MapPlot X,Y,Value
+            MapGet(X,Y)
+
+
+
+
+    PRELUDE: With these routines you can setup a simple map structure (Only
+             one!) for use with BG programming as originally seen in TOME for
+             A**S.
+
+
+**** InitMap ****
+
+    Syntax: InitMap width,height
+    Modes:  Amiga/Blitz
+
+    Purpose: This command initialises the map. All you need to supply is
+             the width of the map and the height.
+
+
+**** MapWidth ****
+
+    Syntax: width.w=MapWidth
+    Modes:  Amiga/Blitz
+
+    Purpose: To retrieve the width of a map at any time.  If a '0' is
+             returned then the map is not initialised yet.
+
+
+**** MapHeight ****
+
+    Syntax: height.w=MapHeight
+    Modes:  Amiga/Blitz
+
+    Purpose: Just as MapWidth except it retrieves the height instead.
+
+
+**** MapAdr ****
+
+    Syntax: adr.l=MapAdr
+    Modes:  Amiga/Blitz
+
+    Purpose: It returns the address of the map in mem. Used for debugging
+             but I couldn't be bothered to remove it.
+
+
+**** MapLen ****
+
+    Syntax: len.l=MapLen
+    Modes:  Amiga/Blitz
+
+    Purpose: Again another debugging tool for me. Returns the length in
+             bytes of the map.
+
+
+**** MapPlot ****
+
+    Syntax: MapPlot X,Y,Value
+    Modes:  Amiga/Blitz
+
+    Purpose: To plot a value at a given coordinate in the map (Perhaps the
+             value representing a shape id!).
+
+
+**** MapGet ****
+
+    Syntax: val.w=MapGet(X,Y)
+    Modes:  Amiga/Blitz
+
+    Purpose: To return the value found at the given coordinates in the map.

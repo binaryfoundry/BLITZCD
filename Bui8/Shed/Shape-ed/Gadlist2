@@ -1,0 +1,32 @@
+
+Borders On:BorderPens 1,2:Borders 4,2
+StringGadget 4,80,56,0,4,4,25
+GadgetJam 0:GadgetPens 1,0
+TextGadget 4,9,73,0,1,"OK"
+StringGadget 4,80,44,0,3,4,25
+StringGadget 4,80,32,0,8,4,25
+StringGadget 4,186,56,0,6,4,25
+StringGadget 4,186,44,0,9,4,25
+StringGadget 4,186,32,0,5,4,25
+TextGadget 4,175,73,0,7,"Cancel"
+
+Screen 0,0,0,320,256,3,0,"Blitz Shape Maker V1.0",1,2
+RGB 0,6,6,6:RGB 1,15,15,15:RGB 2,0,0,0:RGB 3,0,4,8
+RGB 4,0,6,15:RGB 5,15,0,15:RGB 6,0,15,15:RGB 7,15,15,15
+
+SizeLimits 32,32,-1,-1
+Window 1,20,14,241,91,$100E,"Scale Shape",1,2,4
+WLocate 40,23:WJam 0:WColour 1,0
+Print "X% :"
+WLocate 16,35
+Print "X Old :"
+WLocate 123,47
+Print "Y New :"
+WLocate 147,23
+Print "Y% :"
+WLocate 123,35
+Print "Y Old :"
+WLocate 16,47
+Print "X New :"
+WLocate 30,9
+Print "Stretch Current Shape"

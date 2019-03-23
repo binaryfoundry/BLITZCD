@@ -1,0 +1,107 @@
+@DATABASE "REDCalc AmigaGuide® Documentation"
+@REMARK $VER: REDCalc.guide 1.0 (3.7.96)
+@NODE MAIN "REDCalc v1.0"
+
+                                  @{b}@{u}REDCalc@{ub}@{uu}
+
+                        ©1996 Red When Excited Ltd
+
+
+   @{"Introduction             " link INTRODUCTION}    -- What is REDCalc?
+   @{"Requirements             " link REQUIREMENTS}    -- What do I need?
+   @{"Usage                    " link USAGE}    -- How to use REDCalc
+   @{"Red When Excited         " link RWE}    -- How To Contact Red When Excited
+
+@ENDNODE MAIN
+
+@NODE INTRODUCTION "Introduction to REDCalc"
+
+                               @{b}@{u}Introduction@{ub}@{uu}
+
+REDCalc is a PlugIn utility for @{"SuperTED" link Blitz2:REDHelp/SuperTED/SuperTED.guide/MAIN} v2.5 or higher.
+It is a small and simple to use pop-up calculator with features designed for
+use by programmers. It supports binary, decimal and hexadecimal notation as
+well as internal 'registers'.
+
+@ENDNODE INTRODUCTION
+
+@NODE REQUIREMENTS
+
+                               @{b}@{u}Requirements@{ub}@{uu}
+
+This program is best used in conjunction with SuperTED v2.5 or later, but it
+can also be used as a standalone utility.
+
+@ENDNODE REQUIREMENTS
+
+@NODE USAGE "Usage"
+
+                                   @{b}@{u}Usage@{ub}@{uu}
+
+REDCalc can be launched in three different ways :
+
+@{u}From the CLI@{uu}
+The Blitz Support Suite installation utility will install REDCalc into the
+Blitz2:PlugIns/SuperTED folder (only if you chose to install SuperTED PlugIns).
+Type the following at the CLI prompt :
+
+run >NIL: Blitz2:PlugIns/SuperTED/REDCalc
+
+
+@{u}From Workbench@{uu}
+Locate the REDCalc program inside Blitz2:PlugIns/SuperTED and double-click the
+icon to run it
+
+@{u}From SuperTED@{uu}
+Select 'Calculator..' from the Custom menu in SuperTED
+
+
+When REDCalc is running, you can type in expressions to evaluate inside the
+main number entry gadget. If the number entry gadget is inactive (no cursor
+is visible inside the gadget) you can use the numeric keypad to enter
+numbers. Press RETURN to evaluate the given expression.
+
+You can toggle the output display of REDCalc by clicking on the top gadget,
+second from the right. This will switch between Hex, Dec and Bin.
+
+
+                                 @{b}@{u}Registers@{ub}@{uu}
+
+You can store values in up to 25 internal 'registers' with REDCalc.
+
+For example, type the following (NOTE that there should not be a space
+between the @ symbol and the letters A,B or C)
+
+	@ A:=50				(return)
+	@ B:=20				(return)
+	@ C:=@A*@B			(return)
+	@ C+@A+@B			(return)
+
+You should then get the number 1070 returned to you.
+
+To set the contents of a register, preceed the letter (A-Z) with an @ symbol
+and to assign it a value you should use :=
+
+@ENDNODE USAGE
+
+@NODE RWE "Red When Excited"
+
+                      @{b}@{u}How To Contact Red When Excited@{ub}@{uu}
+
+
+Write to:                   Red When Excited Ltd,
+                            2 Slimmons Drive,
+                            St. Albans,
+                            Herts.
+                            AL4 9AS.
+                            ENGLAND.
+
+If you have Internet access, you can e-mail us :
+
+                      redwhen@ldngedge.demon.co.uk
+
+or point your browser at our WorldWide Web page :
+
+                   http://www.aber.ac.uk/~ngh94/rwe.html
+
+@ENDNODE RWE

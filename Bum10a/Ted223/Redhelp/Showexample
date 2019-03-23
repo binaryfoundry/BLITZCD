@@ -1,0 +1,40 @@
+.key file/k
+.bra {
+.ket }
+
+set PORT=TED_REXX`Blitz2:REDHelp/GetTEDNumber`
+set FILESPEC="{file}"
+
+if "$PORT" eq "TED_REXX"
+	set LC=0
+	lab myloop
+	set LC=`eval "$LC+1"`
+	if "$LC" NOT eq "10"
+		set TEDSPORT="TED_REXX"$LC
+		Blitz2:REDHelp/FindPort $TEDSPORT
+		if "$RC" eq "2"
+			if "$FILESPEC" eq "COMPILE"
+				SYS:REXXC/rx "address $TEDSPORT ; SHOWSCREEN"
+				SYS:REXXC/rx "address $TEDSPORT ; COMPILE"
+			else
+			    echo "$FILESPEC"
+				SYS:REXXC/rx "address $TEDSPORT ; LOADNEW '$FILESPEC'"
+			endif
+			SYS:REXXC/rx "address $TEDSPORT ; SHOWSCREEN"
+			SYS:REXXC/rx "address $TEDSPORT ; ACTIVATE"
+			quit
+		endif
+		skip back myloop
+	endif
+	run >NIL: Blitz2:Blitz2 $FILESPEC
+	quit
+endif
+
+if "$FILESPEC" eq "COMPILE"
+	SYS:REXXC/rx "address $PORT ; SHOWSCREEN"
+	SYS:REXXC/rx "address $PORT ; COMPILE"
+else
+	SYS:REXXC/rx "address $PORT ; LOADNEW '$FILESPEC'"
+endif
+
+SYS:REXXC/rx "address $PORT ; ACTIVATE"

@@ -1,0 +1,48 @@
+-----------------------------------------------------------------------------
+====         	      RI Encrypt Library V1.2 (C)1996		 	 ====
+-----------------------------------------------------------------------------
+
+                        Written By Stephen McNamara
+                        ©1996 Red When Excited Ltd
+
+
+Introduction
+============
+
+This little library provides some commands for easy, yet hard to crack
+encryption.
+
+
+
+Statement: Encrypt
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: Encrypt memadr,len[,wheel1,wheel2,wheel3]
+
+  This will encrypt a block of memory starting at the address and running
+through to addresslength-1.  The optional wheel parameters allow you to 
+specify the start positions of the three wheels.  If you leave these out
+then the wheels' start positions will be randomised.
+
+
+Function: GetWheel
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: value=GetWheel(n)
+
+  This will tell you the position that wheel n stopped at after encrypting
+a file.  n can range from 1 to 3 - YOU MUST REMEMBER THESE POSITIONS IF
+YOU WANT TO DECRYPT THE FILE (at the moment at least).
+
+
+Statement: Decrypt
+------------------------------------------------------------------------
+Modes : Amiga/Blitz
+Syntax: Decrypt memadr,len,wheel1,wheel2,wheel3
+
+    Same Encrypt except that it does the opposite and the wheel positions
+ARE NOT OPTIONAL.  The positions should be the ones you wrote down after
+encrypting the file.
+
+
+>> END

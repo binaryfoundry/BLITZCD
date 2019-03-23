@@ -1,0 +1,71 @@
+
+              PhoneBase V1.0 (C) Anthony Brice 1996
+              -------------------------------------
+
+PhoneBase is a quick and simple gui name and address database written to
+learn the use of newtype routines and using them within Blitz. A freebie
+program for anyone who finds a use for it as it's not intended to be a
+really powerfull application, and these kind of programs are ten a penny.
+
+Use of this program is pretty much self-explanatory, but for the first time
+users of this kind of program, I'll document some important parts.
+
+There are 3 string gadgets on the main gui. The first one is for entering the
+name of the person who's data you're entering, the second is the address (with
+PhoneBase the strings are not restricted in any way so you could use an
+email address here if you prefered) and the bottom one is for putting in
+their phone number or any other data you wish.
+
+Add  - will move up to the first string gadget so you can enter data for a new
+       record.
+
+Del  - will delete current record and shuffle accordingly.
+
+?    - obligatory about requestor
+
+Next - Moves to next record if it exists
+
+Prev - Moves to previous record
+
+Find - Let's you enter a text string to hunt the database for. At the moment
+       it just uses the name field, but that can easilly be expanded upon.
+
+Load - Load in the current data file. This is done automatically when the
+       program is first run anyway.
+
+       PhoneBase is no longer stupid enough to load just any file in :-)
+
+Save - Saves the current data. File path is S:PhoneBase.dat - Note that the
+       program will rename the old data file to PhoneBase.dat.bak as a 
+       precaution in case you make an error. It will only store one save
+       file as a backup so please be carefull clicking the save gadget too
+       many times.
+
+Jump - Will prompt for a number string and jump to that record if it exists.
+
+F    - Will move to the first record in the list.
+
+L    - Will move to the last record in the list.
+
+Sort - Will perform an alphabetical order sorting of the records file based
+       on the name string for each entry.
+
+
+That's about it. This program is freeware, and source code (Blitz 2) is
+included in the archive for those interested. I'd appreciate a thank you if
+you find any of the code, or this program usefull, and nobody is allowed to
+charge for this program apart from PD libraries which can cover their costs
+if they wish to distribute it.
+
+Acid have full permission to include this program and source on a future 
+issue of the BlitzUserMagazines if they are so inclined.
+
+                    Email: anthony@backyard.demon.co.uk
+
+I may well make a more configurable database type program with many more
+powerfull features in the future should I be pestered enough. But this was
+developed strictly as a backdrop to testing certain functions within blitz as
+a development language, so I purposely kept it pretty simple.
+
+Thanks :- Paul Juhasz, Simon Archer and Paul Lathwell for inspiration.
+

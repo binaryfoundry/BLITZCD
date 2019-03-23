@@ -1,0 +1,329 @@
+@database "DoMethodBBLib.guide"
+@author Erwan Fouret
+@$VER: DoMethodBBLib.guide 1.1 (03.02.97)
+@node main
+@title "DoMethod for Blitz2 ©1997 Erwan Fouret"
+
+          DoMethod for Blitz Basic 2 by Erwan Fouret
+          
+  @{" Disclaimer   " link Disclaimer}     Legal stuff
+  @{" Introduction " link Introduction}     What is that ???
+  @{" Requirements " link Requirements}     What do I need ?
+  @{" Installation " link Installation}     How can I install this lib ?
+  @{" Using        " link Using}     What can I do and how ?
+  @{" Tutorials    " link Tutorials}     I want examples ! 
+  @{" Distribution " link Distribution}     Aminet ...
+  @{" Future       " link Future}     Tomorrow ...
+  @{" Bugs         " link Bugs}     There can't be bugs !
+  @{" History      " link History}     Yesterday ...
+  @{" Thanks       " link Thanks}     Thanks !!!
+  @{" Author       " link Author}     ME !!!
+
+
+           @{"Long live the FREEware !" link Author}
+           
+@endnode
+
+@node Disclaimer
+@prev main
+@next Introduction
+@toc main
+@{b}Disclaimer@{ub}
+~~~~~~~~~~
+  You use DoMethodBBLib at your own risk ! The @{"author" link Author} accepts no responsability
+for any damage caused to the user, his hardware or his software . 
+
+  This is FREEware !!! You can use and distribute it as long as you don't
+modify the distribution and you don't earn money with it .
+
+  If you use this lib on your program, please put my name somewhere in the doc
+and in the program itself . Your program MUST be freeware . Thank you !
+
+  If you want to give me something in order to reward me, DO IT !
+
+  
+@{"Introduction" link Introduction}
+
+@{"Main" link main}
+@endnode
+
+@node Introduction
+@prev Disclaimer
+@next Requirements
+@toc main
+@{b}Introduction@{ub}
+~~~~~~~~~~~~
+  If you want to program MUI applications or applications using DataTypes with
+Blitz Basic 2, you will see that a command misses : DoMethod ! For the
+DataTypes, DoGadgetMethodA from intuition.library is usable, but it is not
+easy to use because you had to use the tags . For MUI, DoGadgetMethodA is
+unusable . So the DoMethod command from amiga.lib is indispensable ! Besides,
+you can use it without using a tags structure or something like that, you can
+use it like in C ! The function DoMethodA is also present for compatibility .
+  You can now use BOOPSI gadgets, MUI, and DataTypes in your Blitz 2 programs !
+An example is given to show you how to use the command DoMethod with DT .
+
+
+@{"Requirements" link Requirements}
+@{"Disclaimer" link Disclaimer}
+
+@{"Main" link main}
+@endnode
+
+@node Requirements
+@prev Introduction
+@next Installation
+@toc main
+@{b}Requirements@{ub}
+~~~~~~~~~~~~
+
+  - An Amiga, of course !
+  - Blitz Basic 2 (Any version)
+  
+  If you want to you use DataTypes, you will need the kickstart 3.0+ .
+  
+  In order to program MUI apps, you must have the MUI includes .
+  
+  That's all ! Even an Amiga 1000 can use DoMethodBBLib !
+
+
+@{"Installation" link Installation}
+@{"Introduction" link Introduction}
+
+@{"Main" link main}
+@endnode
+
+@node Installation
+@prev Requirements
+@next Using
+@toc main
+@{b}Installation@{ub}
+~~~~~~~~~~~~
+
+@{i}- Run Blitz Basic 2
+- PROJECT->LOAD (OR Right Amiga + L)
+- Load the file "Userlibs/DoMethodBBLib.asc"
+- Replace the "xx" by a free lib number (see further)
+- COMPILER->OPTIONS (OR Amiga Right + O)
+- Active only "Make Smallest Code"
+- Active "Resident" and type blitzlibs:libmacs.res
+- Click on OK
+- PROJECT->SAVE (OR Right Amiga + S)
+- Save it as "DoMethodBBLib.bb2" for example .
+- COMPILER->CREATE FILE (OR Amiga Right + E)
+- Select "Blitzlibs:Userlibs/DoMethodBBLib.obj"
+- Click on OK
+- ReMake your deflibs and relaunch the blitz@{ui}
+
+  That's it ! You made it ! Now type "domethod" and type on "Help" key . The
+word DoMethod must appear, else e-mail me .
+  For the free lib number, look at the file "libnums" if you have it and if
+you update it frequently, else try a number between 0 and 70 .
+
+
+@{"Using" link Using}
+@{"Requirements" link Requirements}
+
+@{"Main" link main}
+@endnode
+
+@node Using
+@prev Installation
+@next Tutorials
+@toc main
+@{b}Using@{ub}
+~~~~~
+
+NAME
+  DoMethod() and DoMethodA() .
+  
+SYNOPSIS
+  Result=DoMethod(Obj,MethodID,Tag,...)
+  Result=DoMethodA(Obj,Message)
+  
+FUNCTION
+  Do a method . Useful for MUI or DataTypes .
+
+INPUTS
+  Obj      - object to use .
+  MethodID - method .
+  Tag      - arguments of the method .
+  
+  Message  - all of the above, but in a structure .
+  
+RESULT
+  It depends from the method used .
+  
+SEE ALSO
+  Datatypes and MUI programming .
+
+
+@{"Tutorials" link Tutorials}
+@{"Installation" link Installation}
+
+@{"Main" link main}
+@endnode
+
+@node Tutorials
+@prev Using
+@next Distribution
+@toc main
+@{b}Tutorials@{ub}
+~~~~~~~~
+
+@{b}  First Example : DataTypes@{ub}
+
+@{i}- Run Blitz Basic 2
+- PROJECT->LOAD (OR Amiga Right + L)
+- Select the file "Examples/DTSoundExample.asc"
+- PROJECT->SAVE (OR Amiga Right + S)
+- Select "DTSoundExample.bb2" for example
+- COMPILER->CREATE FILE (OR Amiga Right + E)
+- Select "C:PlayDTSound" for example
+- Open a shell
+- Type "PlayDTSound name_of_a_sound" replacing name_of_a_sound by a sound name
+- Listen !@{ui}
+
+@{b}  Second Example : MUI@{ub}
+
+  You first have to upload the MUI deceloper package (dev/mui/mui37dev.lha) .
+Then use the program FDConv (normally given with the Blitz) in order to
+convert the file "muimaster.fd" from MUI dev . Don't forget to remake your
+deflibs .
+
+@{i}- Run Blitz Basic 2
+- PROJECT->LOAD (OR Amiga Right + L)
+- Select the file "Examples/MUIExample.asc"
+- PROJECT->SAVE (OR Amiga Right + S)
+- Select "MUIExample.bb2" for example
+- COMPILER->CREATE FILE (OR Amiga Right + E)
+- Select "RAM:MUITest" for example
+- Open the RAM Disk or a shell
+- Run MUITest
+- That's it !@{ui}
+
+
+
+@{"Distribution" link Distribution}
+@{"Using" link Using}
+
+@{"Main" link main}
+@endnode  
+
+@node Distribution
+@prev Tutorials
+@next Future
+@toc main
+@{b}Distribution@{ub}
+~~~~~~~~~~~~
+
+  This archive can be dealt on Aminet CDs and all support as long as :
+  
+  - Any part of this archive is NOT modified in ANY way
+  - No money is made for copying
+  - It is dealt as the original lha archive
+  - If you want to use it on a P.D. product, please contact me before .
+ 
+  Don't forget this is FREEware !
+
+ 
+@{"Future" link Future}
+@{"Tutorials" link Tutorials}
+
+@{"Main" link main}
+@endnode
+  
+@node Future
+@prev Distribution
+@next Bugs
+@toc main
+@{b}Future@{ub}
+~~~~~~
+
+  - More examples .
+  
+  If you have some ideas, e-mail me !
+  
+  
+@{"Bugs" link Bugs}
+@{"Distribution" link Distribution}
+
+@{"Main" link main}
+@endnode
+
+@node Bugs
+@prev Future
+@next History
+@toc main
+@{b}Bugs@{ub}
+~~~~
+
+  For the moment, there isn't any bug, but if you see a bug, e-mail me !
+  
+  
+@{"History" link History}
+@{"Future" link Future}
+
+@{"Main" link main}
+@endnode
+
+@node History
+@prev Bugs
+@next Thanks
+@toc main
+@{b}History@{ub}
+~~~~~~~
+
+  V1.1 : Added an example .
+         Added more remarks on examples .
+         Change the doc a little .
+  V1.0 : First release .
+  
+  
+@{"Author" link Author}
+@{"Bugs" link Bugs}
+
+@{"Main" link main}
+@endnode
+
+@node Thanks
+@prev History
+@next Author
+@toc main
+@{b}Thanks@{ub}
+~~~~~~
+
+  I want to thank :
+  
+  ACIDSoftware for Blitz Basic 2
+  Stefan Stuntz for MUI
+  Amiga News for examples
+  Stefan Giordano and Andreas Hâkansson for give me some ideas
+  All FREEwares' makers !
+  
+  
+@{"History" link History}
+@{"Author" link Author}
+
+@{"Main" link main}
+@endnode
+
+
+@node Author
+@prev Thanks
+@next main
+@toc main
+@{b}Author@{ub}
+~~~~~~
+
+  Please contact me ! My e-mail address is : 
+  
+  erwan.fouret@wanadoo.fr
+  
+  I love the FREEwares (FREE !) . Use and make FREEwares please !
+  
+  
+@{"History" link History}
+
+@{"Main" link main}
+@endnode

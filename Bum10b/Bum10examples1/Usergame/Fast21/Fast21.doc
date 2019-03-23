@@ -1,0 +1,116 @@
+FAST 21
+-------
+
+
+
+Overview
+~~~~~~~~
+'Fast 21' is a game of skill and quick reactions written using Blitz 
+BASIC 2 from Acid Software.  It is remotely similar to the old game
+Tetris, except instead of using coloured blocks you are now playing
+with a deck of cards.
+
+
+Before Running Fast 21
+~~~~~~~~~~~~~~~~~~~~~~
+Fast 21 is written using the OS.  It runs on an Intuition screen, but
+unfortunately due to space limitations on the screen it can only used
+on a PAL Amiga and the usual screen title bar is not visible.  You
+can still use LAMIGA+M to flip screens, and on OS 3.0 you can drag
+the screen up and down using the LAMIGA and the mouse, as usual.
+
+Because Fast 21 multitasks with the rest of the programs running
+on your system it is advised that you shut down any processor
+hungry or OS intensive programs before attempting to play Fast 21.
+
+
+
+Instructions
+~~~~~~~~~~~~
+The game is played out on a 5x5 grid.  At the top of the screen is
+a deck of cards - of which the next 3 cards are visible.  You must
+decide where to position each card in turn. The cards drop into 
+position on the grid and the idea is to try and build winning lines 
+either horizontally (by row) or vertically (by column).  Once a 
+winning line is built it will be removed from the grid - if it's a 
+row then any cards above will drop down to fill the gap.
+
+To make it more difficult the game is played against a clock, and 
+the player must use all 54 cards in the deck (2 jokers are included
+along with the regular cards) before the time runs out.  If you
+are successful then the clock will be reset and the game continues
+with a new deck.
+
+The game ends if the player runs out of time before finishing a 
+deck, or if the grid becomes full up with no possible winning lines
+which can be removed (all lines are 'bust'!).
+
+The possible winning lines (and scores) are:
+
+    777              (3 7's)                    1000
+    777 Joker        (3 7's using jokers)        750
+    5 Card 21        (5 card trick, totals 21)   500
+    5 Card           (5 card trick)              300
+    21               (Cards total 21)            200
+
+If you get a winning line on a row (horizontally) then it will be
+multiplied by the row number.  Bottom row = x1 .... top row = x5.
+Thus a 21 on the bottom row will score 200, but on the top row
+it will score 200x5 = 1000.  Points will also be awarded when you
+finish a deck (1000 points) or if you manage to clear the grid
+of all cards (1000 points).
+
+The aces can be treated as high or low (11 or 1) and the game will
+automatically adjust the value of any aces to attempt to prevent
+a line from going bust.
+
+To help you, there are two extra features in your favour.  The first
+is the inclusion in the deck of two jokers which can be used to
+substitute for any other card.  The game will automatically figure
+out the best substitution for you - but if it cannot create a winning
+line straight away it will assume the value of 11 (a high ace) until
+such time as it can create a winning line.
+
+The second feature is the swap.  Whenever you get a winning line you
+will be awarded a 'swap'.  These can be used at any time to reject the 
+next card in the deck - swapping it to the back.  However, there is a
+maximum number of swaps you are allowed to collect at any one time.
+
+When a pack is used up, as mentioned above, the timer is reset back
+to the start and a new deck is shuffled and introduced.  However - 
+two further things will happen:  Firstly the timer will speed up,
+giving you less time on the new deck than on the last.  Secondly the
+maximum number of 'swaps' you are allowed to keep will be reduced by
+one (down to a minimum of three).  If you currently have maximum
+swaps when this happens you will not be penalised - but once you start
+using them you'll find you cannot build them back up to the same level.
+
+
+
+Controls
+~~~~~~~~
+    ESC                   = Quit the game.
+    F1 - F5               = Select column to place card.
+    SPACE                 = Swap card to back.
+    Left Mouse Button     = Select column to place card.
+    Right Mouse Button    = Swap card to back.
+
+
+
+Configuration
+~~~~~~~~~~~~~
+On the title screen there may be an option to switch on/off solid card
+mode.  (The source code enables the program to be compiled without this
+feature so that the extra memory required by it does not need to be
+used.  If this is the case then the option will not appear on the title
+screen.)
+
+    Off - When the cards move across the screen into the grid, they
+          appear as wireframe.  This is advisable if you are running
+          a low-spec Amiga (pre-AGA) and/or no Fast RAM.
+    On  - The cards will fly across the screen into the grid as they
+          appear in the deck (ie. full solid graphic!)  This will burden
+          the system with a heavy work load, so it's advisable not to use
+          this with low-spec systems or if you are multitasking a lot of 
+          other tasks while playing the game.
+

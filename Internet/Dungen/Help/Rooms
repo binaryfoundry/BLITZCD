@@ -1,0 +1,6 @@
+   Rooms determines how many rooms will be drawn in a randomly generated
+level. It's pretty good at packing them in. I managed to get 81 2 X 2 rooms
+in a 45 X 33 dungeon, though it took awhile. If you have a stock A1200 it
+could take a long time. Also see Room Min and Room Max.
+   When clicking on the arrow buttons to change the value, a left click
+changes it by 1 and a right click changes it by 5.

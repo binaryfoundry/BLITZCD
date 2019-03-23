@@ -1,0 +1,185 @@
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_Window: ( ti_Tag = $80080002 )
+
+Specify in ti_Data a pointer to a Window
+to associate the requester with.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_Screen: ( ti_Tag = $80080028 )
+
+Specify in ti_Data a pointer to a Screen
+to associate the requester with.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_PubScreenName: ( ti_Tag = $80080029 )
+
+Specify in ti_Data a pointer to a null
+terminated string, the name of the Public
+Screen to associate the requester with.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_PrivateIDCMP: ( ti_Tag = $8008002A )
+
+Specify in ti_Data a True boolean to
+request that ASL does not use the
+calling Window's IDCMP port.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_IntuiMsgFunc: ( ti_Tag = $80080046 )
+
+Specify in ti_Data a pointer to a 
+Function to handle IntuiMessages.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_SleepWindow: ( ti_Tag = $80080046 )
+
+Specify in ti_Data a True boolean
+to ask ASL to block input in the window
+specified by ASLFR_Window, whilst the
+requester is open.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_UserData: ( ti_Tag = $80080034 )
+
+Specify in ti_Data anything that is to be
+placed in fr_UserData.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_TextAttr: ( ti_Tag = $80080033 )
+
+Specify in ti_Data a pointer to the 
+TextAttr structure for the font to be 
+used for the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_TitleText: ( ti_Tag = $80080001 )
+
+Specify in ti_Data a pointer to the 
+null terminated string which will
+be the title of the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialLeftEdge: ( ti_Tag = $80080003 )
+
+Specify in ti_Data the initial 
+horizontal position of the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialTopEdge: ( ti_Tag = $80080004 )
+
+Specify in ti_Data the initial 
+vertical position of the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialWidth: ( ti_Tag = $80080005 )
+
+Specify in ti_Data the initial width 
+of the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialHeight: ( ti_Tag = $80080006 )
+
+Specify in ti_Data the initial height
+of the requester.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialFile: ( ti_Tag = $80080008 )
+
+Specify in ti_Data a pointer to a null
+terminated string which is to be the
+default filename.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialDrawer: ( ti_Tag = $80080009 )
+
+Specify in ti_Data a pointer to a null
+terminated string which is to be the
+default directory.
+
+
+ASL FileRequester Tags
+======================
+
+Usage: AllocAslRequest_/AslRequest_
+
+ASLFR_InitialPattern: ( ti_Tag = $8008000A )
+
+Specify in ti_Data a pointer to a null
+terminated string which is to be the
+default pattern.
+

@@ -1,0 +1,55 @@
+;;$VER: Install 1.0 (1.3.96)
+;;
+;;   $Filename: Install $
+;;   $Version: 1.0 $
+;;   $Date: 1.3.96 $
+;;
+;;   Installer script to install FrontEnd.
+;;   
+;;   © Copyright 1996 Arturo Roa Ros.
+;;
+(copyfiles
+	(prompt "Copia FrontEnd a C:")
+        (help "Se copiará FrontEnd a C:")
+	(source "/")
+	(choices "FrontEnd")
+	(dest "C:")
+	(confirm)
+	(infos)
+)
+(set directorio
+       	(askdir
+            	(prompt "¿Donde quieres instalar FrontEnd?\n")
+               	     (help "Elije el camino donde crear un directorio para FrontEnd.\nSi no existe, elige crear un directorio nuevo.")
+        	     (default "WORK:")
+	)
+)
+(copyfiles
+        (prompt "Copiar ficheros.")
+	(help "Se copiarán unos ficheros al directorio de destino.")
+	(source "/")
+	(choices "Data" "Docs" "Examples" "BlitzSource" "Translator" "FrontEndPrefs")
+	(dest directorio)
+	(confirm)
+	(infos)
+)
+(copyfiles
+	(prompt "Copiar Catalogs.")
+	(help "Si copias estos catalogs podrás usar FrontEnd en tu idioma.")
+	(source "/catalogs/")
+	(choices "español")
+	(dest "LOCALE:catalogs/")
+	(confirm)
+	(infos)  
+)
+(copyfiles
+	(prompt "Copiar Fonts.")
+	(help "Tienes que copiar estas fuentes si quieres usar FrontEnd.")
+	(source "/Fonts/")
+	(choices "XEN" "XEN.font")
+	(dest "FONTS:")
+	(confirm)
+	(infos)  
+)
+(message "La instalación the FrontEnd V1.2 ha finalizado, puedes encontrar FrontEnd en "directorio)
+(exit "" (quiet))

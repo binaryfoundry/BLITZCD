@@ -1,0 +1,32 @@
+.key lib/k,cmd/k,screen/k,port/k
+.bra {
+.ket }
+
+;Shell script for REDHelp
+
+set ARG1="{lib}"
+set ARG2="{cmd}"
+set ARG3="{port}"
+set ARG4="{screen}"
+set ARG5=AG{port}
+set ARG6=AG{port}.1
+
+Blitz2:RedHelp/FindPort $ARG6
+
+if "$RC" eq "2"
+  set ARG6="YES"
+else
+  set ARG6="NO"
+endif
+
+if "$ARG1" EQ ""
+  set ARG1="!"
+endif
+
+if "$ARG2" EQ ""
+  set ARG2="!"
+endif
+
+SYS:REXXC/rx >NIL: "address $ARG3 HELP"
+
+SYS:REXXC/rx >NIL: Blitz2:RedHelp/RED_HELP.rx $ARG1 $ARG2 $ARG3 $ARG4 $ARG5 $ARG6

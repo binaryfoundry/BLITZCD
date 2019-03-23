@@ -1,0 +1,1768 @@
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;// This file is bloody copyright Red When Excited Ltd, so hands off! :)
+;// Amiga RuleZ, dont you agree?
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////
+
+(
+   (run "assign BSS1: Blitzcd:Bss1")
+   (run "assign BSS2: Blitzcd:BSS2")
+   (run "assign BSS3: Blitzcd:BSS3")
+)
+
+(set #nosubdirmsg "No directory will be created.")
+(set #subdirmsg "A directory called \"SupportSuite\" will be created.")
+
+(set #aboutto-help "To skip this part of the installation, select 'Skip This Part'")
+
+(set blankdisk "A blank disk is required to use this program.")
+
+(set redhelpinstalled 0)
+(set acidlibsbackedup 0)
+(set gotblitzversion 0)
+(set acidlibsmade 0)
+(set blitzlibsflag 0)
+(set pim 0)
+(set gotbssdir 0)
+
+(set #startup-def "Blitz2:StartUp")
+
+(set #debugger-docs-def "Blitz2:REDHelp/REDDebugger")
+(set #debugger-examples-def "Blitz2:REDHelp/REDDebugger")
+
+
+(set #me-def "Blitz2:")
+(set #me-docs-def "Blitz2:REDHelp/REDMapEditor")
+(set #me-examples-def "Blitz2:REDHelp/REDMapEditor")
+(set #me-icon-def "Blitz2:REDHelp/")
+
+(set #superted-docs-def "Blitz2:REDHelp/SuperTED")
+(set #superted-plugins-def "Blitz2:PlugIns/SuperTED")
+(set #superted-def "Blitz2:")
+(set #superted-lib-def "LIBS:")
+(set #superted-fd-def "FD:")
+(set #superted-autodoc-def "Autodocs:")
+(set #superted-blitzlib-def "Blitz2:BlitzLibs/amigalibs")
+
+(set #blitzlibs-lib-def "Blitz2:Blitzlibs/userlibs")
+(set #blitzlibs-syslib-def "Blitz2:Blitzlibs/basic")
+(set #blitzlibs-docs-def "Blitz2:REDHelp/REDBlitzLibs")
+(set #blitzlibs-examples-def "Blitz2:REDHelp/REDBlitzLibs/Examples/FNS")
+(set #blitzlibs-icon-def "Blitz2:REDHelp/")
+
+(set #shapez-servers-def "Blitz2:PlugIns/REDShapeZ")
+(set #shapez-def "Blitz2:")
+(set #shapez-docs-def "Blitz2:REDHelp/REDShapeZ")
+(set #shapez-icon-def "Blitz2:REDHelp/")
+
+(set #blitzlibs-dir-warning
+   (cat
+         "Although you are running Blitz 2.1\n"
+         "or higher, you have system libraries\n"
+         "installed in the folder Blitzlibs:\n"
+         "You must move the following folders\n"
+         "outside of Blitzlibs:\n\n"
+         " Blitzlibs:basic\n"
+         "Blitzlibs:system\n\n"
+         "You should then re-install REDBlitzLibs\n"
+   )
+)
+
+(set #pl-def "Blitz2:PlugIns")
+(set #pl-icon-def "Blitz2:")
+
+(set #rh-def "Blitz2:REDHelp")
+(set #rh-icon-def "Blitz2:")
+(set #rh-acidicon-def "Blitz2:REDHelp/")
+
+(set #def-select-help
+   (cat
+      "installed. Parts that you want installed must "
+      "be 'ticked'. Any parts which should be skipped "
+      "must have an empty box.\n"
+   )
+)
+
+(set #cp-redhelp-prog "Copying REDHelp Programs...")
+(set #cp-redhelp-acid "Copying Blitz2.1 AmigaGuides...")
+
+(set #cp-debugger-prog "Copying REDDebugger...")
+(set #cp-debugger-docs "Copying REDDebugger Documentation...")
+(set #cp-debugger-examples "Copying REDDebugger Examples...")
+(set #cp-debugger-menus "Copying REDDebugger Custom Menu...")
+
+(set #cp-blitzlibs-lib "Copying REDBlitzLibs...")
+(set #cp-blitzlibs-docs "Copying REDBlitzLibs Documentation...")
+(set #cp-blitzlibs-examples "Copying REDBlitzLibs Examples...")
+
+(set #cp-superted-prog "Copying SuperTED...")
+(set #cp-superted-lib "Copying SuperTED Library...")
+(set #cp-superted-fd "Copying SuperTED FD...")
+(set #cp-superted-autodoc "Copying SuperTED AutoDoc...")
+(set #cp-superted-docs "Copying SuperTED Documentation...")
+(set #cp-superted-blitzlib "Copying SuperTED Blitz Library...")
+(set #cp-superted-plugins "Copying SuperTED PlugIns...")
+(set #cp-td-icons "Copying TEDDock Images...")
+
+(set #cp-superted-blitzlib-help
+   (cat
+      "The SuperTED Blitz2 Library should be installed\n"
+      "in one of these places :\n\n"
+      "Blitz2 v1.9 or earlier = BlitzLibs:AmigaLibs\n"
+      "Blitz2 v2.1 or later   = Blitz2:deflibs\n"
+   )
+)
+
+(set #cp-mapeditor-prog "Copying REDMapEditor...")
+(set #cp-mapeditor-examples "Copying REDMapEditor Examples...")
+(set #cp-mapeditor-docs "Copying REDMapEditor Documentation...")
+(set #cp-mapeditor-fonts "Copying REDMapEditor Fonts...")
+
+(set #cp-shapez-prog "Copying REDShapeZ...")
+(set #cp-shapez-docs "Copying REDShapeZ Documentation...")
+(set #cp-shapez-servers "Copying REDShapeZ Servers...")
+
+(set #welcome
+   (cat
+      "Welcome to the Installation program for the\n"
+      "Blitz Support Suite.\n\n"
+      "I shall ask you a few questions so that I\n"
+      "can install the Support Suite to match your\n"
+      "requirements.\n\n"
+      "Please click 'Proceed' to begin the installation."
+   )
+)
+
+(set #install-select
+   (cat
+      "Please select the different Blitz Support Suite\n"
+      "modules that you would like installed :\n"
+   )
+)
+
+(set #install-select-help
+   (cat
+      "             The Blitz Support Suite\n"
+      "             ~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+      "The Ultimate Developmers Kit For Blitz2.1\n"
+      "Each box represents a module of the Support Suite.\n"
+      "You must choose which modules you want to install.\n\n"
+      "If you do not to wish install a certain module,\n"
+      "simply click inside the box so that the 'tick'\n"
+      "disappears. If you wish to install a module, you\n"
+      "should click inside the box so that the 'tick'\n"
+      "reappears.\n"
+   )
+)
+
+(set #mod-debugger "REDDebugger v2.5")
+
+(set #mod-shapez "REDShapeZ v2.5")
+
+(set #mod-blitzlibs "REDBlitzLibs")
+
+(set #mod-mapeditor "REDMapEditor v2.5")
+
+(set #mod-superted "SuperTED v2.5")
+
+(set #icon-set-prompt "Which type of icons do you want installed?")
+
+(set #icon-set-prompt-help
+   (cat
+      "Please choose you preferred iconset for the Blitz Support Suite.\n"
+      "The default is MagicWB Icons."
+      "Select Proceed when you have chosen."
+   )
+)
+
+(set #w-bss-dir
+   (cat  "Where do you want to install the\nBlitz Support Suite applications?\n"
+      #subdirmsg
+   )
+)
+
+(set #w-superted-fd
+   (cat
+      "Where do you want to install the\nSuperTED FD?\n"
+      #nosubdirmsg
+   )
+)
+
+(set #w-superted-autodoc
+   (cat
+      "Where do you want to install the\nSuperTED autodoc?\n"
+      #nosubdirmsg
+   )
+)
+
+(set #w-superted-blitzlib
+   (cat
+      "Where do you wint to install the\nSuperTED Blitz2 Library?\n"
+      #nosubdirmsg
+   )
+)
+
+(set #bad-kick
+   (cat
+      "Sorry, you need Kickstart 2.04 or higher to use the\n"
+      "Blitz Support Suite."
+   )
+)
+
+
+(set #bad-blitz-version
+   (cat
+      "Sorry, to use the REDDebugger you will need to be "
+      "running Blitz Basic V1.9 or newer."
+   )
+)
+
+(set #b-version-prompt "Which version of Blitz Basic are you using?")
+(set #b-version-help
+   (cat
+      "In order to install the REDDebugger correctly, "
+      "the Installer needs to know which version of "
+      "Blitz Basic you have installed on your system.\n\n"
+      "Select the appropriate option and then click 'Proceed'."
+   )
+)
+
+(set #debugger-modules-select
+   (cat
+      "Please choose which parts of the REDDebugger "
+      "you want installed."
+   )
+)
+
+(set #debugger-modules-select-help
+   (cat
+      "Choose which parts of the REDDebugger should be "
+      #def-select-help
+   )
+)
+
+
+(set #shapez-modules-select
+   (cat
+      "Please choose which parts of REDShapeZ "
+      "you want installed."
+   )
+)
+(set #shapez-modules-select-help
+   (cat
+      "Choose which parts of REDShapeZ should be "
+      #def-select-help
+   )
+)
+(set #me-modules-select
+   (cat
+      "Please choose which parts of the REDMapEditor "
+      "you want installed."
+   )
+)
+(set #me-modules-select-help
+   (cat
+      "Choose which parts of the REDMapEditor should be "
+      #def-select-help
+   )
+)
+(set #blitzlibs-modules-select
+   (cat
+      "Please choose which parts of the REDBlitzLibs "
+      "you want installed."
+   )
+)
+(set #blitzlibs-modules-select-help
+   (cat
+      "Choose which parts of the REDBlitzLibs should be "
+      #def-select-help
+   )
+)
+(set #superted-modules-select
+   (cat
+      "Please choose which parts of SuperTED you want installed.\n(PAGE 1 of 2)"
+   )
+)
+(set #superted-modules-select2
+   (cat
+      "Please choose which parts of SuperTED you want installed."
+   )
+)
+(set #superted-modules-select-help
+   (cat
+      "Choose which parts of SuperTED should be "
+      #def-select-help
+   )
+)
+(set #superted-extra-modules-select
+   (cat
+      "Please choose what extra parts of SuperTED you want installed.\n(PAGE 2 of 2)"
+   )
+)
+(set #superted-extra-select-help
+   (cat
+      "Choose which extra parts of SuperTED should be "
+      #def-select-help
+   )
+)
+(set #shapez-extra-modules-select
+   (cat
+      "Please choose what extra parts of REDShapeZ you want installed.\n(PAGE 2 of 2)"
+   )
+)
+(set #shapez-extra-select-help
+   (cat
+      "Choose which extra parts of REDShapeZ should be "
+      #def-select-help
+   )
+)
+(set #mod-debugger-docs "AmigaGuide Documentation")
+(set #mod-debugger-program "REDDebugger Executables")
+(set #mod-debugger-examples "Examples")
+(set #mod-mapeditor-prog "REDMapEditor Executable")
+(set #mod-mapeditor-docs "AmigaGuide Documentation")
+(set #mod-mapeditor-examples "Examples")
+(set #mod-superted-prog "SuperTED Executable")
+(set #mod-superted-docs "AmigaGuide Documentation")
+(set #mod-superted-acid "Blitz2.1 AmigaGuide Documentation")
+(set #mod-superted-plugins "PlugIns")
+(set #mod-superted-fd "FD file")
+(set #mod-superted-blitzlib "Blitz-library")
+(set #mod-superted-autodoc "Autodoc file")
+(set #mod-blitzlibs-libraries "Library Objects")
+(set #mod-blitzlibs-docs "AmigaGuide Documentation")
+(set #mod-blitzlibs-examples "Examples")
+(set #mod-shapez-prog "REDShapeZ Executable")
+(set #mod-shapez-docs "AmigaGuide Documentation")
+(set #mod-shapez-servers "REDShapeZ Servers")
+(set blitz-version-def 3)
+(set module-def 31)
+(set kickstart 1)
+(procedure copyicon
+   (set iconname
+      (cat
+         apppath
+         iconpath
+         filename
+      )
+   )
+
+   (copyfiles
+      (optional "nofail")
+      (source iconname)
+      (dest destname)
+      (all)
+      (infos)
+   )
+
+)
+
+(procedure backupacidlibs
+   (if (= 0 acidlibsbackedup)
+   (
+      (if (exists "Blitz2:acidlibs")
+      (
+         (copyfiles
+            (prompt "Keeping backup of acidlibs")
+            (optional "nofail")
+            (source "Blitz2:acidlibs")
+            (dest "Blitz2:")
+            (newname "acidlibs_backup")
+         )
+         (set acidlibsbackedup 1)
+      ))
+   ))
+)
+
+(procedure copyanicon
+   (set iconname
+      (cat
+         apppath
+         iconpath
+         filename
+      )
+   )
+
+   (if (EXISTS (iconname (noreq)))
+   (
+      (copyfiles
+         (optional "nofail")
+         (source iconname)
+         (dest destname)
+      )
+   ))
+)  
+
+(procedure mpd
+   (if (= 0 pim)
+   (
+      (if (NOT (exists #pl-def (noreq)))
+      (
+         (makedir #pl-def)
+      ))
+
+      (set oldapppath apppath)
+      (set apppath "RAM:InstallFiles/")
+      (set filename "PlugIns.info")
+      (set destname #pl-icon-def)
+
+      (copyanicon)
+
+      (copyfiles
+         (optional "nofail")
+         (source "RAM:InstallFiles/Programs/MenuED")
+         (dest "Blitz2:Plugins")
+         (newname "MenuED")
+      )
+
+
+      (set apppath "RAM:InstallFiles/")
+      (set filename "MenuEd.info")
+      (set destname "Blitz2:Plugins")
+
+      (copyanicon)
+
+      (set apppath oldapppath)
+
+      (set pim 1)
+   ))
+)
+
+
+(procedure mkstud
+
+   (if (NOT (exists #startup-def (noreq)))
+   (
+      (makedir #startup-def (infos))
+   ))
+
+   (if (NOT (exists "Blitz2:StartUp/SuperTED" (noreq)))
+   (
+      (makedir "Blitz2:StartUp/SuperTED" (infos))
+   ))
+
+)
+
+
+(procedure mmesud
+
+   (if (NOT (exists #startup-def (noreq)))
+   (
+      (makedir #startup-def (infos))
+   ))
+
+   (if (NOT (exists "Blitz2:StartUp/REDMapEditor" (noreq)))
+   (
+      (makedir "Blitz2:StartUp/REDMapEditor" (infos))
+   ))
+
+)
+
+
+(procedure mmedir
+
+   (if (= 0 hardorfloppy)
+   (
+      (if (NOT (exists #me-docs-def (noreq)))
+      (
+         (makedir #me-docs-def)
+      ))
+
+      (set oldapppath apppath)
+      (set apppath "RAM:InstallFiles/")
+      (set filename "REDMapEditor.info")
+      (set destname #me-icon-def)
+
+      (copyanicon)
+
+      (set apppath oldapppath)
+   ))
+)
+
+(procedure makeshapezdir
+
+   (if (= 0 hardorfloppy)
+   (
+      (if (NOT (exists #shapez-docs-def (noreq)))
+      (
+         (makedir #shapez-docs-def)
+      ))
+
+      (set oldapppath apppath)
+      (set apppath "RAM:InstallFiles/")
+      (set filename "REDShapeZ.info")
+      (set destname #shapez-icon-def)
+
+      (copyanicon)
+
+      (set apppath oldapppath)
+   ))
+)
+
+(procedure mbld
+
+   (if (NOT (exists #blitzlibs-docs-def (noreq)))
+   (
+      (makedir #blitzlibs-docs-def)
+   ))
+
+   (set oldapppath apppath)
+   (set apppath "RAM:InstallFiles/")
+   (set filename "REDBlitzLibs.info")
+   (set destname #blitzlibs-icon-def)
+
+   (copyanicon)
+
+   (set apppath oldapppath)
+)
+
+(procedure mrhdir
+
+   (if (= 0 hardorfloppy)
+   (
+      (if (NOT (exists #rh-def (noreq)))
+      (
+         (makedir #rh-def)
+      ))
+      (set oldapppath apppath)
+      (set apppath "RAM:InstallFiles/")
+      (set filename "REDHelp.info")
+      (set destname #rh-icon-def)
+
+      (copyanicon)
+
+      (set apppath oldapppath)
+   ))
+)
+
+(procedure sortpath
+   (set pathordevice
+      (substr returnpath (- (strlen returnpath) 1) 1)
+   )
+
+   (set slash "/")
+
+   (if (= pathordevice ":")
+      (set slash "")
+   )
+
+   (if (= pathordevice "/")
+      (set slash "")
+   )
+
+   (set returnpath
+      (cat
+         returnpath
+         slash
+         subdir
+      )
+   )
+
+)
+
+(procedure getpath
+
+   (set returnpath
+      (askdir
+         (prompt defaultprompt)
+         (help defaulthelp)
+         (default defaultpath)
+      )
+   )
+
+   (sortpath)
+)
+
+(procedure gbv
+   (if (= gotblitzversion 0)
+   (
+      (set blitz-version
+         (askchoice
+            (prompt #b-version-prompt)
+            (help #b-version-help)
+            (choices
+               "Older Than V1.9"
+               "V1.9"
+               "V1.95"
+               "V2.1"
+               "Newer than V2.1"
+            )
+            (default blitz-version-def)
+         )
+      )
+
+      (set newblitz 0)
+      (if (> blitz-version 2)
+      (
+         (set #blitzlibs-lib-def "Blitz2:blitzlibs/otherlibs")
+         (set newblitz 1)
+      ))
+
+      (set gotblitzversion 1)
+   ))
+)
+
+(procedure dorh
+   (if (= redhelpinstalled 0)
+   (
+      (set redhelpinstalled 1)
+
+      (if (= hardorfloppy 1)
+      (
+         (set #rh-def floppypath)
+      ))
+
+      (mrhdir)
+      (dorhprog)
+   ))
+)
+
+
+(procedure dorhprog
+   (copyfiles
+      (prompt #cp-redhelp-prog)
+      (optional "nofail")
+      (all)
+      (files)
+      (source "BSS1:REDHelp/Programs")
+      (dest #rh-def)
+      (help #cp-redhelp-prog)
+      (confirm "EXPERT")
+   )
+)
+
+(procedure makedeflibs
+   (run "RAM:InstallFiles/Programs/MakeDEFLibs")
+)
+
+(procedure checkblitzlibs
+   (set blitzlibsflag 0)
+
+   (if (> blitz-version 2)
+   (
+      (if (exists "Blitz2:Blitzlibs/basic/")
+      (
+         (abort #blitzlibs-dir-warning)
+         (set blitzlibsflag 1)
+      ))
+   ))
+)
+
+(procedure dorhacid
+
+   (dorh)
+
+   (if (NOT (exists "Blitz2:REDHelp/AcidGuides" (noreq)))
+   (
+      (makedir "Blitz2:REDHelp/AcidGuides")
+   ))
+
+   (run
+      "RAM:InstallFiles/Programs/concat DECAT BSS1:REDHelp/Documentation/acidguide.pak Blitz2:REDHelp/AcidGuides"
+      (prompt "Copying Blitz2.1 Online Help")
+   )
+
+   (set oldapppath apppath)
+   (set apppath "RAM:InstallFiles/")
+   (set filename "AcidGuides.info")
+   (set destname #rh-acidicon-def)
+   (copyanicon)
+
+   (set apppath oldapppath)
+
+)
+
+
+(procedure dodbdocs
+   (copyfiles
+      (prompt #cp-debugger-docs)
+      (optional "nofail")
+      (all)
+      (source "BSS2:REDDebugger/Documentation/")
+      (dest #debugger-docs-def)
+      (help #cp-debugger-docs)
+      (confirm "EXPERT")
+   )
+)
+
+(procedure dodbexamples
+   (copyfiles
+      (prompt #cp-debugger-examples)
+      (optional "nofail")
+      (all)
+      (source "BSS2:REDDebugger/Examples/")
+      (dest #debugger-examples-def)
+      (help #cp-debugger-examples)
+      (confirm "EXPERT")
+   )
+
+   (copyfiles
+      (prompt #cp-debugger-menus)
+      (optional "nofail")
+      (all)
+      (source "BSS2:REDDebugger/Menus/")
+      (dest "ENVARC:")
+      (help #cp-debugger-menus)
+      (confirm "EXPERT")
+   )
+
+)
+
+(procedure dodbprog
+
+   (if (NOT (exists "Blitz2:dbug"))
+   (
+      (makedir "Blitz2:dbug")
+   ))
+
+   (copyfiles
+      (prompt #cp-debugger-prog)
+      (optional "nofail")
+      (source "BSS2:REDDebugger/Programs/REDDebugger")
+      (dest "Blitz2:dbug")
+      (help #cp-debugger-prog)
+      (confirm "EXPERT")
+   )
+
+   (copyfiles
+      (prompt #cp-debugger-prog)
+      (optional "nofail")
+      (source "BSS2:REDDebugger/Programs/defaultdbug")
+      (dest debugger-prog-dest)
+      (help #cp-debugger-prog)
+      (confirm "EXPERT")
+   )
+
+)
+
+(procedure domodule
+   (set contornot
+   (askbool
+      (prompt mtxt)
+      (default 1)
+      (choices
+         "Proceed"
+         "Skip This Part"
+      )
+      (help #aboutto-help)
+
+   ))
+)
+
+
+(procedure dodb
+   (set apppath "BSS2:REDDebugger/")
+
+   (set mtxt
+      (cat  "\nREDDebugger Installation\n"
+         "------------------------\n\n"
+         "We are now about to begin the REDDebugger\n"
+         "installation process.\n\n"
+         "Select 'Proceed' to continue.\n"
+         "or 'Skip This Part' to skip\n"
+         "installation of this module.\n"
+      )
+   )
+
+   (domodule)
+
+   (if (= contornot 1)
+   (
+      (set debugger-modules
+         (askoptions
+            (prompt #debugger-modules-select)
+            (help #debugger-modules-select-help)
+            (choices
+               (#mod-debugger-program)
+               (#mod-debugger-docs)
+               (#mod-debugger-examples)
+            )
+         )
+      )
+
+      (gbv)
+
+      (if (> blitz-version 0)
+      (
+         (set debugger-prog-dest
+            (select blitz-version
+               "Blitz2:dbug"
+               "Blitz2:dbug"
+               "Blitz2:dbug"
+               "Blitz2:"
+               "Blitz2:"
+            )
+         )
+      ))
+
+      (if (= blitz-version 0)
+         (message #bad-blitz-version)
+      )
+
+      (if (BITAND debugger-modules 1) (dodbprog))
+      (if (BITAND debugger-modules 2) (dodbdocs))
+      (if (BITAND debugger-modules 4) (dodbexamples))
+   ))
+
+)
+
+
+(procedure domefonts
+   (copyfiles
+      (prompt #cp-mapeditor-fonts)
+      (all)
+      (source "BSS3:REDMapEditor/Fonts")
+      (dest "FONTS:")
+      (help #cp-mapeditor-fonts)
+      (confirm "EXPERT")
+   )
+)
+
+(procedure getbssdir
+   (if (= gotbssdir 0)
+   (
+      (set defaultpath "Blitz2:")
+      (set defaultprompt #w-bss-dir)
+      (set defaulthelp @askdir-help)
+      (set subdir "SupportSuite")
+      (getpath)
+      (set bssdir returnpath)
+      (set gotbssdir 1)
+      (if (NOT (exists bssdir (noreq)))
+      (
+         (makedir bssdir (infos))
+      ))
+   ))
+)
+
+(procedure getfloppydir
+   (set defaultpath "Blitz2:")
+   (set defaultprompt #w-bss-dir)
+   (set defaulthelp @askdir-help)
+   (set subdir "")
+   (getpath)
+   (set bssdir returnpath)
+)
+
+
+(procedure domeprog
+
+   (set mapeditor-prog-dest
+      (cat
+         bssdir
+         "/REDMapEditor"
+      )
+   )
+
+   (set #me-def
+      (cat
+         bssdir
+         "/REDMapEditor"
+      )
+   )
+
+
+   (if (= hardorfloppy 1)
+   (
+      (set gotbssdir 0)
+      (set #w-bss-dir "Where do you wish to install REDMapEditor?\nNo subdirectory will be created.")
+      (getfloppydir)
+      (set floppypath bssdir)
+      (set #me-docs-def bssdir)
+      (set #me-examples-def bssdir)
+      (set #me-icon-def bssdir)
+      (set mapeditor-prog-dest bssdir)
+      (set #me-def bssdir)
+   ))
+
+   (copyfiles
+      (prompt #cp-mapeditor-prog)
+      (optional "nofail")
+      (all)
+      (source "BSS3:REDMapEditor/Programs")
+      (dest mapeditor-prog-dest)
+      (help #cp-mapeditor-prog)
+      (confirm "EXPERT")
+   )
+
+   (set filename "Programs")
+   (set destname mapeditor-prog-dest)
+   (copyicon)
+
+   (domefonts)
+
+   (mmesud)
+
+)
+
+(procedure domedocs
+   (dorh)
+   (mmedir)
+   (copyfiles
+      (prompt #cp-mapeditor-docs)
+      (optional "nofail")
+      (all)
+      (source "BSS3:REDMapEditor/Documentation")
+      (dest #me-docs-def)
+      (help #cp-mapeditor-docs)
+      (confirm "EXPERT")
+   )
+
+   (set filename "Documentation")
+   (set destname #me-docs-def)
+   (copyicon)
+)
+
+(procedure domeexamples
+   (dorh)
+   (mmedir)
+   (copyfiles
+      (prompt #cp-mapeditor-examples)
+      (optional "nofail")
+      (all)
+      (source "BSS3:REDMapEditor/Examples")
+      (dest #me-examples-def)
+      (help #cp-mapeditor-examples)
+      (confirm "EXPERT")
+   )
+)
+
+(procedure dome
+
+   (set apppath "BSS3:REDMapEditor/")
+
+   (set mtxt
+      (cat  "\nREDMapEditor Installation\n"
+         "-------------------------\n\n"
+         "We are now about to begin the REDMapEditor\n"
+         "installation process.\n\n"
+         "Select 'Proceed' to continue.\n"
+         "or 'Skip This Part' to skip\n"
+         "installation of this module.\n"
+      )
+   )
+
+   (if (= 1 hardorfloppy)
+   (
+      (set mtxt
+         (cat  mtxt
+            blankdisk
+         )
+      )
+   ))
+
+
+   (domodule)
+
+   (if (= contornot 1)
+   (
+      (set mapeditor-modules
+         (askoptions
+            (prompt #me-modules-select)
+            (help #me-modules-select-help)
+            (choices
+               (#mod-mapeditor-prog)
+               (#mod-mapeditor-docs)
+               (#mod-mapeditor-examples)
+            )
+         )
+      )
+
+      (if (> 0 mapeditor-modules)
+      (
+         (mkstsud)
+      ))
+
+      (if (BITAND mapeditor-modules 1) (domeprog))
+      (if (BITAND mapeditor-modules 2) (domedocs))
+      (if (BITAND mapeditor-modules 4) (domeexamples))
+   ))
+)
+
+
+(procedure dosh
+
+   (set apppath "BSS1:REDShapeZ/")
+
+   (if (= 0 hardorfloppy)
+   (
+      (set mtxt
+         (cat  "\nREDShapeZ Installation\n"
+            "----------------------\n\n"
+            "We are now about to begin the REDShapeZ\n"
+            "installation process.\n\n"
+            "Select 'Proceed' to continue.\n"
+            "or 'Skip This Part' to skip\n"
+            "installation of this module.\n"
+         )
+      )
+   ))
+
+
+   (if (= 1 hardorfloppy)
+   (
+      (set mtxt
+         (cat  "\nREDShapeZ Installation\n"
+            "----------------------\n\n"
+            "We are now about to begin the REDShapeZ\n"
+            "installation process.\n\n"
+            "Select 'Proceed' to continue.\n"
+            "or 'Skip This Part' to skip\n"
+            "installation of this module.\n"
+            blankdisk
+         )
+      )
+   ))
+
+
+   (domodule)
+
+   (if (= contornot 1)
+   (
+      (set shapez-modules
+         (askoptions
+            (prompt #shapez-modules-select)
+            (help #shapez-modules-select-help)
+            (choices
+               (#mod-shapez-prog)
+               (#mod-shapez-docs)
+               (#mod-shapez-servers)
+            )
+         )
+      )
+
+      (if (BITAND shapez-modules 1) (doshprog))
+      (if (BITAND shapez-modules 2) (doshdocs))
+      (if (BITAND shapez-modules 4) (doshservers))
+   ))
+)
+
+(procedure doshprog
+   (set shapez-prog-dest
+      (cat
+         bssdir
+         "/REDShapeZ"
+      )
+   )
+
+   (set #shapez-def
+      (cat
+         bssdir
+         "/REDShapeZ"
+      )
+   )
+
+
+   (if (= hardorfloppy 1)
+   (
+      (set gotbssdir 0)
+      (set #w-bss-dir "Where do you wish to install REDShapeZ?\nNo subdirectory will be created.")
+      (getfloppydir)
+      (set floppypath bssdir)
+      (set #shapez-docs-def bssdir)
+      (set #shapez-examples-def bssdir)
+      (set #shapez-icon-def bssdir)
+      (set shapez-prog-dest bssdir)
+      (set #shapez-def bssdir)
+   ))
+
+   (copyfiles
+      (prompt #cp-shapez-prog)
+      (optional "nofail")
+      (all)
+      (source "BSS1:REDShapeZ/Programs")
+      (dest shapez-prog-dest)
+      (help #cp-shapez-prog)
+      (confirm "EXPERT")
+   )
+
+   (set filename "Programs")
+   (set destname shapez-prog-dest)
+   (copyicon)
+
+)
+
+(procedure doshdocs
+   (dorh)
+   (makeshapezdir)
+
+   (set cmd
+      (cat  "RAM:InstallFiles/Programs/CONCAT DECAT BSS1:REDShapeZ/Documentation/REDShapeZ.CAT "
+         #shapez-docs-def
+      )
+   )
+
+   (run 
+      cmd
+      (prompt "Copying REDShapeZ Documentation...")
+   )
+
+
+   (copyfiles
+      (prompt #cp-shapez-docs)
+      (source "BSS1:REDShapeZ/Documentation/Examples")
+      (dest "Blitz2:REDHelp/REDShapeZ/Examples")
+      (all)
+      (optional "nofail")
+      (help #cp-shapez-docs)
+   )
+
+   (set filename "Documentation")
+   (set destname #shapez-docs-def)
+   (copyicon)
+)
+
+(procedure doshservers
+
+   (mpd)
+
+   (if (NOT (exists #shapez-servers-def (noreq)))
+   (
+      (makedir #shapez-servers-def (infos))
+   ))
+
+   (copyfiles
+      (prompt #cp-shapez-servers)
+      (optional "nofail")
+      (all)
+      (source "BSS1:REDShapeZ/Extras/Servers")
+      (dest #shapez-servers-def)
+      (help #cp-shapez-servers)
+      (confirm "EXPERT")
+   )
+)
+
+
+(procedure dostprog
+   (set thatname "Blitz2:TED")
+   (set progname "SuperTED")
+   (set thisname "SuperTED/Programs/TED")
+
+   (if (= hardorfloppy 1)
+   (
+      (set mtxt
+         (cat "To fit SuperTED onto your Blitz2 floppy disk\n"
+              "it is necessary to delete some unneeded files\n"
+              "from the Blitz2 disk.\n"
+              "It is important that this is done on a\n"
+              "BACKUP COPY of your Blitz2 Original.\n\n"
+         )
+      )
+
+      (domodule)
+
+      (if (= 0 contornot)
+      (
+         (exit "User Aborted Installation")
+      ))
+
+      (delete "Blitz2:releasenotes" 
+         (optional nofail)
+      )
+
+      (delete "Blitz2:c/dir" 
+         (optional nofail)
+      )
+
+      (delete "Blitz2:releasenotes.info"
+         (optional nofail)
+      )
+
+      (delete "Blitz2:important"
+         (optional nofail)
+      )
+      (delete "Blitz2:important.info"
+         (optional nofail)
+      )
+   ))       
+
+   (copyfiles
+      (prompt #cp-superted-prog)
+      (optional "nofail")
+      (source "BSS3:SuperTED/Programs/TED")
+      (dest "Blitz2:")
+      (help #cp-superted-prog)
+      (confirm "EXPERT")
+   )
+
+   (if (= hardorfloppy 0)
+   (
+      (copylib
+         (source "BSS3:SuperTED/Extras/Libs/ted.library")
+         (dest "LIBS:")
+      )
+   ))
+   (if (= hardorfloppy 1)
+   (
+      (copylib
+         (source "BSS3:SuperTED/Extras/Libs/ted.library")
+         (dest "Blitz2:LIBS")
+      )
+   ))
+
+   (set filename "Programs")
+   (set destname "Blitz2:")
+
+   (copyicon)
+
+   (mkstud)
+
+)
+
+(procedure dostdocs
+
+   (dorh)
+
+   (copyfiles
+      (prompt #cp-superted-docs)
+      (optional "nofail")
+      (source "BSS3:SuperTED/Documentation")
+      (all)
+      (dest #superted-docs-def)
+      (help #cp-superted-docs)
+      (confirm "EXPERT")
+   )
+
+   (set filename "Documentation")
+   (set destname #superted-docs-def)
+
+   (copyicon)
+
+)
+
+(procedure dostplugins
+
+   (mpd)
+
+   (copyfiles
+      (source "BSS3:SuperTED/Extras/Config/ted.menus")
+      (dest "ENVARC:")
+      (optional nofail)
+   )
+
+   (if (NOT (exists #superted-plugins-def (noreq)))
+   (
+      (makedir #superted-plugins-def (infos))
+   ))
+
+
+   (copyfiles
+      (prompt #cp-superted-plugins)
+      (optional "nofail")
+      (source "BSS3:SuperTED/Extras/PlugIns")
+      (dest #superted-plugins-def)
+      (all)
+      (help #cp-superted-plugins)
+      (confirm "EXPERT")
+   )
+
+   (set filename "Extras/PlugIns")
+   (set destname #superted-plugins-def)
+
+   (copyicon)
+
+   (set td-default
+      (cat
+         bssdir
+         "/TEDDock"
+      )
+   )
+
+   (if (NOT (exists td-default (noreq)))
+   (
+      (makedir td-default (infos))
+   ))
+
+   (copyfiles
+      (prompt #cp-td-icons)
+      (optional "nofail")
+      (source "BSS3:SuperTED/TEDDock")
+      (dest td-default)
+      (all)
+      (help #cp-td-icons)
+      (confirm "EXPERT")
+   )
+
+)
+
+(procedure dostfd
+
+   (set superted-fd-dest #superted-fd-def)
+
+   (set flag (exists (#superted-fd-def (noreq))))
+
+   (if (= flag 0)
+   (
+      (set defaultpath #superted-fd-def)
+      (set defaultprompt #w-superted-fd)
+      (set defaulthelp @askdir-help)
+      (set subdir "")
+      (getpath)
+      (set superted-fd-dest returnpath)
+   ))
+
+   (copyfiles
+      (prompt #cp-superted-fd)
+      (optional "nofail")
+      (source "BSS3:SuperTED/Extras/FD/ted_lib.fd")
+      (dest superted-fd-dest)
+      (help #cp-superted-fd)
+      (confirm "EXPERT")
+   )
+)
+
+
+(procedure dostautodoc
+
+   (set superted-autodoc-dest #superted-autodoc-def)
+
+   (set flag (exists (#superted-autodoc-def (noreq))))
+
+   (if (= flag 0)
+   (
+      (set defaultpath #superted-autodoc-def)
+      (set defaultprompt #w-superted-autodoc)
+      (set defaulthelp @askdir-help)
+      (set subdir "")
+      (getpath)
+      (set superted-autodoc-dest returnpath)
+   ))
+
+   (copyfiles
+      (prompt #cp-superted-autodoc)
+      (optional "nofail")
+      (source "BSS3:SuperTED/Extras/AutoDocs/ted.doc")
+      (dest superted-autodoc-dest)
+      (help #cp-superted-autodoc)
+      (confirm "EXPERT")
+   )
+)
+
+(procedure dostblitzlibs
+
+   (set superted-blitzlib-dest #superted-blitzlib-def)
+
+   (set flag (exists (#superted-blitzlib-def (noreq))))
+
+   (if (= flag 0)
+   (
+      (set defaultpath #superted-blitzlib-def)
+      (set defaultprompt #w-superted-blitzlib)
+      (set defaulthelp #cp-superted-blitzlib-help)
+      (set subdir "")
+      (getpath)
+      (set superted-blitzlib-dest returnpath)
+      (set defaulthelp "")
+   ))
+
+   (copyfiles
+      (prompt #cp-superted-blitzlib)
+      (optional "nofail")
+      (source "BSS3:SuperTED/Extras/BlitzLibs/ted.library1")
+      (dest superted-blitzlib-dest)
+      (help #cp-superted-blitzlib)
+      (confirm "EXPERT")
+   )
+)
+
+(procedure dost
+   (set apppath "BSS3:SuperTED/")
+
+   (set mtxt
+      (cat  "\nSuperTED Installation\n"
+         "---------------------\n\n"
+         "We are now about to begin the SuperTED\n"
+         "installation process.\n\n"
+         "Select 'Proceed' to continue.\n"
+         "or 'Skip This Part' to skip\n"
+         "installation of this module.n"
+      )
+   )
+
+   (domodule)
+
+   (if (= contornot 1)
+   (
+      (if (= 0 hardorfloppy)
+      (
+         (set superted-modules
+            (askoptions
+               (prompt #superted-modules-select)
+               (help #superted-modules-select-help)
+               (choices
+                  (#mod-superted-prog)
+                  (#mod-superted-docs)
+                  (#mod-superted-acid)
+                  (#mod-superted-plugins)
+                  (#mod-superted-fd)
+               )
+            )
+         )
+         (set superted-extra-modules
+            (askoptions
+               (prompt #superted-extra-modules-select)
+               (help #superted-extra-select-help)
+               (choices
+                  (#mod-superted-autodoc)
+                  (#mod-superted-blitzlib)
+               )
+            )
+         )
+      ))
+
+
+      (if (= 1 hardorfloppy)
+      (
+         (set superted-modules
+            (askoptions
+               (prompt #superted-modules-select2)
+               (help #superted-modules-select-help)
+               (choices
+                  (#mod-superted-prog)
+               )
+            )
+         )
+      ))
+
+      (if (> 0 superted-modules)
+      (
+         (mkstsud)
+      ))
+
+
+      (if (BITAND superted-modules 1) (dostprog))
+      (if (BITAND superted-modules 2) (dostdocs))
+      (if (BITAND superted-modules 4) (dorhacid))
+      (if (BITAND superted-modules 8) (dostplugins))
+
+      (if (BITAND superted-modules 1)
+      (
+         (delete "ENVARC:ted.prefs"
+            (prompt "Removing old Configration..")
+            (optional "nofail")
+         )        
+
+         (delete "ENV:ted.prefs"
+            (prompt "Removing old Configration..")
+            (optional "nofail")
+         )        
+      ))
+
+      (if (BITAND superted-modules 16) (dostfd))
+      (if (BITAND superted-extra-modules 1) (dostautodoc))
+      (if (BITAND superted-extra-modules 2) (dostblitzlibs))
+   ))
+)
+
+(procedure doblitzlibs
+
+   (set apppath "BSS2:REDBlitzLibs/")
+
+   (set mtxt
+      (cat  "\nREDBlitzLibs Installation\n"
+         "-------------------------\n\n"
+         "We are now about to begin the REDBlitzLibs\n"
+         "installation process.\n\n"
+         "Select 'Proceed' to continue.\n"
+         "or 'Skip This Part' to skip\n"
+         "installation of this module.n"
+      )
+   )
+
+
+   (domodule)
+
+   (if (= contornot 1)
+   (
+      (gbv)
+
+      (set blitzlibs-modules
+         (askoptions
+            (prompt #blitzlibs-modules-select)
+            (help #blitzlibs-modules-select-help)
+            (choices
+               #mod-blitzlibs-libraries
+               #mod-blitzlibs-docs
+               #mod-blitzlibs-examples
+            )
+         )
+      )
+
+      (if (BITAND blitzlibs-modules 1) (doblitzlibsprog))
+      (if (BITAND blitzlibs-modules 2) (doblitzlibsdocs))
+      (if (BITAND blitzlibs-modules 4) (doblitzlibsexamples))
+
+   ))
+)
+
+(procedure doblitzlibsprog
+
+   (checkblitzlibs)
+
+   (if (= 0 blitzlibsflag)
+   (
+      (copyfiles
+         (prompt #cp-blitzlibs-lib)
+         (optional "nofail")
+         (source "BSS2:REDBlitzLibs/Libraries/userlibs/")
+         (dest #blitzlibs-lib-def)
+         (all)
+      )
+
+      (if (= 0 newblitz)
+      (
+         (copyfiles
+            (prompt #cp-blitzlibs-lib)
+            (optional "nofail")
+            (all)
+            (source "BSS2:REDBlitzLibs/Libraries/basic/")
+            (dest #blitzlibs-syslib-def)
+            (help #cp-debugger-docs)
+            (confirm "EXPERT")
+         )
+
+      ))
+
+   ))
+)
+
+(procedure doblitzlibsdocs
+   (dorh)
+   (mbld)
+
+   (set cmd
+      (cat
+         "RAM:InstallFiles/Programs/concat DECAT BSS2:REDBlitzLibs/Documentation/Docs.CAT "
+         #blitzlibs-docs-def
+      )
+   )
+
+   (run  
+      cmd
+      (prompt #cp-blitzlibs-docs)
+   )
+   (set filename "Documentation/")
+   (set destname #blitzlibs-docs-def)
+   (copyicon)
+)
+
+(procedure doblitzlibsexamples
+
+   (dorh)
+
+   (mbld)
+
+   (if (NOT (exists "Blitz2:REDHelp/REDBlitzLibs/Examples"))
+   (
+      (makedir "Blitz2:REDHelp/REDBlitzLibs/Examples")
+   ))
+
+   (copyfiles
+      (prompt #cp-blitzlibs-examples)
+      (optional "nofail")
+      (all)
+      (source "BSS2:REDBlitzLibs/Examples/FNS")
+      (dest #blitzlibs-examples-def)
+      (help #cp-blitzlibs-examples)
+      (confirm "EXPERT")
+   )
+
+   (set cmd
+      (cat
+         "RAM:InstallFiles/Programs/concat DECAT BSS2:REDBlitzLibs/Examples/Examples.CAT "
+         "Blitz2:REDHelp/REDBlitzLibs/Examples"
+      )
+   )
+   (run
+      cmd
+      (prompt #cp-blitzlibs-examples)
+   )
+)
+(message #welcome)
+(if (< (/ (getversion) 65536) 36)
+   (
+      (set kickstart 0)
+      (message #bad-kick)
+   )
+)
+(set hardorfloppy
+   (askchoice
+      (prompt "Please select HardDrive or Floppy Installation.")
+      (help "Please select HardDrive or Floppy Installation.\nFloppy Installation can only install REDMapEditor, SuperTED and REDShapeZ.\nYou should use a backup-copy of these disks\nto run REDMapEditor and REDShapeZ.")
+      (choices
+         "Hard Disk Installation"
+         "Floppy Disk Installation"
+      )
+   )
+)
+(if (= hardorfloppy 1)
+(
+   (set msg
+      (cat
+         "You have selected Floppy Disk Installation.\n\n"
+         "You can only install the following modules :\n"
+         "  REDMapEditor Program,Examples + Documentation\n"
+         "  SuperTED Program"
+         "  REDShapeZ Program,Examples + Documentation\n"
+      )
+   )
+))
+(if (= kickstart 1)
+(
+   (if (= 0 hardorfloppy)
+   (
+      (set install-modules
+         (askoptions
+            (prompt #install-select)
+            (help #install-select-help "\n\n" @askoptions-help)
+            (choices
+               #mod-shapez
+               #mod-blitzlibs
+               #mod-debugger
+               #mod-mapeditor
+               #mod-superted
+            )
+            (default module-def)
+         )
+      )
+   ))
+   (if (= 1 hardorfloppy)
+   (
+      (set install-modules
+         (askoptions
+            (prompt #install-select)
+            (help #install-select-help "\n\n" @askoptions-help)
+            (choices
+               #mod-shapez
+               #mod-mapeditor
+               #mod-superted
+            )
+            (default module-def)
+         )
+      )
+   ))
+))
+
+(if (NOT (exists #superted-blitzlib-def (noreq)))
+(
+   (set #superted-blitzlib-def "Blitz2:userlibs")
+))
+
+(if (> install-modules 0)
+(
+   (set  support-icons
+      (askchoice
+         (prompt #icon-set-prompt)
+         (help #icon-set-prompt-help)
+         (choices
+            "Standard Icons"
+            "MagicWB Icons"
+         )
+         (default 1)
+      )
+   )
+   (if (= support-icons 0) (set iconpath "Icons/Normal/"))
+   (if (= support-icons 1) (set iconpath "Icons/MagicWB/"))
+
+))
+
+(if (NOT (= 0 install-modules))
+(
+   (copylib
+      (source "InstallFiles/Libs/reqtools.library")
+      (dest "LIBS:")
+   )
+
+   (copyfiles
+      (source "InstallFiles")
+      (dest "RAM:InstallFiles")
+      (all)
+      (help @copyfiles-help)
+   )
+))
+
+(if (= 0 hardorfloppy)
+(
+   (if (NOT (= 0 install-modules))
+   (
+      (getbssdir)
+   ))
+
+   (if (BITAND install-modules 1)
+   (
+      (dosh)
+   ))
+
+   (set pleasemakelibs 0)
+
+   (if (BITAND install-modules 2)
+   (
+      (doblitzlibs)
+      (set pleasemakelibs 1)
+   ))
+
+   (if (BITAND install-modules 4)
+   (
+      (dodb)
+      (set pleasemakelibs 1)
+   ))
+
+
+   (if (= 1 pleasemakelibs)
+   (
+      (if (= 1 newblitz)
+      (
+         (backupacidlibs)
+         (set cmdline "RAM:InstallFiles/Programs/ReplaceLibrary BSS2:")
+         (run cmdline)
+      ))
+
+      (makedeflibs)
+   ))
+
+
+   (if (BITAND install-modules 8)
+   (
+      (dome)
+   ))
+
+   (if (BITAND install-modules 16)
+   (
+      (dost)
+   ))
+
+))
+
+
+(if (= 1 hardorfloppy)
+(
+
+   (if (BITAND install-modules 1)
+   (
+      (dosh)
+   ))
+
+   (if (BITAND install-modules 2)
+   (
+      (dome)
+   ))
+
+
+   (if (BITAND install-modules 4)
+   (
+      (dost)
+   ))
+))
+   
+(run "delete RAM:InstallFiles ALL QUIET")
+      
+(set @default-dest "")
+
+(message "Installation has been successfully completed.\nRESET your machine to use the Blitz Support Suite.\n\nThe Blitz Support Suite is © 1996 Red When Excited")

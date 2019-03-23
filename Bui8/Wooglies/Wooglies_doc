@@ -1,0 +1,160 @@
+
+     --------------------------------------------------------------------
+    | Program       : Wooglies                                           |
+    | Programmer    : John J. Cassar                                     |
+    | Language      : Blitz II                                           |
+    | Version       : v1.20                                              |
+    | Date          : 16 February 1995                                   |
+    | Compatability : Should Work on all WB's (v1.3 sound effects only)  |
+    | Purpose       : Push the blocks and trap the Wooglies              |
+     --------------------------------------------------------------------
+
+                             WOOGLIES © 1995
+
+                            by John J. Cassar
+
+                            COPYRIGHT NOTICE
+                           ------------------
+
+           This program is shareware  distributable.  This means that the
+   program can be freely copied and distributed as long as no more than a
+   nominal fee is charged. This program is copyrighted by John J. Cassar.
+   All rights reserved. If you wish to use the program, you must register
+   yourself. You do so by sending  a  short  letter stating your name and
+   address,  along  with  the shareware fee  to  the address given at the
+   bottom of this document.
+
+           The shareware fee, for "Morse Code Trainer", is £5 sterling or
+   the equivalent in any other currency.
+
+         Magazines are welcome to use this program, as long as no changes
+   are made, and this document is included.
+
+    ----------------------------------------------------------------------
+
+                      FREE SOFTWARE - FREE SOFTWARE
+                     -------------------------------
+
+           When you send your  donation,  indicate  which  one  of one of
+   these following programs you would like to have, and I will send it to
+   you, free.
+
+           If you like to have any  of  the other programs listed bellow,
+   as well as your free disk,  please add  an  extra £2 per disk, to your
+   donation.
+
+   *** - COMMUNICATE
+   -----------------
+           Teach yourself  eight  non-verbal  languages.  Including  two-
+   handed  sign  alphabet,  one-handed  sign  alphabet,  deaf-blind  sign
+   alphabet, Braille, Semaphore,  Flags  (ship  signalling  flags), Morse
+   code alphabet and a Naughts and Crosses code, (a fun language).
+
+   *** - CALORIE COUNTER DIARY
+   ---------------------------
+           Watch that waistline!! This program  helps  you  keep track of
+   your daily calories  consumed.  "Calorie Counter Diary" keeps separate
+   files for each individual who  uses  it,  making  it  ideal for use in
+   weight-watching groups.  Requires  WB2  and  makes  full  use  of  the
+   standard intuition interface. Users  enter  the  item from a scrolling
+   food  list,  and  the  program   quickly  calculates  the  nutritional
+   composition of the day's  menu  and  compares  it with the recommended
+   intake. This  program  is  Shareware,  therefore  if  you  choose this
+   program, I will send you a special evaluation version.
+
+   *** - MIXED GOODIES ONE
+   -----------------------
+           This disk contains the following programs:
+
+        Selector     - Hard drive startup program selector.
+       ProgSelect    - Menu type selector, which includes scrolling text
+                       and music.
+     Date Reminder   - An easy to use personal date reminder.
+   Lottery Predictor - Let this program select your winning numbers.
+       VideoBase     - Video tape database.
+        FileAid      - A CLI utility.
+
+   *** - Morse Code Trainer
+   ------------------------
+          Learn Morse code.  This program contains the complete alphabet,
+   continental letters,  numerals (normal and abbreviated),  punctuation,
+   procedure signals,  informal  amateur cw abbreviations,  international
+   Q-codes and RST codes.  Morse Code Trainer also takes the user through
+   18 exercises,  each designed to  help you  memorise the Morse alphabet
+   quickly. This program is shareware.
+
+   -----------------------------------------------------------------------
+
+                                 DISCLAIMER
+                                ------------
+
+           Every effort went into creating a bug free program, although no
+    warranty is given that this is the case.  You use this program at your
+    own risk. I will be NOT be held liable for any damage caused, directly
+    or indirectly, resulting by the use of this program.
+
+    ----------------------------------------------------------------------
+
+                            WOOGLIES INSTRUCTIONS
+                           -----------------------
+
+    The good news:- The  Wooglies  would  be  indestructible,  but for one
+    weakness. They have to stay on the move at all times.  Lucky you!
+
+    The bad news :- They are hungry, and after you. Shame!
+
+    Your objective is to trap the  Wooglies and stop them from moving. You
+    do so by pushing the   blocks.   There   is  only enough oxygen in the
+    room to last for two minutes. If you do not trap them in the allocated
+    time you will die. You may push as many blocks as you wish.
+
+    Once you have trapped them,  they   will   die  and you advance to the
+    next level. After every  three  levels  an  extra Wooglie will appear.
+    There are 40 levels.
+
+    Use the joystick to move   and   push   the   blocks.  You can throw a
+    block behind you by  pressing  the  fire  button  and move towards the
+    block you wish to fling.
+
+    After every three levels the program  will supply you with a code. Use
+    these codes to move to a higher level.
+
+        From the intro screen you can press:-
+
+                    Fire Button to enter the game.
+                         C      to enter a level code.
+                         S      to stop the music.
+                        Esc     to leave the game and save Hi-Scores.
+
+        During the game you may press:-
+
+                         P      to pause the game. Press P re-start.
+                         S      to toggle Music/Fx Sounds.
+                        Esc     to return to intro screen.
+
+
+    ----------------------------------------------------------------------
+
+                              HARD DRIVE USERS
+                             ------------------
+
+        It is recommended that if you wish to install the Wooglies program
+    onto your hard drive, you do so using the installer utility provided.
+
+        Boot from your hard drive and insert Wogglies disk in df0:. Double
+    click on the installer and follow instructions given by the program.
+
+    ----------------------------------------------------------------------
+
+    Your remittance together with any  comments  you   wish  to make about
+    this program, should be sent to:-
+
+                              John J. Cassar
+                              31, St. Mungo Avenue
+                              Townhead
+                              Glasgow G4 OPG
+                              Scotland
+
+    ---------------------------------------------------------------------
+                         ---- BE KIND TO ANIMALS ----
+    ---------------------------------------------------------------------

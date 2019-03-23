@@ -1,0 +1,35 @@
+                  Blitz Basic 2.1 (Release Version)
+                  =================================
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+*******  DON'T FORGET TO MAKE A BACKUP COPY OF ALL YOUR DISKS !  *******
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+
+This disk has been configured to work with any 1Mb amiga from an A500 to
+an A4000. Users with more memory, hard disk drives and WB2.0 or greater
+can take advantage of the additional utilities on the extras disk.
+
+
+The extras disk contains:
+
+* BigDeflibs.lha  - all the amigalibs and third party libraries' object
+                    code compiled into one file.
+
+* Blitzlibs.lha   - all the object code for amigalibs and the third party
+                    libraries and the resident files and utilities.
+
+* LibsDev.lha     - an archive for advanced users wanting to create their
+                    own libraries. It contains documentation, example
+                    library source code and test examples for the third
+                    party libraries.
+
+* NewDebugger.lha - an advanced debugging utility that allows you to
+                    view copper lists, memory, etc.
+
+* NewTeditor.lha  - an Amiga style-guide compliant editor that requires
+                    WB2.0 or greater.
+
+
+NB: Please refer to the Blitz manual for the instructions on how to
+    install the additional utilities and extras.

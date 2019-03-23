@@ -1,0 +1,37 @@
+; just a quick demonstration of the pretty smart Triton EasyRequest
+;
+; This example is a bit short compared to the others :-)
+
+
+INCLUDE "blitz2:bbincludes/libraries/triton.bb2"
+
+Dim apptags.TagItem(5)
+Dim reqtags.TagItem(10)
+
+apptags(1)\ti_Tag=#TRCA_Name,Null("Triton's EZReq")
+apptags(2)\ti_Tag=#TRCA_LongName,Null("Triton's Easy Requester")
+apptags(3)\ti_Tag=#TRCA_Info,Null("This is the info slot")
+apptags(4)\ti_Tag=#TAG_END,0
+
+reqtags(1)\ti_Tag=#TAG_DONE,0
+
+
+application.l=TR_CreateApp_(&apptags(1))
+
+If (application)
+
+  body$="%bHello World!" ; Bold text
+  body$+Chr$(9)          ; Add a tab char for a 3d separator line
+  body$+"%3Here Too!"    ; 3d text
+
+  gads$="_OK|_Cancel"
+
+  TR_EasyRequest_ application,Null(body$),Null(gads$),&reqtags(1)
+
+  TR_DeleteApp_ application
+
+EndIf
+
+End
+
+

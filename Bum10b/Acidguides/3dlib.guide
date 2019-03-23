@@ -1,0 +1,224 @@
+@DATABASE 3DLIB
+@Author Conversion program
+@NODE OVERVIEW "Overview of 3DLIB"
+
+                                  @{b}@{u}Overview@{ub}@{uu}
+
+
+                          An Acid Software Library
+
+                         Converted to AmigaGuide by
+
+                            Red When Excited Ltd
+
+                 Used with the permission of Acid Software
+
+
+
+@ENDNODE OVERVIEW
+
+@NODE ShapeTD "3DLIB"
+
+@{fg shine}Statement: ShapeTD@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : ShapeTD Shape3D#,MatrixId[,CollType,CollId]
+
+
+
+@ENDNODE ShapeTD
+
+@NODE Matrix3D "3DLIB"
+
+@{fg shine}Statement: Matrix3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Matrix3D MatrixId,X,Y,Z[,X Rot,Y Rot,Z Rot]
+
+
+
+@ENDNODE Matrix3D
+
+@NODE Angle3D "3DLIB"
+
+@{fg shine}Statement: Angle3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Angle3D MatrixId,X Rot,Y Rot,Z Rot
+
+
+
+@ENDNODE Angle3D
+
+@NODE Camera3D "3DLIB"
+
+@{fg shine}Statement: Camera3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Camera3D X,Y,Z,X Rot,Y Rot,Z Rot[,Distance]
+
+
+
+@ENDNODE Camera3D
+
+@NODE Init3D "3DLIB"
+
+@{fg shine}Statement: Init3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Init3D MaxShapeVerts,MaxScenePolys,MaxSceneVerts,MaxCollisions
+
+
+
+@ENDNODE Init3D
+
+@NODE Verts3D "3DLIB"
+
+@{fg shine}Statement: Verts3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Verts3D 
+
+
+
+@ENDNODE Verts3D
+
+@NODE Render3D "3DLIB"
+
+@{fg shine}Statement: Render3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Render3D [WindowX,Y,Width,Height]
+
+
+
+@ENDNODE Render3D
+
+@NODE First3D "3DLIB"
+
+@{fg shine}Statement: First3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : First3D 
+
+
+
+@ENDNODE First3D
+
+@NODE QSin3D "3DLIB"
+
+@{fg shine}Function: QSin3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QSin3D (angle)
+
+
+
+@ENDNODE QSin3D
+
+@NODE QCos3D "3DLIB"
+
+@{fg shine}Function: QCos3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =QCos3D (angle)
+
+
+
+@ENDNODE QCos3D
+
+@NODE Horizon3D "3DLIB"
+
+@{fg shine}Statement: Horizon3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : Horizon3D ground col,sky col
+
+
+
+@ENDNODE Horizon3D
+
+@NODE XRot3D "3DLIB"
+
+@{fg shine}Statement: XRot3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : XRot3D angleid,scale
+
+
+
+@ENDNODE XRot3D
+
+@NODE YRot3D "3DLIB"
+
+@{fg shine}Statement: YRot3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : YRot3D angleid,scale
+
+
+
+@ENDNODE YRot3D
+
+@NODE ZRot3D "3DLIB"
+
+@{fg shine}Statement: ZRot3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : ZRot3D angleid,scale
+
+
+
+@ENDNODE ZRot3D
+
+@NODE CheckHit3D "3DLIB"
+
+@{fg shine}Statement: CheckHit3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : CheckHit3D Shape3D#,MatrixId,CollType
+
+
+
+@ENDNODE CheckHit3D
+
+@NODE DrawRange3D "3DLIB"
+
+@{fg shine}Statement: DrawRange3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : DrawRange3D DrawRange
+
+
+
+@ENDNODE DrawRange3D
+
+@NODE WindowSize3D "3DLIB"
+
+@{fg shine}Statement: WindowSize3D@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : WindowSize3D width,height[,focalshift]
+@ENDNODE WindowSize3D
+
+@NODE MAIN "3DLIB"
+
+.-----------------------------------------------------------------------------.
+|                                   @{b}3DLIB@{ub}                                     |
+`-----------------------------------------------------------------------------'
+
+                             @{"     Overview     " link OVERVIEW}
+
+                               Command Index                                
+
+               @{" Angle3D      " link Angle3D}                @{" Camera3D     " link Camera3D}
+               @{" CheckHit3D   " link CheckHit3D}                @{" DrawRange3D  " link DrawRange3D}
+               @{" First3D      " link First3D}                @{" Horizon3D    " link Horizon3D}
+               @{" Init3D       " link Init3D}                @{" Matrix3D     " link Matrix3D}
+               @{" QCos3D       " link QCos3D}                @{" QSin3D       " link QSin3D}
+               @{" Render3D     " link Render3D}                @{" ShapeTD      " link ShapeTD}
+               @{" Verts3D      " link Verts3D}                @{" WindowSize3D " link WindowSize3D}
+               @{" XRot3D       " link XRot3D}                @{" YRot3D       " link YRot3D}
+
+@ENDNODE MAIN
+

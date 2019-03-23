@@ -1,0 +1,158 @@
+
+WARNING:Registers D0, D1, A0, A2 and A3 will get trashed!
+        Make sure nothing special is in them!
+
+-----------------------------------------------------------------------------
+
+Function:        GMInit
+Syntax:          longword.l=GMInit {Address.l,LengthOfFile.l}
+
+Address.l = address of GMOD file (chip RAM)
+LengthOfFile.l = length of loaded GMOD file
+
+This routine checks for the GMOD header, relocates the module if nessecary
+and returns the address of the GMOD.
+
+longword.l can have three results:
+1) False - Either the file was not a GMOD or could not be relocated
+2) Same as Address.l - Fine, module not relocated
+3) New number - Fine, module relocated, this MUST be kept as the new
+                Address.l!
+
+-----------------------------------------------------------------------------
+
+Function:        GMCreatorID
+Syntax:          string$=GMCreatorID {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This function returns the next four bytes after the header in string$.
+
+Generally used by the program that created the GMOD.
+
+-----------------------------------------------------------------------------
+
+Function:        GMInitMusic
+Syntax:          string$=GMInitMusic {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This routine first passes the noteplayer (see Bryan Fords' noteplayer
+standard, included in this archive) address to the GMOD.  It then jumps to
+the MODs' initmusic routine.
+
+If everything went OK, then "" will be returned in string$, otherwise the
+GMODs' error string will be returned.
+
+-----------------------------------------------------------------------------
+
+Statement:       GMStartMusic
+Syntax:          GMStartMusic Address.l
+
+Address.l = address of GMOD file (chip RAM)
+
+This routine jumps to the MODs' startmusic routine.
+
+-----------------------------------------------------------------------------
+
+Statement:       GMStopMusic
+Syntax:          GMStopMusic Address.l
+
+Address.l = address of GMOD file (chip RAM)
+
+This routine, yep, you guessed it, jumps to the MODs' stopmusic routine.
+
+-----------------------------------------------------------------------------
+
+Statement:       GMEndMusic
+Syntax:          GMEndMusic Address.l
+
+Address.l = address of GMOD file (chip RAM)
+
+This routine jumps to the MODs' endmusic routine.
+
+My brain is straining from RSI.  :)
+
+-----------------------------------------------------------------------------
+
+Function:        GMTimerModes
+Syntax:          byte.b=GMTimerModes {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This routine checks which timing routines are present.
+
+It can return byte.b as:
+0 - No timing systems present (I don't ever expect that to happen)
+1 - PAL timing (VBlank50) present
+2 - NTSC timing (VBlank60) present
+3 - TimerTick timing present
+If more than one timing system is found the values will be added together.
+(seperable with a `byte AND 2' or `byte AND 1' or whatever)
+
+It should be noted here that since the jumptable of each GMOD can differ in
+length, some clown may create some sort of test mod, (with a short jumptable)
+which may not include ANY timing routines.  In that case this function still
+checks at the offsets, which may well contain module data instead.
+
+It's unlikely, but you might want to take it into consideration (The actual
+player routines [VBlank50, VBlank60 and TimerTick] can tell you if these
+routines actually exist, but if they do exist, the routines will be executed,
+which may prove fatal if StartMusic hasn't been run.)
+
+Again as I said, it's highly unlikely, but it's something to worry about :)
+
+-----------------------------------------------------------------------------
+
+Function:       GMVblank50
+Syntax:         byte.b=GMVblank50 {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This jumps to the MODs' vblank50 routine and returns True in byte.b.
+
+Note that this routine first checks if the jumptable is long enough to hold
+the vblank50 jmp and returns False if it doesn't.
+
+-----------------------------------------------------------------------------
+
+Function:       GMVblank60
+Syntax:         byte.b=GMVblank60 {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This jumps to the MODs' vblank60 routine and returns True in byte.b.
+
+Note that this routine first checks if the jumptable is long enough to hold
+the vblank60 jmp and returns False if it doesn't.
+
+-----------------------------------------------------------------------------
+
+Function:       GMGetSongName
+Syntax:         string$=GMGetSongName {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This returns "" in string$ for failure, or the name of the song for success.
+
+-----------------------------------------------------------------------------
+
+Function:       GMGetSongAuthor
+Syntax:         string$=GMGetSongAuthor {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This returns "" in string$ for failure, or the name of the author for
+success.
+
+-----------------------------------------------------------------------------
+
+Function:       GMGetMakerName
+Syntax:         string$=GMGetMakerName {Address.l}
+
+Address.l = address of GMOD file (chip RAM)
+
+This returns "" in string$ for failure, or the name of the program that
+created the module.
+
+-----------------------------------------------------------------------------

@@ -1,0 +1,61 @@
+;
+; Memo
+; use this source as you like
+; written by Philipp Lonke
+;
+; I let this source in the archive just to let you
+; see the difference between the "old" (Memo.bb2) and the "new"
+; (Memo2.bb2) TRITON programming style.
+; Take also a look at the different executable sizes!
+;
+
+INCLUDE "blitz2:bbincludes/libraries/triton.bb2"
+NoCli
+
+Dim para$(2)            ; storing parameters
+If NumPars>=2           ; in memory
+  For i=1 To 2
+    para$(i)=Par$(i)
+  Next
+Else
+  End                   ; exit if wrong amount of params
+EndIf
+
+*application.TR_App=0   ; init variable for application
+
+Dim apptags.TagItem(5)  ; dim application tags
+Dim reqtags.TagItem(10) ; dim requester tags
+
+; now we set the application tags for the TRITON Prefs
+
+apptags(1)\ti_Tag=#TRCA_Name,Null("Memo")
+apptags(2)\ti_Tag=#TRCA_LongName,Null("Memo - the informer")
+apptags(3)\ti_Tag=#TRCA_Version,Null("1.0")
+apptags(4)\ti_Tag=#TAG_END,0
+
+; we don't need special requester tags. So we set them to
+; zero.
+
+reqtags(1)\ti_Tag=#TAG_DONE,0
+
+*application=TR_CreateApp_(&apptags(1))     ; open application
+
+If (*application)
+
+  body$="%b"+para$(1)    ; Bold text
+  body$+Chr$(9)          ; Add a tab char for a 3d separator line
+  body$+"%3"+para$(2)    ; 3d text
+
+  gads$="_OK"            ; the gadget text
+
+  TR_EasyRequest_ *application,Null(body$),Null(gads$),&reqtags(1)
+
+  *trmsg.TR_Message=TR_GetMsg_(*application)
+
+  TR_DeleteApp_ *application      ; kill application
+
+Else
+  NPrint "Unable to create application"
+EndIf
+
+End

@@ -1,0 +1,42 @@
+
+            TagListLib for Blitz Basic 2 - short documentation.
+
+TagListLib was originally written by D. Pink for the Triton Blitz conversion
+by Ph. Lonke. This version 1.1 was bugfixed & enhanced by me.
+
+                  -----------------------------------
+
+Here's a short list of the commands:
+
+o InitTagList TagList.w,NoTags.l
+  * Allocates memory for a taglist
+o AddTags     [TagList.w] [[,Tag.l,Data.l]]
+  * Tag,Data can be repeated, ie AddTags #TAG_1,100,#TAG_2,200,...
+o NoTagsLeft  [TagList.w]
+  * Returns number of tags left in Taglist
+o TagList     [TagList.w]
+  * Returns location in memory of Taglist
+
+(For a practical example, take a look at TagListLib_example.bb2)
+
+                  -----------------------------------
+
+How to install TagListLib:
+
+o Copy TagListLib.obj to blitzlibs:otherlibs/ (Recompile first if Library
+  ID #171 isn't free in your system.)
+o Run MakeDefLibs
+
+                  -----------------------------------
+
+Changes made in v1.1: o AddTags failed with one tag left in the taglist
+                        - fixed
+                      o InitTagList now clears the memory it allocates
+                        (Taglists automatically end with {TAG_END,NULL},
+                        even if they don't fill the entire allocated
+                        memory.)
+                      o The end tagitem is now 8 bytes (2 longwords)
+
+
+- Patrik Rådman (pradman@mail.abo.fi) 21-Jul-96
+

@@ -1,0 +1,20 @@
+   Range can be useful if you are working on a dungeon with many levels.
+There are 10 ranges available which is probably overkill, but what the
+heck. The current range number is displayed to the right of the Range
+button. The fields below the Range button are used to set the levels
+included in the current range. If these fields cannot be changed, it's
+because N Levels is set to 1. The starting level cannot be greater than the
+ending level in a range. So you can have a range of 3 to 7 but not one from
+6 to 2. Say you have N Levels set for 20 and Level set for 1. You set up
+the first level to be 20 X 20, 10 rooms, and the min and max where you want
+it. If you want the first 4 levels to be the same, click the Range End
+field until it displays 4. Then click the Copy To Range button. This saves
+you the time of setting all the fields for each individual level. Click
+to Range number 2 and you could set that for example from levels 5 to 10.
+By having multiple ranges, you can make quick changes later if the build
+process does not go the way you want and adjustments are needed.
+   When clicking on the arrow buttons to change the value, a left click
+changes it by 1 and a right click changes it by 5.
+
+
+                    Range Start >              < Range End

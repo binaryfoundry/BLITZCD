@@ -1,0 +1,518 @@
+-----------------------------------------------------------------------------
+====         	    RI AMOS Function Library V1.36 (C)1996		 ====
+-----------------------------------------------------------------------------
+
+                          Written By Steven Matty
+                        ©1996 Red When Excited Ltd
+
+Introduction
+============
+
+  This library was written primarily to emulate the functions that were
+present in AM*S but not in Blitz Basic 2. It began life as a load of Blitz
+Statements but was then converted to high speed 680x0. The library will
+continually be expanded upon. 
+
+Donations are not requested, but is always welcome. You may freely
+distribute this library as long as all documentation is included in an
+unmodified form. *NO* distribution with commercial packages/magazines
+without express written permission.
+
+
+                    ************ NOTE ****************
+                    * AS FROM THIS VERSION (V1.36)   *
+                    * THERE WILL BE NO MORE COMMANDS *
+                    * ADDED. INSTEAD, A NEW LIBRARY  *
+                    * CALLED RIAMOSPROFUNC WILL BE   *
+                    * RELEASED. THIS IS DUE TO LARGE *
+                    * LIBRARY SIZE AND THE FACT THAT *
+                    * BLITZ V1.90 DOES NOT INCLUDE   *
+                    * A LINKER.                      *
+                    **********************************
+
+
+********************************* NOTE **************************************
+* VALID BANKS RANGE FROM 0-49 INCLUSIVE. DO NOT USE A VALUE GREATER THAN 49 *
+* OR IT WILL BE INTERPRETED AS AN ADDRESS RATHER THAN A BANKNUMBER          *
+*****************************************************************************
+
+
+
+Function: Reserve
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : success=Reserve(length) | (banknumber,length[,requirements])
+
+  If only length if specified, then this functions returns the number of the
+  bank allocated or -1 for failure.
+
+  This will attempt to reserve <length> bytes of memory. If succesfull,
+it will return -1. If unsuccessfull, 0 is returned.
+
+The optional <requirements> parameter specifies which type of memory you
+want :		
+		%1=PUBLIC
+		%10=CHIP 
+		%100=FAST
+		%100000000=LOCAL
+		%1000000000=24BITDMA
+		%10000000000=KICK
+		%10000000000000000=CLEAR
+		%1000000000000000000=REVERSE
+		%10000000000000000000000000000000=NO_EXPUNGE
+
+OR the values together for different combinations.
+
+EXAMPLE:
+	suc=Reserve(0,1024,%10)		; Reserve 1k of Chip Mem returns -1
+	suc=Reserve(1024)		; Reserve 1k of Any Mem returns 1
+
+Statement: Erase
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : Erase banknumber
+
+  The Erase command will erase the specified memory bank.
+
+EXAMPLE:
+	suc=Reserve(0,1024,%10)		; Reserve 1k of Chip Mem
+	Erase 0
+
+
+Statement: EraseAll
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : EraseAll
+
+  This command will erase ALL allocated memory banks.
+
+EXAMPLE:
+	suc=Reserve(0,1024,%10)		; Reserve 1k of Chip Mem
+	suc=Reserve(1,2048,0)		; Reserve 1k of ANY Mem
+	EraseAll
+
+Function: BLoad
+--------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=BLoad(filename$) | (filename$,bank/addr[,length,offset,memtype])
+
+  If only filename$ is specified, then the next available bank is allocated,
+  and the command returns the number of the bank for success or -1 for failure.
+
+  If bank is specified, then the file is loaded into that bank. If address
+is specified then it is loaded to the address. Valid banks are 0-49. 
+If the bank does not exist, Blitz will reserve a bank for you.
+If the bank does exist, Blitz will erase the bank from memory, and
+allocate a new one.
+The return result is -1 for success, or 0 for failure  (not enough RAM, 
+file not exist). If offset is specified, then <length> bytes will be read
+from the specified offset position in the file.
+If memtype is specified, then the file is loaded into a memory block
+of that particular memtype (see Reserve)
+If you wish to leave either length/offset unspecified, simply use the
+value 0
+
+EXAMPLE:
+	suc=BLoad("s:startup-sequence",0)	; returns -1
+	suc=BLoad("c:dir",0,0,0,%10)		; Loads into CHIP
+	suc=BLoad("c:list")			; returns 1
+
+Function: PLoad
+-------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=PLoad(filename$,bank/address)
+
+  This will attempt to load the executable file to the specified address.
+  -1 is success, 0 is failure. The program must contain only a CODE
+hunk and must be FULLY relocatable.
+
+EXAMPLE:
+
+	suc=PLoad("c:dir",0)
+
+
+Function: BSave
+--------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=BSave(filename$,bank/address,length)
+
+  This will save <length> bytes at bank/address to the file. Return result
+is -1 for success, 0 for failure. If length > bank length then the length
+of the bank is saved instead. If 0 is specified, the entire bank is saved.
+
+EXAMPLE:
+	suc=BLoad("c:dir",0,0,0,%10)		; Loads into CHIP
+	suc=BSave("ram:temp",0)
+
+
+Function: Start
+-------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : start_address.l=Start(banknumber.b)
+
+  This will return the start address of the specified bank. (0=no bank)
+
+EXAMPLE:
+	suc=Reserve(0,1024,%10)
+	NPrint Start(0)
+	MouseWait
+	End
+
+
+Function: Length
+-------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : length_of_bank.l=Length(banknumber.b)
+
+  This will return the length of the specified bank in bytes. (0=No bank)
+
+EXAMPLE:
+	suc=Reserve(0,1024,%10)
+	NPrint Length(0)
+	MouseWait
+	End
+
+
+Function: MemFree
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : bytes.l=MemFree
+
+  This will return the total amount of Public Free RAM available to the
+system.
+
+EXAMPLE:
+	NPrint "Total bytes free = ",MemFree
+	MouseWait
+	End
+
+
+Function: NextBank
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : bank.b=NextBank
+
+  This will return the number of the first available bank (-1 if none free).
+
+EXAMPLE:
+	suc=Reserve(0,1024)
+	suc=Reserve(0,2048)
+	NPrint NextBank
+	MouseWait
+	End
+	
+
+Statement: FillMem
+-------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : FillMem address.l,length.l[,value.b]
+
+   This will fill 'length' bytes starting from the specified address with
+   'value'. If 'value' is ommitted, 0 is filled.
+
+EXAMPLE:
+	suc=Reserve(0,1024)		; Allocate some memory
+	FillMem Start(0),Length(0)	; Clear it
+	MouseWait
+	End
+
+
+Statement: CopyByte
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : CopyByte source.l,dest.l,num.l
+
+  This will copy <num> bytes from <source> to <dest>
+
+EXAMPLE:
+	CopyByte Start(0),Start(1),Length(0)
+
+
+Statement: CopyWord
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : CopyByte source.l,dest.l,num.l
+
+  This will copy <num> words from <source> to <dest> 
+
+EXAMPLE:
+	CopyWord Start(0),Start(1),Length(0)/2
+
+
+Statement: CopyLong
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : CopyByte source.l,dest.l,num.l
+
+  This will copy <num> longwords from <source> to <dest> 
+
+EXAMPLE:
+	CopyLong Start(0),Start(1),Length(0)/4
+
+
+Function: MakeDir
+--------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=MakeDir(name$)
+
+   This function attempts to create a directory called <name$>
+   If it is unsuccessfull, 0 is returned else -1 is returned.
+
+EXAMPLE:
+	suc=MakeDir("RAM:MYDIR")
+
+
+Function: Rename
+--------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=Rename(source$,dest$)
+
+   This attempts to rename the file <source$> to <dest$>
+   NOTE: It is not possible to rename across devices.
+   -1 is returned if successfull, else 0.
+
+EXAMPLE:
+	suc=Rename("S:Startup-Sequence","S:Startup2")	; Do not run this!
+
+
+Function: Timer
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : t.l=Timer
+
+   This will return the number of 50ths of a second since startup or the
+   last call to ResetTimer.
+
+EXAMPLE:
+	NPrint Timer
+	VWait
+	NPrint Timer
+	MouseWait
+	End
+
+
+Statement: ResetTimer
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : ResetTimer
+
+   This will recent the CIA timer to 0.
+
+EXAMPLE:
+	NPrint Timer
+	VWait
+	ResetTimer
+	NPrint Timer
+	MouseWait
+	End
+
+
+Function: Lisa
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : chipver=Lisa
+
+   This will return the current Lisa chip version :
+
+    $00 for OCS Denise
+    $F7 for ECS Denise
+    $F8 for AGA Lisa
+
+EXAMPLE:
+	Select Lisa
+	  Case 0
+	    NPrint "You have an OCS Machine!"
+	  Case $F7
+	    NPrint "You have an ECS Machine!"
+	  Case $F8
+	    NPrint "You have an AGA Machine!"
+	  Case $F9
+	    NPrint "You have a AAA Machine?!"	; Maybe... :)
+	End Select
+	MouseWait
+	End
+
+
+Statement: Reboot
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : Reboot
+
+   This will perform a cold reboot
+
+EXAMPLE:
+	NPrint "Press mousebutton to reset.."
+	MouseWait
+	Reboot
+
+
+Function: FileSize
+--------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : size.l=FileSize(filename$)
+
+  This return the length (in bytes) of the file.
+
+EXAMPLE:
+	NPrint "Startup is ",FileSize("S:startup-sequence")," bytes long!"
+	MouseWait
+	End
+
+
+Function: XOR
+--------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : x.l=XOR(x.l,y.l)
+
+  This will perform an Exclusive-Or operation between X and Y and put the
+result back into X 
+
+EXAMPLE:
+    x=XOR(%101,%100)
+
+Will place %001 into X (%101 XOR %100 = %001)
+
+
+Function: Max/Min
+-------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : value=Max(first_var,second_var)
+         value=Min(first_var,second_var)
+
+  This will compare both values and return either the Higher of the values
+  (Max) or the Lower (Min). This currently supports INTEGERs only.
+
+EXAMPLE:
+	NPrint Max(30,50)
+	NPrint Min(30,50)
+	MouseWait
+	End
+
+
+Function: KeyCode
+-------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : keycode=KeyCode
+
+    This will return the status of the keyboard in the form of a keycode.
+    You will need to experiment to find out the desired keycode for
+    a particular key.
+    This merely peeks address $bfec01 and returns the value found.
+
+EXAMPLE:
+	NPrint KeyCode
+	MouseWait
+	End
+
+
+Statement/Function : CludgeShapes
+-------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : [success]=CludgeShapes(shape#,numshapes,address)
+
+   This allows the creation of shapes through INCBIN statements. It
+allocates chip memory for each shape and copies the data into this.
+It does the same as LoadShapes except it grabs shapes from memory.
+
+EXAMPLE:
+	suc=BLoad("myshapes",0)
+	suc=CludgeShapes(0,50,Start(0))
+	MouseWait
+	End
+
+
+Statement/Function : CludgeSound
+------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : [success]=CludgeSound(sound#,address)
+
+  This does the same for CludgeShapes but works on only 1 sound at a time
+NOTE: Looped sounds are not currently supported! The sound must be a valid
+8SVX sample.
+
+EXAMPLE:
+	suc=BLoad("mysound",0)
+	suc=CludgeSound(0,Start(0))
+	MouseWait
+	End
+
+
+Function : FindVolume
+------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : success=FindVolume(volumename$)
+
+  This will look to see if the specified volume is present, and returns
+0 if it is not or -1 if it is. If the volume is not present, this function
+will NOT bring up a Requester ("Please insert Volume...")
+The ":" should not be included in the volumename.
+
+This is useful for waiting for diskswaps when you have a BlitzMode display
+
+EXAMPLE:
+		<Blitzmode Statements>
+		QAMIGA
+		Repeat
+		  VWait
+		Until FindVolume("DISK2")
+		BLITZ
+		<More statements>
+
+
+Function : DeviceName$
+------------------------------------------------------------------------------
+Mode   : Amiga
+Syntax : devname$=DeviceName$(volumename$)
+
+  This will return the device name of the specified volume or "" if the
+volume was not found. The ":" may or may not be included.
+
+EXAMPLE:
+		NPrint DeviceName$("WORK:")
+
+
+Function : BlitterDone
+------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : status=BlitterDone
+
+  This checks to see if the Blitter has finished BLITting. -1=Yes, 0=No
+
+EXAMPLE:
+	Repeat
+	Unti BlitterDone
+
+Statement : WaitBlitter
+------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : WaitBlitter
+
+  This will halt program execution until the Blitter is ready for use.
+
+EXAMPLE:
+	Blit 0,0,0
+	WaitBlitter
+	   ..
+	   ..
+
+
+Statement : BlitterNasty
+------------------------------------------------------------------------------
+Mode   : Amiga/Blitz
+Syntax : BlitterNasty
+
+  This will set the BlitterNasty hardware register bit, which means that
+the Blitter has complete priority over the CPU. This function returns
+the old status.
+
+*NOTE* In order for this to be effective, place this command in a loop
+after a VWait.
+
+
+Function : FuncLibVersion
+------------------------------------------------------------------------------
+Mode   : N/A
+Syntax : N/A
+
+  This command does nothing (except return 0). Press HELP on the command
+name for your current version (v1.36 or higher only)

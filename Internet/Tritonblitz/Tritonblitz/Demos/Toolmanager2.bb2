@@ -1,0 +1,230 @@
+;/*
+; *  Triton - The object oriented GUI creation system For the AMIGA
+; *  Written by Stefan Zeiger in 1993-1995
+; *
+; *  (c) 1993-1995 by Stefan Zeiger
+; *  You are hereby allowed To Use this source OR parts
+; *  of it For creating programs For AmigaOS which Use the
+; *  Triton GUI creation system. All other rights reserved.
+; *
+; *  Toolmanager2.c - Looks like the original ToolManager
+; *
+; */
+
+; useful Runtime-Error-Routine which closes all windows if a error
+; appears. So you don't need to restart your machine every time :-)
+
+NoCli:WBStartup
+
+SetErr
+
+  ErrFail
+  If project.l Then TR_CloseProject_ project
+  If application.l Then TR_DeleteApp_ application
+  End
+
+End SetErr
+
+INCLUDE "blitz2:bbincludes/libraries/triton.bb2"
+
+NEWTYPE .LVItem
+
+  num.w
+  text$
+
+End NEWTYPE
+
+Dim cycle_entries.l(8)
+Dim List LVNodes.LVItem(9)
+
+InitTagList 1,250
+InitTagList 2,10
+
+cycle_entries(1)=Null("Exec")
+cycle_entries(2)=Null("Image")
+cycle_entries(3)=Null("Sound")
+cycle_entries(4)=Null("Menu")
+cycle_entries(5)=Null("Icon")
+cycle_entries(6)=Null("Docs")
+cycle_entries(7)=Null("Access")
+cycle_entries(8)=0
+
+ResetList LVNodes()
+
+If AddItem(LVNodes())
+  LVNodes()\text="2024View"
+  If AddItem(LVNodes())
+    LVNodes()\text="Add to archive"
+    If AddItem(LVNodes())
+      LVNodes()\text="Deletetool"
+      If AddItem(LVNodes())
+        LVNodes()\text="Edit text"
+        If AddItem(LVNodes())
+          LVNodes()\text="Env"
+          If AddItem(LVNodes())
+            LVNodes()\text="Exchange"
+            If AddItem(LVNodes())
+              LVNodes()\text="Multiview"
+            EndIf
+          EndIf
+        EndIf
+      EndIf
+    EndIf
+  EndIf
+EndIf
+
+ResetList LVNodes()
+
+Use TagList 2
+
+AddTags #TRCA_Name,Null("ToolManagerGUIDemo1")
+AddTags #TRCA_LongName,Null("ToolManager-GUI Demo 1")
+AddTags #TRCA_Info,Null("Looks like the original")
+AddTags #TAG_END,0
+
+Use TagList 1
+
+AddTags !WindowID{1},!WindowPosition{#TRWP_MOUSEPOINTER}
+AddTags !WindowTitle{Null("ToolManager GUI demo 2")}
+AddTags !WindowFlags{#TRWF_NOSIZEGADGET OR #TRWF_NODELZIP OR #TRWF_ZIPTOCURRENTPOS}
+AddTags !WindowBackfillNone
+
+AddTags !VertGroupA
+  AddTags !Space
+
+  AddTags !HorizGroupAC
+    AddTags !Space
+
+    AddTags !TextID{Null("_Object Type"),1}
+    AddTags !Space
+
+    AddTags !CycleGadget{&cycle_entries(1),0,1}
+    AddTags !Space
+  AddTags !EndGroup
+
+
+  AddTags !Space
+
+  AddTags !HorizGroup
+    AddTags !Space
+    AddTags !NamedFrameBox{Null("Object List")}
+
+    AddTags !HorizGroupAC
+      AddTags !Space
+
+      AddTags !VertGroupA
+
+        AddTags !Space
+        AddTags !ListSSCN{&LVNodes(0)-36,2,0,0}
+        AddTags !Space
+
+      AddTags !EndGroup
+
+
+      AddTags !Space
+
+      AddTags !VertGroupA OR #TRGR_FIXHORIZ
+        AddTags !Space
+        AddTags !Button{Null("Top"),3}
+        AddTags !Space
+        AddTags !Button{Null("Up"),4}
+        AddTags !Space
+        AddTags !Button{Null("Down"),5}
+        AddTags !Space
+        AddTags !Button{Null("Bottom"),6}
+        AddTags !Space
+        AddTags !Button{Null("So_rt"),7}
+        AddTags !Space
+      AddTags !EndGroup
+
+      AddTags !Space
+    AddTags !EndGroup
+
+    AddTags !Space
+
+  AddTags !EndGroup
+
+  AddTags !Space
+
+
+  AddTags !HorizGroupEA
+    AddTags !Space
+    AddTags !Button{Null("_New..."),8}
+    AddTags !Space
+    AddTags !Button{Null("_Edit..."),9}
+    AddTags !Space
+    AddTags !Button{Null("Co_py"),10}
+    AddTags !Space
+    AddTags !Button{Null("Remove"),11}
+    AddTags !Space
+  AddTags !EndGroup
+
+  AddTags !Space
+  AddTags !HorizGroupEA
+    AddTags !Space
+    AddTags !Button{Null("_Save"),12}
+    AddTags !Space
+    AddTags !Button{Null("_Use"),13}
+    AddTags !Space
+    AddTags !Button{Null("_Test"),14}
+    AddTags !Space
+    AddTags !Button{Null("_Cancel"),15}
+    AddTags !Space
+  AddTags !EndGroup
+
+  AddTags !Space
+
+AddTags !EndGroup
+
+AddTags #TAG_END,0
+
+
+; ------------------------------- MAIN ROUTINE -----------------------------
+
+Use TagList 2
+
+application.l=TR_CreateApp_(TagList)
+
+If (application)
+
+  Use TagList 1
+
+  project.l=TR_OpenProject_(application,TagList)
+
+  If (project)
+    user_closed=0
+
+      While (user_closed=0)
+
+        TR_Wait_ application,0
+
+        *trmsg.TR_Message=TR_GetMsg_(application)
+
+        While (*trmsg)
+
+          If (*trmsg\trm_Project=project)
+            Select *trmsg\trm_Class
+
+              Case #TRMS_CLOSEWINDOW
+                user_closed=True
+              End Select
+          EndIf
+
+          TR_ReplyMsg_ *trmsg
+
+          *trmsg=TR_GetMsg_(application)
+        End While
+      End While
+    TR_CloseProject_ project
+  Else
+    NPrint "Unable to create the project"
+  EndIf
+
+    TR_DeleteApp_ application
+
+Else
+  NPrint "Unable to create application"
+EndIf
+
+End
+

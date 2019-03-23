@@ -1,0 +1,422 @@
+Make The Most From Blitz Basic 2
+
+(C) BUI
+
+BY LEE PACKHAM
+
+
+
+Lee Packham starts his
+
+infinity of tutorials on how
+
+to get the most from
+
+your Blitz Compiler.
+
+
+
+
+
+
+
+Hello and welcome to the first  part of as many tutorials that I can be bothered to write for  you, the Blitz User. This  tutorial will mainly help you  do things that you thought  were not possible to do in  Blitz.
+
+
+
+Unfortunatly, this tutorial is  mainly aimed at people who generally use AMIGA mode.  That is, they use the  operating system to do what they want.
+
+
+
+The minimal system you need  to follow this tutorial is an Amiga (no, really!), Blitz Basic  2 V2. 10 (the version that eventually came with Blitz  User Magazine Issue 8),  Kickstart 2.04 and AT LEAST  2Mb of RAM.
+
+
+
+The reason for the 2Mb of  RAM is quite simple. Nearly  all the things I am going to try  to teach you, require a file called "amigalibs.res" loaded  as a resident. This file is about 300000 bytes and after you  have loaded Blitz on a IMb machine, you can
+
+
+
+This month, I am going to look  at the WBStartup command. I know, you're all probably  thinking that this command is  so essential and does it's job  perfectly and there isn't much  to say about it. Well, yes there  is... Lets say, for example, you've wri
+
+
+
+Now, I found this rather  annoying so set out to fix this problem with the aid of no  help whatsoever.
+
+
+
+The first thing you have to  understand as a programmer,  is that when your program  starts up from Workbench Workbench sends a message  to your program.
+
+
+
+Fine, a message, big deal? I  heard you say out loud. Well, Workbench will crash unless  your program replies to this message. That's what WBStartup does.
+
+
+
+If you View NewTypes in amigalibs.res, you can see to Workbench related structures, "WBStartup" and "WBArgs".  Looking through some assembly source code examples, I found out that the first Argument that Workbench passes to your program is the name and lo
+
+
+
+Well, my favourite way to teach you, is to show you the code I use. This is so you can type it in and try it out. Hopefully, also, give you a slight understanding of how the thing works...
+
+
+
+
+
+
+
+;First of all we define a structure
+
+;to store all the WBArgs in later
+
+
+
+NEWTYPE .Arg    
+
+Name.s Dir.s
+
+
+
+End NEWTYPE
+
+
+
+;Can Cope With Upto 50 Args
+
+
+
+Dim Args.Arg(50)
+
+
+
+;Find my task-struct
+
+
+
+*myproc.Process= FindTask_(O)
+
+
+
+;Started from Workbench?
+
+
+
+If *myproc\pr_CLI=0
+
+
+
+;Wait for WB s message
+
+WaitPort_( * myproc\pr_MsgPort)
+
+
+
+;Get WB s message * wbmsg.WBStartup   
+
+=GetMsg_(*myproc\pr_MsgPort)
+
+
+
+;Get Args  
+
+numargs.l = *wbmsg\sm_NumArgs
+
+
+
+*first.WBArg= *wbmsg\sm_ArgList
+
+
+
+MaxLen templock$ = 200
+
+
+
+numargs-1
+
+
+
+;Args(O) Is The Name And Dir Of Your  
+
+;Program. From There Onwards Are 
+
+
+
+;Your  Args. That Is Why numargs-1
+
+
+
+For x = 0 To numargs *firstloc= *first\wa_Name  NameFromLock_ 
+
+*first\wa_Lock,&templock$,200  templock$ = Peek$(&templock$) 
+
+tempname$ =  Peek$(*firstloc) Args(x)\Name = tempname $  
+
+Args(x)\Dir = tempdir$ *first + SizeOf .WBArg
+
+
+
+Next x
+
+
+
+;Reply The Message
+
+
+
+ReplyMsg_(* wbmsg)
+
+
+
+Else
+
+
+
+;Not started from WB
+
+
+
+End
+
+
+
+Endif
+
+
+
+
+
+
+
+This above code is designed to completely replace WBStartup. You should not use both WBStartup and the above code. Your machine will probably guru.  Okay, let's look at the code in smaller sections to take you through it step by step.
+
+
+
+;First of all we define a structure ;to  
+
+store all the WBArgs in later
+
+
+
+
+
+NEWTYPE .Arg
+
+
+
+Name.s
+
+
+
+Dir.s
+
+
+
+End NEWTYPE
+
+
+
+
+
+
+
+;Can Cope With Upto 50 Args
+
+
+
+Dim Args.Arg(50)
+
+
+
+
+
+This piece of code very simply makes a standard NEWTYPE that looks very similar to the WBArgs NEWTYPF.. Apart from the fact that it stores strings directly and not pointers to strings and directory locks. It is simply to copy the Args from the message sen
+
+
+
+;Find my task-struct
+
+
+
+*myproc.Process= FindTask_(O)
+
+
+
+;Started from Workbench?
+
+
+
+If *myproc\pr_CLI=0
+
+
+
+The next task is to determine whether we were actually started from
+
+
+
+Workbench or not. You can't really reply to a message that doesn't exist. If you even try to get the message when started from the CLI, your machine WILL hang. To find tbis out, we look at our CLI process number. If it is O then we were started from Workb
+
+
+
+;Wait for WB s message
+
+
+
+WaitPort_( * myproc\pr MsgPort)
+
+
+
+;Get WB s message
+
+
+
+* wbmsg.WBStartup = GetMsg_( * myproc\pr_MsgPort)
+
+
+
+This piece of code is rather self-explanto~. We first of all wait for the message from Workbench before trying to grab it. When it arrives we get the message out of our tasks own personal message port.
+
+
+
+
+
+;Get Args
+
+
+
+numargs.l= *wbmsg\sm_NumArgs
+
+
+
+*first.WBArg= *wbmsg\sm_ArgList
+
+
+
+MaxLen templock$ = 200
+
+
+
+numargs-1
+
+
+
+
+
+This piece of code does 4 things. It first of all finds out how many arguments were passed to the program. Make note, there is always at least one argument, and that's the name of your program. We then get the pointer to the first argument in the list.
+
+
+
+The MaxLen is used to allocate a string that will be used later in the program. Some of the Operating System commands require a buffer.  MaxLen allocates this buffer.
+
+
+
+The numargs-l part is too make life easier for you. In the end, Args.Arg(0) will contain the name and directory of your program.  Args.Arg(l) and onwards will contain the other ergs.
+
+
+
+For x=0 To numargs *firstloc= *first\wa_Name  
+
+NameFromLock_ *first\wa_Lock,&templock$,200  
+
+templock$ = Peek$(&templock$) tempname$ =  
+
+Peek$(*firstloc) Args(x)\Name = tempname $  
+
+Args(x)\Dir = tempdir$ *first + SizeOf .WBArg
+
+
+
+Next x
+
+
+
+Okay then, the main loop is reached at last. First of all, we put the location of the name of the Arg into a variable. Then we put the name of the directory into the buffer we allocated earlier using  
+
+NameFromLock_
+
+
+
+We then simply put these two names into the same variable again to use the from Blitz. Blitz requires you to do this, other wise your machine will crash. To do this we simply Peek$ them in.
+
+
+
+Aliler this, we put them both into our own Args Structure. The next part involves moving our pointer to the Arg forwards. We move it the length of the WBArg structure by useing SizeOf.
+
+
+
+
+
+This then loops round getting all the Args.
+
+
+
+;Reply The Message
+
+ReplyMsg_(* wbmsg)
+
+
+
+
+
+
+
+We then reply Workbench's message to stop the machine getting confused and crashing.
+
+
+
+If you want to add the directory and the name of an argument together, you simply use the new DOSElmoreLibrary which contains a command called FullPath$. You simply give it the directory and the name and it adds them together, checking for things list tra
+
+
+
+Anyway, I hope this tutorial has helped anybody wondering how to do this very useful thing. Next month, I will be looking at how to open a PUBSCREEN.
+
+
+
+These are screens that allow you to open other programs on them.  Examples of this would be Directory Opus. Where you can open a shell window on it's screen.
+
+
+
+If you ever need any help with anything in Blitz, I am at your service here. If you have a problem, I will do my best to help. Lee Packham. 
+
+
+
+If you are going to send in something, be it and article, a letter, advert, or anything that is to be printed in the magazine or featured on the coverdisk, please try to get it to us by the I st of every month as this will practically guarantee your artic
+
+
+
+If your submission is for printing in the magazine, please try and send it on disk, as this saves a lot of time. If you are just sending a letter and it is fairly short, this will be accepted on paper. Long letters, source code, and tutorials must be subm
+
+
+
+Please send your submissions
+
+
+
+to: -
+
+
+
+Blitz, Matthew Tillett, 27 Hillside Avenue, Worlingham, Beccles,  
+
+Suffolk, NR34 7AJ, England.
+
+
+
+Please title before the Blitz address line what you are sending, i.e:
+
+
+
+Letters, Blitz, Matthew Tillett, 27 Hillside Avenue, Worl....
+
+
+
+Or:
+
+
+
+Coverdisk, Blitz, Matthew Tillett, 27 Hill.... Etc...
+
+
+
+
+
+Unfortunately, at the moment we are unable to compensate anyone for a magazine submission, this magazine is a non profit venture and we are unable to make any payments, etc. 
+

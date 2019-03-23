@@ -1,0 +1,26 @@
+COVERDISK
+
+(C) BUI
+
+
+
+Tutorial:- By  Paul Burkey. Find out how to write a game in Blitz. Paul is converting his Amos code to Blitz, so for the people who have made the best move possible from Amos to Blitz can find out how to convert there source code.
+
+
+
+Shape Editor:- By Aaron Sethi. Here is the best Shape Editor for Blitz. 
+
+I know we have had other Shape Editors before but this has got to be the best one for Blitz.
+
+
+
+TrackEm:- By Neil Miller. Track all them files from CD's or HD, set the
+
+match like so .iff then it will find all the files with .iff.                      
+
+
+
+Virtual Worlds:-  By Mark Tiffany. Try your hand at making Virtual Worlds with this program, a lot of work has been put into this program.               
+
+Wooglies:-  By John Cassar. Another great game for all you game lovers. 
+

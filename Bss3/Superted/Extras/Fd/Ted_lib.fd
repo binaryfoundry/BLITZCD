@@ -1,0 +1,21 @@
+* "ted.library"
+##base _TEDBase
+##bias 30
+##public
+*--- functions in V1 or higher ---
+*
+TEDSetLabelList(&mouselist)(a0)
+TEDSetLabelCount(&mousecount)(a0)
+TEDGetLabelList()()
+TEDGetLabelCount()()
+TEDSetJumpTable()()
+TEDGetJumpTable()()
+TEDError(bodytext)(a0)
+TEDSetFirstLine(&firstline)(a0)
+TEDSetCurrentLine(&currentline)(a0)
+TEDGetFirstLine()()
+TEDGetCurrentLine()()
+TEDDetoke(sourceline)(a0)
+TEDGetFilename()()
+TEDGetPathname()()
+##end

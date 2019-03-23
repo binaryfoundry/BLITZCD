@@ -1,0 +1,93 @@
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_NOMONITOR ( =1 )
+======================
+
+The named monitor spec is not available.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_NOCHIPS ( =2 )
+====================
+
+Newer custom chips are needed for the requested
+screen.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_NOMEM ( =3 )
+==================
+
+Unable to allocate required normal memory
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_NOCHIPMEM ( =4 )
+======================
+
+Unable to allocate required Chip Ram.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_PUBNOTUNIQUE ( =5 )
+=========================
+
+Attempting to open a Public Screen when the name
+is already used.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_UNKNOWNMODE ( =6 )
+========================
+
+The mode requested is not recognised.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_TOODEEP ( =7 )
+====================
+
+Hardware does not support chosen depth.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_ATTACHFAIL ( =8 )
+=======================
+
+Unable to attach screens.
+
+
+These Errorcodes are returned in the LONG
+pointed to by ti_Data for the SA_ErrorCode Tag Item
+
+
+OSERR_NOTAVAILABLE ( =9 )
+=========================
+
+The mode requested is not available.
+(for some other reason).
+

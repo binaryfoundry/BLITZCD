@@ -1,0 +1,124 @@
+@database UpdateDrawers
+@master Blitz2Progs:UpdateDrawers/UpdateDrawers.Guide
+@$VER: 1.0
+@author "Lee Packham"
+@(c) "1996 Lee Packham"
+@remark Created with Heddley v1.1 (c) Edd Dumbill 1994
+
+@node "Main" "Update Drawers V1 - Documentation"
+                              Update Drawers V1
+                              ©1996 Lee Packham
+
+Table Of Contents...
+
+     @{"Introduction" link "Introduction" 0}
+     @{"Disclaimer" link "Disclaimer" 0}               READ ME NOW!!!!!
+     @{"System Requirements" link "SystemRequirements" 0}
+     @{"Installation" link "Installation" 0}
+     @{"How To Use Update Drawers" link "Usage" 0}
+
+     @{"What Is To Come?" link "Future" 0}
+     @{"Contacting Author" link "Author" 0}
+     @{"Known Bugs" link "Bugs" 0}
+@endnode
+
+@node "Introduction" "Introduction"
+This program is a nice freeware program which is still under development. It
+was so good that when I wrote the first version, I just HAD to release it.
+
+Why is it so good then? Well, what this program does is the same thing that
+the MagicWB Update Drawers does. That is, copy the def_drawer.info from your
+ENV: to replace all your drawer icons on your harddisk. The problem with it
+though was that as it only copied the icon, when you opened the drawer up
+you had to resize and set all the viewmodes of that drawer all over again.
+If you have a BIG harddisk like mine this is very annoying!
+
+This is where Update Drawers V1 comes in. Instead of just copying the icon
+across, it keeps all the original attributes of the original and only
+changes the image. Saving all the hassle of resizing and snapshotting all
+your drawers again. 
+
+So, in my opinion, this program is extremely useful indeed!
+@endnode
+
+@node "Disclaimer" "Disclaimer"
+The following MUST be read before using the program. You have to agree to
+the following...
+
+THE AUTHOR, LEE PACKHAM, ACCEPTS NO RESPONSIBLILITY FOR DAMAGE CAUSED BY
+THIS SOFTWARE THROUGH CORRECT OR INCORRECT USE AND WILL THEREFORE NOT BE
+LIABLE TO COMPENSATE FOR ANY SUCH DAMAGE IF CAUSED. THE PROGRAM, CODE AND
+DOCUMENTATION ARE COPYRIGHT 1996 LEE PACKHAM AND WAS WRITTEN USING THE BLITZ
+BASIC 2 PACKAGE WHICH IS COPYRIGHT 1994 ACID SOFTWARE.
+
+Update Drawers is to be distributed is freeware. This means that anybody can
+use it and can include it in any package they want AS LONG as the following
+rules are kept to...
+
+          1. The files in this archives are not to be edited in any way
+             whatsoever by ANYBODY apart from me.
+
+          2. All the files (except for the install script if not
+             needed) must be included in any distribution.
+
+          3. If the files are to be archived. All files, including the
+             install script must be included.
+
+Keep to these rules and your be fine!
+@endnode
+
+@node "SystemRequirements" "System Requirements"
+Update Drawers V1 requires at least KS2.04 or above. 1MB of memory is
+recommended for updating lots of icons at once.
+@endnode
+
+@node "Installation" "Installation"
+To install Update Drawers V1 simply double-click on the install icon and
+follow on screen prompts.
+@endnode
+
+@node "Usage" "How To Use Update Drawers"
+To update any drawers simply double-click on the UpdateDrawers icon. It will
+help you through what you have to do.
+
+The first is whether you really want to go ahead with the operation. If you
+answer N or NO then you will be chucked out.
+
+You will then be asked what mode you want to use. Normal is where it only
+does the directory you give the script. Recursive is where the program will
+start at the directory you give the script and do all the sub-directories
+that come off it aswell.
+
+You then have to enter the path to start in (make sure you use a trailing :
+or /) and off it goes. Simple as that!
+@endnode
+
+@node "Future" "What Is To Come?"
+I have already started work on making this project just one program which
+will have a GUI. The only bit that will take a while will be the recursive
+scan but it shouldn't be to much of a problem. It will probably be a
+GADTOOLS interface but I may use MUI for ease of programming!
+
+I hope to have Update Drawers V2 released VERY soon!
+@endnode
+
+@node "Author" "Contacting Author"
+Why not write to me with bugs, suggestion or just general chitter chatter
+and swapping. I'm always on the look out for new contacts!
+
+Address:-  Lee Packham
+           212 Upper Shoreham Road
+           Shoreham-By-Sea
+           West Sussex
+           BN43 6BG
+
+Voice:-    +44-1273-465335
+@endnode
+
+@node "Bugs" "Known Bugs"
+There is only one known bug which is due to the List command which is used
+in the script. Update Drawers can't update drawers which have a SPACE in
+their filename. The GUI version won't have this problem as I will find the
+files myself!! Ha! Ha! Ha!
+@endnode
+

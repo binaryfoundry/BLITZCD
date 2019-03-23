@@ -1,0 +1,4 @@
+
+- The libraries required for playing music modules are included in
+  the directory HyperHelp/hyperhelplibs. They need to be placed in
+  your WorkBench LIBS: drawer.

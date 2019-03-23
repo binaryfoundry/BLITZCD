@@ -1,0 +1,334 @@
+Mikes Mapping Library V1.2
+
+Written by Michael Milne 
+
+(c)1995 Sunteam
+
+--------------------------
+
+
+
+This library offers a wealth of commands for using maps within Blitz Basic2. With this library you will be able to control everything from each individual seciotn in the map as well as defining where the maps blocks start and what size they are.
+
+As Blitz offers object oriented programming the map library makes use of a new object called, funnily enough, a 'map' object. The map object stores the basic information about the map (ie. width, height, location etc...).
+
+Here is the map definition:
+
+
+
+Offset   Type  Description
+
+0  Long  Start adr of physical map
+
+4  Long  Physical size of map (bytes)
+
+8  Word  Width of map
+
+10 Word  Height of map
+
+12 Word  First shape used by map
+
+14 Word  Shape size
+
+16 Word  Dummy width (See dummy maps)
+
+
+
+
+
+Command List:
+
+   InitMap         map,width,height
+
+   FreeMap         map
+
+   MapPlot         map,x,y,value
+
+   val.w = MapGet          (map,x,y)
+
+   adr.l = MapAdr          (map)
+
+   sze.l = MapSize         (map)
+
+   wid.w = MapWidth        (map)
+
+   hgt.w = MapHeight       (map)
+
+   SetBlockOffset  map,offset
+
+   bof.w = GetBlockOffset  (map)
+
+   SetBlockSize    map,size
+
+   bsz.w = GetBlockSize    (map)
+
+   SaveMap         map,filename$
+
+   LoadMap         map,filename$
+
+   DummyMap        src map,dest map,x,y,w,h
+
+
+
+Statement: InitMap
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: Initmap map,width,height
+
+
+
+Being the most obvious of command this shouldn't need much tutorial. This sets up a map ready for use by the other commands. 'map' is the map id number of which the maximum range can be set in your compiler setup.
+
+'width' and height set the physical dimensions of the map in blocks.
+
+
+
+
+
+Statement: FreeMap
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: FreeMap map
+
+
+
+This is the second most obvious command in this library. This will free up the map and its memory. 'map' is the map id number of a previously initialised map using 'InitMap'.
+
+
+
+
+
+Statement: MapPlot
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: MapPlot map,x,y,value
+
+
+
+This command places a value into the map at a specific location. 'map' is the map id number of the map you wish to put the value into. 'x' & 'y' is the physical location where you want to put the value 'value' into.
+
+
+
+
+
+Function: MapGet
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: val.w = MapGet(map,x,y)
+
+
+
+This command allows you to find out the value in a specific map at a specific location and returns it into the variable you require. Again 'map' is the map id number and 'x' & 'y' is the location in the map of the required value.
+
+
+
+
+
+Function: MapAdr
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: adr.l = MapAdr(map)
+
+
+
+This is mainly for debugging purposes but no doubt someone will have a use for it. This will return the base address of the first map location (ie. x=0, y=0).
+
+
+
+
+
+
+
+Function: MapSize
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: sze.l = MapSize(map)
+
+
+
+This is another debugging tool I used. It returns the physical size of the map in bytes. (Only really useful for freeing up map space, but is a good indicator of how much memory is required for a specific map!).
+
+
+
+
+
+Function: MapWidth
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: wid.w = MapWidth(map)
+
+
+
+This will return the width in blocks of the specified map 'map'.
+
+
+
+
+
+Function: MapHeight
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: hgt.w = MapHeight(map)
+
+
+
+This will return the height in blocks of the specified map 'map'.
+
+
+
+
+
+Statement: SetBlockOffset
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: SetBlockOffset map,offset
+
+
+
+Although the functionality of this command is pretty pointless this does offer one benefit. This command sets the shape number for a map of the first shape you wish to use as a block with the map. This means that you could be writing a game which has the 
+
+NB: Default = 0
+
+
+
+
+
+Function: GetBlockOffset
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: bof.w = GetBlockOffset(map)
+
+
+
+This is the sister to the above command and returns the previously defined
+
+block offset for a specific map 'map'.
+
+
+
+Statement: SetBlockSize
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: SetBlockSize map,size
+
+
+
+This is another command which would have played a big role in a map drawing command. But again usefully stores a required variable for map programming.
+
+The block size relates to the physical size of the shapes used for a specific map, the size being equal for both width and height. 
+
+NB: Default = 8
+
+
+
+
+
+Function: GetBlockSize
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: bsz.w = GetBlockSize(map)
+
+
+
+This returns the block size for a specific map. (See above for more details on block sizes).
+
+
+
+
+
+Statement: SaveMap
+
+
+
+Modes:  Amiga
+
+Syntax: SaveMap map,filename$
+
+
+
+This simply saves a map to a filename ready for later reference. 'map' is the map id number and 'filename$' is the name of the file to save the map to. You CANNOT save dummymaps!!!
+
+NB: This is not a particularly clever command so please make sure the filename is correct (ie. path DOES exist), otherwise i'm not going to be held responsible for whatever happens.
+
+
+
+
+
+Statement: LoadMap
+
+
+
+Modes:  Amiga
+
+Syntax: LoadMap map,filename$
+
+
+
+This does the opposite of SaveMap and loads the map file 'filename$' into a map object 'map'.
+
+NB: YOU DON'T NEED TO INITIALISE THE MAP OBJECT FIRST. LOAD THE FILE INTO AN UN-INITIALISED OBJECT, AS EVERYTHING IS DONE FOR YOU.
+
+
+
+
+
+Statement: DummyMap
+
+
+
+Modes:  Amiga/Blitz
+
+Syntax: DummyMap src map,dest map,x,y,w,h
+
+
+
+This command is a breeze of inspiration. Rather than putting together loads of small maps, one for each level of a game, this command allows you to define one big map (ie. ONE FILE!!!) with all your maps contained inside and then you can setup DUMMY maps.
+
+with each map starting at the next 20 blocks along (ie. map 1 = 0, map 2 = 20, map 3 = 40 etc....). Then in the game you could load the big map say into map 0 and then each level you could setup the corresponding dummymap as map 1. DummyMap works by givin
+
+
+
+                       DummyMap 0,1,80,0,20,20
+
+
+
+Because of the way DummyMap works you don't actually use any more memory than by having each map seperate. In fact you use LESS!!!!
+
+WARNING: It is best to free all dummymaps before freeing the big map, to guarantee no GURU's.
+

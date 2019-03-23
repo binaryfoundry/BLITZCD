@@ -1,0 +1,31 @@
+Editorial
+
+(C) BUI
+
+BY MATTHEW TILLETT
+
+
+
+Firstly we will start off by saying a big welcome to you if you are a new reader of Blitz User International.  Over the past few months, BUI have been producing this small (but handy) magazine for support to fellow Blitz coders.  I feel that we have done 
+
+So what have we got in this months issue?  Well we have gotten the start of a new games tutorial as mentioned above, we have gotten another smashing tutorial by Lee Packham on Multi gads and another superb tutorial by Kevin Winspear on how to create your 
+
+
+
+Have fun,
+
+Matthew Tillett
+
+
+
+QUICK QUESTION
+
+--------------
+
+Has anyone got the 3D library called "SIMONS 3D LIBRARY"?  The library was documented in BUM 2 and the .OBJ file was suppose to be on the coverdisk.  Well, I never got the coverdisk in my issue of BUM 2, so I have no 3D library.  If you have got the libra
+
+The library would be appreciated.
+
+Thank's,
+
+Matthew Tillett.

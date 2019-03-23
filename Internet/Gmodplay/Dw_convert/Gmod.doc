@@ -1,0 +1,586 @@
+                                   GMOD
+                       Self-Contained Module Format
+                          Description of Standard
+                         Copyright 1992 Bryan Ford
+                               Version 1.01
+
+
+
+                               Introduction
+                               ~~~~~~~~~~~~
+
+    The GMOD format is a format which can interface any music module with
+embedded player code with any program that wants to play the music.  (It is
+NOT a specification for a general music file format.)  It has many powerful
+features, but is designed to be as simple as you want it to be. The 'least
+common denominator' support is very small, so the module can be small and
+quick.  In many cases, all that is needed to write a GMOD module is to tack
+on a short constant header before a normal module.
+
+    GMODs can also be very useful to game/demo programmers that want to
+include music in their programs.  If modules are saved as GMODs, then the
+programmer can simply code for the GMOD format, and the person writing the
+music can use whatever music composer program is convenient.  The
+programmer simply makes a few calls to the GMOD module, and it plays
+itself, without the programmer having to worry about finding the correct
+replayer code and such.
+
+    GMOD modules come in two main types: Amiga-specific and "portable".
+Amiga-specific modules are modules that bang on the Amiga custom chip
+hardware directly, as described later, to play music.  These modules can be
+portable across Amiga music players, games, demos, etc.  Portable modules
+do not access any hardware directly; instead, they use the NotePlayer
+standard to play notes, and use the facilities provided by the GMOD format
+for timing.  Portable modules can potentially be played on ANY 680x0-based
+system: Amiga, Atari ST, Mac, NeXT, etc.  The type of module is defined by
+what is at the module+$20 entrypoint, described later.
+
+    If GMOD catches on, we may start to see music maker programs that write
+full-featured GMOD modules that are not only playable with most any simple
+player program, but also support many specialized features such as external
+control (volume, speed, fast-forward, rewind, etc.), real-time sound
+effects added to the music (for games or other sound effects), and whatever
+else you can imagine.
+
+    This document is intended especially for distribution with my music
+player MultiPlayer (which of course supports this format).  Wherever
+MultiPlayer goes, this document goes.  However, since the GMOD format isn't
+really tied to MultiPlayer, MultiPlayer doesn't have to go wherever this
+document goes.  You may also distribute this document apart from
+MultiPlayer, put it on public bulletin board systems, or even include it
+along with commercial programs if you are so inclined, as long as it
+remains unchanged.  (If you have suggestions or ideas, I'll be glad to try
+and incorporate them - I just don't want multiple standards documents
+floating around.)
+
+    At the end of this document are described two other module formats,
+XMOD and AMOD, which are very simple module formats that I used before the
+GMOD format was developed.  GMOD replaces both previous formats, so please
+don't write programs that create XMOD or AMOD modules.  Although
+MultiPlayer can still play them (and probably always will be able to), and
+you may still create them if you want something extremely simple and quick,
+for general purpose use you should always use GMODs.
+
+    In this document, when I refer to the 'player', I am referring to the
+program that uses the module (the caller), such as MultiPlayer, not the
+actual player code in the module itself.  As such, 'player' used in this
+context can also mean a game or demo that uses a GMOD module.  I refer to
+the module, both the music-playing code and any private song data, as just
+the 'module'.
+
+
+
+                           Format Specification
+                           ~~~~~~~~~~~~~~~~~~~~
+
+    Now for the actual definition.  A GMOD file always begins with four
+specific longwords, then a jump table with an arbitrary length, then the
+rest of the file can be anything you want.  The format follows:
+
+module+$00      'GMOD' ($474D4F44)
+module+$04      4-byte ID of program that created this module
+module+$08      Memory address where this module MUST be loaded, 0 if relocatable
+module+$0c      Offset of end of jump table (=numentries*4+$10)
+module+$10      Start of jump table (arbitrary length)
+
+    The first longword in the file is simply used to identify GMOD modules.
+
+    The ID of the creator (module+$04) is used to identify the program that
+created this module.  It can be ignored by any program that simply wants to
+play the module.  A music composer program might check this longword when
+trying to re-load a module to make sure the module is the correct type.
+When selecting an ID for your program to use, think of it as an IFF chunk
+ID:  Try to select something that is somewhat readable ASCII, but is
+unlikely to collide with some other program.  (For example, don't use
+'SONG' or 'TRAK' or something simple like that.)
+
+    The load address is the absolute location in memory where the module
+must be loaded.  Although hopefully programmers will have enough sense not
+to create non-relocatable modules in the future, the feature is there for
+current module types that use absolute addresses in the code and/or data.
+In the MultiPlayer implementation using this feature is not dangerous to
+the system and will never cause innocent memory to be stomped on, but it
+may cause the module to be unable to load even when there's plenty of
+memory.  If the required memory area is already occupied (even if it's just
+a few bytes somewhere in the required range), MultiPlayer will refuse to
+load the module.  Therefore, this feature should never be used except when
+absolutely necessary, since these modules may not be able to load even when
+there is plenty memory available.  MultiPlayer properly allocates the
+needed memory with AllocAbs, rather than just overwriting memory as many
+European demos do, so multitasking will never cause the module to get
+overwritten.  I wish this feature wasn't necessary, but sometimes we just
+have to clean up other people's messes, don't we?
+
+    The offset of the end of the jump table is the offset (from the start
+of the module) pointing to just past the last valid jump table entry.  It
+can be calculated using the equation (numvecs*4)+16, where numvecs is the
+number of vectors in the jump table.  Any vectors beyond this offset are
+assumed by the player (caller) to be 'do-nothing' routines - i.e.  just an
+RTS.
+
+    The actual jump table entries are usually branches or PC-relative jump
+instructions, but can be any code that fits in four bytes.  In particular,
+if a function simply wants to return a constant value (such as
+GetNumSongs), a MOVEQ and an RTS could fit right into the jump table.  The
+player must not try to interpret the jump table entries (and by no means
+modify it!).  The one exception to this rule is that the player may look
+into the jump table to see if the first word of the entrypoint is $4E75
+(RTS), in which case the player knows that the entry is not used.  This
+way, the player can avoid bogging down the system with unused interrupts
+and such.
+
+    The calling conventions are always standard Amiga conventions:  The
+routines must save registers D2-D7 and A2-A6, and must return with an RTS.
+Parameters are passed in various registers and returned in D0, the same way
+as standard Amiga libraries.
+
+    Note that, since any of the entries may be omitted, special care must
+be taken by the caller when calling the module.  First, before calling a
+particular entrypoint, the offset must be tested against the MaxVecOfs in
+the module.  If the offset is greater than OR EQUAL to MaxVecOfs, the
+routine does not exist, and behaves the same way as if the entrypoint was a
+do-nothing entrypoint (first word is RTS).  Second, when the caller is
+expecting a return code of some kind in D0, before calling the module it
+must initialize D0 to some default value, or an invalid value it can
+recognize, in case the routine is a do-nothing or nonexistent entrypoint.
+For example, before calling the GetNumSongs function, D0 should be
+initialized to 1.  If GetNumSongs doesn't exist or does nothing, the
+default value of one song will be assumed.
+
+    I will not specify whether or not operating system routines (such as
+Exec's memory allocation routines) may be called from within the module.
+For a general-purpose player program like MultiPlayer, this should be
+allowed.  However, I expect that the majority of music modules for a long
+time to come will stay away from the operating system in order to support
+games and demos and other programs that take over the machine.  If the
+operating system is to be used normally, it is always the caller's
+(player's) responsibility to allocate the audio.device's channels and make
+sure the module fits into the multitasking system.  All the module needs to
+do is stick to the standard audio hardware registers (and audio DMA
+control) and keep its nose out of forbidden areas.  Modules should generally
+not need to muck around in interrupts, since the format defines some very
+general-purpose interrupt routines, but I won't forbid it either.  If a module
+wants to do its own interrupt processing, then all the module's interrupt
+entrypoints (VBlank50, VBlank60, and TimerTick) should be do-nothing, and
+the module should properly allocate the interrupts using system calls.
+
+    The currently defined jump table entries are described below:
+
+
+module+$10      InitMusic
+
+    Called to initialize the module.  This is generally the first routine
+called by a player program after loading the module.  It should be called
+only once, and the module may be started and stopped as many times as
+needed after a single call to InitMusic.  D0 must be set to NULL before
+calling the routine, and the initialization routine should return NULL in
+D0 if the initialization succeeded, or a pointer to a string (in D0)
+describing the error if the initialization failed.  No other routines in
+the module may be called before initialization.  InitMusic should not mess
+with the audio hardware or start playing music, as the audio channels may
+not be allocated by this time.  This entrypoint would generally be used to
+perform any relocation or other one-time initialization of the module, or
+for allocating memory or other resources through the operating system if
+necessary.
+
+
+module+$14      StartMusic
+
+    Called to start playing the music.  If the module contains several
+songs, then D0 will hold the song number (0..n-1) to start playing,
+otherwise D0 will be 0.  StartMusic always starts a given song at the
+beginning.  To pause and restart in the middle of a song, use PauseMusic
+and RestartMusic.
+
+    Any given module is always guaranteed to have a song number 0.  Before
+calling StartMusic with a song number greater than zero, it must call
+GetNumSongs to make sure that song actually exists.  There is not
+necessarily any protection in the module against playing songs that do not
+exist.
+
+    The StartMusic entrypoint may be called again after StopMusic to
+restart the music after it was stopped.  This allows the module to be
+'re-used' without reloading.  Also, it allows switching songs in the module
+if the module contains more than one song.  However, StartMusic should
+never be called after another StartMusic, without a StopMusic in between.
+
+
+module+$18      StopMusic
+
+    Called to stop playing the music.  Often all this does is turn off
+audio DMA and return.  StopMusic may be called any number of times, with or
+without a corresponding StartMusic call.
+
+    Note that no interrupt entrypoints in the module are called by the
+player anytime except when the music is actually playing, i.e.  after
+StartMusic and before StopMusic.  Therefore, the player program should
+enable audio interrupts AFTER StartMusic, and disable interrupts BEFORE
+StopMusic.
+
+
+module+$1c      EndMusic
+
+    Called to shut down the module and prepare to be unloaded.  The caller
+MUST call this entry before unloading the module, even if the call to
+InitMusic failed.  If the music was playing, StopMusic must be called
+before calling EndMusic.  This may be called more than once successively,
+but no other routines in the module may be called after EndMusic has been
+called.  A module may not be re-used after EndMusic.  EndMusic should not
+mess with audio hardware or DMA registers - that is done in StopMusic.
+This entrypoint is provided mainly to free any allocated memory or do other
+operating-system related cleanup.  As such, for most current modules this
+entrypoint would do nothing.
+
+
+module+$20      NotePlayer
+
+    If this entrypoint is implemented, then this module can be portable: it
+does not have to access the Amiga audio hardware directly. If the client
+supports portable modules, BEFORE it calls InitMusic, it must call this
+entrypoint with a pointer to a NotePlayer jump table in A0 and 0 in D0.
+(NotePlayers are described in the separate "NotePlayer.doc".)  If the
+module supports portable mode, it must save the NotePlayer pointer and
+return nonzero in D0.  Later, the module will use the provided NotePlayer
+routines to play its music instead of going to the hardware directly.
+
+    A GMOD may be made capable of playing either with or without an
+externally specified NotePlayer.  In this case, it generally keeps an
+internal "backup" NotePlayer (such as the "notehard.asm" supplied with the
+NotePlayer standard) which it defaults to if it is not given a NotePlayer
+by the client.
+
+    It is the responsibility of the module to initialize and shut down the
+NotePlayer.  The module must call the NotePlayer's NoteInit entrypoint
+during its InitMusic call, and it must call the NotePlayer's NoteFinish
+entrypoint from its EndMusic routine.
+
+
+module+$24      ContinueMusic
+
+    After the player has called StopMusic (but before it calls EndMusic),
+it can call ContinueMusic to try and continue the music at the position
+where it was stopped.  The player calls this function with D0=0, and if
+the module is able to restart the music, it should return D0=1; otherwise
+it should leave D0 at 0.  The player must ONLY start sending interrupts
+again if the module returned nonzero in D0 - otherwise, the module
+doesn't support this feature and turning interrupts on at this point
+might cause trouble.  The player can always call StartMusic again to
+restart the module at the beginning.
+
+
+module+$28      VBlank50
+module+$2c      VBlank60
+
+    The player program must call whichever of these vectors are supplied,
+at the appropriate frequency.  The VBlank50 routine will be called 50 times
+per second, the VBlank60 routine will be called 60 times per second.  The
+module may use either one of these routines (not both).  If the player
+calls these routines from a vertical blank interrupt (as is usually the
+case, but not necessarily), it is its responsibility to adjust the
+frequency appropriately.  Note that a more general timing system is also
+available, described below.
+
+
+module+$30      Channel0
+module+$34      Channel1
+module+$38      Channel2
+module+$3c      Channel3
+
+    These four entrypoints, if supplied, are called by the player whenever
+the corresponding audio channels are reloaded.  They correspond to Exec's
+AUD0-AUD3 interrupts (levels 7-10), CPU level 4.
+
+
+module+$40      GetNumSongs
+
+    Some music modules have more than one song in the same module.  This is
+useful when you want several separate musical scores that all use the same
+set of instruments, for memory efficiency.  If this entrypoint is supplied,
+the player program may call this routine to find out how many different
+songs are contained in this module.  The routine must be called with D0 = 1
+(the default number of songs), and the module should return the actual
+number of songs in D0.  Once the player knows how many songs are in the
+module, it may select the song to play in the call to StartMusic.
+
+
+module+$44      GetSongName
+
+    If a module contains several songs, GetSongName provides a method for
+the player to find the name of each song.  This may be simply displayed to
+the user while the song is playing, or a list of songs may be built for the
+user to select from by name.  This routine is called with D0 holding NULL
+and D1 holding the song number (which must be in the proper range).  If the
+module supplies this routine, it must return a pointer to the song name in
+D0.  Otherwise, D0 will remain NULL and the song will remain nameless.
+
+
+module+$48      GetSongAuthor
+
+    This routine works the same way as GetSongName, except the name of the
+song's author is returned.  If all the songs in the module are by the same
+person (or if the module contains only one song), D1 can be ignored.
+
+
+module+$4c      GetFrequency
+module+$50      TimerTick
+
+    These routines can be used by modules for more general-purpose timing,
+or for odd timing values not based on the vertical blank interrupt.  If the
+module uses this method of timing, both of these functions must be
+implemented, and neither VBlank50 or VBlank60 may be.  The GetFrequency
+function must simply return the number of ticks per second the module
+requires in d0.  The TimerTick function will then be called (probably from
+an interrupt) at the specified frequency while the module is playing, just
+like the VBlank functions.
+
+
+module+$54      GetMakerName
+
+    This entrypoint must be called with D0=0, and if it is implemented,
+must return the name of the program that was used to create this module.
+Although music maker programs should use the ID field at offset 4 to
+recognize specific module types, this string can be used by player programs
+and such to identify the module's origin for the user.
+
+
+module+$58      Hook
+
+    This function is called by the player with D0=0, D1=hook flags, and A0
+pointing to a standard Hook structure as defined in the 2.0 header files.
+(This does not mean that modules or players that use this feature must run
+on 2.0 - this structure is just used for convenience.) The hook flags work
+very much like Intuition's IDCMP flags and tell the module what kinds of
+events the player wants to hear about.  If the module supports this call,
+it must save the pointer to the Hook (it will remain valid until after
+EndMusic is called) and return in D0 the hook flags indicate what hooks the
+module supports.
+
+    During playing, the module will call the player's Hook for the events
+that the player specified (in D1 in the Hook call) AND the module supports
+(returned in D0 from the Hook call).  Standard Hook calling conventions
+must be used:  A0 points to the Hook structure that the player originally
+passed to the module, and A1 points to an appropriate 'message' or parameter
+packet (see below).  The 'object' passed in A2 is currently unused, but may
+be used in future message types.
+
+    The message that the module passes to the player's Hook function depends
+on the type of event.  The first longword of the message always contains
+a single Hook Flags bit set, indicating the type of event (just like IDCMP
+messages).  Note that the message is NOT a standard Exec message.  After
+the first longword, more data can be passed depending on the event.
+
+    The player may call the module's Hook entrypoint more than once.
+However, the Hook pointer passed to the module must ALWAYS be the same!
+Therefore, re-calling this entrypoint can only be used to change the
+'active' event bits (ala ModifyIDCMP()), not to change the Hook pointer
+itself.
+
+    Note that the module's entrypoints are not necessarily reentrant, so
+the player's Hook function must NEVER call any of the module's entrypoints,
+or make any calls that might indirectly cause one of the entrypoints to be
+called.
+
+    Currently the following event types are defined:
+
+
+BITDEF  GMODH,REPEAT,0
+
+    If supported and requested, the module calls the Hook function as
+soon as the music is about to wrap around and repeat itself.  If the
+player's intent is to stop the module when it repeats, it must set a flag
+or signal a parent Task - it must not directly call the module's StopMusic
+entrypoints (see above).  The message passed to the player's Hook must, of
+course, have the first longword set to GMODHF_REPEAT (1<<0), but other than
+that the message is unused.
+
+
+BITDEF  GMODH,SEQUENCE,1
+
+    If supported and requested, the module calls the player's Hook whenever
+the music's sequence number changes.  This event type is specifically
+designed for music formats with Soundtracker-like sequences:  if the music
+format doesn't use such sequences, then this event type should be left
+unimplemented by the module.  The sequence number starts at 0 and goes to a
+maximum of length-1 (length is the number of sequences in the module).  The
+message passed to the player's Hook must have GMODHF_SEQUENCE (1<<1) in the
+first longword, the new sequence number in the second longword (offset 4),
+and the total number of sequences in the third longword (offset 8).  The
+module should also call this Hook once during the PlayMusic call, or very
+soon afterwards, so the player knows immediately how long the module is.
+
+
+module+$5c      Jump
+
+    Instructs the module to jump to a particular position within the
+current song.  This is extremely module-dependent.  The player passes D0=0
+and the position to jump to (a longword) in D1.  For Soundtracker-like
+modules, this position is probably the sequence number.  For other modules,
+it may be a time value or whatever.  If the module successfully jumps to
+the requested position (it should do range checking and such first), it
+returns D0=1, otherwise it leaves or sets D0=0.  This entrypoint exists to
+allow users and programmers to do nifty tricks with specific modules - the
+player can't and shouldn't interpret or use this entrypoint by itself.
+
+
+module+$60      SetVolume
+
+    Gives the module a new master volume.  If the module supports this
+feature, the master volume set by this entrypoint must be independent of
+all internal volume effects and such.  In other words, all internal volume
+controls must be relative to this volume.  The new master volume should be
+made effective immediately - not on the next note or internal volume change.
+
+    This entrypoint is passed two volume parameters: the left-side volume
+in D0, and the right-side volume in D1.  Each parameter ranges from $0
+(minimum) to $100 (maximum).  To get a custom-chip-style volume (0-64),
+just shift this value right two bits.  To scale an internal volume, just
+multiply the two volumes and shift right 8 bits.
+
+
+module+$64      GetScroll
+
+    This entrypoint exists for the single purpose of allowing music
+composers to include all their useless ramblings in their modules for
+everyone else to wade through.  It must be called with D0=0, and if it
+exists, it will return in D0 a pointer to one (probably LONG)
+null-terminated string, which is the entire scroll text.  The only control
+codes it may contain are newlines (ASCII 10).  This makes it easy to create
+a scroll text simply from a text file.  The player displaying the scroll
+text will probably just ignore these control codes. (Of course, the player
+wouldn't have to implement a "traditional" scroller - it can display the
+text however it wants.)
+
+
+    I have many other possible entrypoints and hooks in mind, but haven't
+gotten them standardized yet (much less implemented in MultiPlayer), so
+I'll leave them out for now.  If there's something you want, drop me a line
+and I'll go ahead and add it to the specification, whether or not
+MultiPlayer can support it.  (It probably can.)  The important thing is to
+keep the interface powerful, easy to use, and standardized.
+
+    To use GMOD modules in your own programs, such as games or demos, all
+you have to do is call the appropriate entrypoints at the appropriate
+times.  If your program will only be using one module, or a limited number
+of modules all made with the same program, you can make assumptions about
+the module, i.e., which interrupt timing routine to call, etc.  A minimum
+implementation might be as simple as two calls:  one to the initialization
+code, and one during each VBlank interrupt.  (Many modules do nothing more
+than turn audio DMA off in their exit code.) Of course, if you want to be
+compatible with more modules, you'll have to put in a little more effort.
+
+    If you are the author of a music-composer program, I hope you will
+seriously consider supporting GMOD modules.  As I said at the top of this
+document, I'll do everything I can to make life easy for you.  A minimal
+implementation can be done very quickly and with very little overhead.
+Modules with built-in players are becoming more and more popular, and I
+believe a standard, extensible caller interface could benefit both
+musicians and programmers.
+
+
+
+                        The XMOD format (obsolete)
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Besides the standard module formats that MultiPlayer understands, there
+is also a new format you can use to turn just about anything into a
+multitasking module.  Basically, you go into the program you want to rip
+the music out of with some kind of debugger (I use S.I.M.), find the player
+and module (with luck, they'll be right next to each other; otherwise you
+have to shuffle things around a little), and add an XMOD header at the
+beginning so that MultiPlayer (or another player that supports XMOD format)
+knows what to do with it.
+    The XMOD format is very simple:
+
+module+$00      'XMOD'
+module+$04      InitEntry
+module+$08      PlayEntry
+module+$0c      StopEntry
+
+    When MultiPlayer loads a module and finds an 'XMOD' in the beginning of
+it, it first calls module+$04 to let the player initialize itself and the
+module, then it calls module+$08 50 times per second (the normal vertical
+blanking interrupt speed on PAL systems), and finally calls module+$0c when
+the user stops the module.  The player must be PC-relative, or it must do
+its own relocation in the initialization code.  The entire file is always
+loaded into chip memory in one continuous block.
+    All three entrypoints must use standard Amiga calling conventions and
+save registers D2-D7/A2-A6.  This includes the PlayEntry - it may not
+modify A5/A6 even though it's normally called from an interrupt routine.
+They may use D0-D1/A0-A1 without restoring them.  No parameters are passed
+to any of the entries, and no return codes are checked for.  All three
+routines must return with an RTS, not with an RTE.
+    If you need to debug an XMOD module (i.e. if it doesn't work the first
+time), you can just set the first instruction at module+$04 to 'illegal'
+($4AFC), activate a good debugger, and load the module from MultiPlayer.
+As soon as the player calls the module's init routine, it should kick into
+the debugger.
+
+
+
+                        The AMOD format (obsolete)
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    The AMOD format is another special-purpose format MultiPlayer
+understands.  It is almost identical to the XMOD format, except in one
+respect:  AMOD modules always get loaded at a specific address.  For those
+few oddball music composer/player programs that like to write modules with
+lots of absolute addresses in them, this format may be the only good way to
+make the modules multitask.
+    The AMOD format is a simple extension to the XMOD format:
+
+address+$00     'AMOD'
+address+$04     InitEntry
+address+$08     PlayEntry
+address+$0c     StopEntry
+address+$10     Load address
+
+    When MultiPlayer encounters an AMOD module, it allocates memory for the
+module starting at the load address specified in the module.  The load
+address points to the location where the 'AMOD' identifier should go.  The
+module's code does not have to be PC-relative, since the load address is
+known.  Other than that, an AMOD module is loaded and executed the same way
+as an XMOD module.
+    If the required memory area is already occupied (even if it's just a
+few bytes somewhere in the required range), the module will not load.
+Therefore, the AMOD format should never be used except when absolutely
+necessary, since these modules may not be able to load even when there is
+enough memory available.  The memory does get allocated (the space is not
+just stomped on as with most European demos), so it will not cause the
+machine to crash; it just might not load sometimes when it should be able
+to.  I wish this module type wasn't necessary, but sometimes we just have
+to clean up somebody else's messes, don't we?
+
+
+
+                              Version History
+                              ~~~~~~~~~~~~~~~
+
+1.01 (R2, 25-May-92)
+        Minor touchups, mainly in the Introduction.  Nothing really new.
+
+1.00 (R1, a long time ago)
+        The dawn of history.  (There were previous releases, but I wasn't
+            too organized with them...)
+
+
+
+                              Contact Address
+                              ~~~~~~~~~~~~~~~
+
+    I tend to move around a great deal, so mail sent directly to me
+sometimes has a hard time catching up.  If you want mail to reach me (it
+may take a while, but it WILL reach me), send it to this address:
+
+        Bryan Ford
+        8749 Alta Hills Circle
+        Sandy, UT 84093
+
+    I can be reached more quickly (for the time being anyway) on the phone
+or through one of the electronic mail addresses below:
+
+        (801) 585-4619
+        bryan.ford@m.cc.utah.edu
+        baf0863@cc.utah.edu
+        baf0863@utahcca.bitnet
+
+

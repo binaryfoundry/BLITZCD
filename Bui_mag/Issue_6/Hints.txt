@@ -1,0 +1,102 @@
+Hints and Tips
+
+(C) BUI
+
+BY MATTHEW TILLETT
+
+
+
+Wandering around the .Net I came across a web site for Blitz Basic System Tip`s.  After a quick read, I decided that this would make a great section in the magazine.  If you have a system tip for Blitz Basic, either the editor or a nice little bit of code
+
+
+
+(HINTS & TIPS Edited By Lee Packham)
+
+
+
+
+
+Adding Version Support
+
+----------------------
+
+
+
+A lot of people use the "version" command to find out what the version of certain programs and libraries are without running them. You to can add support for this command in your programs. Simply use this piece of code near the beggining of you program...
+
+
+
+Goto SkipVer
+
+   Even
+
+   DC.b "$VER: Progname xx.xx (dd.mm.yy)"
+
+   Even
+
+SkipVer:
+
+
+
+Progname should be replaced with the name of you program, xx.xx should be replaced with a version number and dd.mm.yy should be replaced with the release date.
+
+
+
+
+
+Program Execution (Exec)
+
+------------------------
+
+
+
+A lot of people ask me how to run other programs from Blitz. It is actually
+
+very simple. You can simply use this command...
+
+
+
+Execute_ com$,0,0
+
+
+
+com$ should be replaced with the command line you wish to run. NOTE: your program will wait until the command line is finished i.e. the program you run ends. You can get round this by doing "Run >NIL: " at the beggining of the commandline.
+
+
+
+
+
+Hardware Scrolling (AMIGA MODE)
+
+-------------------------------
+
+
+
+Hardware scrolling is where you have a big bitmap larger than the display and move around it. However this is quite hard to do in AMIGA mode. After you open your screen put this code fragment in (Amigalibs.res needed)...
+
+
+
+*s0.Screen=Peek.l(Addr Screen(0))
+
+*v0.ViewPort=*s0\_ViewPort
+
+*r0.RasInfo=*v0\RasInfo
+
+
+
+Then place this code at the end of your main loop...
+
+
+
+*ro\_Bitmap=Addr Bitmap(cb),x,x
+
+ScrollVPort_ *v0
+
+cb=1-cb
+
+
+
+NOTE: This uses double buffering to make things smoother. cb is the current bitmap number and switches between 1 and 0 every 1/50th of a second (PAL). x
+
+is the current x offset and y is the current y offset within the bitmap.
+

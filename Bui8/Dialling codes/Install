@@ -1,0 +1,44 @@
+; Script to install Dialling Codes
+
+; ask where to install Dialling Codes
+(set @default-dest
+(askdir
+   (prompt "Please select the Directory where you would like to install"
+           " Dialling Codes ")
+   (help @askdir-help)
+   (default "SYS:")
+   )
+)
+
+(
+(working "Installing Dialling Codes Program")
+(copyfiles
+	(prompt "")
+	(help @copyfiles-help)
+	(source "Dialling Codes")
+	(dest @default-dest)
+	(infos)
+)
+
+
+(copyfiles
+	(prompt "Would you like to install the Amigaguide documentation"
+                " for Dialling Codes")
+	(help @copyfiles-help)
+	(source "Dialling Codes.guide")
+	(dest @default-dest)
+	(confirm)
+	(infos)
+)
+(copyfiles
+	(prompt "Would you like to install the plain text documentation"
+                " for Dialling Codes")
+	(help @copyfiles-help)
+	(source "Dialling Codes.doc")
+	(dest @default-dest)
+	(confirm)
+	(infos)
+)
+)
+
+(exit)

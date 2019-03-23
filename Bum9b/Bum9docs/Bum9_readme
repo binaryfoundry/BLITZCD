@@ -1,0 +1,305 @@
+
+Finished at last!
+
+Sorry for the delays everyone, blame the usual people and me this time.
+
+
+Things to note:
+
+        - All the examples (except some of mine :) have runtime error
+          checking on, so once you know the example compiles correctly,
+          take runtime error checking off and recompile.
+
+        - Some of the examples will not compile when running Blitz from
+          floppy disk as they use commands in the large deflibs file. See
+          below for a list of the examples and also how to create a new
+          deflibs file.
+
+        - If you are using Ted v1.1 don't forget to click the CD gadget on
+          the Load File Requester as quite a few of the examples need to
+          load additional data from the disk. With the new Ted v2.1 you do
+          not need to change the directory anymore as it is done
+          automatically when you load the example.
+
+
+Things to be done for BUM10:
+
+        - Get the Acid 3D library beta version from Simon (arghhh!!!)
+
+        - Write plenty of examples for Acids Chunky/Chock library
+
+        - Bug fixes to some of the Acidlibs
+
+        - Bug fixes to NewTed (probably)
+
+        - Add extra documentation to the on-line help  
+
+        - Lots of other things!
+
+
+People who deserve Thanks:
+
+        - Xbones, ><>, Tiffs, Timo and everyone on the Blitz-List (email)
+          who answer all the questions.... 
+
+        - Leading Edge/Reflective Images/RWE
+	
+        - Everyone who has contributed to this BUM release.
+
+
+Ted Bailey 13/5/96  (eeek)
+
+
+
+                             ==================
+                             BUM9 Disk Contents
+                             ==================
+
+
+Blitz2
+------
+
+A direct replacement for the program disk that came with your original
+Blitz2.1 package. The only changes with this release are a slightly larger
+defaultdbug file and a bit more space on the disk. The reason for the
+increase in space is so that floppy disk users can create a slightly
+larger deflibs file containing the specific libraries they choose from
+the blitzlibs disk (see the section below 'Creating a new Deflibs').
+
+
+
+Blitzlibs
+---------
+
+This contains all the latest third party libraries and the new test
+libraries. It also contains the resident files and two small Blitz
+programs to allow you to create a new deflibs file and also view the
+commands in any library.
+
+
+amigalibs - Unchanged from BUM8/Full Blitz2.1 release. 
+
+otherlibs - Same as BUM8, except ElmoreIncLib has been removed (it was a
+            crippled version and Richard Elmore isn't supporting it now
+            as far as I know), and XbonesCIAtrklib is now version 1.03
+
+rilibs    - Several updated and new libraries from Reflective Images/LES, now
+            in their own special directory.
+  
+testlibs  - One Acid Software test library (chunkylib) and two user
+            libraries (XBaudiolib, GKdbaselib)
+
+Please note that the large deflibs file (on BUM9examples2:HardDiskUsers/)
+contains all these libraries in one big file and the small deflibs contains
+only the amigalibs libraries.
+
+
+
+BUM9examples1
+-------------
+
+Nigels_3D - A 3D tutorial/library written in Blitz (no assembly language)
+            and gracefully donated by Dr. Nigel Hughes. 
+
+TedsDemos - The best examples ever written in Blitz (more display library
+            examples by me).
+            
+UserCode  - Lots of smaller examples mainly applications related, including
+            several GadTools examples by Simon Archer.
+
+UserGame  - Four small games all with documentation/source code.
+
+
+
+BUM9examples2
+-------------
+
+DeflibMan     - A very nice utility written by Peter Eisenlohr. It allows
+                you to create a new deflibs file from the libraries you
+                select on the Blitzlibs disk. Source code not included.
+
+Gorny_3D      - Another 3D tutorial/library written in Blitz by Maciej
+                Gorny.
+
+HardDiskUsers - Updated big debugger, NewTed (and ted.library) and big
+                Deflibs. The files in this drawer directly replace the files
+                in the blitz drawer on your Hard Drive.
+
+HyperHelp     - Ralf Berkvens Multimedia-HyperText-BrowserType-Thing with
+                full source code/extra libraries/etc.  
+
+
+
+BUM9docs
+--------
+
+Docs_otherlibs    - These 3 directories contain the documentation for  
+Docs_rilibs       - commands found in the libraries on the Blitzlibs  
+Docs_testlibs     - disk.  
+
+RI_Examples       - Example source code for the new commands found in the
+                    Reflective Image libraries (Blitzlibs:rilibs/).
+
+RI_FNS_Fonts      - FNS font editor program and lots of example fonts by
+                    Reflective Images. 
+
+Testlibs_Examples - Only one example in here for Graham Kenedy's dbaselib,
+                    there should be some chunkylib examples on BUM10!  
+
+
+                      
+                          ======================
+                          Creating A New Deflibs
+                          ======================
+
+Hard disk users can more or less ignore this section (and the next) as
+the large deflibs file contains all the libraries on the Blitzlibs disk.
+
+There are two ways to do this:
+
+        1. Use the nice utility on BUM9examples2 disk called LibMan.
+
+        2. Use the Blitz program MakeDefLibs.bb2, supplied on the
+           Blitzlibs disk.
+
+
+1. The preferred method
+-----------------------
+
+The LibMan utility is for WB2.0+ Amigas and you need to boot from your
+Workbench disk as it needs to use the Amiga asl.library. Documents are
+provided in the DefLibMan drawer but basically.....
+
+     - Load Workbench
+
+     - Insert BUM9examples2 and load the file LibMan 
+
+     - After a bit of disk swapping you will have a list of all the
+       libraries available in a scrollable window. 
+
+     - Select the libraries you want to include and click on the
+       create deflibs gadget	
+
+
+2. The slightly tricky method
+-----------------------------
+
+If you are still using WB1.3, then you can try this....
+
+     - Make a copy of your Blitzlibs disk
+
+     - Delete all the libraries (.obj files) that you do not want to
+       include. These are the files in the directories amigalibs,
+       otherlibs, rilibs, testlibs
+
+     - Load up Blitz and the MakeDeflibs program on the Blitzlibs disk
+
+     - Compile and Run the program! 
+
+
+
+                      ================================
+                       Which libraries do I include ?
+                      ================================
+
+The following programs on the BUM9 examples disks use some of the commands
+found in the third party libraries. If your deflibs file doesn't contain
+these libraries when you try and compile the program, Blitz will report
+the error 'Token Not Found' and the command will appear as ????? instead of
+text.
+
+
+  BUM9examples1:Nigel_3D/FUN_Editor.bb2                   
+                                           
+  BUM9examples1:UserCode/AGAfade256.bb2                   
+                                              
+  BUM9examples1:UserCode/AppWindow.bb2
+
+  BUM9examples1:UserCode/Phonebase.bb2
+
+  BUM9examples1:UserCode/WBDemo.bb2
+
+  BUM9examples1:UserGame/BallBlitz.bb2
+
+  BUM9examples2:HyperHelp/HHControl.bb2 and HyperHelp.bb2
+
+  BUM9docs:RI_Examples/All the examples
+
+  BUM9docs:Testlib_Examples/db_blitzbook.bb2
+
+
+It seems these examples mainly use the Elmorelibs and NeilsReqtoolsLib, so
+as a suggestion try making up a new deflibs containing:
+
+    amigalibs/all of them
+    otherlibs/all Elmorelibs, NeilsReqtoolsLib
+
+The deflibs file created should be small enough to fit on your Blitz2
+program disk.
+
+Of course, if you want to try the RI_Examples you'll need to include
+those libraries too...
+
+While we're on the subject, could all you generous programmers who donate
+your examples please include the names of any third-party libraries (if you
+use any) at the top of your source code? Floppy disk users will then know
+which library to include in their small deflibs file.
+
+
+
+                           ================
+                            Internet Users
+                           ================
+
+Some Blitzy things on the 'net'...
+
+
+Blitz Mailing List:
+
+If you want to join the Blitz Mailing List, where you can ask/answer
+questions and moan about BUM delays, send some email to:
+
+           majordomo@helsinki.fi
+
+Your subject can be anything but your text should be
+
+           subscribe blitz-list <your email address goes here>
+           
+	   e.g.  subscribe blitz-list Ted@blitzuk.demon.co.uk
+
+FTP Sites:
+
+           acid.nz.com         (acid/blitz)
+           Any Aminet site     (dev/basic)
+           x2ftp.oulu.fi       (amiga/programming/blitz  I think...)
+
+
+WWW Pages:
+           
+           http://www.acid.nz.com/              (nothing on it yet)
+
+           http://sun1.bham.ac.uk/cca93057/Blitz/
+
+This is Mark Tiffany's page and has lots of useful blitz tips and links
+to other Blitz related pages.
+
+
+                               =====
+                                Fin 
+                               =====
+
+That's all for this issue, except a quick mention to Matthew Tillets
+B.U.G. Magazine (Blitz User Group)
+
+       Blitz
+       Matthew Tillet
+       27 Hillside Avenue
+       Worlingham
+       Beccles
+       Suffolk
+       NR34 7AJ
+       England
+
+It has a very nice article on the WBStartup command and some other good
+examples. I may ask Matthew if he wants to donate it for BUM10... ;)
+

@@ -1,0 +1,229 @@
+; Install VW
+; For V1.009 of Virtual Worlds
+
+(delopts "oknodelete" "force" "askuser")
+(complete 0)
+(set update 0)
+(set HD (askchoice
+   (prompt (cat "\n"
+      " Welcome to the Virtual Worlds install utility. "
+      " Please select whether you wish to install Virtual"
+      " Worlds to a floppy disk or to a hard disk drive.\n"
+   ))
+   (default 0)
+   (choices
+      "Hard disk Installation"
+      "Floppy disk Installation"
+   )
+   (help (cat "\n"
+      " Virtual Worlds may be installed to either your hard"
+      " disk (if you have one), or to a bootable floppy disk.\n"
+   ))
+))
+(if (= HD 0) (
+;-------------------- Hard disk install routine.
+(if (exists "VW:" (noreq))
+   (set update (askchoice
+      (prompt (cat "\n"
+         "           VW: assign detected!         \n"
+         " It would appear that Virtual Worlds is \n"
+         " already installed - do you wish to :-  \n"
+      ))
+      (default 1)
+      (choices
+         "Install new"
+         "Update existing"
+         "Remove"
+      )
+      (help (cat "\n"
+         " The assign VW: has been detected.  If you wish to"
+         " completely reinstall Virtual Worlds select Install"
+         " new.  If you just wish to update a previous version"
+         " then select Update existing.  If you wish to remove"
+         " Virtual Worlds then select the Remove option.  This"
+         " will attempt to remove all files originally"
+         " installed by Virtual Worlds.  However, some files,"
+         " such as the asl.library will not be removed as they"
+         " may be used by other applications.\n"
+      ))
+   ))
+)
+
+(if (= update 2) (
+   (if (exists "VW:" (noreq))
+      (
+         (run "delete >NIL: S:VW.Config quiet force")
+         (run "delete >NIL: S:VWProject.info quiet force")
+         (run "delete >NIL: VW: all quiet force")
+         (run "assign >NIL: VW: remove")
+         (startup
+            "Virtual Worlds"
+            (prompt "\n Do you wish to remove the 'VW:' assign?\n")
+            (command ";(removed)")
+            (help (cat "\n"
+              " The user-startup contains an assign to VW: \n"
+              " This script will remove this for you.      \n"
+            ))
+         )
+      )
+   )
+   (exit (quiet))
+))
+(if (= update 1)
+   (set target "VW:/")
+;else
+   (set target (askdir
+      (prompt "\n Where do you want Virtual Worlds installed? \n")
+      (help (cat "\n"
+         " A new directory called Virtual Worlds will be made"
+         " in the directory that you specify.\n"
+      ))
+      (default "Work:")
+   ))
+)
+(set @default-dest target)
+(complete 10)
+
+(set ts (getdiskspace target))
+(if (< ts 1000000)
+   (if (<> (getdevice target) "RAM")
+      (abort (cat "\n"
+         "   Not enough free disk space!!!  \n"
+         " Virtual Worlds requires at least \n"
+         "    1 Meg of hard disk space.     \n"
+      ))
+   )
+)
+
+(complete 20)
+(copyfiles
+   (source "VW")
+   (dest (tackon target "VirtualWorlds"))
+   (infos)
+   (all)
+)
+
+(complete 50)
+(if (= update 0) (
+   (run (cat "Assign VW: " (tackon target "VirtualWorlds")))
+   (startup
+      "Virtual Worlds"
+      (prompt "\n Add 'VW:' assign to 's:user-startup' ? \n")
+      (command ("ASSIGN >NIL: VW: %s " (tackon target "VirtualWorlds")))
+      (help (cat "\n"
+         " This script will add an entry to the user-startup file"
+         " so that the assign VW: is made to the correct directory"
+         " on startup.\n"
+      ))
+   )
+))
+
+(complete 60)
+(if (= update 0) (
+   (set version (askchoice
+      (prompt "\n What version of asl.library? \n")
+      (default 1)
+      (choices
+         "Workbench 1.3"
+         "Workbench 2.0+"
+      )
+      (help (cat "\n"
+         " The correct version of asl.library must be present in"
+         " your LIBS: drawer for Virtual Worlds to run correctly."
+         " This process will not overwrite a newer library (higher"
+         " version number).\n"
+      ))
+   ))
+   (if (= version 0)
+      (copylib (source "ASL/asl13.library") (dest "libs:") (newname "asl.library"))
+      (copylib (source "ASL/asl204.library") (dest "libs:") (newname "asl.library"))
+   )
+))
+(complete 70)
+(if (= update 0) (
+   (set font (askchoice
+      (prompt "\n Do you wish to install the Times font? \n")
+      (default 0)
+      (choices
+         "Yup - go ahead!"
+         "No way!  Leave my fonts alone!"
+      )
+      (help (cat "\n"
+         " Virtual Worlds requires the Times font in order to function"
+         " correctly.  If you already have a Times font then you can"
+         " decide not to install this version and test Virtual Worlds. "
+         " If it appears that your font does not perform as required,"
+         " then you may decide to reinstall Virtual Worlds.  In this"
+         " case, you should select Install New, and then opt to install"
+         " the Times font provided.  Your old font will be renamed to"
+         " TimesOld, and the new font will be installed as Times.\n"
+      ))
+   ))
+   (if (= font 0)
+      ((if (exists "FONTS:Times.font")
+         ((run "rename FONTS:Times.font FONTS:TimesOld.font")
+         (run "rename FONTS:Times FONTS:TimesOld"))
+      )
+      (copyfiles
+         (source "Fonts")
+         (dest "FONTS:")
+         (nogauge)
+         (all)
+      ))
+   )
+))
+(complete 90)
+(if (= update 0) (
+   (set icon (askchoice
+      (prompt "\n Do you wish to have icons for saved World files?\n")
+      (default 0)
+      (choices
+         "Ooooh!  Yes please!"
+         "Errr.  No thanks."
+      )
+      (help (cat "\n"
+         " If you want to have nice little icons for your files then"
+         " select as such here.  This will copy the default icon to"
+         " your S: directory.  If you wish to disable this feature"
+         " then merely remove the icon from your S: drawer.\n"
+      ))
+   ))
+   (if (= icon 0) (
+      (copyfiles
+         (source "s")
+         (dest "S:")
+         (nogauge)
+         (infos)
+         (all)
+      ))
+   ))
+)
+(complete 100)
+)
+; -------------------------- Floppy disk install bit
+(
+   (message (cat "\n"
+      " For this install to work, you MUST boot from your normal"
+      " boot disk - ie a copy of your Workbench disk.  If you have"
+      " not done so then select Abort Install and reboot from"
+      " such a disk.  You will also require a formatted blank disk."
+      "  If you do not have a spare disk then please format one and"
+      " try again.  Otherwise select Proceed.\n"
+      " If you have a second drive, please insert the blank disk"
+      " into there now."
+   ))
+   (if (getdiskspace "df1:") (set copyfrom "SYS:") (set copyfrom "RAM:"))
+;copy files to ram: if single disk
+   (if (= copyfrom "RAM:") (
+      (copyfiles
+         (source "SYS:c")
+         (dest "RAM:c")
+         (all)
+      )
+   ))
+;copy files from >copyfrom< to df1:
+   (abort (cat "\n"
+      " Floppy disk installation not yet fully supported - sorry! \n"
+   ))
+)
+)

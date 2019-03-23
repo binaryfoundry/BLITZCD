@@ -1,0 +1,74 @@
+                   Blitz Basic 2.1 Release Notes
+                   =============================
+
+
+1. Introduction
+---------------
+
+Welcome to Mark Sibly's BlitzBasic programming language. A powerful
+integrated programming environment for all Amiga computers.
+
+New to version 2.1:
+
+- online help
+- restructured library handling
+- bug free parameter passing
+- comprehensive AGA and 3.0 support
+
+The main Blitz program disk has been put together so users programming
+on 1 meg single floppy A500 systems can boot straight from the disk
+and start programming immediately. Those with more powerful systems
+should note that due to space restrictions the advanced debugger,
+third party libraries and enhanced editor can be found on the extras
+disk.
+
+
+
+2. Up and Running
+-----------------
+
+A lot of reviews of Blitz have criticised it for being unstable. Most
+often they have missed the fundamental concept of runtime errors that
+Blitz uses to stop your program crashing during development.
+
+When runtime errors are enabled from the compiler options, Blitz compiles
+your program with checks on every command so it can't do the guru thing
+and make us at Acid look bad. These checks however make your program bigger
+and slower making us at Acid look bad anyway.
+
+As we don't really care what we look like, we offer this advise; always
+enable runtime errors until you are quite sure your program can not
+fall over (bringing up the runtime error debugger). Once you are sure
+it is bulletproof THEN disable error checking and let it fly. This also
+applies to official Acid demos as wrong directories and unfound files
+may cause errors also.
+
+
+3. Online Help
+--------------
+
+Previous versions of Blitz incorporated a simple syntax help system
+whereby pressing the Help key when the cursor was on a Blitz command
+would print the syntax of that command on the title bar.
+
+Blitz2.1 now sports a full online reference manual, simply use the Right
+Amiga/Help keyboard combination to invoke the Blitz online help software.
+
+
+4. Library handling
+-------------------
+
+BlitzBASIC commands are loaded by the program from several sources:
+
+acidlibs - a single file containing standard Blitz commands
+deflibs  - commands compiled from third party libs found in blitzlibs:
+userlibs - all libs found in directories branching off blitz2:userlibs
+
+The reason for this change is to make it easier for Acid Software to
+distribute libs in the future. Users who build up a collection of third
+party libraries in their deflibs file will be able to upgrade their
+acidlibs without reconstructing their entire blitzlibs: volume.
+
+Those developers creating their own libraries can now use the userlibs
+drawer to hold beta versions of their compiled libs allowing for much
+faster reloading of libs during development.

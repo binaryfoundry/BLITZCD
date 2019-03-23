@@ -1,0 +1,435 @@
+                                NotePlayer
+                           Standard description
+                         Copyright 1992 Bryan Ford
+                               Version 1.10
+
+
+
+                               Distribution
+                               ~~~~~~~~~~~~
+
+    This package is provided "as is" without warranty of any kind, either
+expressed or implied, including, but not limited to, the implied warranty
+of fitness for a particular purpose.  All risks associated with the use of
+this package are assumed by you.
+
+    This package is freely redistributable as long as none of its contents
+are modified, added, or removed.  You may not charge more for distributing
+it than a small fee to cover the disk copying expenses.  It may not be used
+in or distributed with any commercial program without my written
+permission.  (If you want to use anything in a commercial program, just ask
+me - I probably won't charge anything; I mainly just want to know who is
+using it for what.)  The distribution must contain the following files:
+
+    NotePlayer.doc      This document
+    note.i              Include file used to accessing a NotePlayer
+    notesys.asm         System-friendly audio.device NotePlayer
+    notehard.asm        Simple hardware-banging NotePlayer
+    note.lib            Link library containing assembled versions of
+                        notesys.asm and notehard.asm
+
+
+
+                               Introduction
+                               ~~~~~~~~~~~~
+
+    This document describes the NotePlayer standard.  The NotePlayer
+standard is an application interface specification designed to be
+compatible across all 680x0-based computers.  Its purpose is to allow
+hardware-independent music players to be written which can be used in a
+variety of environments, operating systems, and even on completely
+different computers.  It also makes it easier to simply write music players
+for the Amiga.
+
+    Note that while this document defines note players rather than music
+players, one of the goals is NOT to make NotePlayers interchangeable with
+each other.  (This would be pretty much impossible.)  The goal is to make
+the interface to a note player standardized, so music players can be
+made interchangeable.
+
+    A NotePlayer module is a module written to this standard, which
+provides facilities to music players for playing notes.  These calls, along
+with some timing facilities provided in some other way (such as through the
+GMOD standard), provide everything a music player needs to play music. The
+interface is very powerful, but at the same time very easy to use for a
+music player.
+
+    Two example NotePlayer modules for the Amiga have been provided already
+(described lager).  For an example of a music player that uses the
+NotePlayer standard, see the file "ptsplay.asm" in the MultiPlayer 1.30 (or
+later) distribution.  This is a standard Protracker player modified to use
+a NotePlayer instead of banging on the hardware directly.  (As a result,
+MultiPlayer's Protracker player is one of the friendliest around.)
+
+
+
+                             Client interface
+                             ~~~~~~~~~~~~~~~~
+
+    The only part of a NotePlayer module visible to the music player is a
+short jump table.  A particular NotePlayer module is referred to by a
+pointer to its jump table.  For example, in a portable GMOD module, a
+pointer to the NotePlayer's jump table is given to the module.  The module
+then performs all of its low-level note playing through entrypoints in this
+jump table.
+
+    NotePlayer entrypoints are intended to be called from assembly
+language.  Calling them from C or another high-level language may require
+some kind of stub routines written in assembly language.  (But who wants to
+write music players in C, anyway?)
+
+    The parameters to each of the functions in the jump table entries
+listed below are passed in registers, as indicated on the second line of
+each entry description.  The suffix '.b', '.w', and '.l' indicates which
+part of that register the NotePlayer looks at.  For '.b' and '.w', the
+NotePlayer ignores the top part of the register - it does not have to
+contain zero.
+
+    The NotePlayer routines have pretty much standard calling conventions.
+They may destroy registers D0-D1/A0-A1, but will save all other registers.
+Return codes are returned in D0 where appropriate.
+
+    The entries in the jump table are each four bytes long.  The number of
+entries in the jump table depends on the version number of the NotePlayer.
+The version number of a particular NotePlayer corresponds to the version
+number of the NotePlayer.doc (this document) according to which the
+NotePlayer was written.  The first eight entrypoints are present in all
+NotePlayers.  The currently defined entrypoints are:
+
+
+NotePlayer+$00: info = NoteInfo()
+                D0.l
+
+    Returns a pointer to an information structure in D0.  The structure's
+size depends on the version number in the structure.  The part of the
+structure defined in this version of the standard is:
+
+    info+$00 (byte) Version number of NotePlayer standard used
+    info+$01 (byte) Revision number of this particular NotePlayer
+    info+$02 (byte) General-purpose flags:
+        bit 0: All sound samples must be in MEMF_CHIP
+        bit 1: Amiga "period" extension supported (described later)
+    info+$03 (byte) Maximum number of channels this NotePlayer supports
+    info+$04 (long) Pointer to name of this particular NotePlayer module
+
+
+NotePlayer+$04: errmsg = NoteInit(channels,stereoarray)
+                 D0.l               D0.b       A0.l
+
+    Gets the NotePlayer ready to play notes.  This must be called before
+any other entrypoints are called.  (Exceptions:  NoteInfo and NoteFinish
+may be called before NoteInit.)
+
+    The client passes the number of (monophonic) channels it will need in
+D0, and an array describing the preferred stereo orientation of each
+channel in A0.  The client can ask for between 1 and 128 channels, but if
+it asks for more channels than the NotePlayer supports, NoteInit will fail
+and the client will not be able to use this NotePlayer to play its music.
+
+    The stereoarray, if supplied, must contain as many bytes as the number
+of channels requested. The first byte describes channel 0, the second byte
+channel 1, and so on.  Each byte contains a signed value from -127 to 127
+(-128 is reserved and should not be used) describing "where" this channel
+is supposed to play.  A value of -127 indicates far left; 127 indicates far
+right; 0 indicates center (no stereo).  Other values in this range may be
+used as a balance control, indicating the position on a gradient between
+left and right, although most NotePlayers will simply look at whether the
+byte is negative, positive, or zero.  (Future hot-shot NotePlayers running
+on advanced sound hardware can use two hardware channels per client-visible
+channel to achieve smooth stereo panning; a future version of this standard
+will provide for this situation when it arises.)  If the client passes NULL
+for the stereoarray, an array full of zeros is assumed.
+
+    NoteInit returns zero if the NotePlayer was successfully initialized;
+it returns a pointer to a null-terminated error message if initialization
+failed for some reason or another.  If the call is successful, the client
+may commence playing notes with the NotePlayer, and must call NoteFinish
+when it is done.  If the call fails, the client must not call any other
+NotePlayer entrypoints except the first three, and it does not need to
+(though it may) call NoteFinish.
+
+
+NotePlayer+$08: NoteFinish()
+
+
+    This call stops all currently playing notes and performs whatever
+internal cleanup is necessary when note playing is finished.  If the
+NoteInit call succeeded, the client must call this entrypoint when it is
+finished with the NotePlayer.
+
+
+NotePlyaer+$0c: NoteStart(chan,oneshotdata,oneshotlen,repdata,replen,freq,vol)
+                          D2.b      A0.l       D0.l     A1.l   D1.l  D3.w D4.w
+
+    This entrypoint is the workhorse of the NotePlayer system: it plays
+notes.  Any note previously playing in the channel is stopped, and a new
+note is started.
+
+    The channel number must be between 0 and n-1, where n is the number of
+channels requested in (and granted by) the NoteInit call.  If bit 7 in the
+channel number is set, the NotePlayer takes the logical NOT of the
+parameter as the real channel number, and modifies the behavior of the call
+slightly.  In this case, instead of stopping any currently playing note and
+starting the new note immediately, the change is made after the currently
+playing note finishes its current cycle: when it is about to start the
+repeat part, either directly after the one-shot part finishes, or when the
+current repeat cycle is finished.  The new note will effectively be
+"joined" to the old note, making it possible to implement "release" phases
+of notes, among other things.
+
+    If oneshotlen is nonzero, then it contains the number of 8-bit samples
+in the one-shot part of the note, and oneshotdata points to the sample
+data.  If oneshotlen is zero, the note has no one-shot part, and the repeat
+part (if it exists) is started immediately.
+
+    The replen and repdata parameters work exactly like the one-shot
+parameters.  If repdata is zero, the note has no repeat part, and the
+channel will become silent as soon as the one-shot part is finished.
+
+    If both oneshotlen and replen are zero, then any currently playing note
+is stopped without starting a new note.  This is equivalent in effect to
+the NoteStop entrypoint.
+
+    The freq parameter contains the sampling frequency at which to play the
+note, in Hz.  The vol parameter contains the volume at which to play the
+note, ranging from $000 (silent) to $100 (maximum).
+
+    If flag bit 1 in the Info structure returned by NoteInfo is set, then a
+special extension to the frequency specification is supported, to allow
+Amiga-based "tracker" players to be more easily accomodated.  If the client
+calls NoteStart with D3.w (freq) set to zero, then the frequency is defined
+by an Amiga period value in the high word of D3.  To calculate frequency
+from period, or vice versa, simply divide the known value into 3579545.
+
+
+NotePlayer+$10: NoteStop(chan)
+                         D2.b
+
+    Stops any note currently playing in the specified channel, either
+immediately (if D2.b contains a normal channel number from 0-127), or after
+the current cycle of the currently playing note is finished (if D2.b
+contains a NOTed channel number).  This call is equivalent to calling
+NoteStart with zero in both oneshotlen and replen.
+
+
+NotePlayer+$14: NoteFreqVol(chan,freq,vol)
+                            D2.b D3.w D4.w
+
+    Changes the frequency and volume of the currently playing note, either
+immediately (if D2.b contains a normal channel number from 0-127), or after
+the current cycle is finished (if D2.b contains a NOTed channel number).
+This entrypoint is used to implement slides and fades and such.  The freq
+and vol parameters work exactly as they do in the NoteStart entrypoint.
+
+
+NotePlayer+$18: NoteFreq(chan,freq)
+                         D2.b D3.w
+
+    Changes the frequency of the currently playing note, without changing the
+volume.  Otherwise works exactly the same way as NoteFreqVol.
+
+
+NotePlayer+$1c: NoteVol(chan,vol)
+                        D2.b D4.w
+
+    Changes the volume of the currently playing note, without changing the
+frequency.  Otherwise works exactly the same way as NoteFreqVol.
+
+
+
+
+              Amiga system-friendly NotePlayer (notesys.asm)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    The file "notesys.asm" contains a sample NotePlayer module for the
+Amiga which uses the audio.device to play notes.  To use it, simply link
+"note.lib" with your program.  The symbol "NoteSys" then points to the
+NotePlayer jump table.  (The symbol "_NoteSys" also points to the jump
+table, for high-level language users.)
+
+    Since this NotePlayer uses the audio.device for everything it does, it
+may be somewhat slower than a player that accesses the hardware directly.
+However, as the programmers at Commodore have pointed out many times, using
+the audio.device means there is no need for ugly DMA-delay loops and such,
+which often compensates for the slightly lower efficiency of the
+audio.device.  Moreover, this NotePlayer can give up audio channels as
+needed, and it automatically re-allocates them when they again become
+available, thus allowing beeps and such to be heard through the music.
+
+    This NotePlayer includes a master volume/balance control which is
+completely independent of the main NotePlayer interface.  (In other words,
+the music player can't use it - instead, the main program that's
+responsible for putting the NotePlayer and the music player together uses
+it.)  To set the master volume, call the NoteSysMasterVol function:
+
+    NoteSysMasterVol(volume)
+                      D0.w
+
+    This function is available in both assembly ("NoteSysMasterVol") and C
+("_NoteSysMasterVol" for stack args, "@NoteSysMasterVol" for register
+args).  The volume parameter must be between 0 and $100 (256).  If any
+music is currently playing, the volume changes immediately.  The master
+volume cannot be changed in any way through calls to the entrypoints in the
+normal (music player-visible) jump table.
+
+    If you want separate control of the volume of the left and right
+channels (i.e. for a balance control), use the NoteSysMasterVolBal
+function:
+
+    NoteSysMasterVolBal(leftvolume,rightvolume)
+                            D0.w       D1.w
+
+    This function is also available in assembly and C forms.
+
+    "notesys.asm" can be assembled with A68k version 2.71.
+
+    You can specify the priority level for audio channel allocation with
+the NoteSysAudioPri function:
+
+    NoteSysAudioPri(newpri)
+                     D0.b
+
+    This priority will be applied to all future audio channel allocations.
+
+
+
+             Amiga hardware-banging NotePlayer (notehard.asm)
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    For situations where the audio.device isn't available, is too slow, or
+simply isn't in style, "notehard.asm" can be used instead for 4-channel
+playing.  This module is much smaller and (if you arrange it so DMA delay
+loops aren't needed) faster, although not exactly system-friendly.
+
+    The NotePlayer jump table in "notehard.asm" works exactly the same way
+as in "notesys.asm", except it's externally defined as "NoteHard" (and
+"_NoteHard") instead of "NoteSys".
+
+    For simplicity, the NoteInit call in this NotePlayer does no error
+checking.  In particular, it doesn't check the number of channels requested
+by the music player.  If the music player requests more than four channels,
+NoteInit will succeed, but the first time the music player tries to use
+channel number 4 or higher, Bad Things will happen.
+
+    This NotePlayer imposes a few restrictions, for the sake of simplicity.
+First, the sync-cycle feature (activated by NOTing the channel number) is
+not supported.  Do not hook a music player that uses it to this NotePlayer,
+or your results will be Not Good.
+
+    Second, this NotePlayer doesn't handle samples more than 64K in size.
+
+    Third, it assumes that the first four bytes in chip memory (at absolute
+address 0) contain zero.  This is normally the case anyway, and it is easy
+to enforce in a game or demo that takes over the machine either temporarily
+or permanently.
+
+    Finally, unlike "notesys.asm" (and any other full-featured NotePlayer,
+"notehard.asm" does no mapping of channels; it does not attempt to match
+hardware channels with client channels according to the stereo preferences
+specified in the NoteInit call.  The client's channel 0 goes to hardware
+channel 0, etc.
+
+    This NotePlayer does not need any of the audio interrupts, and you
+should have them all turned off (or redirected to a harmless routine) when
+you use it.
+
+    The DMA delay, of course, is the bane of all Amiga players.
+"notehard.asm" requires that the client (not the music player, but the
+program that hooks the music player and the NotePlayer together) handle DMA
+waiting, for maximum flexibility.  After the music player finishes all its
+activity for a certain cycle (probably including calls to NoteStart) and
+returns to the client, the client must check the longword named
+"NoteHardDMACall" (or "_NoteHardDMACall"), which is defined in
+"notehard.asm".  If this longword is nonzero, it is a pointer to a routine
+which must be called after waiting an appropriate amount of time (usually
+about 7 scanlines).  The routine obeys standard Amiga calling conventions:
+it can munch d0-d1/a0-a1, but saves all other registers.  After the routine
+returns, the client must again check "NoteHardDMACall" and if it's still
+nonzero, wait again and call the new address, and so on until it returns
+zero.
+
+    As an example, if you can't implement full interrupt-driven DMA
+waiting, this scrap of code could do the trick:
+
+        bsr     musciplayer
+1$      move.l  NoteHardDMACall,d0
+        bz      9$
+        move.l  d0,a0
+        moveq   #7-1,d1
+2$      move.b  $dff006,d0
+3$      cmp.b   $dff006,d0
+        beq.s   3$
+        dbra    d1,2$
+        jsr     (a0)
+        bra     1$
+9$
+
+    Of course, playing music will hog a lot less CPU time if you use a CIA
+timer interrupt for this purpose.
+
+    As a final reminder, this NotePlayer never accesses the operating
+system or anything.  The only things it accesses (outside of some internal
+variables) are the DMACON register and the audio registers ($dff0a0 to
+$dff0d8).
+
+    If you (heaven forbid!) want to use this routine while the OS is
+around, you'd better open the audio.device yourself and lock all the
+channels so things don't go haywire if someone else tries to access the
+audio hardware at the same.
+
+    "notehard.asm" can be assembled with A68k version 2.71.
+
+
+
+                               Future plans
+                               ~~~~~~~~~~~~
+
+    In the future I hope to write more NotePlayers to be distributed in
+this package.  Among them:
+
+    * A better hardware NotePlayer that supports sound effects and such.
+
+    * An 8-channel NotePlayer.
+
+    * NotePlayers for the new sound boards for the Amiga.
+
+    It would also be nice to see NotePlayers written for other 680x0-based
+computers besides the Amiga.  This could be very handy for games and other
+programs which are often written for several computers at once.
+
+
+
+                              Version History
+                              ~~~~~~~~~~~~~~~
+
+1.10 (R3, 14-Sep-92)
+        Added NoteSysAudioPri function to notesys.asm, to allow the client
+            to specify the audio channel allocation priority.
+
+1.01 (R2, 25-May-92)
+        Removed 'ptplay.asm' from the NotePlayer distribution, since it
+            can now be gotten in its "native" environment with MultiPlayer.
+
+1.00 (R1, 5-May-92)
+        First release.
+
+
+
+                              Contact Address
+                              ~~~~~~~~~~~~~~~
+
+    I tend to move around a great deal, so mail sent directly to me
+sometimes has a hard time catching up.  If you want mail to reach me (it
+may take a while, but it WILL reach me), send it to this address:
+
+        Bryan Ford
+        8749 Alta Hills Circle
+        Sandy, UT 84093
+
+    I can be reached more quickly (for the time being anyway) on the phone
+or through one of the electronic mail addresses below:
+
+        (801) 944-1990
+        baford@peruvian.utah.edu
+
+

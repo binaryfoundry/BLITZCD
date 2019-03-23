@@ -1,0 +1,560 @@
+0
+5
+14
+38
+11
+Scan Image
+Automatically cuts shapes from the current image.
+Shapes must have a box drawn around them using the same colour. The colour you wish to use is specified from the configuration window.
+0
+5
+26
+38
+11
+Grab Shape
+Allows you to grab shapes using the mouse.
+You can drag a box around the desired area of the current image, the image will be grabbed on the release of the mouse button. Right mouse button exits from this mode.
+0
+129
+14
+94
+11
+Load Shapes
+Loads in shapes, appending them to the end of the current list of shapes.
+Any format that is recongnised by ShapeZ will be auto-deteced and loaded into memory for manipulation editing.
+0
+44
+12
+82
+11
+Load Image
+Loads an image into the image window.
+Supported file format is IFF. If you have Workbench 3 or higher you can load any image that has an associated Datatype.
+0
+45
+24
+82
+11
+Shape Editor
+Activate Shape Editor
+Opens the Shape Editing window.
+0
+129
+24
+94
+11
+Save Shapes
+Saves the current shapes to disk.
+The shapes are saved in the default format as specified in the configuration window.
+0
+5
+36
+24
+11
+View Window
+Toggles a window that displays the current shape.
+
+0
+135
+36
+88
+11
+Help Configuration
+Configure where this bubble appears, and how much information is in it
+
+0
+73
+36
+24
+11
+Insert Mode
+Specifies whether or not scanned or grabbed shapes should be inserted after the current shape, or appended to the end of the shapes list
+Not active for loading shapes.
+6
+25
+89
+225
+13
+Red
+Specify the amount of red in the current colour by sliding this bar
+
+6
+25
+103
+225
+13
+Green
+Specify the amount of green in the current colour by sliding this bar
+
+6
+25
+115
+225
+13
+Blue
+Specify the amount of blue in the current colour by sliding this bar
+
+6
+10
+168
+48
+11
+Remap Shapes
+Remaps all of the shapes in the list to the currently displayed palette.
+It only consideres the remebered palette associated with the current palette, not another palette in the list.
+6
+10
+132
+48
+11
+Load Palette
+Load a new palette into the current palette.
+
+6
+10
+144
+48
+11
+Save Palette
+Save the current palette.
+
+6
+10
+156
+48
+11
+Copy Palette
+Copy the current palette to another in the the list.
+You can specify which palette it is copied to in a requester that appears after you have clicked on the gadget.
+6
+10
+180
+48
+11
+Merge Palettes
+Merge two palettes together.
+There are a range of different ways that this can be done. Clicking on this gadget will bring up another window, and there is more help there.
+6
+60
+132
+48
+11
+Fewer Colours
+Reduce the number of colours in the palette.
+All shapes will be remapped to the reduced palette, but will not have their bitplane depth reduced.
+6
+60
+144
+48
+11
+Match Palette
+Matches the current palette's depth to that of the deepest shape.
+So if one shape uses 256 colours, that will be how many colours are available in the the current palette.
+6
+60
+156
+48
+11
+Order Palette
+Removes colours that are not used by any shapes from the palette.
+
+6
+60
+168
+48
+11
+Palette Info
+Count how many colours are used by all of the different shapes.
+
+6
+60
+180
+48
+11
+Revert to Old Palette
+Will switch the current back to its original form, before you edited anything
+
+6
+110
+132
+48
+11
+More Colours
+Increase the number of colours in the palette.
+The range must be between 2 and 256.
+6
+110
+144
+48
+11
+Insert Palette
+You can insert another palette from the list into the current palette.
+This is useful for adding, for example, a 16 colour sprite palette to the 256 colour main palette.
+6
+110
+156
+48
+11
+Make ALL Shapes As Are Deep as Palette
+Using this button you are able to ensure that all shapes use exactly the same number of colours as in the palette.
+After performing a "Fewer" operation higher bitplanes may be left empty, by clicking on union these extra bitplanes can be removed
+6
+125
+71
+99
+12
+Select Palette
+Select which palette to work with
+ShapeZ allows you to use 6 different palettes. When you are working with a palette ShapeZ presumes that all ShapeZ were generated with that palette.
+6
+30
+14
+261
+53
+Select Colour
+Select a single colour or a range of colours
+You can select a single colour by clicking with the left button on the desired colour. A range of colours can be selected if you hold down shift. Single colours can be added to the range by holding down Alt
+6
+257
+132
+53
+11
+Copy Colour
+Copy selected colours from their current location to a new location in the current palette, selected by you.
+Move your mouse over the palette range selector to see how ranges of colours can be selected.
+6
+257
+144
+53
+11
+Swap Colours
+Exchange two colours in the current palette.
+
+6
+257
+156
+53
+11
+Spread From One Colour to Another
+A graduated range of colours will be generated between the currently selected colour, and one subsiqently specified by you.
+
+6
+257
+168
+53
+11
+Select All Colours
+Select all of the colours in the current palette.
+
+6
+257
+180
+53
+11
+Invert Selected Colours
+All colours that ARE currently selected will be de-selected, and vice-versa.
+
+6
+255
+89
+53
+13
+Set Red
+Allows you to type an integer for the amount of red in the current colour.
+
+6
+255
+103
+53
+13
+Set Green
+Allows you to type an integer for the amount of green in the current colour.
+
+6
+255
+117
+53
+13
+Set Blue
+Allows you to type an integer for the amount of blue in the current colour.
+
+7
+5
+12
+70
+11
+Default Zoom Level
+Resets the editor's zoom level to its default setting.
+
+7
+5
+24
+70
+11
+Make Square Pixels
+Makes all the pixels in the current zoomed editor display square.
+This can make things a little easier.
+7
+5
+36
+10
+11
+Zoom Out
+Zoom out the editor window display.
+
+7
+65
+36
+19
+11
+Zoom In
+Zoom in the editor window display.
+
+8
+5
+42
+15
+15
+Stop Playback
+Stop playing the current animation
+
+8
+19
+42
+15
+15
+Play Animation
+Start showing animation
+Animations are built of all of the tagged shapes in the list being played in sequence at the specified playback rate
+8
+53
+42
+15
+15
+Pause Playback
+Pause the currently playing animation
+
+8
+70
+42
+15
+15
+Range Start
+Sets a marker so that a range of shapes can be tagged. 
+
+8
+87
+42
+15
+15
+Range End
+Tags all shapes from the start marker
+
+8
+118
+42
+15
+15
+Clear All Animation Frames
+Untags every shape, therefore removing all frames of animation
+
+8
+5
+12
+10
+11
+Tag Current Shape
+Tags the current shape for inclusition in the animation.
+Only tagged shapes are included in animations.
+8
+5
+24
+48
+11
+Set Playback Rate
+Set the rate, in Frames-Per-Second, that animations are played back at.
+This can be changed while animations are playing, this will help you tweak them
+10
+5
+12
+90
+11
+Add Shape
+Adds a new shape into the current shapes list.
+
+10
+5
+24
+90
+11
+Cut Shape
+Cuts and shape out of the list, and places it in ShapeZ's clipboard.
+
+10
+5
+36
+90
+11
+Copy Shape
+Copy a shape into ShapeZ's clipboard.
+
+10
+5
+48
+90
+11
+Paste Shape
+Paste a shape from the clipboard to the current shape.
+
+10
+5
+60
+90
+11
+Goto Shape
+Goto any shape in the list, by clicking on this gadget and specifying which you would like to jump to.
+
+5
+240
+70
+16
+16
+Free Hand
+Activates free hand drawing mode.
+
+5
+258
+70
+16
+16
+Draw Line
+Actives line drawing mode. Click and draw lines in the editor window.
+
+5
+276
+70
+16
+16
+Draw Box
+Draw filled or unfilled boxes. Clicking twice on this button will toggle between the two modes.
+
+5
+294
+70
+16
+16
+Draw Circle
+Draw filled or unfilled circles. Clicking twice on this button will toggle between the two modes.
+
+5
+240
+88
+16
+16
+Pick Colour From Shape
+Pick a colour to draw with by clicking on a pixel in the shape displayed by the editor.
+After doing this, you will revert to the previously selected drawing mode.
+5
+258
+88
+16
+16
+Flood Fill
+Flood fill an area of the current shape.
+
+5
+276
+88
+16
+16
+Spray Can
+Sprays radom dots of the current colour over a small radius.
+The radius and flow rates are not configurable. Maybe in the next vesion.
+5
+294
+88
+16
+16
+Restore Old Brush
+When you have cut out and brush and then switched to another mode, the brush is "lost" until you click on this button to bring it back.
+The restored brush will be replaced next time you cut a new brush out.
+5
+240
+106
+16
+16
+Cut Out Brush
+Allows you to select an area of the current shape to use as a brush.
+This brush can then be used in free hand drawing mode.
+5
+258
+106
+16
+16
+Undo Last Operation
+Undoes the last operation.
+This is a recursive undo, so clicking twice will undo-the-undo.
+5
+276
+106
+16
+16
+Toggle Grid
+Toggles the grid on and off.
+The grid will automatically turn off when the shape is zoomed out so far, having a grid would just be awkward.
+5
+294
+106
+16
+16
+Clear Shape
+Sets every pixel in the current shape to the current colour.
+
+5
+240
+178
+16
+16
+Goto First Shape
+Jump to the start of the shapes list.
+
+5
+258
+178
+16
+16
+Goto Previous Shape
+Goto the previous shape in the list.
+
+5
+276
+178
+16
+16
+Goto Next Shape
+Goto the next shape in the list.
+Button27
+5
+294
+178
+16
+16
+Goto Last Shape
+Goto the last shape in the list.
+
+5
+5
+17
+310
+47
+Pick A Drawing Colour
+Select a colour to draw with. This can also been done from the palette window.
+
+5
+170
+70
+16
+16
+Currently Selected Colour
+Displays which colour will be used to draw with.
+

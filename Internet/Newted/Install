@@ -1,0 +1,10 @@
+; NewTED Installer
+; ©1995 Leading Edge Software
+
+if not exists Blitz2:TedOld
+  Rename Blitz2:Ted Blitz2:TedOld
+  Rename Blitz2:Ted.Info Blitz2:TedOld.info
+endif
+  
+copy Ted Blitz2:
+copy Ted.Info Blitz2:

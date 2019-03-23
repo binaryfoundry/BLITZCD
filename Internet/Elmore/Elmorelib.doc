@@ -1,0 +1,618 @@
+  Library name: ELMORELIB
+    Written by: Richard T. Elmore
+     Copyright: 1994 HeadSoft Software
+Library number: 111
+
+
+
+
+******************************************************************************
+***************************** HARDWARE PROGRAMMING ***************************
+******************************************************************************
+
+
+
+
+
+Statement: QUIET 
+****************
+     Syntax: Quiet ChannelMask 
+      Modes: Amiga or Blitz
+Description: 
+This command will silence the sound channels specified by ChannelMask.
+See the description for "Envelope" for more information on channelmasks.
+
+
+Statement: FREQ
+***************
+     Syntax: Freq Channelmask,period
+      Modes: Amiga or Blitz
+Description:
+This command allows you to change the period, or pitch, of the
+currently playing sound effect.  Note that the lower the period,
+the higher the frequency; Thus, a period of 100 would be very
+high-pitched, whereas a period of 30000 would be low-pitched.
+
+
+
+
+Function: TICKS 
+***************
+     Syntax: Ticks  
+      Modes: Amiga or Blitz
+Description: 
+This function returns the number of "ticks" since the Amiga was switched
+on, or since the last "RESETTIMER" command.  The unit of measurement is
+1/60 of a second for NTSC machines, and 1/50 of a second for PAL machines.
+ See Also:
+ ResetTimer
+
+
+
+
+Statement: RESETTIMER 
+*********************
+     Syntax: ResetTimer  
+      Modes: Amiga or Blitz
+Description: 
+Resets the Amiga's hardware timer to zero "ticks."  Read the description
+for "TICKS" for more information.
+
+
+Function: JOYC 
+**************
+     Syntax: JoyC (Port)  
+      Modes: Amiga or Blitz
+Description: 
+This function works similarly to the JoyB() function, however it allows
+you to read the second fire button on two-button joysticks.  It will
+return a 1 if the normal fire button is pressed, a 2 if the second button
+is pressed, or 3 if both buttons are pressed.  Otherwise, it will return
+a zero (no buttons pressed.)
+
+
+
+Statement: VWAITPOS 
+*******************
+     Syntax: VWaitPos RasterLine
+      Modes: Amiga or Blitz
+Description:
+This command is similar to VWAIT, except it allows you to wait for
+any raster position, not just the top of the display.  This is useful
+for interesting graphics effects.
+
+
+
+Function: CHECKAGA
+******************
+     Syntax: CheckAGA  
+      Modes: Amiga or Blitz
+Description: 
+Returns 'TRUE' for AGA machines, otherwise returns 'FALSE.'
+Using ExecVersion alone will not detect an AGA machine.  Kickstart version
+39 can and does run on pre-AGA machines, such as the A3000, etc.  Therefore,
+this function is provided to allow you to accurately determine if the
+AGA chipset is present.
+
+
+
+
+Function: PEEKTO$ 
+*****************
+     Syntax: PeekTo$ (Address,byte)  
+      Modes: Amiga or Blitz
+Description: 
+PeekTo$() is similar to the Peek$() function, except you can specify
+what terminator byte to use.  With Peek$() the terminator will always
+be zero, but PeekTo$() will accept any byte value as a terminator.
+
+
+
+Statement: FORCEPAL 
+*******************
+     Syntax: ForcePAL  
+      Modes: Amiga or Blitz
+Description: 
+This command switches the current screen from NTSC to PAL.
+
+
+
+Statement: FORCENTSC 
+********************
+     Syntax: ForceNTSC  
+      Modes: Amiga or Blitz
+Description: 
+This command switches the current screen from PAL to NTSC.
+
+
+
+Function: DEPTH 
+***************
+     Syntax: Depth (Bitmap#) 
+      Modes: Amiga or Blitz
+Description: 
+This function returns the depth of the specified Blitz2 bitmap object.
+
+
+
+Statement: CLICKMOUSE 
+*********************
+     Syntax: ClickMouse  
+      Modes: Amiga or Blitz
+Description: 
+Similar to Mousewait, this command halts program execution until
+the user clicks the mouse.  There must must be a separate mouseclick
+for each CLICKMOUSE command, unlike Mousewait, which will continue
+through without pausing if the left mouse button was already being
+pressed.    NOTE:  Avoid using this command in Amiga mode, as it
+seriously degrades multitasking.
+
+
+
+Function: CHIPFREE
+******************
+     Syntax: ChipFree 
+      Modes: Amiga or Blitz
+Description: 
+This function will return the size, in bytes, of the largest block
+of free CHIP memory in your system.
+See Also:
+FastFree
+LargestFree
+
+
+
+Function: FASTFREE 
+******************
+     Syntax: FastFree 
+      Modes: Amiga or Blitz
+Description: 
+This function returns the size of the largest block of FAST memory.
+
+
+
+Function: LARGESTFREE 
+*********************
+     Syntax: LargestFree 
+      Modes: Amiga or Blitz
+Description: 
+This function will return the size of the largest chunk of memory
+available.  This memory may be FAST or CHIP, depending on your system.
+
+
+
+
+
+******************************************************************************
+***************************** MATH/NUMERIC FUNCTIONS *************************
+******************************************************************************
+
+
+
+Function: XOR
+*************
+     Syntax: Xor (expression,expression) 
+      Modes: Amiga or Blitz
+Description: 
+Returns Exclusive OR of two expressions
+This function returns the "exclusive-OR" or the two supplied arguments.
+For example, Xor(255,170) will return 85, and Xor(-1) will return 0.
+
+
+
+Function: LARGEST.L 
+*******************
+     Syntax: Largest.l (Long Integer1,Long Integer2)
+      Modes: Amiga or Blitz
+Description:
+This function will return the larger of the two supplied long integers.
+For example, Largest.l(255,20045) would return 20045.
+
+
+Function: SMALLEST.L 
+********************
+     Syntax: Smallest.l (Long Integer1,Long Integer2)
+      Modes: Amiga or Blitz
+Description:
+This function will return the smaller of two supplied long integers.
+For example, Smallest.l(-999,5) would return -999.
+
+
+Function: LARGEST.Q 
+*******************
+     Syntax: Largest.q (Quick1,Quick2)
+      Modes: Amiga or Blitz
+Description:
+Identical to the function "Largest.l" (above) except that it accepts
+quick-type variables or expressions.
+
+
+Function: SMALLEST.Q 
+********************
+     Syntax: Smallest.q (Quick1,Quick2)
+      Modes: Amiga or Blitz
+Description:
+Identical to "Smallest.q" but uses quick-types.
+
+
+Function: LARGEST 
+*****************
+     Syntax: Largest (Integer1,Integer2)
+      Modes: Amiga or Blitz
+Description:
+This is the fastest "Largest()" function.  Note that if passed floats
+or quick-types, the fraction will be cut off.  See description for
+Largest.l() and Largest.q().
+
+
+Function: SMALLEST 
+******************
+     Syntax: Smallest (Integer1,Integer2)
+      Modes: Amiga or Blitz
+Description:
+Like Smallest.l() and Smallest.q(), above, with less accuracy, but
+faster than the long-integer and quick-type versions.
+
+
+
+Function: AVG.L 
+***************
+     Syntax: Avg.l (Long Integer 1,Long Integer 2)
+      Modes: Amiga or Blitz
+Description:
+This function will return the average of two long-integers (although
+the fraction is cut off.)  Thus, Avg.l(5,15)=10, and Avg.l(1,2)=1.
+(Since fractions will be cut off with this function, you may wish to
+use the quick-type version of this function for more accuracy.)
+
+
+Function: AVG.Q 
+***************
+     Syntax: Avg.q (Quick1,Quick2)
+      Modes: Amiga or Blitz
+Description:
+See the description for "Avg.l()" (above)
+
+
+Function: AVG 
+*************
+     Syntax: Avg (Integer1,Integer2)
+      Modes: Amiga or Blitz
+Description:
+See the description for "Avg.l()" (above)
+This version is the fastest Avg() function available.
+
+
+
+Statement: RRANDOMIZE 
+*********************
+     Syntax: RRandomize Seed
+      Modes: Amiga or Blitz
+Description:
+Given a float-type expression or variable, RRandomize will "seed" the
+reproducible random number generator.  The sequence of pseudo-random
+numbers produced by "RRND" will be the same for each seed given it.
+If you require trully random numbers, try "RRandomize Ticks."
+
+
+Function: RRND 
+**************
+     Syntax: RRnd (Low,High)
+      Modes: Amiga or Blitz
+Description:
+Given a range such as (1,6) this function will return a random number
+based on the seed given it by "RRandomize."  These sets of "random"
+numbers can be repeated if you provide the same seed.  This can be
+useful in games, etc. so that using "RRandomize Level#" and then using
+the RRnd() function to randomly draw the screen, each time the player
+returns to that particular level, it will be the same.
+
+
+
+*****************************************************************************
+********************************* ARRAY FUNCTIONS ****************************
+*****************************************************************************
+
+
+
+Function: INDEX
+***************
+     Syntax: Index List() 
+      Modes: Amiga or Blitz
+Description: 
+Returns index from top of LIST
+This function will return the current index number of the supplied
+List() array passed to it.  For example, if the list pointer is currently
+at item 10 in the list, Index would return 10.
+
+
+
+
+
+
+******************************************************************************
+***************************** INTUITION PROGRAMMING **************************
+******************************************************************************
+
+
+
+
+Statement or Function: REQUEST 
+******************************
+     Syntax: Request (Title$,Text$,GadgetText$)
+      Modes: Amiga
+
+***************************************************************************
+*  This command is 2.0-specific.  If you're still using 1.3, this command *
+*  will be unavailable to you.                                            *
+***************************************************************************
+
+Description:
+"Request" can be used as both a command or a function.  You may
+provide an optional title (or "" for default window title) a string
+of text (separated by pipes "|" for each line) and a string containing
+text for gadgets within the requester.  (Separate with "|" if you
+need more than one.)
+Used as a command, it merely displays the requester on the current
+screen and waits for the user to click a gadget.  As a function, it
+will also return a number corresponding to the gadget selected.
+The gadget on the right should be reserved for negative responses
+such as "CANCEL" or "NO" and will always return zero.  Other gadgets
+will return values in the order that they appear, beginning with
+1 for the first gadget, 2 for the next, etc.
+
+
+
+Function: ACTIVESCREEN 
+**********************
+     Syntax: ActiveScreen  
+      Modes: Amiga
+Description: 
+This function returns ADDRESS of current Intuition screen.  This is
+useful with many Intuition library commands, or to find out information
+about the currently active screen.
+
+
+
+Function: SCREENWIDTH 
+*********************
+     Syntax: ScreenWidth  
+      Modes: Amiga
+Description: 
+This function returns the pixelwidth of the currently active screen.
+
+
+Function: SCREENHEIGHT 
+**********************
+     Syntax: ScreenHeight  
+      Modes: Amiga
+Description: 
+This function returns the pixelheight of the active screen
+
+
+Function: ACTIVEWINDOW 
+**********************
+     Syntax: ActiveWindow  
+      Modes: Amiga
+Description: 
+This function returns the address of the current window.
+This address is mainly used in conjunction with Intuition library
+commands.
+
+
+
+Statement or Function: WAITFOR 
+******************************
+     Syntax: WaitFor (IDCMP Code)  
+      Modes: Amiga
+Description: 
+Similar to WaitEvent, WAITFOR puts the Amiga to "sleep" until a specified
+IDCMP code wakes it up.  For example, WaitFor $400 would wait until the
+user strikes a key, and WaitFor $8 would wait until the "close" gadget
+of the current window was clicked on.  These IDCMP codes are additive,
+so WaitFor $408 would wait until either the "close" gadget was selected,
+or a key was pressed.  Refer to the section on "windows" in the Blitz2
+Reference Manual for more information on IDCMP codes.
+
+
+
+Statement: SHOWREQUESTERS 
+*************************
+     Syntax: ShowRequesters OPTION
+      Modes: Amiga or Blitz
+Description:
+
+OPTIONS:  0=Cancel all requesters
+          1=Show requesters on Workbench Screen
+          2=Direct requesters to current window
+
+This command allows you to force system requesters like "Please insert
+volume Foo in any drive" etc. to either be turned off, directed to the
+workbench, or directed to the current window.  When requesters are turned
+off, the system will behave as if the "CANCEL" gadget was selected for
+each requester that would otherwise have been displayed.  Be sure to
+re-activate requesters before exiting your program!
+
+
+
+
+
+
+******************************************************************************
+********************************** STRING HANDLING ***************************
+******************************************************************************
+
+
+
+
+
+Function: CHECKSUM 
+******************
+     Syntax: Checksum (String$) 
+      Modes: Amiga or Blitz
+Description: 
+Given a string, Checksum() will return a unique 32-bit integer as
+a checksum, useful in situations such as serial transfers, etc. to
+ensure both parties have the same data.
+
+
+
+
+
+Function: CHARCOUNT 
+*******************
+     Syntax: CharCount (String$,byte) 
+      Modes: Amiga or Blitz
+Description: 
+This function will return the number of occurances of a given byte
+within a string.  For example, CharCount(text$,32) will count the
+number of spaces in text$.
+
+
+
+Function: SEARCHBEGIN 
+*********************
+     Syntax: SearchBegin (String$,byte,# from Begin) 
+      Modes: Amiga or Blitz
+Description: 
+Similar to Instr(), SearchBegin will search the given string
+for the specified byte.  For example, SearchBegin(a$,32,1)
+will return the character position of the first space in a$,
+while SearchBegin(a$,32,3) will return the position of the
+third space.  If the byte is not found in the string, SearchBegin
+will return a zero.
+
+
+
+Function: SEARCHEND
+*******************
+     Syntax: SearchEnd (String$,byte,# from End) 
+      Modes: Amiga or Blitz
+Description:
+Like SearchBegin() (above) except it searches from the end of
+the string to the front.  For example, SearchBegin(a$,asc("A"),2)
+will return the character position of the second-from-last letter
+"A" in the string 'a$.'
+
+
+Function: CIPHER$ 
+*****************
+     Syntax: Cipher$ (String$) 
+      Modes: Amiga or Blitz
+Description: 
+The Cipher$() function will encrypt or decrypt a string passed to it.
+This is especially handy if you don't want users "zapping" your executeable
+or data files to read it's contents.  Note that Cipher$() can only
+decrypt strings previously created with Cipher$().
+
+
+
+Function: NULL
+******************
+     Syntax: Null (String$)
+      Modes: Amiga or Blitz
+Description: 
+Many Amiga shared libraries (like the DOS library) require addresses
+of null-terminated strings as arguments.  This function will return
+a long-integer address of a null-terminated string in memory for such
+commands.
+
+
+
+Function: REPEATS 
+*****************
+     Syntax: Repeats (String$) 
+      Modes: Amiga or Blitz
+Description: 
+This function will return the number of repeated bytes at the
+beginning of your string.  Thus, Repeats("...Test") would return 3,
+while Repeats("Example") would return 1.  If the string is null,
+Repeats() will return zero.
+
+
+Function: SPACE$
+****************
+     Syntax: SPACE$ (number of spaces)
+      Modes: Amiga or Blitz
+Description:
+This function is identical to the Space$ function in many other dialects
+of BASIC.  It will return a string containing the desired number of
+spaces, making it easier to align tables etc. to the screen or printer.
+
+
+
+******************************************************************************
+***************************** LIBRARY PROGRAMMING ****************************
+******************************************************************************
+
+
+These functions will return the base address of their respective libraries,
+for advanced system programming.  Note that register A6 will also be
+loaded with this address, to make programming a bit easier for assembly
+routines.
+
+
+
+Function: INTUITIONBASE 
+***********************
+     Syntax: IntuitionBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns Intuition Library base
+
+
+Function: DOSBASE 
+*****************
+     Syntax: DosBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns DOS Library base
+
+
+Function: GRAPHICSBASE 
+**********************
+     Syntax: GraphicsBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns Graphics Library base
+
+
+Function: FFPBASE 
+*****************
+     Syntax: FFPBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns FFP Math Library base
+
+
+Function: DISKFONTBASE 
+**********************
+     Syntax: DiskFontBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns DiskFont Library base
+
+
+Function: COMMODITIESBASE 
+*************************
+     Syntax: CommoditiesBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns Commodities Library base
+
+
+Function: ICONBASE 
+******************
+     Syntax: IconBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns Icon Library base
+
+
+Function: REXXSYSBASE 
+*********************
+     Syntax: RexxSysBase  
+      Modes: Amiga or Blitz
+Description: 
+Returns RexxSys Library base
+

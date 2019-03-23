@@ -1,0 +1,684 @@
+@DATABASE "Multitudinous"
+@NODE "MAIN" "MAIN"
+@TOC "MAIN"
+
+                                Multitudinous.
+     
+                                Version V5.5
+
+                              K.Winspear 1995.
+
+                     All Rights Are Reserved Worldwide.
+
+
+                        @{"     " LINK "What_is_Multitudinous"} What is Multitudinous
+                        @{"     " LINK "How_to_start_Multitudinous"} How to start Multitudinous
+                        @{"     " LINK "HD_Install"} HD_Install
+                        @{"     " LINK "Disclaimer"} Disclaimer
+                        @{"     " LINK "Shareware!"} Shareware!
+
+                        @{"     " LINK "Main_Part"} Multitudinous Main Screen
+
+                        @{"     " LINK "Editor"} Multitudinous Editor
+
+                        @{"     " LINK "Thanks"} Thanks To...
+
+
+
+@ENDNODE
+@NODE "Shareware!"
+@TOC "MAIN"
+Multitudinous V5.5 is Shareware, register and you will get a .Key File and
+no Shareware requesters/waiting time...
+
+All upgrades will be FREE...
+
+@ENDNODE
+@NODE "What_is_Multitudinous"
+@TOC "MAIN"
+
+The following is available:-
+
+ - Multitudinous is a HD-Menu or Disk-Menu.  
+ - With Multitudinous programs can be started with a click of the mouse.
+ - Displays the time date and memory at all times.
+ - Has Workbench support - starts program as double-clicked from WB.
+ - The Editor is a separate program.
+ - Full online Amigaguide Help.
+ - Each Menu holds 55 gadgets.
+ - Has it's own Palette.
+ - Each menu can have it's own colours.
+ - Each gadget has it's own colour and font.
+ - Five fonts.
+ - Appicon, drag an icon onto the Appicon to Read, Edit etc.
+ - Make new menus, the number of menus is endless, 55 gadgets to a menu.
+
+                  ------------------------------------
+
+ When  Multitudinous is run for the first time, it will search for it's
+own fonts, these are Topaz.font 8 & 11, GTBMenu.Font 8, 2001 8, Helvetica.
+If it can't find them, it will alert you to the fact and then abort.
+
+                  ------------------------------------
+
+ It also looks  for a file named  'M.config' in the MConfigs: Directory.
+ 
+If 'M.Config' wasn't't found, it will alert you of the fact and 
+abort. You can edit 'M.Config' BUT DO NOT RENAME IT?
+
+
+ But don't worry the Install program will install these for you.
+
+                  ------------------------------------
+
+            You will now  be  presented with the main screen.
+
+                  You are ready to use Multitudinous.
+
+@ENDNODE
+
+@NODE "How_to_start_Multitudinous"
+@TOC "MAIN"
+
+How to start Multitudinous:-
+
+The easiest  way  to  start  Multitudinous  is  by  putting  it  into the 
+WBStartup-drawer on the  boot-harddisk or WorkBench disk.  It will be
+started automatically  after each reset.
+
+Or you can double-click on the Icon at any time to start Multitudinous.
+
+
+@ENDNODE
+
+@node "HD_Install"
+@TOC "MAIN"
+
+INSTALLER:- 
+
+Simply double-click on the `InstallMultitudinousV5.5' icon, After a few 
+moments the installer will step you through the installation procedure.
+
+MANUAL:-  
+
+You can drag Multitudinous V5.5 and MConfigs directory into the 
+Directory
+of your choice, Multitudinous V5.5 and the MConfigs directory MUST be in 
+the same Directory, other wise Multitudinous V5.5 won't find M.Config.  
+
+These four fonts must be copied to your SYS:Fonts directory:-
+
+                 Topaz.font 8 & 11
+                 GTBMenu.Font 8
+                 2001 8
+                 Helvetica.
+
+            That's it you are ready to use Multitudinous.
+
+@endnode
+
+@NODE "Disclaimer" 
+@TOC "MAIN"
+
+Disclaimer:-
+
+A Friend tells me I need this..
+
+  I, Kevin Winspear, take no responsibility for any thing that goes
+wrong with this progam (although it shouldn`t!), accidental or otherwise.
+Or, in other words, if any thing goes wrong, you can`t sue me. If you have
+any problems contact me at the address at the bottom of this doc file.
+  The copyright does remain with me, so don`t go creating a progam
+called Multitudinous because if I find out, your dead (financially!)
+  The shareware version is freely distributable if distributed along
+the following guidelines:-
+
+    1. The files are not altered in anyway whatsoever.
+    2. The files are not to be crunched, apart from archiving with
+       LHA or LZX (nice proggy! shame about the bugs in 1.20!).
+    3. The archive must contain the following:-
+
+        Multitudinous
+	Multitudinous.info
+	MConfigs/AppIcon.info
+	MConfigs/M.Config
+	MConfigs/M.GamesConfig
+	MConfigs/M.Grafixconfig
+	MConfigs/M.Musicsconfig
+	MConfigs/M.Prefsconfig
+	MConfigs/Utilsconfig
+	MConfigs/MHG
+	MConfigs/Multi.Key
+	MConfigs/Multiprefs
+	MConfigs/Multitudinous-Editor
+
+    4. Multitudinous is not allowed to be distributed for profit.
+
+    5. Permission is required to place this program on a coverdisk,
+       or inclusion of a compilation (Fred Fish and Amiga Shopper
+       don`t need permission because I love them so much!), See
+
+@ENDNODE
+
+@NODE "Main_Part"
+@TOC "MAIN"
+
+Multitudinous's Main Screen:-
+
+
+                        @{"     " LINK "Main-Screen"} Main-Screen
+                        @{"     " LINK "Four Button Gadgets"} Four Bottom Gadgets
+                        @{"     " LINK "Three Top Gadgets"} Three Top Gadgets
+                        @{"     " LINK "HotKeys"} HotKeys
+                        @{"     " LINK "Right Mouse button"} Right Mouse button
+
+@ENDNODE
+
+@NODE "Main-Screen" 
+@TOC "MAIN"
+
+
+The Main-Screen:-
+
+The main screen has 55 gadgets for the  user to click  on one of the
+gadgets to start a user - defined program. 
+
+@ENDNODE
+
+@NODE "Four Button Gadgets"
+@TOC "MAIN"
+
+Four Button Gadgets:-
+
+Along with normal gadgets there are four gadgets at the button right.
+ 
+ Quit:- Quit's Multitudinous, after asking you, are you sure?
+
+ Info:- For  information about the Author.
+
+ Edit:- Will load up the Editor, which is a separate program, when clicked
+the editor will load the menu you had displayed in the main part of
+Multitudinous at the time you clicked on the edit gadget.
+
+ App:- The App gadget will close the main part of Multitudinous and put an
+Appicon onto your Workbench for you to drag other icons to read, edit etc.
+
+@ENDNODE
+@NODE "Right Mouse button"
+@TOC "MAIN"
+
+Right Mouse button:-
+
+If the right mouse button is Pressed,  the  screen  closes and opens a
+window on the Workbench screen, to get back to the main screen click the
+right mouse again, this will return you to the  main screen.
+
+@ENDNODE
+@NODE "HotKeys"
+@TOC "MAIN"
+
+HotKeys:-
+
+Pressing the HOTKEY, which is, 'left control, left shift and s' will return
+you to the main screen.
+
+@ENDNODE
+@NODE "Three Top Gadgets"
+@TOC "MAIN"
+
+Three Top Gadgets:-
+
+The far right is the Depth Gadget, next in clicking on this will scroll
+Multitudinous down, revealing the Workbench, next to this will scroll 
+Multitudinous back to the top.
+
+And not for getting the Close gadget at the top left, this will Quit
+Multitudinous, after asking you, are you sure?
+
+@ENDNODE
+
+@NODE "Editor"
+@TOC "Main"
+
+                           Multitudinous's Editor.
+
+                                Version V5.5
+
+                              K.Winspear 1995.
+
+                     All Rights Are Reserved Worldwide.
+
+                        @{"     " LINK "Four_Column_titles"} Four Column-titles
+                        @{"     " LINK "ListView_Gadgets"} ListView Gadgets
+                        @{"     " LINK "Gadget_Name"} Gadget Name
+                        @{"     " LINK "Filename"} Filename
+                        @{"     " LINK "Password"} Password             
+                        @{"     " LINK "Start-Mode"} Start-Mode
+                        @{"     " LINK "TEST_Gadget"} Test Gadget
+                        @{"     " LINK "Colour_Gadgets"} Colour Gadgets 
+                        @{"     " LINK "Palette"} Palette
+                        @{"     " LINK "Preferences"} Preferences
+			@{"     " LINK "App-Window"} App-Window
+                        @{"     " LINK "Fonts"} Fonts   
+                        @{"     " LINK "Copy&Delete"} Copy & Delete
+                        @{"     " LINK "About"} About
+                        @{"     " LINK "Help"} Help
+                        @{"     " LINK "Re-Load"} Re-Load
+                        @{"     " LINK "Save_Gadget"} Save Gadget
+                        @{"     " LINK "Save_As"} Save As
+                        @{"     " LINK "Cancel"} Cancel
+
+
+
+@ENDNODE        
+@NODE "Four_Column_titles"
+@TOC "Editor"        
+
+Four Column-titles.
+
+Can be changed by clicking in one of the four boxes and entering the new
+titles and then press return.
+
+@ENDNODE
+@NODE "ListView_Gadgets"
+@TOC "MAIN"
+
+ListView Gadgets.
+
+The four listview-gadgets represent the four gadget-columns. Clicking 
+on
+one of the listview gadgets presses it in so you know you are editing that
+listview gadget. You can  select the gadget to be edited in these by
+clicking on your left mouse button and a bar will highlight that name
+(gadget).
+
+@ENDNODE
+
+@NODE "Gadget_Name"
+@TOC "Editor"
+
+Gadget Name.
+
+When a gadget is selected from one of the listview gadgets, it  can  be 
+edited. By using the GadgetName under the Listview Gadgets. 
+
+So for example when you click on this gadget in the main part of
+Multitudinous you want to start Opus you would, Click in the Gadget Name
+box, (delete any existing name with the Del or back space key) and then
+type in Opus, then press return.
+
+@ENDNODE
+
+@NODE "Filename"
+@TOC "Editor"
+
+Filename.
+
+When a gadget is selected from one of the listview gadgets, it  can  be 
+edited. By using the Filename under the Listview Gadgets.
+
+Click on the blue box next to Filename will bring up a File requester for
+you to look for a program, It's best to click on the right mouse button to
+get the full path of your program, like most file requesters find the
+program you want then double-click on the program, this will put the full
+path and the name of your program in the string gadget next to the blue
+box.  
+
+So as for our example, we would click on the blue box to bring up the file
+requester then click on the right mouse button and go through the
+directories for Opus, once we've found opus we double-click on opus, this
+will put the full path and the name opus in the string gadget next to the
+blue box.
+
+You can always click in the string gadget and type the full path and name
+of the program. BUT YOU MUST KNOW THE FULL PATH WHERE THE PROGRAM IS.
+
+Please remember any programs with a space in the name you try to start
+from Multitudinous will not work, the Amiga dose like spaces in filenames
+or directories.
+
+If for example you had a program called 'Multitudinous V5.3', notice it
+has a space, rename it like this 'Multitudinous_V5.3'.
+
+@ENDNODE
+@NODE "Password"
+@TOC "Editor"
+
+Password.
+
+You can add a password to a gadget, after selecting a gadget from the 
+listview(s), click in the Password string gadget and type in anything up to
+10 characters. The password will have to be exactly the same as you type in
+this string-gadget. Example:- Typing 'PPP' in capital letters, when 
+prompted to enter a password you must type in the password in capital 
+letters, you can mix like so 'PpP' or 'P*P' etc.  
+
+@ENDNODE
+@NODE "Start-Mode"
+@TOC "Editor"
+The Program start-mode:-
+
+Now you have to select the Start-mode. After selecting Start-Mode six
+gadgets will drop down. 
+
+        
+                @{"     " LINK "Launch"} Launch
+                @{"     " LINK "WBRun"} WBRun
+                @{"     " LINK "Execute"} Execute
+                @{"     " LINK "CLI"} CLI
+                @{"     " LINK "Options"} Options
+                @{"     " LINK "Script"} Script
+                @{"     " LINK "Menu"} Menu
+                
+
+@ENDNODE
+@NODE "Launch"
+@TOC "Start-Mode"
+Startmode Launch.
+
+In the mode Launch the program will be started normally and Multitudinous
+quits.
+
+@ENDNODE
+@NODE "WBRun"
+@TOC "Start-Mode"
+Startmode WBRun.
+
+In the mode WBRun, the program will be started normally, Multitudinous
+closes the screen and iconifies. 
+
+WBRun will run all programs which support Workbench as double-clicked from
+Workbench.
+
+If a program is not Workbench supported then a requester will alert you
+that the program is not a Workbench supported and try CLI as Startmode.
+
+@ENDNODE
+@NODE "Execute"
+@TOC "Start-Mode"
+Startmode Execute.
+
+In the mode Execute, the program  will  be started.  Multitudinous screen
+stays open, other programs  can be started by clicking on gadgets.
+
+@ENDNODE
+@NODE "CLI"
+@TOC "Start-Mode"
+Startmode CLI.
+
+In this mode `CLI` a requester pops up for you to enter a CLI command, for
+example if you entered in the Full-Path String-Gadget c:Ed and
+programstart- mode was CLI when the requester  pops  up and you type in
+S:Startup-Sequence it will Run 'Ed S:Startup-Sequence'.
+
+@ENDNODE
+@NODE "Options"
+@TOC "Start-Mode"
+Startmode Options.
+
+After assigning this for your program-startmode will bring up a 
+window letting you choose from Cli, Run, Launch, Execute or None.
+
+@ENDNODE
+@NODE "Script"
+@TOC "Start-Mode"
+Startmode Script.
+
+Selecting this will let you execute AmigaDos Scripts.
+
+For example you could make a script like the following lines:-
+
+c:cd work:mp
+c:stack 40000
+runback work:mp/mediapoint
+
+@ENDNODE
+@NODE "Menu"
+@TOC "Start-Mode"
+Startmode Menu.
+
+In the mode Menu, a new configfile  will be loaded after the gadget has
+been  selected form the main part of Multitudinous. All gadgets,
+titles, colours, fonts and  the  entries  specified  in the new  configfile
+will be loaded. Here is an example for an entry for a Gadget in the Editor.
+
+
+                       Gadget Name:- Graphic                         
+                          FileName:- DH0:MConfigs/M.graphicconfig
+                         StartMode:- Menu
+                        
+
+After this gadget has been selected, again from the main part of
+Multitudinous, the configfile "DH0:MConfigs/M.graphicconfig" will be loaded. All
+Gadgets will now become new functions, declared in the new-loaded
+configfile ("M.GraphicConfig"). If the configfile was not found it  will
+not load and alert you what went wrong - Go back in the editor and check
+the full path of the configfile.
+
+If you have click on Startmode and wish to cancel StartMode without
+selecting one, Press your right mouse button.
+
+@ENDNODE
+@NODE "Test_Gadget"
+@TOC "Editor"
+The Test-Gadget:-
+
+It's for viewing what the selected gadget will look like. This Gadget is
+the same size as the Main Gadgets.
+
+
+@ENDNODE
+@NODE "Colour_Gadgets"
+@TOC "Editor"
+The Colour-Gadgets:-
+
+With this, you can select the background colour for the selected gadget.
+
+@ENDNODE
+@NODE "Palette"
+@TOC "Editor"
+Colour Palette:-
+
+You can change the Gadget colours to suit you. After clicking on this
+gadget will bring up a window containing the 8 Colours for the gadgets.
+
+Click on the colour you want to change and then use the slider gadgets on
+the left to change the colours, if you want to reset to default click on 
+the gadget at the top right of this window, named Reset or click on the 
+gadget next to this called last saved to load the last saved colour 
+palette.
+
+@ENDNODE
+@NODE "Preferences"
+@TOC "Editor"
+Preferences:-
+
+Clicking on Preferences will open a window, from here you tell
+Multitudinous how to start by clicking on the cycle gadget, Normal,
+AppIcon, Iconify.
+
+Next you can select which program you want to run when you drag an Icon on
+to the AppIcon.
+
+Use the blue file gadget box to bring up the file requester to locate the
+program, this will put the full path into the string gadget for you.
+
+At the bottom of this window you can type in the two string gadgets the X
+& Y of the iconify window, in other words where about on your 
+Workbench you would like the Iconfiy window to open. 
+
+@ENDNODE
+@NODE "App-Window"
+@TOC "Editor"
+
+App-Window:-
+
+After you have selected a gadget from one of the listview gadgets you can
+then click on App-Windpw, this will put an App-Window on the Workbench,
+clicking on the close gadget will close the App-Window and will not set
+anything. Now you can click 'n' drag an icon into this window, this will
+return you to the editor and everything will set for you, all you have to
+do is select the gadget colour/font. 
+
+
+@ENDNODE
+@NODE "Fonts"  
+@TOC "Editor"
+
+You can assign one off the five Fonts to each gadget. Select one of the
+gadgets from one of the listview gadget then select a font by clicking on
+it, if you can not see the font you want then use the scroll bar at the
+right.
+
+@ENDNODE
+@NODE "Copy&Delete"
+@TOC "Editor"
+Copy/Delete-Gadget:-
+
+With these gadgets you can Copy or Delete Gadgets. 
+
+To Copy a gadget, Select the Gadget to be copied - Click on Copy - Select
+destination by double-click.  
+
+Delete:- Select the Gadget to be deleted - Click on Delete then double-click
+on the Gadget to confirm. 
+
+In both cases you will be ask to confirm if you want to delete or 
+copy the selected gadget.
+
+Status:- Lets you know what is happening By printing  Copying...,
+Deleting... or Waiting...  Don't for get to click 'OFF' when  finished, if
+you do make a mess and Delete some thing's you did not want to, click on
+Re-Load, explained later.
+
+@ENDNODE
+@NODE "About"
+@TOC "Editor"
+About:-
+
+This will display information about the Author and Version number.
+
+@ENDNODE
+@NODE "Help"
+@TOC "Editor"
+The Help Gadget:-
+
+This is the Online-Help. When this help is activated a requester will pop
+up letting you know Help is now activated.
+
+The gadget will be pressed down until you click on the help again to turn
+it off. 
+
+Any gadget can now be selected and the appropriate help-message will be
+displayed in full Amigaguide, once the amigaguide comes up you can always
+brows through the guide, or you can click on the amigaguide's close gadget
+and then click on another Multitudinous gadget you need help on and again
+the amigaguide will come up. 
+
+To quit the help-mode, click onto the Help-Gadget again.
+
+@ENDNODE
+@NODE "Re-Load"
+@TOC "Editor"
+Re-Load:-
+
+This re-loads the configfile you are editing, first it will ask you to
+confirm this. 
+
+All changes will be lost.
+
+
+@ENDNODE
+@NODE "Save_Gadget"
+@TOC "Editor"
+The Save Gadget:-
+
+All changes are saved. Then the EDITOR quits and the main part of
+Multitudinous Re-Loads the  configfile.
+
+
+@ENDNODE
+@NODE "Save_As"
+@TOC "Editor"
+The Save AS Gadget:-    
+
+You can save the configfile you are editing with another name. 
+
+With this, you can create new configfiles easily. 
+
+All the Gadgets and colours are saved as well. 
+
+When you config a Gadget to load the new configfile just Delete the
+Gadgets and change names, colours, fonts, to suit you.
+
+You can always make a gadget load the M.NEWConfig, this is a new menu with
+only the 5 Menu gadgets and all the rest are blank gadgets, ready for you
+to assign a programs, colours, fonts, etc. to each gadget.
+
+
+@ENDNODE
+@NODE "Cancel"
+@TOC "Editor"
+Cancel:-
+
+Clicking on this will quit the EDITOR and all changes will be lost
+and the main part of Multitudinous will Re-Load the configfile.
+
+A requester will come up and ask you to confirm this option.
+
+
+@ENDNODE
+@NODE "Thanks"
+@TOC "Main"
+
+A big THANKS to..
+
+
+        All  the  people  who  registered their copies of Multitudinous 
+                          ...Thank you....
+
+And my wife and daughter for putting up with me after spending hundreds of 
+hours on the Computer compiling this program. 
+
+Lee Packham, The cool programmer `ere Down South', For his help and
+support. Thanks Lee...       
+
+Matthew Tillett, For trying to get people to support BLITZ BASIC II...
+        
+                        Anyone I've forgotten..
+
+The End:-
+
+        Well, that's it. I hope that you enjoy using Multitudinous and
+get some use out of it. Don't worry if it seems a little complicated at
+first, it really is quite simple to use  once you've got the hang of it.
+Practice makes perfect
+
+If you are having trouble with Multitudinous or wish to contact me in 
+regard to suggestions, general enquiries etc. then you can do so by writing
+to me at this address.
+
+        K.Winspear
+        Multitudinous Support
+        10 Colenso St
+        Hartlepool
+        Cleveland
+        TS26 9BD
+        ENGLAND
+
+With  all  correspondence,  please enclose a pre-paid self addressed
+envelope, and a blank disk if you require any code.
+
+Would you please also include the following details about your Amiga.
+
+        Model:
+        Processor:
+        Memory:
+        Hard Disk?:
+        OS Version:
+
+
+
+@ENDNODE
+
+

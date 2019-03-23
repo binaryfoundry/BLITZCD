@@ -1,0 +1,81 @@
+Coding a game - Part 1
+
+(C) BUI
+
+BY MATTHEW TILLETT
+
+
+
+Games!  Everyone has played a computer game of some sort in their life.  They are fun, addictive and educational.  Some are better than others and some are just plain rubbish!  Now we come to Blitz Basic.  It has to be the best development language for co
+
+Over the next few issues of BUI, I am going to attempt to give a few hint's and tips on coding a game.  At the end of this tutorial, you should (if all goes to plan) have a fully functional game. Each month I will give you a little bit of code to have a p
+
+To start us off, I think it is important to decide a few things about the game you are going to code.  For this series of tutorials, we are going to be coding a very simple game, but at the same time fun to play.   So what goes into a game?  Well I think 
+
+To start us off this month we are going to have a look at controlling our character and the animation in the movement of the character.  Load up the source code from the file "Tutorial" on the coverdisk into your Blitz editor and give the code and the com
+
+
+
+If you notice first of all in the code we create a variable called "speed" and assign it with the value of "1".  If you look further into the code you will see that this variable controls the distance our character moves, try changing the value of "speed"
+
+
+
+The next section of code is quite normal as all we do is setup couple of bitmaps and load in some IFF pictures.  It is what we do with the IFF's that is quite interesting.
+
+
+
+You will notice that if you load the IFF, "walk.iff" into a viewer or like that the shapes of our character are pasted across the picture frame by frame.  In the source code lines 29 to 39 we are getting the frames across the IFF as shapes.  As you can ha
+
+
+
+The next important part in the code we really need to look at is the "Buffer" and "Bblit" commands.  What these two do is a) Buffer remembers the data behind our man, and b) Bblit paste our shape to the screen, but at the same time replacing the original 
+
+
+
+We next enter a "Repeat Until" loop and then a "Select Case" input.  What the "Select Case" does is control the flow of the program from the users response with the joystick.  For example, We move our joystick left, now this returns the value "6", so the 
+
+
+
+If animspeed>5
+
+    shp+1
+
+    animspeed=0
+
+EndIf
+
+
+
+Because the variable "animspeed" is being added to in each loop, each time "animspeed" is greater than "5" it resets itself back to "0", but because "animspeed" is being added to by the line "animspeed + 1" the higher the value the quicker it gets to beco
+
+
+
+Once the shape has changed to the next frame from the above few lines of code, the program needs to remove the old shape from the screen (not removing the background) and then place the new shape back on the screen.  Remember this is done with the "unbuff
+
+
+
+Remember the variable "speed"?  Well if you look at the code in the loop just before our shape is "blitted", you will see the line:-
+
+
+
+shp_x-speed
+
+
+
+Well, in each loop the value contained in "speed" is deducted from the value held n the variable "shp_x", from the line above.  Changing the value in "speed" set at the top of the code will subtract more from "shp_x", giving the impression that our charac
+
+
+
+Now say we have stopped holding our joystick right.  What happens is the buffer is cleared, we now point the variable that holds the shape number ("shp") to the value of "0", we again blit this shape to the screen at our current "shp_x" value and we retur
+
+
+
+If you moved your joystick left, this time the joystick would return the value "2", so the "case 2" would be executed.  This is exactly the same as the case right, except our character moves in the opposite direction.  The principle is the same as above. 
+
+
+
+That basically wraps it up for this tutorial, as I said, have a play with the code and you will learn from it, don't be afraid to play!
+
+
+
+If you wish so submit code for this tutorial, please do, or if you have any hints / tips, send them in.

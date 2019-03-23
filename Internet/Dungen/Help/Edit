@@ -1,0 +1,5 @@
+   Edit switches the display from the control panel to the editor. If you
+have completed a successful Build of one or more levels, you will see them
+in the editor display. If you want to draw levels from scratch, you still
+use the control panel to set number of levels, width, and height
+parameters before editing.

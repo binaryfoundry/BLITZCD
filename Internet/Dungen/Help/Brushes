@@ -1,0 +1,13 @@
+   The wall brushes and door brushes can change their orientation to the
+mouse pointer by using the cursor keys. The wall brushes can be toggled in
+2 directions and the door brushes can toggle in all 4 directions.
+   To use the text brush, click on the square you want to label. The brush
+will disappear. Enter the character or Alt-character on the keyboard and it
+will be printed to the screen. Characters are the only graphic that cannot
+share the same dungeon square with other non structural graphics (door,
+stair, pit). You can load the dungen.font into a font editor and create your
+own graphics.
+   The effect of the eraser brush will vary depending which mouse button
+you click on it with. A left click will make a brush that will delete the
+graphics, but leave a scale dot. A right click makes a brush which will
+erase everything.

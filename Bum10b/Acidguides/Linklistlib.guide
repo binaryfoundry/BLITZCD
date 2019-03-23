@@ -1,0 +1,249 @@
+@DATABASE LINKLISTLIB
+@Author Conversion program
+@NODE OVERVIEW "Overview of LINKLISTLIB"
+
+                                  @{b}@{u}Overview@{ub}@{uu}
+
+
+                          An Acid Software Library
+
+                         Converted to AmigaGuide by
+
+                            Red When Excited Ltd
+
+                 Used with the permission of Acid Software
+
+
+
+@ENDNODE OVERVIEW
+
+@NODE FirstItem "LINKLISTLIB"
+
+@{fg shine}Function: FirstItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =FirstItem (Arrayname())
+
+Executing FirstItem will set the specified list array's 'current item' 
+pointer to the very first item in the list array. If there are no items in 
+the list array, FirstItem will return false (0) otherwise, FirstItem will 
+return true (-1).
+
+
+@ENDNODE FirstItem
+
+@NODE AddItem "LINKLISTLIB"
+
+@{fg shine}Function: AddItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =AddItem (Arrayname())
+
+The AddItem function allows you to insert an array list item after the list 
+array's 'current' item. AddItem returns a true/false value reflecting 
+whether or not there was enough room in the array list to add an element. If 
+an array element was available, AddItem returns a true value (-1), and sets 
+the list array's 'current item' pointer to the item added. If no array 
+element was available, AddItem returns false (0).
+
+
+@ENDNODE AddItem
+
+@NODE NextItem "LINKLISTLIB"
+
+@{fg shine}Function: NextItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =NextItem (Arrayname())
+
+NextItem will set the specified list array's 'current item' pointer to the 
+item after the list array's old current item. This allows for 'forwards' 
+processing of a list array. NextItem returns a true/false value reflecting 
+whether or not there actually was a next item available or not. If an item 
+was available, NextItem will return true (-1). Otherwise, NextItem will 
+return false (0).
+
+
+@ENDNODE NextItem
+
+@NODE ResetList "LINKLISTLIB"
+
+@{fg shine}Statement: ResetList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : ResetList Arrayname()
+
+ResetList is used in conjunction with a list array to prepare the list array 
+for NextItem processing. After executing a ResetList, the next Nextitem 
+executed will set the list array's 'current element' pointer to the list 
+array's very first item.
+
+
+@ENDNODE ResetList
+
+@NODE KillItem "LINKLISTLIB"
+
+@{fg shine}Statement: KillItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : KillItem Arrayname()
+
+KillItem is used to delete the specified list array's current item. After 
+executing KillItem, the list array's 'current item' pointer will be set to 
+the item before the item deleted.
+
+
+@ENDNODE KillItem
+
+@NODE AddFirst "LINKLISTLIB"
+
+@{fg shine}Function: AddFirst@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =AddFirst (Arrayname())
+
+The AddFirst function allows you to insert an array list item at the 
+beginning of an array list. AddFirst returns a true/false value reflecting 
+whether or not there was enough room in the array list to add an element. If 
+an array element was available, AddFirst returns a true value (-1), and sets 
+the list array's 'current item' pointer to the item added. If no array 
+element was available, AddFirst returns false (0).
+
+
+@ENDNODE AddFirst
+
+@NODE ClearList "LINKLISTLIB"
+
+@{fg shine}Statement: ClearList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : ClearList Arrayname()
+
+ClearList is used in conjunction with list arrays to completely 'empty' out 
+the specified list array. List arrays are automatically emptied when they 
+are Dimmed.
+
+
+@ENDNODE ClearList
+
+@NODE AddLast "LINKLISTLIB"
+
+@{fg shine}Function: AddLast@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : =AddLast (Arrayname())
+
+The AddLast function allows you to insert an array list item at the end of 
+an array list. AddLast returns a true/false value reflecting whether or not 
+there was enough room in the array list to add an element. If an array 
+element was available, AddLast returns a true value (-1), and sets the list 
+array's 'current item' pointer to the item added. If no array element was 
+available, AddLast returns false (0).
+
+
+@ENDNODE AddLast
+
+@NODE PushItem "LINKLISTLIB"
+
+@{fg shine}Statement: PushItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : PushItem Arrayname()
+
+Executing PushItem causes the specified list array's 'current item' pointer 
+to be pushed onto an internal stack. This pointer may be later recalled by 
+executing PopItem.
+The internal item pointer stack allows for up to 8 'pushes'.
+
+
+@ENDNODE PushItem
+
+@NODE PopItem "LINKLISTLIB"
+
+@{fg shine}Statement: PopItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : PopItem Arrayname()
+
+PopItem 'pops' or 'recalls' a previously pushed current item pointer for the 
+specified list array. Arrayname() must match the arrayname of the most 
+recently executed PushItem.
+
+
+@ENDNODE PopItem
+
+@NODE PrevItem "LINKLISTLIB"
+
+@{fg shine}Statement: PrevItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : PrevItem Arrayname()
+
+PrevItem will set the specified list array's 'current item' pointer to the 
+item before the list array's old current item. This allows for 'backwards' 
+processing of a list array. PrevItem returns a true/false value reflecting 
+whether or not there actually was a previous item. If a previous item was 
+available, PrevItem will return true (-1). Otherwise, PrevItem will return 
+false (0).
+
+
+@ENDNODE PrevItem
+
+@NODE LastItem "LINKLISTLIB"
+
+@{fg shine}Statement: LastItem@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : LastItem Arrayname()
+
+Executing LastItem will set the specified list array's 'current item' 
+pointer to the very last item in the list array. If there are no items in 
+the list array, LastItem will return false (0), otherwise LastItem will 
+return true (-1).
+
+
+@ENDNODE LastItem
+
+@NODE ItemStackSize "LINKLISTLIB"
+
+@{fg shine}Statement: ItemStackSize@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : ItemStackSize Max Items
+
+ItemStackSize determines how many 'list' items may be pushed (using the 
+PushItem command), before items must be 'Pop'ped off again. For example, 
+executing ItemStackSize 1000 will allow you to push up to 1000 list items 
+before you run out of item stack space.
+
+
+@ENDNODE ItemStackSize
+
+@NODE SortList "LINKLISTLIB"
+
+@{fg shine}Statement: SortList@{fg text}
+--------------------------------------------------------------------------------
+Modes  : 
+Syntax : SortList Arrayname(),sizeof .type\offset
+
+@ENDNODE SortList
+
+@NODE MAIN "LINKLISTLIB"
+
+.-----------------------------------------------------------------------------.
+|                                @{b}LINKLISTLIB@{ub}                                  |
+`-----------------------------------------------------------------------------'
+
+                             @{"     Overview     " link OVERVIEW}
+
+                               Command Index                                
+
+             @{" AddFirst       " link AddFirst}                @{" AddItem        " link AddItem}
+             @{" AddLast        " link AddLast}                @{" ClearList      " link ClearList}
+             @{" FirstItem      " link FirstItem}                @{" ItemStackSize  " link ItemStackSize}
+             @{" KillItem       " link KillItem}                @{" LastItem       " link LastItem}
+             @{" NextItem       " link NextItem}                @{" PopItem        " link PopItem}
+             @{" PrevItem       " link PrevItem}                @{" PushItem       " link PushItem}
+             @{" ResetList      " link ResetList}                @{" SortList       " link SortList}
+@ENDNODE MAIN
+

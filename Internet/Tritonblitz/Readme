@@ -1,0 +1,30 @@
+**** IMPORTANT *****
+
+If you already used a TRITONBLITZ-Archive (i.e. 2.1) before, delete all
+your old TRITON-libraries (as triton.library1, TagListLib.obj) 
+in BLITZLIBS:
+
+After this, save all your sources as ASCII. The new libraries have probably
+other IDs than you gave them. But mine are now official IDs from RWE -
+please use them so exchanging Blitz2-sources is much easier.
+
+Thanks!
+---------------------------------------------------------------
+
+***** WICHTIG ******
+
+Wenn schon ein TRITONBLITZ-Archiv installiert wurde, muessen alle
+dazugehörigen Libraries (wie triton.library1, TagListLib.obj) aus den
+BLITZLIBS:-Verzeichnissen gelöscht werden.
+
+Dann muessen alle Sources, die TRITON verwenden, als ASCII abgespeichert
+werden, sonst werden die Tokens nach der Neuinstallation des TRITONBLITZ
+-Archives nicht mehr erkannt.
+
+Die Libraries in diesem Release haben feste IDs von RWE bekommen, und sind
+somit verbindlich, um einen einfachen Austausch von Blitz2-sources zu
+gewährleisten.
+
+Danke!
+---------------------------------------------------------------
+phips@scout.franken.de 

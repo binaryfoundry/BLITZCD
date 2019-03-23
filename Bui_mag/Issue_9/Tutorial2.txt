@@ -1,0 +1,655 @@
+SHARING DEMO
+
+BY CARL READ
+
+(C) BUI
+
+
+
+Getting the shading of the gadgets, windows and menus right in Blitz is no easy task and it's even worse when you have to take into account that Workbench 2 and higher shades things differently to earlier versions.  The difficulty with this is partly Acid
+
+
+
+Prior to Workbench 2 the highlight colour (ie white) was taken from register 1 with the shadow colour (ie black) being register 2.  This has been swapped with Workbench 2 and above and by taking this into account we can write programs that won't end up wi
+
+
+
+To get the shading right we need to take into account the following: Gadget colours, writing and drawing to windows and screens, menu colours, window colours, screen colours, shape and bitmap colours and the use of requesters.  The method I use for dealin
+
+
+
+1) First I set two variables `dark' and `light' to dark=2 and light=1 if the Workbench is prior to version 2, (ie ExecVersion<36), else it's dark=1 and light=2.  These will be used for nearly all writing to screens or windows when register 1 or 2 is used.
+
+
+
+2) Then any shapes or bitmaps are remapped if they have the wrong shading.  I suggest you always create your graphics as if they're for a WB2 or higher machine, (ie register 2 dark, register 3 light), so that remapping will only occur on pre-WB2 systems. 
+
+
+
+3) If you're going to be using your own screens and not just Workbench then the colours used for registers 1 and 2 are determined by the version of Workbench being run.  Once again ExecVersion<36 is used.  When choosing the colours for the Screen command 
+
+
+
+4) With the menus themselves I've been in the habit of just placing a MenuColour=2 before they're defined and leaving it at that.  However, after looking at the (old) manual's example for MenuColour (and testing it) it seems you can set any item in the me
+
+
+
+5) Also effecting the menus are the colours you choose for the Window command.  These also are used for the colours of the window's borders and the only values I've found to work correctly on all Workbenches (with the windows AND the menus) are Dpen=2 and
+
+
+
+6) With requesters it's a case of the Blitz requester being pre-Workbench 2 and the ASL requester being Workbench 2 or higher so it's just a case of using the appropriate one by once again checking if ExecVersion<36.  Be warned though that earlier version
+
+
+
+7) Finally there's the gadget colours and generally writing to screens and windows.  These are sorted out by using our `dark' and `light' variables whenever they're needed - such as with the commands GadgetPens, BorderPens, Colour, WColour and so on.
+
+
+
+So here's the program that demonstrates the above.  Note that it `IncBin's the brush "CycleGad.pic" in the program itself and then `Decodes' it to a bitmap.  For this reason those using the old Ted will have to `CD' in its requester to ensure the program 
+
+
+
+
+
+;                          "Shading Demo"
+
+;
+
+;                  By Carl Read - 28th May, 1996
+
+;
+
+;    This program and its listing is copyright Carl Read 1996.
+
+;                   It is NOT for distribution.
+
+;
+
+
+
+
+
+.Initialize
+
+ WBStartup:NoCli:Dim wTop(1)
+
+ LoadFont 1,"topaz.font",11:LoadFont 0,"topaz.font",8
+
+
+
+
+
+The wTop array is used to store the height of the windows' title-bars as the height of the windows are effected by these and they could be any size on WB2 and above Workbenches.
+
+
+
+Now we open a screen and give it shading depending on what WB is running.  It's important here to ensure we're using the topaz 8 font as the Blitz requester will misbehave otherwise.  However if we weren't opening a requester on the screen it'd be okay to
+
+
+
+
+
+ ;Open hi-res, non-interlace 4 colour screen.
+
+ Screen 1,0,0,640,DispHeight,2,$8000,"Shading Demo",2,1
+
+ RGB 0,12,11,10 ;Background colour.
+
+ If ExecVersion<36
+
+  RGB 1,15,15,15:RGB 2,0,0,0 ;Early kickstart.
+
+ Else
+
+  RGB 1,0,0,0:RGB 2,15,15,15 ;Kickstart 2 or higher.
+
+ EndIf
+
+ RGB 3,10,6,9 ;Colour 3.
+
+
+
+
+
+Here's where we get the values for wTop.  There's a Catch 22 problem with this.  To find out the height of the windows' title-bars so we can open them to the correct height - we need to have one open first before we can use WTopOff to read its title-bar h
+
+
+
+
+
+ win=4:Gosub WinOpen:wTop(1)=WTopOff:Free Window 4
+
+ WbToScreen 0:ShowScreen 0 ;Give the Workbench screen a number.
+
+ win=4:Gosub WinOpen:wTop(0)=WTopOff
+
+
+
+
+
+Now we get the values for `dark' and `light', load in our cycle gadget picture and if it's a pre-WB2 system our program's running on, remap it.
+
+
+
+
+
+ BitMap 0,320,8,2:DecodeILBM 0,?CycGadPic
+
+ If ExecVersion<36
+
+  dark=2:light=1 ;Kickstarts prior to version 2 shading.
+
+  BitMap 1,320,8,2:CopyBitMap 0,1
+
+  ReMap 1,2,0:ReMap 2,1,0:Free BitMap 1:Use BitMap 0
+
+ Else
+
+  dark=1:light=2 ;Kickstart 2 or higher shading.
+
+ EndIf
+
+ GetaShape 0,0,0,16,8:Free BitMap 0
+
+
+
+
+
+With adding shortcuts to menu items you should add five spaces after the item in each menulist which has the longest name as this is needed to make space for the shortcut text.  This has been done with Requester in our example.
+
+
+
+
+
+.Mens
+
+ MenuColour 2
+
+ MenuTitle 0,0," Project "
+
+ MenuItem 0,0,0,0,"Requester     ","R"
+
+ MenuItem 0,0,0,1,"About","?"
+
+ MenuItem 0,0,0,2,"Quit","Q"
+
+
+
+
+
+The gadget colours are all determined by `dark' and `light'.  Note I've used topaz 11 (font 1) in one case.  But not with the string gadgets though as rather oddly they seem to take their font from the previously defined gadget - or something like that.  
+
+
+
+
+
+.Gads
+
+ GadgetPens dark,light:Borders 2,1:BorderPens light,dark
+
+ TextGadget 0,10,12,0,1," Dark Text, Light Background "
+
+ GadgetPens light,dark
+
+ TextGadget 0,10,23,0,2," Light Text, Dark Background "
+
+ GadgetPens dark,0
+
+ TextGadget 0,10,34,0,3," Dark Text, Colour 0 Background "
+
+ GadgetPens light,3
+
+ TextGadget 0,10,45,0,4," Light Text, Colour 3 Background "
+
+ BorderPens dark,light
+
+ StringGadget 0,10,60,0,5,40,200
+
+ SetString 0,5,"Standard String Gadget"
+
+ StringGadget 0,10,75,0,6,40,200
+
+ SetString 0,6,"Fancified String Gadget"
+
+ GadgetPens dark,light:BorderPens light,dark:Use IntuiFont 1
+
+ TextGadget 0,10,89,0,7," Jump To Other Screen ":Use IntuiFont 0
+
+ GadgetPens dark,0
+
+ TextGadget 0,10,105,0,8,"    One  |    Two  |   Three "
+
+ GadgetPens light,3
+
+ TextGadget 0,10,120,0,9," Sunken Text Gadget "
+
+ GadgetPens dark,0
+
+ TextGadget 1,200,142,0,1," OK "
+
+
+
+
+
+Now follows three Statements.  The first is for adding our cycling gadget picture to the cycling gadget.  This has to be done everytime the gadget is clicked on and every time the window it's on is altered.  Ideally this would get the gadget's position fr
+
+
+
+
+
+.Stats
+
+ Statement CyclePic{gadList,gadId}
+
+  Select gadList
+
+   Case 0
+
+    Select gadId
+
+     Case 8
+
+      x=10:y=105
+
+    End Select
+
+  End Select
+
+  WBlit 0,x+2,y+1
+
+ End Statement
+
+
+
+
+
+The DBorder statement draws a double-border around a gadget.  This has to be done everytime its window is altered. 
+
+
+
+
+
+ Statement DBorder{gadList,gadId,highlight,shadow}
+
+  Select gadList
+
+   Case 0
+
+    Select gadId
+
+     Case 6
+
+      x=10:y=75:width=200
+
+     Case 9
+
+      x=10:y=120:width=160
+
+    End Select
+
+  End Select
+
+  BorderPens shadow,highlight:GadgetBorder x+2,y+1,width,8
+
+  BorderPens highlight,shadow:GadgetBorder x,y,width+4,10
+
+ End Statement
+
+
+
+
+
+The simple little statement Cent is just for centering text in the `About' window.
+
+
+
+
+
+Statement Cent{text$}
+
+ NPrint Centre$(" "+text$+" ",56)
+
+End Statement
+
+
+
+
+
+Here the program proper starts by opening every window except for About.
+
+
+
+
+
+.ProgramStart
+
+ quitFlag=0:ev.l=0:aboutScreen=0:MaxLen pa$=192:MaxLen fi$=192
+
+ Free Window 4
+
+ win=2:Gosub WinOpen ;Our screen's backdrop window.
+
+ win=3:Gosub WinOpen ;Our screen's window.
+
+ win=0:Gosub WinOpen ;Our Workbench window.
+
+
+
+
+
+MainLoop is where the program waits for the user to do something.  In Amiga mode, (unless your program's processing data), you should always use WaitEvent instead of cycling through a loop to check the mouse or keyboard or whatever as WaitEvent frees up p
+
+
+
+
+
+.MainLoop
+
+ While quitFlag=0
+
+  ev=WaitEvent:win=EventWindow
+
+  If (ev AND $4)=$4 Then Gosub WinRedraw
+
+  If (ev AND $40)=$40 Then Gosub GadUp
+
+  If (ev AND $100)=$100 Then Gosub MenChosen
+
+  If (ev AND $200)=$200 Then Gosub CloseHit
+
+ Wend
+
+Free Window 0:Free Window 1:End
+
+
+
+
+
+MainLoop exits its While-Wend loop when quitFlag is set to 1 (by a menu selection) and then the program ends.  However, before it ends any windows that may be open on the Workbench are closed - BECAUSE OF A MAJOR BUG I FOUND IN BLITZ!  Put simply, any win
+
+
+
+WinOpen opens our windows.  Note that window 2 is a borderless backdrop window that covers the whole screen except for its title bar.  This is here so that if the user clicks on the screen (instead of the visable windows) the menu will still be available 
+
+
+
+
+
+.WinOpen:
+
+ Select win
+
+  Case 0 ;The window on the Workbench.
+
+   Use Screen 0:a=138+wTop(0):SizeLimits 200,50,600,a
+
+   Window 0,20,15,600,a,7|$400|$1000,"WB Shading.",2,1,0
+
+   SetMenu 0
+
+  Case 1 ;The "About" window.
+
+   Use Screen aboutScreen:Free Window 1
+
+   a=wTop(aboutScreen)+156:SizeLimits 200,50,462,a
+
+   Window 1,70,11,462,a,15|$400|$1000,"About ShadingDemo.",2,1,1
+
+   SetMenu 0
+
+  Case 2 ;The backdrop, borderless window on our own screen.
+
+   Use Screen 1
+
+   Window 2,0,11,640,DispHeight-11,$100|$800|$1000,"",2,1
+
+   SetMenu 0
+
+  Case 3 ;The window on our screen.
+
+   Use Screen 1:a=138+wTop(1):SizeLimits 200,50,600,a
+
+   Window 3,20,15,600,a,7|$400|$1000,"Screen Shading.",2,1,0
+
+   SetMenu 0
+
+  Case 4 ;Initializing window.
+
+   Window 4,10,25,210,50,14|$1000,"",2,1
+
+ End Select
+
+ Gosub WinRedraw
+
+Return
+
+
+
+
+
+The WinRedraw subroutine is called after a window is opened and also whenever a window is resized.  While the gadgets are automaticly redrawn whenever a window's size is altered we still have to do all our writing, drawing and blitting to the window again
+
+
+
+
+
+.WinRedraw:
+
+ Use Window win:WColour dark,0:WindowFont 0,0
+
+ Select win
+
+  Case 0 ;Our Workbench window.
+
+   Gosub WinRedrawExtra
+
+  Case 1 ;"About".
+
+   WLocate 0,2:Cent{"Shading Demo"}:NPrint""
+
+   Cent{"Written for `Blitz User International' magazine."}
+
+   NPrint""
+
+   Cent{"BUI is available from Matthew Tillett,"}
+
+   Cent{"27 Hillside Avenue, Worlingham, Beccles, Suffolk,"}
+
+   Cent{"NR34 7AJ, ENGLAND."}:NPrint""
+
+   Cent{"This program shows how to use shading with gadgets"}
+
+   Cent{"and such so they'll look right regardless of what"}
+
+   Cent{"Kickstart Amiga is being used.  See Blitz User"}
+
+   Cent{"International (issue 8) for a complete explanation of"}
+
+   Cent{"how to do this."}:NPrint""
+
+   Cent{"Program by Carl Read,"}
+
+   Cent{"CyberCraft, PO Box 14032, Mayfair, Hastings 4201,"}
+
+   Cent{"NEW ZEALAND"}
+
+  Case 3 ;Our screen's window.
+
+   Gosub WinRedrawExtra
+
+  Case 4 ;Initializing window.
+
+   Print" Shading Demo Loading..."
+
+ End Select
+
+Return
+
+
+
+.WinRedrawExtra:
+
+DBorder{0,6,light,dark}:CyclePic{0,8}:DBorder{0,9,dark,light}
+
+ WLocate 10,2:Print"Use the menu to test requester and to quit."
+
+ WLocate 200,92:Print"<- This gadget actually does something!"
+
+Return
+
+
+
+
+
+GadUp processes the gadget hits.  Unless you've a good reason not to, gadgets should be responded to when they're released and not when they're first clicked on.  This gives the user the chance to change their mind and drag the pointer off the gadget.  Th
+
+
+
+
+
+.GadUp:
+
+ gad=GadgetHit:Use Window win
+
+ Select win
+
+  Case 0 ;Our Workbench window.
+
+   Select gad
+
+    Case 7
+
+     ShowScreen 1:Activate 3
+
+    Case 8;The cycle gadget.
+
+     CyclePic{0,8}
+
+   End Select
+
+  Case 1 ;About.
+
+   Select gad
+
+    Case 1 ;OK.
+
+     Free Window 1
+
+   End Select
+
+  Case 3 ;Our screen's window.
+
+   Select gad
+
+    Case 7
+
+     ShowScreen 0:Activate 0
+
+    Case 8;The cycle gadget.
+
+     CyclePic{0,8}
+
+   End Select
+
+ End Select
+
+Return
+
+
+
+
+
+The menu response routine is pretty self explanatory, (except for the selecting of the screens - but I won't go into that here.  Let's just say it works.), as is CloseHit which more or less ends the program.
+
+
+
+
+
+.MenChosen:
+
+ men=MenuHit:it=ItemHit
+
+ Select men
+
+  Case 0 ;Project
+
+   Select it
+
+    Case 0 ;Requester
+
+     If win=1
+
+      Use Screen aboutScreen
+
+     Else
+
+      Use Screen -(win<>0)
+
+     End If
+
+     If ExecVersion<36
+
+      ;Kickstarts prior to version 2 so use the Blitz requester.
+
+      f$=FileRequest$("Blitz Requester",pa$,fi$)
+
+     Else
+
+      ;Kickstart 2 or higher so use the ASL requester.
+
+      f$=ASLFileRequest$("ASL Requester",pa$,fi$,10,11,300,180)
+
+     EndIf
+
+    Case 1 ;About
+
+     If win<>1 Then aboutScreen=-(win<>0)
+
+     win=1:Gosub WinOpen
+
+    Case 2 ;Quit
+
+     quitFlag=1
+
+   End Select
+
+ End Select
+
+Return
+
+
+
+.CloseHit:
+
+ Select win
+
+  Case 1 ;"About".
+
+   Free Window 1
+
+ End Select
+
+Return
+
+
+
+
+
+And finally this is the bit that tells the compiler to include the cycle gadget picture in the program which is then decoded to a bitmap as mentioned at the start of this program.
+
+10 July 1996
+
+
+
+.CycGadPic:
+
+ IncBin "CycleGad.pic" ;This should be a 16*8 4 colour brush.
+
+
+
+
+
+And that's it.  Hope this helps Blitz users to make their Amiga-mode programs look a bit more like they should.  And remember, when you get your programs finished and working correctly always make sure the debugger is OFF before you save your executable. 
+
+[Carl Read]

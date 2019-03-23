@@ -1,0 +1,602 @@
+Arexx Tutorial
+
+(C) BUI
+
+BY LEE PACKHAM
+
+
+
+Lee Packham Comes Back YET Again With The As Promised AREXX Tutorial...
+
+
+
+Hello readers! I'm back yet again writing this in between my G.C.S.E.
+
+revision to bring you that promised ARexx tutorial.
+
+
+
+You see, the fact is that the ARexx library that is for Blitz is pretty
+
+rubbish. Another problem is that this library just came with command
+
+descriptions and NO real tutorial programs on the BUM 5 coverdisk. So,
+
+again, I come and improve your knowledge of Blitz (hopefully).
+
+
+
+This tutorial, surprisingly, does not require any residents loaded and no
+
+extra files at all. However, you do need RexxMast running to run this
+
+example.  Good eh? So let's get started the normal way by giving you a nice 
+
+long listing to try out...
+
+
+
+;Example Of AREXX
+
+;Written By Lee Packham
+
+
+
+;The AREXX library for Blitz2 Is Very Confusing, So
+
+;I set about writing an example to read and process
+
+;messages for you. It is heavily "REM"ed so you
+
+;should get the jist of it.
+
+
+
+NoCli
+
+CloseEd
+
+
+
+;Create A Port
+
+port.l=CreateMsgPort("TEST.1")
+
+
+
+;Max. Number Of Arguments
+
+Dim args$(999)
+
+
+
+FindScreen 0
+
+Window 0,0,0,320,100,$140e,"Watching AREXX....",0,1
+
+
+
+;Set-Up Avaliable Commands
+
+Gosub commands
+
+
+
+Repeat
+
+  VWait
+
+
+
+  ;Check For Events (Window & AREXX)
+
+  ev.l=Event:rmsg.l=RexxEvent(port)
+
+
+
+  ;Is there a message for me?
+
+  If IsRexxMsg(rmsg)
+
+
+
+    ;YES, store command in c$ and check
+
+    c$=GetRexxCommand(rmsg,1)
+
+    Gosub getcommand
+
+
+
+    ;What command was it?
+
+    Select command
+
+
+
+      ;PRINT ?
+
+      Case 1
+
+        ;"a" is the number of arguments
+
+        If a=1
+
+          ;Print Message in window
+
+          NPrint args$(1)
+
+        Else
+
+          ;By giving "s" a value other
+
+          ;than zero returns an error
+
+          s=1
+
+        EndIf
+
+
+
+      ;QUIT ?
+
+      Case 2
+
+        quit=True
+
+
+
+    End Select
+
+
+
+    ;SCROLL GZZ Window
+
+    WPrintScroll
+
+
+
+    ;Reply message with error if needed
+
+    ReplyRexxMsg rmsg,s,s,"RETURNED TEST"
+
+
+
+    ;Return errorcode back to zero
+
+    ;for next command
+
+    s=0
+
+
+
+  EndIf
+
+
+
+;Repeat until user closes window
+
+;or quit=true
+
+Until ev=$200 OR quit=True
+
+
+
+;Delete message port
+
+DeleteMsgPort port
+
+
+
+;BYE!!!!
+
+End
+
+
+
+.commands
+
+
+
+;No. Of Commands
+
+ca=2
+
+
+
+;The actual commands
+
+Dim comm$(ca),comm(ca)
+
+comm$(1)="PRINT":comm(1)=Len(comm$(1))
+
+comm$(2)="QUIT":comm(2)=Len(comm$(2))
+
+Return
+
+
+
+.getcommand
+
+
+
+;NOTE: When sending a command with args
+
+;but a comma after the last arg.
+
+;This routine is pretty naff, but it
+
+;sorts the string into arguments and needs
+
+;the trailing comma
+
+
+
+;e.g.  PRINT This is a test,
+
+
+
+;It is case-sensitive
+
+
+
+For x=1 To ca
+
+  If Left$(c$,comm(x))=comm$(x)
+
+    command=x
+
+  EndIf
+
+Next x
+
+a=0
+
+For x=1+Len(comm$(command))+1 To Len(c$)
+
+  t$=Mid$(c$,x,1)
+
+  If t$=","
+
+    a=a+1
+
+    args$(a)=t1$
+
+    t1$=""
+
+  Else
+
+    t1$=t1$+t$
+
+  EndIf
+
+Next x
+
+Return
+
+
+
+Okay then, let's get started by, as usual, going through different sections
+
+of the code...
+
+
+
+NoCli
+
+CloseEd
+
+
+
+;Create A Port
+
+port.l=CreateMsgPort("TEST.1")
+
+
+
+;Max. Number Of Arguments
+
+Dim args$(999)
+
+
+
+FindScreen 0
+
+Window 0,0,0,320,100,$140e,"Watching AREXX....",0,1
+
+
+
+;Set-Up Avaliable Commands
+
+Gosub commands
+
+
+
+Right, here we have the normal compiler commands at the top. Then we go and
+
+create a port. "port.l" will equal 0 if a port was not created. As with the
+
+PUBSCREEN example last month (contact the Ed for details of back issues) you
+
+could increase the number if the port could not be created. We then define
+
+an args$ array. This array will be used to stored the arguments passed to
+
+the program by RexxMast. We then open up a GimmeZeroZero window for output
+
+from the program. We then gosub to this routine...
+
+
+
+.commands
+
+
+
+;No. Of Commands
+
+ca=2
+
+
+
+;The actual commands
+
+Dim comm$(ca),comm(ca)
+
+comm$(1)="PRINT":comm(1)=Len(comm$(1))
+
+comm$(2)="QUIT":comm(2)=Len(comm$(2))
+
+Return
+
+
+
+This routine is quite simple and just puts the commands in an array to be
+
+used by the ".getcommand" routine...
+
+
+
+.getcommand
+
+
+
+;NOTE: When sending a command with args
+
+;but a comma after the last arg.
+
+;This routine is pretty naff, but it
+
+;sorts the string into arguments and needs
+
+;the trailing comma
+
+
+
+;e.g.  PRINT This is a test,
+
+
+
+;It is case-sensitive
+
+
+
+For x=1 To ca
+
+  If Left$(c$,comm(x))=comm$(x)
+
+    command=x
+
+  EndIf
+
+Next x
+
+a=0
+
+For x=1+Len(comm$(command))+1 To Len(c$)
+
+  t$=Mid$(c$,x,1)
+
+  If t$=","
+
+    a=a+1
+
+    args$(a)=t1$
+
+    t1$=""
+
+  Else
+
+    t1$=t1$+t$
+
+  EndIf
+
+Next x
+
+Return
+
+
+
+This routine could be improved as it isn't really that marvellous. All it
+
+does is returns the command number that was sent to the port and plonks the
+
+arguments into arg$ array. Clever eh? Here is an example rexx script you
+
+could try...
+
+
+
+/* RexxTest.bb2 Test Program */
+
+
+
+/* The example program needs to be
+
+** running first!!!
+
+*/
+
+
+
+ADDRESS 'TEST.1'
+
+
+
+'PRINT This Is A Glorious Test,'
+
+'PRINT Done By Lee Packham!!!,'
+
+
+
+As you can see there is apostrophes around each command. This, as far as I
+
+can see, is a flaw with BB2 but it might just be my tacky routines! Now to
+
+the main loop of the program...
+
+
+
+Repeat
+
+  VWait
+
+
+
+  ;Check For Events (Window & AREXX)
+
+  ev.l=Event:rmsg.l=RexxEvent(port)
+
+
+
+  ;Is there a message for me?
+
+  If IsRexxMsg(rmsg)
+
+
+
+    ;YES, store command in c$ and check
+
+    c$=GetRexxCommand(rmsg,1)
+
+    Gosub getcommand
+
+
+
+    ;What command was it?
+
+    Select command
+
+
+
+      ;PRINT ?
+
+      Case 1
+
+        ;"a" is the number of arguments
+
+        If a=1
+
+          ;Print Message in window
+
+          NPrint args$(1)
+
+        Else
+
+          ;By giving "s" a value other
+
+          ;than zero returns an error
+
+          s=1
+
+        EndIf
+
+
+
+      ;QUIT ?
+
+      Case 2
+
+        quit=True
+
+
+
+    End Select
+
+
+
+    ;SCROLL GZZ Window
+
+    WPrintScroll
+
+
+
+    ;Reply message with error if needed
+
+    ReplyRexxMsg rmsg,s,s,"RETURNED TEST"
+
+
+
+    ;Return errorcode back to zero
+
+    ;for next command
+
+    s=0
+
+
+
+  EndIf
+
+
+
+;Repeat until user closes window
+
+;or quit=true
+
+Until ev=$200 OR quit=True
+
+
+
+As you can see, this simply sorts all the messages out. It gets commands
+
+when it is sent a message and replies it. Replying is VERY important. If you
+
+don't reply the message the rexx server WILL hang. Basically crashing your
+
+machine. Clever eh?
+
+You will probably notice an error variable, s. You will also notice that if
+
+the PRINT command is not sent the right number of args it will set this
+
+variable to 1. The reply command sends this back to the server so that, if
+
+there is an error, rexx will alert the user itself. Very clever...
+
+
+
+;Delete message port
+
+DeleteMsgPort port
+
+
+
+;BYE!!!!
+
+End
+
+
+
+This part is very simple. It is the clean up operation. It simply deletes
+
+the port and closes up.
+
+
+
+Well, that's it for this month. I'm sorry that this tutorial is not that
+
+good but I am under a lot of stress at school (I'm only 16!!!) because my
+
+end of school exams (G.C.S.E's) are coming around the corner exactly a MONTH
+
+after you read this. Wish me luck! See ya next month!
+

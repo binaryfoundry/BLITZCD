@@ -1,0 +1,518 @@
+@DATABASE "BlitzBasic  2 Library Com SDands V1.2"                          
+@$VER: BlitzBasic 2 Library Commands -- AmigaGuide 1.2 (24/07/94)
+@AUTHOR "Jurgen Valks."
+@REMARK Requires AmigaGuide 39.11
+                     
+@INDEX MAIN          
+
+@NODE MAIN "BlitzBasic 2 Library Commands"
+
+                        @{fg shine}BLITZ BASIC 2 ONLINE-HELP GUIDE V1.0@{fg text}
+
+
+			@{" All Blitz Blasic commands " link "Blitz2_Commands"} 
+			@{" All Third Party Commands  " link "Third"}
+
+                        @{"     BLITZ USER GROUP      " link "BLITZ_USER_GROUP"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@ENDNODE
+@Node "Third"
+@toc "MAIN"
+
+All the Blitz Basic and Third Party Commands are available in Version 1.1. 
+
+Which you can recive for a donation of £6 (UK) £9 (OTHER), To-:
+
+K. Winspear
+10 Colenso Street
+Hartlepool
+Cleveland
+TS26 9BD.
+(ENGLAND)
+
+Price includes Postage and Package.
+
+Version 1.1 Should be available from 1st March...
+
+
+@Endnode
+@NODE "BLITZ_USER_GROUP"
+
+      BBOnLine-Help was written exclusive to Blitz User Group.
+
+They are still on the lookout for new members. If you are interested in 
+joining get in touch with:-
+
+Matthew Tillet,
+27 Hillside Avenue,
+Worlinghem,
+Beccles,
+Suffolk,
+NR34 7AJ.
+
+@endnode
+@NODE "Blitz2_Commands"
+@toc "MAIN"
+
+                                Choose a letter:
+
+                            @{"    A    " link IND_A}     @{"    N    " link IND_N}
+                            @{"    B    " link IND_B}     @{"    O    " link IND_O}
+                            @{"    C    " link IND_C}     @{"    P    " link IND_P}
+                            @{"    D    " link IND_D}     @{"    Q    " link IND_Q}
+                            @{"    E    " link IND_E}     @{"    R    " link IND_R}
+                            @{"    F    " link IND_F}     @{"    S    " link IND_S}
+                            @{"    G    " link IND_G}     @{"    T    " link IND_T}
+                            @{"    H    " link IND_H}     @{"    U    " link IND_U}
+                            @{"    I    " link IND_I}     @{"    V    " link IND_V}
+                            @{"    J    " link IND_J}     @{"    W    " link IND_W}
+                            @{"    K    " link IND_K}     @{"    X    " link IND_X}
+                            @{"    L    " link IND_L}     @{"    Y    " link IND_Y}
+                            @{"    M    " link IND_M}     @{"    Z    " link IND_Z}
+
+
+
+@ENDNODE
+
+@NODE IND_A
+@toc "MAIN"
+- A -
+
+@{" Activescreen        " link "Blitz2:Help.Data/B5.guide/B58E"}     @{" AnimLoop            " link "Blitz2:Help.Data/80.guide/9C83"}
+@{" ActiveWindow        " link "Blitz2:Help.Data/B5.guide/B591"}     @{" AppEvent            " link "Blitz2:Help.Data/80.guide/9E87"}
+@{" AddAppIcon          " link "Blitz2:Help.Data/80.guide/9E85"}     @{" ASLFileRequest      " link "Blitz2:Help.Data/A3.guide/A802"}
+@{" AddAppMenu          " link "Blitz2:Help.Data/80.guide/9E83"}     @{" ASLScreenRequest$   " link "Blitz2:Help.Data/A3.guide/A803"}
+@{" AddAppWindow        " link "Blitz2:Help.Data/80.guide/9E81"}     @{" AttachGTList        " link "Blitz2:Help.Data/C5.guide/C68E"}
+@{" ADDValue            " link "Blitz2:Help.Data/A1.guide/A10B"}     @{" Avg                 " link "Blitz2:Help.Data/B4.guide/B48A"}
+@{" AGABlue             " link "Blitz2:Help.Data/CD.guide/CE12"}     @{" Avg.L               " link "Blitz2:Help.Data/B4.guide/B488"}
+@{" AGAFillPalette      " link "Blitz2:Help.Data/A0.guide/A08A"}     @{" Avg.Q               " link "Blitz2:Help.Data/B4.guide/B489"}
+@{" AGAGreen            " link "Blitz2:Help.Data/CD.guide/CE11"}    
+@{" AGAPalBlue          " link "Blitz2:Help.Data/A0.guide/A087"}    
+@{" AGAPalGreen         " link "Blitz2:Help.Data/A0.guide/A086"}     
+@{" AGAPalRed           " link "Blitz2:Help.Data/A0.guide/A085"}    
+@{" AGAPalRGB           " link "Blitz2:Help.Data/CD.guide/CE0E"}     
+@{" AGARed              " link "Blitz2:Help.Data/CD.guide/CE10"}     
+@{" AGARGB              " link "Blitz2:Help.Data/CD.guide/CE0D"}     
+@{" AllFire             " link "Blitz2:Help.Data/A0.guide/A009"}     
+@{" AllocMem            " link "Blitz2:Help.Data/A3.guide/A608"}     
+@{" AnalyzeDisk         " link "Blitz2:Help.Data/B6.guide/B691"}
+@ENDNODE
+
+@NODE IND_B
+@toc "MAIN"
+- B -
+
+@{" Bank                " link "Blitz2:Help.Data/A3.guide/A601"}     
+@{" Bin#                " link "Blitz2:Help.Data/B4.guide/B48E"}
+@{" BlitColl            " link "Blitz2:Help.Data/B4.guide/B489"}
+@{" BLoad               " link "Blitz2:Help.Data/A5.guide/A58F"}     
+@{" Block               " link "Blitz2:Help.Data/B7.guide/CB08"}
+@{" BlockScroll         " link "Blitz2:Help.Data/B2.guide/B206"}     
+@{" BSave               " link "Blitz2:Help.Data/A5.guide/A590"}     
+@{" ButtonGroup         " link "Blitz2:Help.Data/C5.guide/C61C"}
+@{" ButtonId            " link "Blitz2:Help.Data/C5.guide/C61E"}
+@ENDNODE
+
+@NODE IND_C
+@toc "MAIN"
+- C -
+
+@{" CloseDisk           " link "Blitz2:Help.Data/AD.guide/AD83"}     @{" CrMDecrunch         " link "Blitz2:Help.Data/A5.guide/A503"}
+@{" CloseScreen         " link "Blitz2:Help.Data/CD.guide/CF0B"}     @{" CustomColors        " link "Blitz2:Help.Data/C7.guide/C789"}  
+@{" CharCount           " link "Blitz2:Help.Data/B2.guide/B284"}     @{" CloseSerial         " link "Blitz2:Help.Data/AD.guide/AD06"}     @{" CustomString        " link "Blitz2:Help.Data/C7.guide/C78A"}   
+@{" ChDir               " link "Blitz2:Help.Data/B6.guide/B681"}     @{" CloseWindow         " link "Blitz2:Help.Data/C5.guide/C53C"}     @{" CxAppear            " link "Blitz2:Help.Data/AC.guide/AC90"}  
+@{" CheckAGA            " link "Blitz2:Help.Data/B2.guide/B387"}     @{" CludgeShapes        " link "Blitz2:Help.Data/A5.guide/A59B"}     @{" CxChangeList        " link "Blitz2:Help.Data/AC.guide/AC90"}  
+@{" CheckPrt            " link "Blitz2:Help.Data/A3.guide/A304"}     @{" CludgeSound         " link "Blitz2:Help.Data/A5.guide/A59C"}     @{" CxDisable           " link "Blitz2:Help.Data/AC.guide/AC8E"}   
+@{" Checksum            " link "Blitz2:Help.Data/B2.guide/B283"}     @{" ColourRequest       " link "Blitz2:Help.Data/9A.guide/9A82"}     @{" CxDisAppear         " link "Blitz2:Help.Data/AC.guide/AC91"}  
+@{" ChipFree            " link "Blitz2:Help.Data/B5.guide/B582"}     @{" CommoditieBase      " link "Blitz2:Help.Data/B5.guide/B58A"}     @{" CxEnable            " link "Blitz2:Help.Data/AC.guide/AC8F"}  
+@{" ChunkHeader         " link "Blitz2:Help.Data/A3.guide/A487"}     @{" CommodityEvent      " link "Blitz2:Help.Data/AC.guide/AC85"}     @{" CxKill              " link "Blitz2:Help.Data/AC.guide/AC92"}    
+@{" Con_Base            " link "Blitz2:Help.Data/9A.guide/9A93"}     @{" CxUnique            " link "Blitz2:Help.Data/AC.guide/AC94"}  
+@{" Cipher$             " link "Blitz2:Help.Data/B2.guide/B287"}     @{" CopyByte            " link "Blitz2:Help.Data/A5.guide/A58A"}     @{" CyclePalette        " link "Blitz2:Help.Data/CD.guide/CE15"}      
+@{" ClearBitmap         " link "Blitz2:Help.Data/A1.guide/A101"}     @{" CopyFile            " link "Blitz2:Help.Data/B6.guide/B68D"}                 
+@{" ClearRexxMsg        " link "Blitz2:Help.Data/AE.guide/AE04"}     @{" CopyLong            " link "Blitz2:Help.Data/A5.guide/A58C"}         
+@{" ClearToolTypes      " link "Blitz2:Help.Data/9D.guide/9D89"}     @{" CopyWord            " link "Blitz2:Help.Data/A5.guide/A58B"}         
+@{" ClickMouse          " link "Blitz2:Help.Data/B2.guide/B38C"}     @{" CreateArgString     " link "Blitz2:Help.Data/AE.guide/AE05"} 
+@{" ClipBlit            " link "Blitz2:Help.Data/B4.guide/BB8D"}     @{" CreateDisplay       " link "Blitz2:Help.Data/C7.guide/C783"}         
+@{" ClipBlitMode        " link "Blitz2:Help.Data/B4.guide/BB8E"}     @{" CreateMsgPort       " link "Blitz2:Help.Data/CD.guide/E101"}      
+@{" CloseConsole        " link "Blitz2:Help.Data/A1.guide/A185"}     @{" CreateRexxMsg       " link "Blitz2:Help.Data/AE.guide/AE01"}    
+@ENDNODE
+
+@NODE IND_D
+@toc "MAIN"
+- D -
+
+@{" Date$               " link "Blitz2:Help.Data/A7.guide/A702"}     @{" DisplayUser         " link "Blitz2:Help.Data/C7.guide/C78E"}     
+@{" DateFormat          " link "Blitz2:Help.Data/A7.guide/A704"}     @{" DosBase             " link "Blitz2:Help.Data/B5.guide/B586"}            
+@{" Days                " link "Blitz2:Help.Data/A7.guide/A705"}     @{" DiskBlocks          " link "Blitz2:Help.Data/B6.guide/B696"}     @{" Dos_Base            " link "Blitz2:Help.Data/9A.guide/9A8F"}    
+@{" DecodeILBM          " link "Blitz2:Help.Data/CD.guide/D089"}     @{" DiskCapacity        " link "Blitz2:Help.Data/B6.guide/B694"}     @{" DuplicatePalette    " link "Blitz2:Help.Data/A1.guide/A281"}  
+@{" DecodeMedModule     " link "Blitz2:Help.Data/A7.guide/A90B"}     @{" DiskErrs            " link "Blitz2:Help.Data/B6.guide/B697"}   
+@{" DecodePalette       " link "Blitz2:Help.Data/CD.guide/CE1A"}     @{" DiskfontBase        " link "Blitz2:Help.Data/B5.guide/B589"} 
+@{" DecodeShapes        " link "Blitz2:Help.Data/CD.guide/CD0F"}     @{" DiskFree            " link "Blitz2:Help.Data/B6.guide/B697"} 
+@{" DecodeSound         " link "Blitz2:Help.Data/B2.guide/BA0B"}     @{" DiskUnit            " link "Blitz2:Help.Data/B6.guide/B692"}
+@{" Decrypt             " link "Blitz2:Help.Data/9A.guide/9A02"}     @{" DiskUsed            " link "Blitz2:Help.Data/B6.guide/B695"}
+@{" DeIce               " link "Blitz2:Help.Data/A3.guide/A482"}     @{" DisplayAdjust       " link "Blitz2:Help.Data/C7.guide/C788"}
+@{" DelAppIcon          " link "Blitz2:Help.Data/80.guide/9E86"}     @{" DisplayControls     " link "Blitz2:Help.Data/C7.guide/C787"}  
+@{" DelAppMenu          " link "Blitz2:Help.Data/80.guide/9E84"}     @{" DisplayDblScan      " link "Blitz2:Help.Data/C7.guide/C78B"}
+@{" DelAppWindow        " link "Blitz2:Help.Data/80.guide/9E82"}     @{" DisplayPalette      " link "Blitz2:Help.Data/C7.guide/C786"}
+@{" DeleteArgString     " link "Blitz2:Help.Data/AE.guide/AE06"}     @{" DisplayRainbow      " link "Blitz2:Help.Data/C7.guide/C78C"}
+@{" DeleteMsgPort       " link "Blitz2:Help.Data/CD.guide/E102"}     @{" DisplayRGB          " link "Blitz2:Help.Data/C7.guide/C78D"}
+@{" DeleteRexxMsg       " link "Blitz2:Help.Data/AE.guide/AE02"}     @{" DisplayScroll       " link "Blitz2:Help.Data/C7.guide/C78F"} 
+@{" Deplode             " link "Blitz2:Help.Data/A5.guide/A502"}     @{" DisplaySprite       " link "Blitz2:Help.Data/C7.guide/C785"}
+@{" Depth               " link "Blitz2:Help.Data/B2.guide/B38B"}     
+@ENDNODE
+
+@NODE IND_E
+@toc "MAIN"
+- E -
+
+@{" EasyRequest         " link "Blitz2:Help.Data/A1.guide/A281"}     @{" ExchangeDisAble     " link "Blitz2:Help.Data/AC.guide/AC8A"}
+@{" Enable              " link "Blitz2:Help.Data/C5.guide/C61F"}     @{" Exists              " link "Blitz2:Help.Data/AD.guide/BE15"} 
+@{" Encrypt             " link "Blitz2:Help.Data/9A.guide/9A01"}     @{" ExchangeEnable      " link "Blitz2:Help.Data/AC.guide/AC88"}
+@{" ExchangeKill        " link "Blitz2:Help.Data/AC.guide/AC88"}     @{" ExchangeMessage     " link "Blitz2:Help.Data/AC.guide/AC8D"}
+@{" EntryComment$       " link "Blitz2:Help.Data/B6.guide/B68C"}     @{" ExchangeUnique      " link "Blitz2:Help.Data/AC.guide/AC8D"}
+@{" EntryDate           " link "Blitz2:Help.Data/B6.guide/B688"}     @{" ExecVersion         " link "Blitz2:Help.Data/CD.guide/E087"}
+@{" EntryDir            " link "Blitz2:Help.Data/B6.guide/B684"}     
+@{" EntryHour           " link "Blitz2:Help.Data/B6.guide/B689"}     
+@{" EntryMins           " link "Blitz2:Help.Data/B6.guide/B68A"}        
+@{" EntryName$          " link "Blitz2:Help.Data/B6.guide/B685"}        
+@{" EntrySecs           " link "Blitz2:Help.Data/B6.guide/B68B"}      
+@{" EntrySize           " link "Blitz2:Help.Data/B6.guide/B687"}       
+@{" Erase               " link "Blitz2:Help.Data/A5.guide/A593"}        
+@{" EraseAll            " link "Blitz2:Help.Data/A5.guide/A594"}         
+@{" EventCode           " link "Blitz2:Help.Data/C5.guide/C540"}      
+@{" EventQualifier      " link "Blitz2:Help.Data/C5.guide/C541"}      
+@{" ExchangeAppear      " link "Blitz2:Help.Data/AC.guide/AC89"}     
+@{" ExchangeChangeList  " link "Blitz2:Help.Data/AC.guide/AC87"}
+@ENDNODE
+
+@NODE IND_F
+@toc "MAIN"
+- F -
+
+@{" FadeInBitmap   " link "Blitz2:Help.Data/A1.guide/A102"}     @{" FNSLength      " link "Blitz2:Help.Data/AE.guide/AE8B"}     @{" FreeIncData    " link "Blitz2:Help.Data/B7.guide/B789"}
+@{" FadePalette    " link "Blitz2:Help.Data/CD.guide/CE16"}     @{" FNSLoad        " link "Blitz2:Help.Data/AE.guide/AE8F"}     @{" FreeMem        " link "Blitz2:Help.Data/A3.guide/A609"}
+@{" FastFree       " link "Blitz2:Help.Data/B5.guide/B583"}     @{" FNSOrigin      " link "Blitz2:Help.Data/AE.guide/AE8D"}     @{" FreeZoneTable  " link "Blitz2:Help.Data/A0.guide/A00D"}
+@{" FFPBase        " link "Blitz2:Help.Data/B5.guide/B588"}     @{" FNSOutput      " link "Blitz2:Help.Data/AE.guide/AE83"}     @{" Freq           " link "Blitz2:Help.Data/B2.guide/B381"} 
+@{" FNSPrefs       " link "Blitz2:Help.Data/AE.guide/AE85"}     @{" FromCLI        " link "Blitz2:Help.Data/B5.guide/B503"}
+@{" FileReqSize    " link "Blitz2:Help.Data/9A.guide/9A84"}     @{" FNSPrint       " link "Blitz2:Help.Data/AE.guide/AE81"}     
+@{" FileSize       " link "Blitz2:Help.Data/A5.guide/A58E"}     @{" FNSSetTab      " link "Blitz2:Help.Data/AE.guide/AE92"}      
+@{" FileStructure  " link "Blitz2:Help.Data/9A.guide/9A8A"}     @{" FNSSlot        " link "Blitz2:Help.Data/AE.guide/AE90"}      
+@{" FillMem        " link "Blitz2:Help.Data/A5.guide/A599"}     @{" FNSUnderline   " link "Blitz2:Help.Data/AE.guide/AE8A"}    
+@{" FillPalette    " link "Blitz2:Help.Data/A0.guide/A089"}     @{" FNSUnLoad      " link "Blitz2:Help.Data/AE.guide/AE91"}      
+@{" FillRexxMsg    " link "Blitz2:Help.Data/AE.guide/AE03"}     @{" FNSVersion     " link "Blitz2:Help.Data/AE.guide/AE8C"}   
+@{" FindToolNumber " link "Blitz2:Help.Data/9D.guide/9D88"}     @{" FNSWidth       " link "Blitz2:Help.Data/AE.guide/AE8E"}  
+@{" FindToolType   " link "Blitz2:Help.Data/9D.guide/9D8F"}     @{" FreeIconObject " link "Blitz2:Help.Data/9D.guide/9D85"}  
+@{" FindToolValue  " link "Blitz2:Help.Data/9D.guide/9D82"}     @{" ForcePAL       " link "Blitz2:Help.Data/B2.guide/B389"}   
+@{" FNSClip        " link "Blitz2:Help.Data/AE.guide/AE87"}     @{" FormatTrack    " link "Blitz2:Help.Data/AD.guide/AD87"}
+@{" FNSClipOutput  " link "Blitz2:Help.Data/AE.guide/AE88"}     @{" Frames         " link "Blitz2:Help.Data/80.guide/AF05"}   
+@{" FNSHeight      " link "Blitz2:Help.Data/AE.guide/AE86"}     @{" FreeCatalog    " link "Blitz2:Help.Data/A1.guide/A203"}
+@{" FNSInk         " link "Blitz2:Help.Data/AE.guide/AE84"}     
+@ENDNODE
+
+@NODE IND_G
+@toc "MAIN"
+- G -
+
+@{" GagetStatus     " link "Blitz2:Help.Data/C5.guide/C61D"}     @{" GTChangeList    " link "Blitz2:Help.Data/C5.guide/C692"}
+@{" GameB           " link "Blitz2:Help.Data/B7.guide/DF05"}     @{" GTGadPtr        " link "Blitz2:Help.Data/C5.guide/C690"}    
+@{" GetIconInfo     " link "Blitz2:Help.Data/80.guide/9F02"}     @{" GTSetAttrs      " link "Blitz2:Help.Data/C5.guide/C693"} 
+@{" GetIconObject   " link "Blitz2:Help.Data/9D.guide/9D81"}     @{" GTStatus        " link "Blitz2:Help.Data/C5.guide/C69D"}   
+@{" GetLocaleStr    " link "Blitz2:Help.Data/A1.guide/A204"}     @{" GTTags          " link "Blitz2:Help.Data/C5.guide/C68F"}      
+@{" GetMedInstr     " link "Blitz2:Help.Data/A7.guide/A909"}   
+@{" GetMedNote      " link "Blitz2:Help.Data/A7.guide/A908"}
+@{" GetMedVolume    " link "Blitz2:Help.Data/A7.guide/A907"}
+@{" GetResultString " linK "Blitz2:Help.Data/AE.guide/AE0B"}
+@{" GetRexxCommand  " link "Blitz2:Help.Data/AE.guide/AE0A"} 
+@{" GetRexxResult   " link "Blitz2:Help.Data/AE.guide/AE09"}  
+@{" GetString$      " link "Blitz2:Help.Data/9A.guide/9A89"}
+@{" GetSuperBitmap  " link "Blitz2:Help.Data/C5.guide/C543"}
+@{" GetWheel        " link "Blitz2:Help.Data/9A.guide/9A01"}
+@{" GraphicsBase    " link "Blitz2:Help.Data/B5.guide/B587"}
+@{" GTArrowSize     " link "Blitz2:Help.Data/C5.guide/C69E"}     
+@{" GTBevelBox      " link "Blitz2:Help.Data/C5.guide/C691"}
+@ENDNODE
+
+@NODE IND_H
+@toc "MAIN"
+- H -
+
+@{" HardCopy            " link "Blitz2:Help.Data/A3.guide/A302"}
+@{" Hex#                " link "Blitz2:Help.Data/B4.guide/B48D"}
+@{" HideScreen          " link "Blitz2:Help.Data/CD.guide/CF0C"}
+@{" HotKeyHit           " link "Blitz2:Help.Data/AC.guide/AC83"}
+@{" Hours               " link "Blitz2:Help.Data/A7.guide/A709"}
+@ENDNODE
+
+@NODE IND_I
+@toc "MAIN"
+- I -
+
+@{" IconBase         " link "Blitz2:Help.Data/B5.guide/B58B"}     
+@{" IncSize          " link "Blitz2:Help.Data/B7.guide/B78C"}  
+@{" IncSound         " link "Blitz2:Help.Data/B7.guide/B781"}     @{" IncShape         " link "Blitz2:Help.Data/B7.guide/B785"}
+@{" IconRender       " link "Blitz2:Help.Data/9D.guide/9D8D"}     @{" IncText$         " link "Blitz2:Help.Data/B7.guide/B78B"}
+@{" IconStack        " link "Blitz2:Help.Data/80.guide/9F06"}     @{" InitAnim         " link "Blitz2:Help.Data/80.guide/AF03"} 
+@{" IconSubTool$     " link "Blitz2:Help.Data/80.guide/9F07"}     @{" InitCopList      " link "Blitz2:Help.Data/C7.guide/C782"} 
+@{" IconTool$        " link "Blitz2:Help.Data/80.guide/9F03"}     @{" InitPalette      " link "Blitz2:Help.Data/CD.guide/CE17"}
+@{" IconType         " link "Blitz2:Help.Data/80.guide/9F04"}     @{" InitShape        " link "Blitz2:Help.Data/CD.guide/CD10"}
+@{" ILBMGrab         " link "Blitz2:Help.Data/A3.guide/A485"}     @{" InitZoomXY       " link "Blitz2:Help.Data/A1.guide/A106"}
+@{" ILBMPalette      " link "Blitz2:Help.Data/A3.guide/A484"}     @{" IsRexxMsg        " link "Blitz2:Help.Data/AE.guide/AE0D"}
+@{" ILBMViewMode     " link "Blitz2:Help.Data/CD.guide/D088"}     @{" IntuitionBase    " link "Blitz2:Help.Data/B5.guide/B585"}
+@{" Implode          " link "Blitz2:Help.Data/A5.guide/A501"}     @{" Int_Base         " link "Blitz2:Help.Data/9A.guide/9A90"}
+@{" IncBitmap        " link "Blitz2:Help.Data/B7.guide/B782"}     @{" IsLocale         " link "Blitz2:Help.Data/A1.guide/A201"}
+@{" IncData          " link "Blitz2:Help.Data/B7.guide/B788"}     @{" IsReqtoolsActive " link "Blitz2:Help.Data/9B.guide/9B1A"}
+@{" IncDataAbs       " link "Blitz2:Help.Data/B7.guide/B787"}     
+@{" IncMed           " link "Blitz2:Help.Data/B7.guide/B784"}     
+@{" IncMod           " link "Blitz2:Help.Data/B7.guide/B783"}       
+@{" IncNextShape     " link "Blitz2:Help.Data/B7.guide/B786"}   
+@ENDNODE
+
+@NODE IND_J
+@toc "MAIN"
+- J -
+
+@{" JFire               " link "Blitz2:Help.Data/A0.guide/A006"}
+@{" JHoriz              " link "Blitz2:Help.Data/A0.guide/A008"}
+@{" JoyC                " link "Blitz2:Help.Data/B2.guide/B386"}
+@{" JumpMed             " link "Blitz2:Help.Data/A7.guide/A905"}         
+@{" JVert               " link "Blitz2:Help.Data/A0.guide/A007"}
+
+@ENDNODE
+
+@NODE IND_K
+@toc "MAIN"
+- K -
+
+@{" KeyCode             " link "Blitz2:Help.Data/A5.guide/A59A"}           
+@ENDNODE
+
+@NODE IND_L
+@toc "MAIN"
+- L -
+
+@{" Largest             " link "Blitz2:Help.Data/B4.guide/B486"}
+@{" Largest.l           " link "Blitz2:Help.Data/B4.guide/B482"}
+@{" Largest.q           " link "Blitz2:Help.Data/B4.guide/B484"}
+@{" LargestFree         " link "Blitz2:Help.Data/B5.guide/B584"}
+@{" Length              " link "Blitz2:Help.Data/A5.guide/A592"}            
+@{" Lisa                " link "Blitz2:Help.Data/A5.guide/A583"}              
+@{" LoadAnim            " link "Blitz2:Help.Data/80.guide/AF02"} 
+@{" LoadFont            " link "Blitz2:Help.Data/B7.guide/C301"}
+@{" LoadMedModule       " link "Blitz2:Help.Data/A7.guide/A901"}         
+@{" LoadShape           " link "Blitz2:Help.Data/CD.guide/CD01"}
+@ENDNODE
+
+@NODE IND_M
+@toc "MAIN"
+- M -
+
+@{" MakeCommodity       " link "Blitz2:Help.Data/AC.guide/AC81"}
+@{" MakeDir             " link "Blitz2:Help.Data/B6.guide/B690"}     
+@{" MatchToolValue      " link "Blitz2:Help.Data/9D.guide/9D86"}
+@{" Max                 " link "Blitz2:Help.Data/A5.guide/A58D"}                    
+@{" MemFree             " link "Blitz2:Help.Data/A5.guide/A586"}                
+@{" Mins                " link "Blitz2:Help.Data/A7.guide/A70A"}
+@{" Months              " link "Blitz2:Help.Data/A7.guide/A706"}
+@{" MoreEntries         " link "Blitz2:Help.Data/B6.guide/B683"}     
+@{" MotorOff            " link "Blitz2:Help.Data/AD.guide/AD85"}
+@{" MotorOn             " link "Blitz2:Help.Data/AD.guide/AD82"}
+@{" MoveScreen          " link "Blitz2:Help.Data/80.guide/AF0E"}
+@ENDNODE
+
+@NODE IND_N
+@toc "MAIN"
+- N -
+
+@{" NameFile       " link "Blitz2:Help.Data/B6.guide/B68F"}       
+@{" NewPaletteMode " link "Blitz2:Help.Data/CD.guide/CE14"}   
+@{" NewToolType    " link "Blitz2:Help.Data/9D.guide/9D87"}
+@{" NewZoneTable   " link "Blitz2:Help.Data/A0.guide/A00B"}
+@{" NextBank       " link "Blitz2:Help.Data/A5.guide/A596"}       
+@{" NextFile$      " link "Blitz2:Help.Data/9A.guide/9A8B"}
+@{" NextFrame      " link "Blitz2:Help.Data/80.guide/AF04"}
+@{" NPrintCon      " link "Blitz2:Help.Data/A1.guide/A184"}
+@{" Null           " link "Blitz2:Help.Data/B5.guide/B581"}
+@{" NumDays        " link "Blitz2:Help.Data/A7.guide/A703"}
+@ENDNODE
+
+@NODE IND_O
+@toc "MAIN"
+- O -
+
+@{" OpenConsole         " link "Blitz2:Help.Data/A1.guide/A182"}
+@{" OpenDisk            " link "Blitz2:Help.Data/AD.guide/AD81"}
+@{" OpenSerial          " link "Blitz2:Help.Data/AD.guide/AD01"}
+@ENDNODE
+
+@NODE IND_P
+@toc "MAIN"
+- P -
+
+@{" PalAdjust           " link "Blitz2:Help.Data/A0.guide/A088"}     @{" PLoad               " link "Blitz2:Help.Data/A5.guide/A598"}
+@{" PalBlue             " link "Blitz2:Help.Data/A0.guide/A083"}     @{" Poly                " link "Blitz2:Help.Data/B4.guide/BB8A"}
+@{" PaletteInfo         " link "Blitz2:Help.Data/A0.guide/A084"}     @{" Polyf               " link "Blitz2:Help.Data/B4.guide/BB8B"}
+@{" PaletteRange        " link "Blitz2:Help.Data/CD.guide/CE18"}     @{" PopInput            " link "Blitz2:Help.Data/B7.guide/D20A"} 
+@{" PalGreen            " link "Blitz2:Help.Data/A0.guide/A082"}     @{" PopOutput           " link "Blitz2:Help.Data/B7.guide/D20B"}
+@{" PalRed              " link "Blitz2:Help.Data/A0.guide/A081"}     @{" PositionSuperBitmap " link "Blitz2:Help.Data/C5.guide/C542"}
+@{" Par$                " link "Blitz2:Help.Data/B5.guide/B502"}     @{" PPDecrunch          " link "Blitz2:Help.Data/A5.guide/A504"}
+@{" ParPath$            " link "Blitz2:Help.Data/B5.guide/B504"}     @{" PrintCon            " link "Blitz2:Help.Data/A1.guide/A183"}
+@{" Processor           " link "Blitz2:Help.Data/CD.guide/E085"}
+@{" PrtCommand          " link "Blitz2:Help.Data/A3.guide/A303"}
+@{" PrtText             " link "Blitz2:Help.Data/A3.guide/A301"}
+@{" PutIconObject       " link "Blitz2:Help.Data/9D.guide/9D84"}
+@{" PutSuperBitmap      " link "Blitz2:Help.Data/C5.guide/C544"}  
+@{" Peekto$             " link "Blitz2:Help.Data/B2.guide/B388"}        
+@{" PhoneticSpeak       " link "Blitz2:Help.Data/AC.guide/AC04"}  
+@{" PlayMed             " link "Blitz2:Help.Data/A7.guide/A903"}      
+@ENDNODE
+
+@NODE IND_Q
+@toc "MAIN"
+- Q -
+
+@{" Quiet               " link "Blitz2:Help.Data/B2.guide/B382"}
+@ENDNODE
+
+@NODE IND_R
+@toc "MAIN"
+- R -
+
+@{" ReadSector       " link "Blitz2:Help.Data/AD.guide/AD84"}  @{" Request                    " link "Blitz2:Help.Data/B5.guide/B58D"}  @{" RTEZFlagsRequest         " link "Blitz2:Help.Data/9B.guide/9B10"}  @{" RTRequest        " link "Blitz2:Help.Data/9B.guide/9B11"}
+@{" ReadSerial       " link "Blitz2:Help.Data/AD.guide/AD04"}  @{" Req_Base                   " link "Blitz2:Help.Data/9A.guide/9A8E"}  @{" RTEZFontRequest          " link "Blitz2:Help.Data/9B.guide/9B03"}  @{" RTRevision       " link "Blitz2:Help.Data/9B.guide/9B19"}        
+@{" ReadSerialMem    " link "Blitz2:Help.Data/AD.guide/AD0B"}  @{" Reserve                    " link "Blitz2:Help.Data/A5.guide/A595"}  @{" RTEZFreePattern          " link "Blitz2:Help.Data/9B.guide/9B0F"}  @{" RTUnlockWindow   " link "Blitz2:Help.Data/9B.guide/9B0D"}
+@{" ResetTimer       " link "Blitz2:Help.Data/B2.guide/B385"}  @{" RTEZGetLong                " link "Blitz2:Help.Data/9B.guide/9B06"}  @{" Runerrson                " link "Blitz2:Help.Data/80.guide/80D2"}  @{" Runerrsoff       " link "Blitz2:Help.Data/80.guide/80D3"}
+@{" ReadSerialString " link "Blitz2:Help.Data/AD.guide/AD05"}  @{" RexxError                  " link "Blitz2:Help.Data/AE.guide/AE0E"}  @{" RTEZGetLongRange         " link "Blitz2:Help.Data/9B.guide/9B07"}  
+@{" Reboot           " link "Blitz2:Help.Data/A5.guide/A582"}  @{" RexxEvent                  " link "Blitz2:Help.Data/AE.guide/AE0C"}  @{" RTEZGetString            " link "Blitz2:Help.Data/9B.guide/9B08"}  
+@{" ReduceX2         " link "Blitz2:Help.Data/A1.guide/A10C"}  @{" RexxsysBase                " link "Blitz2:Help.Data/B5.guide/B58C"}  @{" RTEZLoadFile             " link "Blitz2:Help.Data/9B.guide/9B02"}            
+@{" ReMap            " link "Blitz2:Help.Data/B4.guide/BB88"}  @{" Rex_Base                   " link "Blitz2:Help.Data/9A.guide/9A92"}  @{" RTEZMultiLoadFile        " link "Blitz2:Help.Data/9B.guide/9B13"} 
+@{" RemoveFNS        " link "Blitz2:Help.Data/AE.guide/AE89"}  @{" RIAnimInit                 " link "Blitz2:Help.Data/80.guide/9C81"}  @{" RTEZPaletteRequest       " link "Blitz2:Help.Data/9B.guide/9B05"} 
+@{" Rename           " link "Blitz2:Help.Data/A5.guide/A585"}  @{" RINextAnimFrame            " link "Blitz2:Help.Data/80.guide/9C82"}  @{" RTEZPathRequest          " link "Blitz2:Help.Data/9B.guide/9B0B"} 
+@{" Repeats          " link "Blitz2:Help.Data/B2.guide/B288"}  @{" Rrandomize                 " link "Blitz2:Help.Data/B4.guide/B48B"}  @{" RTEZRequest              " link "Blitz2:Help.Data/9B.guide/9B01"} 
+@{" ReplyRexxMsg     " link "Blitz2:Help.Data/AE.guide/AE08"}  @{" Rrnd                       " link "Blitz2:Help.Data/B4.guide/B48C"}  @{" RTLockWindow             " link "Blitz2:Help.Data/9B.guide/9B0C"}
+@{" ReqColours       " link "Blitz2:Help.Data/9A.guide/9A88"}  @{" RTASyncPaletteRequest      " link "Blitz2:Help.Data/9B.guide/9B1B"}  @{" RTEZSaveFile             " link "Blitz2:Help.Data/9B.guide/9B09"} 
+@{" ReqFileLoc       " link "Blitz2:Help.Data/A7.guide/A782"}  @{" RTASyncRequest             " link "Blitz2:Help.Data/9B.guide/9B15"}  @{" RTEZScreenModeRequest    " link "Blitz2:Help.Data/9B.guide/9B0A"} 
+@{" ReqFileRequest   " link "Blitz2:Help.Data/A7.guide/A781"}  @{" RTCheckASyncPaletteRequest " link "Blitz2:Help.Data/9B.guide/9B1C"}  @{" RTEZSetDefaultDirectory  " link "Blitz2:Help.Data/9B.guide/9B0A"}
+@{" ReqFileRequest$  " link "Blitz2:Help.Data/9A.guide/9A85"}  @{" RTCheckASyncRequest        " link "Blitz2:Help.Data/9B.guide/9B16"}  @{" RTEZSetPattern           " link "Blitz2:Help.Data/9B.guide/9B0E"}
+@{" ReqFontSize      " link "Blitz2:Help.Data/9A.guide/9A8D"}  @{" RTEndASyncPaletteRequest   " link "Blitz2:Help.Data/9B.guide/9B1D"}  @{" RTFileRequest            " link "Blitz2:Help.Data/9B.guide/9B12"}
+@{" ReqOutput        " link "Blitz2:Help.Data/A7.guide/A783"}  @{" RTEndASyncRequest          " link "Blitz2:Help.Data/9B.guide/9B17"}   
+@ENDNODE
+
+@NODE IND_S
+@toc "MAIN"
+- S -
+
+@{" SaveIncData     " link "Blitz2:Help.Data/B7.guide/B78A"}  @{" SetMedVolume    " link "Blitz2:Help.Data/A7.guide/A906"}  @{" Space$         " link "Blitz2:Help.Data/B2.guide/B282"}
+@{" SavePalette     " link "Blitz2:Help.Data/AD.guide/B905"}  @{" SetPeriod       " link "Blitz2:Help.Data/B2.guide/BA0C"}  @{" Speak          " link "Blitz2:Help.Data/AC.guide/AC01"}  
+@{" ScreenHeight    " link "Blitz2:Help.Data/B5.guide/B590"}  @{" SetSerialBuffer " link "Blitz2:Help.Data/AD.guide/AD07"}  @{" SpriteMode     " link "Blitz2:Help.Data/B4.guide/B808"}
+@{" ScreenTags      " link "Blitz2:Help.Data/CD.guide/CF0F"}  @{" SetSerialLens   " link "Blitz2:Help.Data/AD.guide/AD08"}  @{" Start          " link "Blitz2:Help.Data/A5.guide/A591"}
+@{" ScreenWidth     " link "Blitz2:Help.Data/B5.guide/B58F"}  @{" SetSerialParams " link "Blitz2:Help.Data/AD.guide/AD09"}  @{" StartMedModule " link "Blitz2:Help.Data/A7.guide/A902"}  
+@{" SearchBegin     " link "Blitz2:Help.Data/B2.guide/B286"}  @{" StopMed         " link "Blitz2:Help.Data/A7.guide/A904"}  @{" SystemDate     " link "Blitz2:Help.Data/A7.guide/A701"} 
+@{" SearchEnd       " link "Blitz2:Help.Data/B2.guide/B285"}  @{" SetToolValue    " link "Blitz2:Help.Data/9D.guide/9D83"}  
+@{" SetVoice        " link "Blitz2:Help.Data/AC.guide/AC02"}  @{" Setzone         " link "Blitz2:Help.Data/A0.guide/A002"}    
+@{" Secs            " link "Blitz2:Help.Data/A7.guide/A70B"}  @{" ShapeGadget     " link "Blitz2:Help.Data/C5.guide/C604"}
+@{" SendRexxCommand " link "Blitz2:Help.Data/AE.guide/AE07"}  @{" ShapeToIcon     " link "Blitz2:Help.Data/9D.guide/9D8B"} 
+@{" SerialEvent     " link "Blitz2:Help.Data/AD.guide/AD0A"}  @{" ShowPalette     " link "Blitz2:Help.Data/CD.guide/CE13"} 
+@{" SetBPLCON0      " link "Blitz2:Help.Data/B4.guide/B80D"}  @{" Smallest.q      " link "Blitz2:Help.Data/B4.guide/B485"}
+@{" SetCopyBuffer   " link "Blitz2:Help.Data/B6.guide/B68E"}  @{" Smallest        " link "Blitz2:Help.Data/B4.guide/B487"}
+@{" SetGadgetStatus " link "Blitz2:Help.Data/C5.guide/C621"}  @{" SortList        " link "Blitz2:Help.Data/B7.guide/C00E"}
+@{" SetHotKey       " link "Blitz2:Help.Data/AC.guide/AC82"}  
+@{" SetIconHit      " link "Blitz2:Help.Data/9D.guide/9D8A"} 
+@{" SetIconType     " link "Blitz2:Help.Data/9D.guide/9D8C"}  
+@{" SetMedMask      " link "Blitz2:Help.Data/A7.guide/A90A"}  
+@ENDNODE
+
+@NODE IND_T
+@toc "MAIN"
+- T -
+
+@{" TextRequest     " link "Blitz2:Help.Data/9A.guide/9A83"}
+@{" TextTimeout     " link "Blitz2:Help.Data/9A.guide/9A87"}
+@{" Ticks           " link "Blitz2:Help.Data/B2.guide/B384"}
+@{" Timer           " link "Blitz2:Help.Data/A5.guide/A588"}                       
+@{" Translate$      " link "Blitz2:Help.Data/AC.guide/AC03"}
+@ENDNODE
+
+@NODE IND_U
+@toc "MAIN"
+- U -
+
+@{" UnpackIFF           " link "Blitz2:Help.Data/A3.guide/A483"}       
+@{" UseCatalog          " link "Blitz2:Help.Data/A1.guide/A202"}
+@{" UseZoneTable        " link "Blitz2:Help.Data/A0.guide/A00C"}
+@ENDNODE
+
+@NODE IND_V
+@toc "MAIN"
+- V -
+
+@{" VoiceLoc            " link "Blitz2:Help.Data/AC.guide/AC05"}
+@{" Vpos                " link "Blitz2:Help.Data/A1.guide/BC0D"}
+@{" VwaitPos            " link "Blitz2:Help.Data/B2.guide/B383"}
+@ENDNODE
+
+@NODE IND_W
+@toc "MAIN"
+- W -
+
+@{" Wait                " link "Blitz2:Help.Data/CD.guide/E103"}
+@{" WaitFor             " link "Blitz2:Help.Data/B5.guide/B592"}
+@{" WBDepth             " link "Blitz2:Help.Data/CD.guide/E083"}
+@{" WBHeight            " link "Blitz2:Help.Data/CD.guide/E082"}
+@{" WBlit               " link "Blitz2:Help.Data/C5.guide/C53E"}
+@{" WBViewMode          " link "Blitz2:Help.Data/CD.guide/E084"}
+@{" WBWidth             " link "Blitz2:Help.Data/CD.guide/E081"}
+@{" WeekDay             " link "Blitz2:Help.Data/A7.guide/A708"}
+@{" Window              " link "Blitz2:Help.Data/C5.guide/C501"}
+@{" WPrintScroll        " link "Blitz2:Help.Data/C5.guide/C53D"}
+@{" WriteBoot           " link "Blitz2:Help.Data/AD.guide/AD88"}
+@{" WriteSector         " link "Blitz2:Help.Data/AD.guide/AD86"}
+@{" WriteSerial         " link "Blitz2:Help.Data/AD.guide/AD02"}
+@{" WriteSerialMem      " link "Blitz2:Help.Data/AD.guide/AD0C"}
+@{" WriteSerialString   " link "Blitz2:Help.Data/AD.guide/AD03"}
+@{" WTitle              " link "Blitz2:Help.Data/C5.guide/C53B"}
+@ENDNODE
+
+@NODE IND_X
+@toc "MAIN"
+- X -
+
+@{" Xor                 " link "Blitz2:Help.Data/B4.guide/B481"}
+@{" XOR                 " link "Blitz2:Help.Data/B4.guide/B481"}
+@ENDNODE
+
+@NODE IND_Y
+@toc "MAIN"
+- Y -
+
+@{" Years               " link "Blitz2:Help.Data/A7.guide/A707"}
+@ENDNODE
+
+@NODE IND_Z
+@toc "MAIN"
+- Z -
+
+@{" Zone                " link "Blitz2:Help.Data/A0.guide/A003"}
+@{" ZoneInit            " link "Blitz2:Help.Data/A0.guide/A001"}
+@{" ZoneTable           " link "Blitz2:Help.Data/A0.guide/A005"}
+@{" ZoneTableSize       " link "Blitz2:Help.Data/A0.guide/A00A"}
+@{" ZoneTest            " link "Blitz2:Help.Data/A0.guide/A004"}
+@{" ZoomX2              " link "Blitz2:Help.Data/A1.guide/A107"}
+@{" ZoomX4              " link "Blitz2:Help.Data/A1.guide/A103"}
+@{" ZoomX8              " link "Blitz2:Help.Data/A1.guide/A10A"}
+@{" ZoomXY              " link "Blitz2:Help.Data/A1.guide/A105"}
+@ENDNODE
+
+
+

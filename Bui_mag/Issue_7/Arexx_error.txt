@@ -1,0 +1,11 @@
+Arexx Error
+
+-----------
+
+
+
+There was apparantly a few problems with the ARexx script I supplied for last months tutorial. I took the script straight off the coverdisk and it worked! To use the code, create it into an executable and run it from the CLI. Then open another CLI window 
+
+
+
+It SHOULD then work!

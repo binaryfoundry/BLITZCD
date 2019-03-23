@@ -1,0 +1,239 @@
+                      =====================
+                       BUM10 Release Notes
+                      =====================
+
+  -=* Additional documentation is on the BUM10Examples1 disk *=-
+
+
+
+----------------------------
+New things for this release:
+----------------------------
+
+- New Teditor version 2.23 for WB2+ Amigas only (and it really
+  needs a Hard Drive for the acid help guides)         
+ 
+- Steve Flock CIA (pro)tracker library version 1.04
+
+- Steve Flock SoundSystem library beta release
+
+- Paul Reece Enhanced Music library update
+
+- Nigel Hughes (RWE/RI)Maths/Chunky library beta release
+
+- Ted Bailey Chunky-To-Planar includes beta release
+
+
+
+---------------------------------------------------------
+Bugs that have hopefully been squashed with this release:
+---------------------------------------------------------
+
+- NewTed's problems when running the program MCP (more of them)
+
+- NewTed's problems with 'mouseable' labels
+
+- Erm, well there were some fixes to four of the libraries in
+  Acidlibs, but they're not included... (see BUM10docs)
+
+
+
+-----------------
+Floppy Disk Users
+-----------------
+
+This disk is a direct replacement for your Blitz2.1 program disk.
+
+Please note that you will not be able to compile some of the examples
+on the examples disks because they use additional commands contained
+in the libraries on Blitzlibs. Blitz will report the error 'Token Not
+Found' and the command will appear as ????? instead of text. See BUM9
+for how to create a new deflibs.
+
+
+There have been a few alterations to this disk to allow some more
+room for Blitz libraries, however, the actual Blitz program files are
+the same as on the BUM9 Blitz2 Program disk.
+
+  - acidlibs          (unchanged from BUM9, grrr)
+
+  - Blitz2 compiler   (unchanged from BUM9)
+
+  - small defaultdbug (unchanged from BUM9)
+
+  - Ted version 1.1   (unchanged from BUM9)
+
+
+What has changed on this disk since BUM9 ?
+
+  - Narrator.device has been removed from the 'devs' directory and
+    Translator.library has been removed from the 'libs' directory.
+    These two files handle the Amigas' speech facility, so the Blitz
+    'speak' commands won't work if you boot from this disk. WB2+ users
+    should format a blank disk as FFS (Fast Filing System) which will
+    give them an extra 40K, then copy all the files from this disk onto
+    it, and then replace the device and library if they want to use the
+    speak commands.
+
+  - Serial.device has also been removed from the 'devs' directory so
+    you won't be able to use any Blitz serial commands if you boot from 
+    this disk. 
+
+  - The directory 'userlibs' contains a subdirectory 'beta' which 
+    contains two Acid libraries, cd32lib from BUM8 and chunkylib from
+    BUM9. These two libraries will load automatically when you first
+    run Blitz. Normally, you would have received a larger Acidlibs 
+    file containing these libraries, but there were big problems...
+    (see BUM10docs)   
+
+  - 'Small' Deflibs is slightly larger, it now contains the following
+    libraries from Blitzlibs:
+              
+             - all the amigalibs  
+
+             - elmore dos library v2.2 (Docs on BUM9)
+
+             - elmore hardware library (Docs on BUM9)
+
+             - xbones cia tracker library v1.04 
+
+             - rwe/ri math library beta  
+
+             - ri amos func library (Docs on BUM9)
+	
+    
+---------------
+Hard Disk Users
+--------------- 
+
+Due to extreme lack of space, the new editor and its' acidlib help
+guides had to be packed into two lha archives and put on each BUM disk:
+
+        Ted223.lha is on BUM10A 
+
+        AcidGuides.lha is on BUM10B
+
+
+
+So how do I install the new editor ?
+
+     1. Rename your old Ted in your Blitz drawer, 'Ted21' will do..
+
+     2. * VERY IMPORTANT STEP * - delete your old Ted preferences files
+        from ENVARC: and ENV: or SuperTed2.23 will crash when you first
+        run it! ENVARC: is on your Workbench partition (for WB3 users
+        it's in Prefs/Env-Archive and for WB2 users it's erm, somewhere
+        else I think ;), ENV: is in Ram: 
+
+     3. Extract Ted223.lha directly into your Blitz drawer where your
+        renamed OldTed and other Blitz program files are. This will create
+        a new file 'Ted' and a new directory 'REDHelp' which contains a
+        few script files and a sub-directory 'AcidGuides'
+
+     4. Extract Acidguides.lha into the new directory,
+
+        <your HD>:<your Blitz Drawer>/REDHelp/AcidGuides/
+
+     5. Make sure the file attributes on the two files below, are set to
+        S RWED (i.e. the Script flag is set)
+
+        <your HD>:<your Blitz Drawer>/REDHelp/RED_HELP
+        <your HD>:<your Blitz Drawer>/REDHelp/ShowExample
+
+     6. Load Blitz and type a Blitz Command, 'DisplayControls' will do,
+        press Right-Shift and Help on the same line as the command and
+        if everything's ok the new help guides should pop up.
+
+
+
+How do I make 'Lha' extract the files correctly ?
+
+     1. Copy the files, 'Ted223.lha' from BUM10A and 'AcidGuides.lha' 
+        from BUM10B to Ram:
+
+     2. Open a CLI window and change the directory to your Blitz drawer
+        by typing,
+
+          Blitz2:                        <press return>
+        
+     3. Type,
+
+          Lha -xa x Ram:Ted223.lha       <press return>
+
+        the options -xa will extract the archive with the full path and
+        with all file attributes preserved.
+
+     4. Change the directory to your newly created drawer(s) by typing,
+
+          Blitz2:REDHelp/AcidGuides/     <press return>
+
+     5. Type,
+
+          Lha -xa x Ram:AcidGuides.lha   <press return>
+
+
+
+How do I change the file attributes of the two script files if I forgot
+to set the -a option in 'Lha' ?
+
+     1. Open a CLI window and change the directory to the new help drawer
+        by typing, 
+
+          Blitz2:REDHelp/         <press return>
+
+     2. Type,
+
+          Protect RED_HELP +s     <press return>
+
+          Protect ShowExample +s  <press return>
+
+     - Alternatively you can set a files attributes from Workbench by
+       selecting show all files from the menus, then click once on the
+       icon and select information from the menus.
+
+
+
+Where's me BigDeflibs ?
+
+     - There's no new BigDeflibs for you this time, just stick the new
+       Blitzlibs: disk in your floppy drive and run the LibMan program
+       from BUM9. You should end up with a 197K deflibs file (smaller
+       than BUM9s' because the Acid chunkylib isn't included).
+
+     - Don't forget to copy the two Acid library files (on this disk)
+       into the same drawer on your HD.
+
+            Blitz2:Userlibs/Beta/cd32lib.obj    
+            Blitz2:Userlibs/Beta/chunkylib.obj  
+        
+       These libraries will now load automatically when you first run
+       Blitz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+It's all over...

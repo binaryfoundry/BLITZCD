@@ -1,0 +1,568 @@
+@database amigaguide.guide
+@master Blitz2Progs:PassRemb/PassRemb.GUIDE
+@$VER: 2.15
+@author "Lee packham"
+@(c) "1995 Lee Packham"
+@remark Created with Heddley v1.1 (c) Edd Dumbill 1994
+
+@node "MAIN" "Password Rememberer V2.1 Documentation"
+                       Password Rememberer V2.15
+                          Shareware Version
+                 (C)1995 Lee Packham/ICED Productions
+
+        Table Of Contents
+
+      @{"   " link "INTRODUCTION" 0} Introduction To Password Rememeberer
+      @{"   " link "DISCLAIMER" 0} Disclaimer
+      @{"   " link "SHAREWARE" 0} Shareware Notice
+
+      @{"   " link "REQUIREMENTS" 0} Requirements
+      @{"   " link "RUNNING" 0} Loading Password Rememberer
+      @{"   " link "USING" 0} Using Password Rememberer
+      @{"   " link "MANUAL" 0} Manually Configuring Password Rememberer
+
+      @{"   " link "CONTACT" 0} Contacting The Author
+      @{"   " link "CREDITS" 0} Credits
+      @{"   " link "BUGS" 0} Known Bugs
+      @{"   " link "HISTORY" 0} Version History
+@endnode
+
+@node "INTRODUCTION" "Introduction To Password Rememberer"
+  I hate remembering my passwords, especially the really important ones,
+like the ones that lock my GCSE coursework. The worst bit is though, is when
+you forget them. There is nothing more annoying!
+  This is where Password Rememberer (PassRemb from now on) comes in. It
+allows you to store your passwords in a encrypted file and locks them with
+one main password. So that in the end you only have to remember one
+password, the one that unlocks all the others.
+  You`re probably wondering what happens if you forget your main password?
+Well, if you are a registered user, you can contact me and I will have your
+password in my PassRemb password file. So with some evidence of who you are
+I can send your password to you.
+  The best bit about this program is that, for some reason, once you type
+your password into the program, you never forget it yourself. If you do it
+is in the program. It`s like writing down your password to help you
+remember, but in this case, nobody else can read it. Good Eh!?!
+
+  And, now, in V2 of this wonderful program you have the facility to make
+PassRemb to type any password stored in the program into any other program.
+By simulating the keypresses, PassRemb physically types the password when
+you tell it to, when you want it to.
+@endnode
+
+@node "DISCLAIMER" "Disclaimer"
+  I, Lee Packham, take no responsibility for any thing that goes wrong with
+this progam (although it shouldn`t!), accidental or otherwise. Or, in other
+words, if any thing goes wrong, you can`t sue me. If you have any problems
+contact me at the address at the bottom of this doc file.
+  The copyright does remain with me, so don`t go creating a progam called
+Password Rememberer because if I find out, your dead (financially!)
+  The shareware version is freely distributable if distributed along the
+following guidelines:-
+
+    1. The files are not altered in anyway whatsoever.
+    2. The files are not to be crunched, apart from archiving with
+       LHA or LZX (nice proggy! shame about the bugs in 1.20!).
+    3. The archive must contain the following:-
+
+        PassRemb.info
+        PassRemb/PassRemb
+        PassRemb/PassRemb.info
+        PassRemb/PassRemb.GUIDE
+        PassRemb/PassRemb.GUIDE.info
+        PassRemb/PassRemb-Install
+        PassRemb/PassRemb-Install.info
+
+    4. PassRemb is not allowed to be distributed for profit.
+
+    5. Permission is required to place this program on a coverdisk,
+       or inclusion of a compilation (Fred Fish and Amiga Shopper
+       don`t need permission because I love them so much!), See
+       @{"Contacting The Author" link "CONTACT" 0} for details on how to contact the author.
+@endnode
+
+@node "SHAREWARE" "Shareware Notice"
+  I`m sorry, I need the money, and this program is so good anyway, that I
+thought I might as well release it as Shareware. This means, the version
+that comes with this doc file is made to make you register (spread the disk
+and the word!). This version is freely distributable, if you like it,
+register. In this version, you can only log on with your username as
+"shareware" (case sensitive) and your password as "password". Also, there is
+an annoying pop-up requester that pops-up approximately every 5 minutes.
+Otherwise, the program is not restricted. I thought restricting would be
+unfair. The idea of this, is so that you get a true idea of what the program
+is like and hopefully, if you like it, register.
+  You can register with one username or mutiple usernames. When you
+register, you have to send me information about the usernames and the
+passwords requested (these cannot be changed when set). The prices are as
+follows:-
+
+  Single User Registration........................5 pounds
+  Multiple User Registration (10 or less users)...4 pounds per user
+  Multiple User Registration (11 or more users)...3 pounds per user
+
+  When you register, on top of sending the above information, send me a
+piece of information that only you would know, (say, the serial number on
+your Amiga) this is so that when you forget your main password  you have
+some evidence that you are the person who registered to claim  it back off
+me. You will require this to register.
+  You can only register by sending a cheque or postal order made payable to
+"Lee Packham" and all the above information to....
+
+    Lee Packham
+    212 Upper Shoreham Road
+    Shoreham-By-Sea
+    West Sussex
+    BN43 6BG
+    ENGLAND
+
+  Cheques and postal orders MUST be in STERLING, I can`t accept anything
+else. Anything else will ripped up and chucked in the bin. If you live
+outside England please put an extra pound onto your registration to cover
+extra costs, stamps etc.
+  You will recieve the latest verison of PassRemb free when you register.
+
+  Support The Amiga, Support Sharewhare, Support Me, REGISTER!
+@endnode
+
+@node "REQUIREMENTS" "System Requirements"
+  PassRemb requires Kickstart 2.04 or above and 1MB to run (although I do
+recommend more!). KS1.3 owners UPGRADE, I can`t be bothered with the
+complications of such a rubbish kickstart!!
+
+  V2.01.....  PassRemb now requires the ReqTools.library V38+ in LIBS:
+              This library is NOT included in this archive.
+@endnode
+
+@node "RUNNING" "Running Password Rememberer"
+  I hate to surprise you, but just double-click on the icon. Sorry about the
+icon, looks rubbish dosen`t it. You may also install the program on your
+harddisk by simply dragging the whole of the "PassRemb/" directory over to
+where you want Password Rememberer to reside.
+
+  Installer script coming soon... WATCH THIS SPACE!
+@endnode
+
+@node "USING" "Using Password Rememberer"
+  When you start PassRemb, you will be prompted to enter you username and
+password. Enter your username, press return, and type in your password.
+Please Note that these are case sensitive and that if you are not registered
+your username is "shareware" and your password is "password".
+  If you run PassRemb by accident and want to quit instead of entering your
+username and password, click on the close gadget. See @{"History" link "HISTORY" 0} for details.
+
+      @{"   " link "61" 0} Entering A New Password
+      @{"   " link "62" 0} Editing An Old Password
+      @{"   " link "63" 0} Deleting A Password
+      @{"   " link "64" 0} Saving A List Of Passwords
+      @{"   " link "68" 0} "Typing" A Password
+
+      @{"   " link "65" 0} Preferences
+      @{"   " link "66" 0} Online Help
+      @{"   " link "67" 0} Other Features
+
+@endnode
+
+@node "61" "Entering A New Password"
+To enter a new password, click on the "New" button (top middle). The cursor
+will automatically flip to the Alias string box. In this box, enter what you
+want to know you password as. Press Return. The cursor will go straight to
+the password box, enter the actual password and press return. This will make
+the alias appear in the left of the window.
+@endnode
+
+@node "62" "Editing An Old Password"
+To edit an old password, click on the desired password in the list to the
+left of the window. The alias and password will then appear in the relevant
+boxes on the right. Click on the Alias box, edit Alias as desired, press
+return, edit the Password as desired, press return and it will be changed.
+@endnode
+
+@node "63" "Deleting A Password"
+To delete a password, click on the desired password in the list to the left
+of the window. Then click on the "Delete" button. You will be asked to
+confirm the deletion.
+@endnode
+
+@node "64" "Saving A List Of Passwords"
+To save the list of passwords, click on the "Save" button. This will
+automatically encrypted the data for you.
+@endnode
+
+@node "65" "Preferences"
+The "Prefs" button brings up a window which allows you to control different
+aspects of the program.
+
+                @{"   " link "651" 0} Password Storage
+                @{"   " link "652" 0} Location Of Help File
+                @{"   " link "653" 0} Default Username
+                @{"   " link "654" 0} (Un)Iconify Hotkey
+                @{"   " link "655" 0} Quit Hotkey
+                @{"   " link "6510" 0} "Typer" Hotkey
+                @{"   " link "656" 0} BatterBacked Up Clock
+
+                @{"   " link "657" 0} Save
+                @{"   " link "658" 0} Use
+                @{"   " link "659" 0} Cancel
+@endnode
+
+@node "651" "Password Storage"
+This allows you to define where the Passwords will be stored when you save
+them. It is also the path that PassRemb will load it's files from, so when
+you quit, the program will attempt to copy  all the relevant files to this
+directory. I suggest you check that it has done this properly, if it hasn't,
+copy the relevant files over.
+
+            @{"   " link "FILES" 0} Files Used By Password Rememberer
+@endnode
+
+@node "652" "Location Of Help File"
+This allows you to select where "PassRemb.GUIDE" (this file) is  located for
+the help menu. PassRemb will not copy the GUIDE to  the location you select
+it will just assume that it is there.
+
+            @{"   " link "FILES" 0} Files Used By Password Rememberer
+@endnode
+
+@node "653" "Default Username"
+To save you typing in your username everytime you load the program you can
+set a default one
+@endnode
+
+@node "654" "(Un)Iconify Hotkey"
+This HotKey is the key used to iconify/uniconify the program, it uses the
+standard set of commodity hotkey shortcuts.
+@endnode
+
+@node "655" "Quit Hotkey"
+This HotKey is used to quit the program when you press it. This is useful
+if, say, somebody walks in while your viewing your passwords, you can quit
+easily and quickly
+@endnode
+
+@node "656" "Batterybacked Up Clock"
+This tickbox is option that allows you to tell the program you have a
+batterybacked up clock. This is used to tell if passwords are due for a
+change, it will do this at the beginning of every month leave it unticked if
+you don't want this feature.
+@endnode
+
+@node "657" "Save Prefs"
+Saves the Tooltypes, "uses" it and closes the window
+@endnode
+
+@node "658" "Use Prefs"
+Uses the current settings and closes the window
+@endnode
+
+@node "659" "Cancel Prefs"
+Cancels all the things you changed since you opened the window. Apart from
+if you selected "Default Prefs" or "Reload Prefs" from the "Project" menu.
+@endnode
+
+@node "6510" "Typer Hotkey"
+This sets the HotKey for the @{"Typer" link "68" 0} part of PassRemb. This is a normal
+commodity hotkey. Read you User`s Guide for more details on Hotkeys.
+Unfortunatly, due to the nature of "Typer" certain rules have to be
+followed, these are:-
+
+       1)  Don`t use the following keys:-
+               (a) control
+               (b) lalt
+               (c) ralt
+               (d) rcommand
+               (e) lshift
+               (f) rshift
+
+       2) Don`t use any printable characters. Try to use the
+          function keys.
+
+The easiest key and the default key is "lcommand f1". This way no character
+is printed, and it doesn`t interfere with anything else. Although, you could
+use any of the function keys.
+@endnode
+
+@node "66" "Online Help"
+PassRemb now has online help to aid you in the use of this wonderful
+program. You can activate it from either the main window of the prefs window
+by selecting from the menu. There are two options: "Contents", which brings
+up the contents, and, "Current Topic", which brings up information depending
+on what you are currently doing. You can set the location of PassRemb.GUIDE
+by using the @{"Prefs" link "65" 0} window.
+@endnode
+
+@node "67" "Other Features"
+You can make PassRemb quit/sleep/wake from the Workbench Tool menu. Cicking
+on the close gadget will make PassRemb iconify. PassRemb can`t be run twice.
+@endnode
+
+@node "68" "Typing A Password Into Another Program"
+How about a program which types your passwords for you? Well, PassRemb can
+now type your passwords for you by physically simulating  keypresses, using
+a system called "Typer". Here is an example:-
+
+  All your BBS passwords are stored using PassRemb and you are just about to
+log onto one of them. First, you load up PassRemb and select the required
+password. You then Iconify PassRemb by clicking on the close gadget.
+  Now, you load up your comms software and dial the BBS. You type in you
+username and then when asked for password you press a hotkey and your
+password is typed in automatically. The screen flashes, this is the prompt
+for you to press <RETURN>, so you do so. Now, you are logged onto your BBS!
+
+So, how do you use this feature? Well, first, select the required the
+password. Iconify PassRemb by clicking on the close gadget. Now get to the
+entry point of the password you wish to enter and hit the hotkey and it will
+type in the password. Unfortunatly, I can`t simulate the <RETURN> key. So
+when it has finished it will flash the screen. This is your prompt to press
+the <RETURN> key. This, as far as I know, works on any entry box, BBS etc.
+This is because as far as the computer is concerned, you are actually typing
+your password. Good Eh!?!!
+
+For details on setting up the Hotkey see @{"Prefs" link "65" 0}
+@endnode
+
+@node "FILES" "Files Used By Password Rememberer"
+Here is a (short) list of files used by PassRemb to store all its data.
+
+    <path>/PASSWORDS           Registration User File.
+    <path>/<username>          The username is used as the filename
+                               to save those users list of passwords.
+                               If you haven't registered this will be
+                               "shareware".
+    <helppath>/PassRemb.GUIDE  Help file, <helppath> is the user
+                               selected path selected in the @{"Prefs" link "65" 0}
+                               window.
+    T:PRTMP.00                 A temp file set up by PassRemb, don`t
+                               delete it!
+    ENV:icon_PassRemb.info     Temp file, icon for when PassRemb
+                               iconifies. Again, don`t delete!
+
+  (<..> denotes a variable)
+  (<path> denotes the users selected path
+   storage of files.)
+@endnode
+
+@node "MANUAL" "Manually Configuring Password Rememberer"
+  Password Rememberer stores it's configuration in it's icon in the form of
+Tooltypes. These are the Workbench's standard way of configuring programs.
+To change these manually you need to click on the "PassRemb" icon ONCE and
+go to the "Information" option in the "Icons" menu on Workbench. The list of
+tooltypes is shown which are easily editable. If  you have any trouble,
+refer to your User's Guide for information on tooltypes.
+  Below all the tooltypes and their options are listed, they must be entered
+directly as they are below. You don't actually need to add to these as they
+will be already on the icon when you get this distribution to make your life
+easier.
+
+  *NOTE TO V1-V1.3 USERS*
+
+  The config file "s:PASSREMB.INI" is no
+  longer used by the program and can therefor be deleted.
+  
+            @{"   " link "71" 0} PASSDIR
+            @{"   " link "72" 0} HELPPATH
+            @{"   " link "73" 0} DEFUSER
+            @{"   " link "74" 0} POPKEY
+            @{"   " link "75" 0} QUITKEY
+            @{"   " link "77" 0} TYPEKEY
+            @{"   " link "76" 0} BATTERY
+@endnode
+
+@node "71" "PASSDIR"
+ ToolType:- PASSDIR
+
+This defines the directory where PassRemb will load and save it`s files
+from. Once this has been set, I suggest you copy any previously saved files
+to directory, otherwise PassRemb won`t be able to find the data. Set to
+"(Current Dir)" for the PassRemb to use the location of PassRemb as the
+place to save it's files. It must be typed exactly as the above shows,
+otherwise PassRemb will look for a directory which probably doesn't exist!
+
+            @{"   " link "FILES" 0} Files Used By Password Rememberer
+@endnode
+
+@node "72" "HELPPATH"
+ ToolType:- HELPPATH
+
+This defines the directory where "PassRemb.GUIDE" is located for the help
+menu in PassRemb. If PassRemb.GUIDE is not found in this path help will not
+work. Set to "(Current Dir)" for PassRemb to load it's GUIDE from it's own
+directory as itself. It must be typed exactly as the above shows, otherwise
+PassRemb will look for a directory which probably doesn't exist!
+
+            @{"   " link "FILES" 0} Files Used By Password Rememberer
+@endnode
+
+@node "73" "DEFUSER"
+ ToolType:- DEFUSER
+
+This sets the default user. When PassRemb loads up this will go in the
+"Username" box to save you typing it in every time you load the program. You
+still have to type in your password however.
+@endnode
+
+@node "74" "POPKEY"
+ ToolType:- POPKEY
+
+This defines the (Un)Iconify HotKey, see 
+
+  @{"Using Password Rememberer/Preferences/(Un)Iconify Hotkey" link "654" 0}
+@endnode
+
+@node "75" "QUITKEY"
+ ToolType:- QUITKEY
+
+This defines the Quit HotKey, see
+
+  @{"Using Password Rememberer/Preferences/Quit Hotkey" link "655" 0}
+@endnode
+
+@node "76" "BATTERY"
+ ToolType:- BATTERY
+
+Put "TRUE" if you have one, and "FALSE" if you don`t, see 
+
+  @{"Using Password Rememberer/Preferences/Quit Hotkey" link "656" 0}
+@endnode
+
+@node "77" "TYPEKEY"
+ ToolTypes:- TYPEKEY
+
+This is the hotkey used by the @{"Typer" link "68" 0} facility, see
+
+  @{"Using Password Rememberer/Preferences/Typer Hotkey" link "6510" 0}
+@endnode
+
+@node "CONTACT" "Contacting The Author"
+Contact me for bug reports, suggestions, registration and anything else you
+feel telling me about!
+
+        My address is:
+
+          Lee Packham
+          212 Upper Shoreham Road
+          Shoreham-By-Sea
+          West Sussex
+          BN43 6BG
+          England
+
+@endnode
+
+@node "CREDITS" "Credits"
+I, Lee Packham, programmed it, nobody else did.
+
+Richard Salmon, for his (un)helpful advice and bugtesting!
+
+Micky at Computer Sec PD for distributing this "amazingly useful" program!
+
+Kevin Winspear for being a wonderful contact!
+
+Acid Software for Blitz Basic 2. The Most flexible programming langugage
+ever!
+
+The Amiga for being the best computer ever!
+@endnode
+
+@node "BUGS" "Known Bugs"
+I know, there shouldn`t be any, but as always there is always one. If you
+are running "SysIHack", which patches the BOOL gadgets, causes the programs
+hotkeys not to work. I can`t see what is causing this problem and will
+probably never fix it. Could somebody tell me how to fix this?
+
+*New For V2*
+
+If PassRemb can't find the commodities.library it will crash This shouldn't
+really affect any users though as this is a standard library that comes with
+Workbench.
+@endnode
+
+@node "HISTORY" "History"
+  V1.0  (14.5.95)
+
+      Original Release, Uploaded To A Few BBS`s In Brigton.
+
+  V1.1  (24.5.95)
+
+      Tidied up the code.
+      Added a feature to copy the datafiles to a new path if
+      one is selcted in the Prefs window.
+      Removed option to quit username/password entry due
+      to the fact it crashed the program.
+
+  V1.2  (8.7.95)
+
+      Cut the code down dramatically.
+      Added a feature to tell user if the passwords are
+      becoming a little outdated.
+      *********************
+      *NEW FILEFORMAT!!!!!*
+      *********************
+      Can still load/save original fileformat depending on wether
+      user has battery backed up clock.
+
+  V1.21 (12.7.95)
+
+      Added NEWLOOKMENUS flag to windows, this produces
+      system legal menus that keep the gadget disable
+      shading the same colour as if it was on KS2.04.
+      Also saves space on the code, so that was cut aswell!
+
+  V1.22 (13.7.95)
+
+      Added an option to quit the program at the username/password
+      entry box by clicking on the close gadget, didn`t see
+      the need to add the gadget again.
+
+  V1.3  (27.7.95)
+
+      Added a routine to stop people hacking into the unregistered
+      version and changing the "shareware" username and "password"
+      to what they liked.
+      Also, a new group is formed, ICED, me and Kieran Garland now
+      run a group called ICED. We do just about anything from utils
+      to games, why not contact me and give us ideas of what you
+      want to see in PD and Shareware.
+      Piracy will NOT keep the Amiga alive so don't be cruel to
+      shareware :-( don't pirate Password Rememberer :-)
+
+  V2  (19.8.95)
+
+      Completely redone the GUI to make it (hopefully) look better
+      than it did before. 
+      Switched configuration to use ToolTypes instead of an ASCII
+      file in the S: directory.
+      Converted PassRemb.DOC to a AmigaGuide file. The doc file
+      is now replaced with the guide in distribution as I feel
+      that by now every serious user either uses the AmigaGuide (WB2.0+)
+      program or Multiview (WB3.0+).
+      Also added online help in the form of guide format. 
+      Added "Typer" facility allowing PassRemb to type in passwords
+      for the user.      
+
+  V2.01  (29.9.95)
+
+      Small Update. As I got the BUM 7 Update For Blitz2 I Changed
+      Everything To ReqTools And Added GTMenus.
+      Fixed Bug In Prefs Window. If you selected a path for the help
+      file, it would put in the path for the Storage directory!!!
+
+  V2.1   (07.10.95)
+
+      Another bug fixed, the help file would not load. This is
+      because I was trying to improve it but the routine to
+      load it was bugged. It is amazing what one quote
+      character can do!!!
+
+  V2.12  (14.11.95)
+
+      Improved Font Adaptivity. Problem was caused when somebody
+      was using a screen font 8> and was using Workbench 3.0,
+      fixed by taking the fontheight from the y co-ordinates of
+      each gadget.
+
+  V2.15  (01.01.95)
+
+      Amiga Shopper Exclusive Version. No major improvements
+      really.
+@endnode
+

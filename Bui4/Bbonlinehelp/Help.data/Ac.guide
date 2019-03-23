@@ -1,0 +1,457 @@
+@DATABASE "AC.guide"
+
+@NODE AC01
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: Speak
+--------------------------------------------------------------------------
+@{fg text}Syntax: Speak string$
+Modes: Amiga
+
+Description:
+The Speak command will first convert the given string to phonetics and 
+then pass it to the Narrator.Device. Depending on the settings of the 
+Narrator device (see @{" SetVoice " link AC02}) the Amiga will 
+"speak" the string you have sent in the familiar Amiga synthetic voice.
+
+@{fg shine}Example:@{fg text}
+
+NPrint "Type something and hit return..." 
+NPrint "(just return to exit)"
+Repeat
+  a$=Edit$(80)
+  Speak a$
+Until a$="" 
+@ENDNODE
+@NODE AC02
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: SetVoice
+--------------------------------------------------------------------------
+@{fg text}Syntax: SetVoice rate,pitch,expression,sex,volume,frequency
+Modes: Amiga
+
+Description:
+SetVoice alters the sound of the Amiga's speech synthsiser by changing:
+
+@{fg shine}Rate:@{fg text}       measured in words per minute. Default 150, range 40-400.
+@{fg shine}Pitch:@{fg text}      the BaseLine pitch in Hz. Default 110, range 65-320
+@{fg shine}Expression:@{fg text} 0=robot 1=natural 2=manual        
+@{fg shine}Sex:@{fg text}        0=male 1=female     
+@{fg shine}Volume:@{fg text}     0 to 64       
+@{fg shine}Frequency:@{fg text}  samples per second (22200)
+
+As the following example shows you could very well rename the Speak 
+command the Sing command!
+;
+; sing the praises of Blitz BASIC!
+;
+While Joyb(0)=0 
+  Pitch=65+Rnd(255) 
+  rate=100+Rnd(200) 
+  SetVoice rate,pitch,1,1,64,22200
+  Speak "BLITZ BASIC" 
+Wend
+@ENDNODE
+@NODE AC03
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: Translate$
+--------------------------------------------------------------------------
+@{fg text}Syntax: Translate$(string$)
+Modes: Amiga
+ 
+Description:
+Translate$() returns the phonetic equivalent of the string for use with
+the Translate
+
+@{fg shine}Example:@{fg text}
+
+Print "Enter a Sentence ":a$=Edit$(80)
+NPrint "Phonetic=",Translate$(a$) 
+MouseWait 
+@ENDNODE
+@NODE AC04
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Statement: PhoneticSpeak
+--------------------------------------------------------------------------
+@{fg text}Syntax: PhoneticSpeak phonetic$
+Modes: Amiga
+ 
+Description:
+PhoneticSpeak is similar to the Speak command but should only be passed 
+strings containing legal phonemes such as that produced by the 
+Translate$() function.
+@ENDNODE
+@NODE AC05
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function: VoiceLoc
+--------------------------------------------------------------------------
+@{fg text}Syntax: VoiceLoc
+Modes: Amiga
+
+Description:
+VoiceLoc returns a pointer to the internal variables in the speech 
+synthesiser that enable the user to access new parameters added to the 
+V37 Narrator Device. Formants as referred to in the descriptions are the
+major vocal tracts and are separated into the parts of speech that 
+produce the bass, medium and trebly sounds.
+
+The new paramters are as listed
+               
+\flags                : set to 1 if using extended commands
+\f0enthusiasm         : amount of pitch difference on accents default=32
+\f0perturb            : amount of "wurble" ie random shake default=0
+\f1adj,\f2adj,\f3adj  : pitch adjust for low medium and high frequency
+                        formants. 0=default
+\a1adj,\a2adj,\a3adj  : amplitude adjust for low medium and high
+                        frequency formants 0=default
+\articulate           : speed of articulation 100=default
+\centralize           : amount of the centphon vowel in other vowels
+                        0=default
+\centphon             : a vowel to which all others are adjusted by the
+\centralize           : variable,
+                        (limited to IY,IH,EH,AE,AA,AH,AO,OW,UH,ER and 
+                         UW) 
+\AVbias,\AFbias       : amount of bias added to voiced and unvoiced 
+                        speech sounds, (y,r,w,m vs st,sh,f). 
+\priority             : task priority when speaking 100=default
+
+@{fg shine}Example:@{fg text}
+
+; 
+; voiceloc() example
+; 
+
+NEWTYPE .voicepars          ;new V37 parameters available 
+  	flags.b 
+  	f0enthusiasm:f0perturb
+  	f1adj:f2adj:f3adj 
+  	a1adj:a2adj:a3adj 
+  	articulate:centralize:centphon$ 
+  	avbias.b:afbias:priority:pad1 
+End NEWTYPE 
+
+*v.voicepars=VoiceLoc 
+
+*v\flags=1
+*v\f0enthusiasm=82,90 ;old aged highly excited voice
+*v\f1adj=0,0,0    ;these are fun to mess with 
+*v\a1adj=0,0,0
+*v\centralize=50,"AO" ;no effect
+*v\articulate=90
+*v\avbias=20,20 
+
+Speak "COME ON EVERYBODY, DANCE? boom boom !" 
+End
+@ENDNODE
+@NODE AC81
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : MakeCommodity@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=MakeCommodity(name$,title$,description$)
+
+This command attempts to add your Commodity to the list of commodities.
+A return value of -1 indicates success, 0 means failure. (not enough 
+memory)
+
+name$ refers to the name of the Commodity and it should be unique. This
+is the name that appears when running the Commodity Exchange program.
+title$ is the title of your program, e.g. "My Screen Blanker".
+description$ is a brief description of your program.
+
+The Commodity Exchange program will then have 'name$' in its list of
+Commodities and when a user clicks on your commodity, it will display
+the title$ and description$. 
+@ENDNODE
+@NODE AC82
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : SetHotKey@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : success=SetHotKey(hotkey#,hotkeydescription$)
+
+This will add a hotkey event to your commodity so that after a hotkey
+has been pressed you can find out which one.
+
+e.g.		success=SetHotKey(0,"lalt lshift a")
+@ENDNODE
+@NODE AC83
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : HotKeyHit@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : hitkeynum=HotKeyHit
+
+This will return the number of the hot key which has been hit since the
+last 'CommodityEvent' was called, or -1 if no such hotkey has been 
+activated.
+@ENDNODE
+@NODE AC85
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Function : CommodityEvent@{fg text}
+--------------------------------------------------------------------------
+Modes  : Amiga
+Syntax : anyevent=CommodityEvent
+
+This looks to see if either
+	a) A hotkey has been pressed
+	b) A message from Exchange has been received
+
+and returns -1 if such an event occurred, of 0 is nothing has yet 
+happened. This should be inside a Repeat-Until loop, e.g.
+
+	Repeat
+	  VWait
+	  ev.l=Event
+	  ce.l=CommodityEvent
+	  hk.l=HotKeyHit		; This must be used after                                         
+	Until ev or ce or hk            ; CommodityEvent
+
+@ENDNODE
+@NODE AC86
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE  
+@NODE AC87
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE         
+@NODE AC88
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE  
+@NODE AC89
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE
+@NODE AC8A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE  
+@NODE AC8B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE  
+@NODE AC8D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: ExchangeAppear/ExchangeDisAppear/ExchangeEnable/
+ExchangeDisable/ExchangeKill/ExchangeChangeList/ExchangeUnique@{fg text}
+--------------------------------------------------------------------------
+
+Modes : Amiga
+
+To be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	If em
+	  If ExchangeAppear then Gosub _appear
+	  If ExchangeDisAppear then Gosub _dispappear
+	EndIf
+
+This is intended as an alternative way of acting upon Exchange Messages.
+@ENDNODE     
+@NODE AC8E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: CxAppear/CxDisAppear/CxEnable/CxDisable
+                      CxKill/CxChangeList/CxUnique@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga
+
+These are to be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	Select em
+	  Case CxAppear
+	    Gosub _appear
+	  Case CxDisAppear
+            Gosub _disappear
+        End Select
+
+The functions merely return the ID value associated with that particular
+Commodities Exchange message.
+@ENDNODE     
+@NODE AC8F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: CxAppear/CxDisAppear/CxEnable/CxDisable
+                      CxKill/CxChangeList/CxUnique@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga
+
+These are to be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	Select em
+	  Case CxAppear
+	    Gosub _appear
+	  Case CxDisAppear
+            Gosub _disappear
+        End Select
+
+The functions merely return the ID value associated with that particular
+Commodities Exchange message.
+@ENDNODE     
+@NODE AC90
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: CxAppear/CxDisAppear/CxEnable/CxDisable
+                      CxKill/CxChangeList/CxUnique@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga
+
+These are to be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	Select em
+	  Case CxAppear
+	    Gosub _appear
+	  Case CxDisAppear
+            Gosub _disappear
+        End Select
+
+The functions merely return the ID value associated with that particular
+Commodities Exchange message.
+@ENDNODE         
+@NODE AC91
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: CxAppear/CxDisAppear/CxEnable/CxDisable
+                      CxKill/CxChangeList/CxUnique@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga
+
+These are to be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	Select em
+	  Case CxAppear
+	    Gosub _appear
+	  Case CxDisAppear
+            Gosub _disappear
+        End Select
+
+The functions merely return the ID value associated with that particular
+Commodities Exchange message.
+@ENDNODE     
+@NODE AC92
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: CxAppear/CxDisAppear/CxEnable/CxDisable
+                      CxKill/CxChangeList/CxUnique@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga
+
+These are to be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	Select em
+	  Case CxAppear
+	    Gosub _appear
+	  Case CxDisAppear
+            Gosub _disappear
+        End Select
+
+The functions merely return the ID value associated with that particular
+Commodities Exchange message.
+@ENDNODE     
+@NODE AC94
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+@{fg shine}Functions: CxAppear/CxDisAppear/CxEnable/CxDisable
+                      CxKill/CxChangeList/CxUnique@{fg text}
+--------------------------------------------------------------------------
+Modes : Amiga
+
+These are to be used in conjunction with ExchangeMessage, ie
+
+	em.l=ExchangeMessage
+	Select em
+	  Case CxAppear
+	    Gosub _appear
+	  Case CxDisAppear
+            Gosub _disappear
+        End Select
+
+The functions merely return the ID value associated with that particular
+Commodities Exchange message.
+@ENDNODE   
+
+

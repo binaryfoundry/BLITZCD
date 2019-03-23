@@ -1,0 +1,22 @@
+Short:    A library for bb2 to use DT and MUI! V1.1
+Uploader: erwan.fouret@wanadoo.fr (Erwan Fouret)
+Author:   erwan.fouret@wanadoo.fr (Erwan Fouret)
+Type:     dev/basic
+Distribution: FREEware
+Replaces: DoMethodBBLib*
+
+  This is a library for Blitz Basic 2 . It allows you to use the DoMethod
+function, so you can use the datatypes and MUI with Blitz !
+
+  Requirements :
+  
+ An Amiga !
+ Blitz Basic 2
+ Any OS (I think !)
+ A Hard Disk is highly recommended
+ 
+  This is FREEWARE !!! Take it !
+  
+ New version includes a MUI example ! 
+  
+©1997 by Erwan Fouret (erwan.fouret@wanadoo.fr)

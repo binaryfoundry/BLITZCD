@@ -1,0 +1,4 @@
+   The New menu item will erase the current dungeon in memory (all levels).
+A requester will appear if you have made changes since the last save. The
+values from the control panel (number of levels, width, height) remain
+intact.

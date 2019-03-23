@@ -1,0 +1,233 @@
+; ask where we are installing Blitz 2 from
+(set B2SRC
+    (askdir
+        (prompt "Please specify the source location you want to install from.")
+        (help @askdir-help)
+        (default "BlitzCD:")
+    )
+)
+
+; ask where to install Blitz2
+(set UpdateS_text
+      (cat
+            "One moment please, updating S:User0Startup"
+            newline
+            newline
+      )
+)
+
+(set UpdateSPrompt_text
+      (cat
+      "A Blitz2: assignment needs to be added to the \"S:User-Startup\" "
+      "so that your system will be properly configured to use Blitz2."
+   )
+)
+
+(set UpdateSPrompt_texts
+      (cat
+      "A Blitzlibs: assignment needs to be added to the \"S:User-Startup\" "
+      "so that your system will be properly configured to use Blitz2."
+   )
+)
+
+
+
+(set #progname
+(cat "Blitz2"
+))
+
+(set #prognames
+(cat "Blitzlibs"
+))
+
+
+(set vc-dest
+(askdir
+   (prompt "Please select the Directory where you would like to install"
+           " Blitz2. (A directory called Blitz2 WILL be created.)")
+   (help @askdir-help)
+   (default @default-dest)
+   )
+)
+
+(set @default-dest vc-dest)
+(set BB  (tackon @default-dest #progname))
+(makedir BB)
+(makedir (tackon BB #prognames))
+
+
+(
+(working "Installing Blitz2 Program")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/Blitz2"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+(working "Installing Ted Program")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/Ted"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+(working "Installing acidlibs")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/acidlibs"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+(working "Installing defaultdbug")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/defaultdbug"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+(working "Installing deflibs")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/deflibs"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+(working "Installing help")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/help"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+(working "Installing help.dat")
+(copyfiles
+         (prompt "")
+         (help @copyfiles-help)
+         (source (tackon B2SRC "Blitz2/help.dat"))
+         (dest BB)
+         (infos)
+)
+)
+
+(
+; Copy the blitzlibs directoy from the root of CD
+(working "Installing BlitzLibs directory")
+(copyfiles
+    (prompt "")
+    (help @copyfiles-help)
+    (source (tackon B2SRC "Extras/Blitzlibs"))
+    (dest (tackon BB #prognames))
+    (infos)
+    (all)
+)
+
+; copy blitzlibs from bum 9, first the testlibs
+(copyfiles
+	(prompt "")
+	(help @copyfiles-help)
+	(source (tackon B2SRC "Bum9b/Blitzlibs/Testlibs"))
+	(dest (tackon (tackon BB #prognames) "otherlibs"))
+	(infos)
+	(all)
+)
+
+; still from bum 9, the otherlibs
+(copyfiles
+	(prompt "")
+	(help @copyfiles-help)
+	(source (tackon B2SRC "Bum9b/Blitzlibs/Otherlibs"))
+	(dest (tackon (tackon BB #prognames) "otherlibs"))
+	(infos)
+	(all)
+)
+
+; now from bum 10, the testlibs
+(copyfiles
+	(prompt "")
+	(help @copyfiles-help)
+	(source (tackon B2SRC "Bum10a/Blitzlibs/Otherlibs"))
+	(dest (tackon (tackon BB #prognames) "otherlibs"))
+	(infos)
+	(all)
+)
+
+; and now the otherlibs from bum 10
+(copyfiles
+	(prompt "")
+	(help @copyfiles-help)
+	(source (tackon B2SRC "Bum10a/Blitzlibs/Otherlibs"))
+	(dest (tackon (tackon BB #prognames) "otherlibs"))
+	(infos)
+	(all)
+)
+)
+
+(startup "Blitz2"
+         (prompt UpdateSPrompt_text)
+         (help @startup-help)
+         (command "ASSIGN Blitz2: " quote BB quote newline)
+)
+
+(makeassign "Blitz2" BB)
+
+(set @default-dest BB)
+(set BB  (tackon @default-dest #prognames))
+
+
+(startup "Blitzlibs"
+         (prompt UpdateSPrompt_texts)
+         (help @startup-help)
+         (command "ASSIGN Blitzlibs: " quote BB quote newline)
+)
+
+(makeassign "Blitzlibs" BB)
+
+(set installer_prog (tackon b2src "installer"))
+(set bss_script (tackon b2src "Bss1/Install"))
+
+(execute "instbss"
+    (prompt "Installing the RWE Blitz Support Suite")
+)
+
+(protect "Blitz2:REDHelp/Red_Help" "+s")
+(protect "Blitz2:REDHelp/RED_Help.rx" "+s")
+(protect "Blitz2:REDHelp/Showexample" "+s")
+
+(run "changelib PROGDIR: staticslib.obj"
+	(prompt "Patching acidlibs file")
+)
+
+(message "You should download the patches to the SuperTEd and REDDebugger"
+         "from http://www.ldngedge.demon.co.uk/amigapatches_f.html"
+         "\n\n"
+         "Your acidlibs file has had the patch applied to fix it."
+         "\n\n"
+         "You should also download the latest version of the amigalibs.res"
+         "file, which is in the NewCommandSet.lha archive, in dev/basic"
+         "on your local Aminet mirror (http://de.aminet.net/aminet if"
+         "you don't know where Aminet is")
+(exit)

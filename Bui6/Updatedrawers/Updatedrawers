@@ -1,0 +1,93 @@
+failat 21
+
+;if not exists XEN-Icons
+;  echo "*n Please change current directory to that of MagicWB *n or start the installation from the Workbench!*n"
+;  quit
+;endif
+
+echo "*n*e[1;32m ____________________________________________________________________"
+echo " *e[43m                                                                    *e[0m"
+echo " *e[0;32;43m              Welcome to UPDATE DRAWERS V1           *e[1m               *e[0m"
+echo " *e[1;4;43m                                                                    *e[0m"
+echo "*n*n This small installation was written to provide you with the most"
+echo " comfortable way to replace the old Drawer-Icons with the new ones"
+echo " of the default"
+echo " *n If you have found old drawers on your Workbench, please remember"
+echo " the PATH where they are located to provide this installation with" 
+echo " the exact path so that it can update these drawers."
+echo noline "*n*n Start the Drawer-Update? "
+
+set > nil: InpVar ?
+
+if $InpVar eq "ja"
+  skip Start
+endif
+
+if $InpVar eq "j"
+  skip Start
+endif
+
+if $InpVar eq "y"
+  skip Start
+endif
+
+if $InpVar eq "yes"
+  skip Start
+endif
+
+echo noline "*n*e[32m Update aborted."
+endcli
+
+lab Start
+echo "*e[1;1H*e[J"
+echo "*n You can decide now if you want to update the drawers ONLY"
+echo " IN THE DIRECTORY of the given path (= Normal mode) or INCLUDING"
+echo " ALL SUB-DIRECTORIES of the given path (= Recursive mode).*n"
+echo " If you want to do it in the normal mode enter [32mN[0m."
+echo " If you want to do it recursively enter [32mR[0m."
+echo noline "*n Which mode do you prefer? "
+set Mode [Return]
+set > NIL: Mode ?
+if $Mode eq "N"
+  skip PathN
+endif
+if $Mode eq "R"
+  skip PathR
+endif
+echo "[32m*n You have not selected the correct mode! Please try again...[0m"
+wait 4
+skip back Start
+
+lab PathN
+echo noline "*n*n*N Please enter the PATH where old Drawer-Icons are located: "
+set > NIL: Path ?
+  if > NIL: not exists $Path
+    echo " Wrong path, `$path' does not exist! Try again...*n"
+    skip back PathN
+  endif
+echo noline "*n Updating Drawer-Icons in $Path ..."
+list > ram:MWB $Path dirs lformat "if exists %s%s.info *nUpdateDw %s%s *nendif*n"
+execute > NIL: ram:MWB
+delete > NIL: ram:MWB
+echo "....*e[33mDONE*e[0m"
+echo "*n*n*e[32m Drawer-Update successfully finished!*e[0m"
+skip prefs
+
+lab PathR
+echo noline "*n*n*N Please enter the PATH where old Drawer-Icons are located: "
+set > NIL: Path ?
+  if > NIL: not exists $Path
+    echo " Wrong path, `$path' does not exist! Try again...*n"
+    skip back PathR
+  endif
+echo noline "*n Recursively updating Drawer-Icons in $Path ..."
+list > ram:MWB $Path dirs all lformat "if exists %s%s.info *nUpdateDw %s%s *nendif*n"
+execute > NIL: ram:MWB
+echo "....*e[33mDONE*e[0m"
+echo "*n*n*e[32m Drawer-Update successfully finished!*e[0m"
+
+lab prefs
+
+delete > NIL: ram:MWB
+wait 4
+endcli

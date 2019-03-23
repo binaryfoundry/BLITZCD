@@ -1,0 +1,210 @@
+                                      TRACKEM
+                                     ---------
+
+                                 © 1995 OSCARsoft
+                           Written by Neil "TEX" Miller
+
+                             neil@triode.apana.org.au
+
+
+                    Written in Blitz Basic V1.9 © ACID Software
+
+OVERVIEW:
+----------
+A mate of mine allowed me to look for some Type 1 fonts on a cd he had, it turned
+out that the cd had heaps of them. However, they were all in individual directories
+along with other related files. I was only interested in the .PFB files, I was so
+desperate for them I sat there with Diropus and went through each directory and
+file copied each file one by one to my harddrive.
+
+I swore never to do such a tedious job ever again!
+
+
+WHAT IT IS:
+------------
+In the simplest terms, TRACKEM does exactly what it's name says...It TRACKS down
+files for you! It then presents you with a list of the files that matched and
+allows you to copy these files to a single destination.
+
+It requires DOS 2.0 or up!
+
+
+FEATURES:
+----------
+*)-It can scan EVERY Drive, Network & CD connected in one pass for files.
+
+*)-It can copy to multiple destinations when the original is full.
+
+*)-It's easy to use.
+
+*)-It's damn handy too!
+
+
+INSTALLATION:
+--------------
+Pretty simple, just copy reqtools.library to your libs directory.
+Then double click on the icon.
+
+
+STARTUP:
+---------
+When first started it scans all your devices to generate a drive list, floppy
+drives or other such devices like MC0: PC0: DS0: will only be listed if they
+contain a valid disk. If you do insert one after starting TRACKEM, then you can
+re-scan and it will then appear in the list of drives.
+
+PARNET:
+--------
+A word about parnet, unless you have parnet set up perfectly, not every partition
+on the client side of the net, (The other side) is logged as available to NET:. If
+you wish to be able to track ALL partitions on this machine you will have to do a
+manual CD to each partition so that parnet then knows they exist, or use the source
+file requestor and do it that way. then trackem will be able to check every
+partition. Or if you just want to check one partition then just use the "use path
+requestor" and set the source to that path.
+
+
+USING IT:
+----------
+To start TRACKING, simply click on the required drives in the drive list, an > will
+appear next to each drive that has been selected to be tracked. Or you can use the
+3 gadgets situated directly under the drive list - A N T
+A = ALL Drives.
+N = NO Drives.
+T = TOGGLE Drives.
+
+Below these gadgets in a checkbox gadget, this allows you to use a path selecter to
+choose the search path directly. When selected, only this path will be checked, to
+turn this off, un-check this option.
+
+NOTE: When TRACKING, it only tracks all sub-dirs from the selected dir and down, it
+does not come up higher than the directory from where it was started. This only
+applies to when you are using the "Use Path Requestor".
+
+When you select a drive, the START gadget will become active, it will only be
+active while drives are selected or the Use REQ checkbox is checked.
+
+
+WILDCARDS:
+-----------
+Once you have the drives selected, you must enter the file pattern that you want to
+TRACK. This is entered in the top right corner of the window with the default being
+*.info. Click inside this gadget to enter you own file pattern.
+
+If you want a dead on match, then leave off any wildcard (*)'s.
+
+Valid wild cards are as follows...
+
+.info   - Only gets a perfect match.
+*.info  - Only matches at the end of a file name.
+.info*  - Only matches at the beginning of a file name.
+*.info* - Matches anywhere in the file name, Front, Back & anywhere in it.
+
+You can enter anything you want, you can even enter a single letter like *a* and
+every file that contains an 'a' will be tracked. On my system there are over 60,000
+files and just on 43,000 of them have the letter 'a' in them!
+
+Click on the START gadget and it will start TRACKING through each of the drives
+selected, this progress is displayed in the box under where you entered the file
+pattern.
+
+You can click on CANCEL at any time to abort the TRACKING Process.
+
+While this process is going on, various pieces of information will be updated in
+the main window.
+
+These include...
+
+The total number of Files that have been examined.
+The total number of Directories that have been examined.
+The total number of Bytes examined.
+
+The total number of Files that matched.
+The total number of Bytes of the Files that matched.
+
+Once the process is complete or canceled, a requestor will appear giving you a
+report based on what it has TRACKED. This report contains information like...
+
+The total number of files & bytes that were checked in how many directories it
+searched.
+The total number of files matched and the total bytes of these files.
+The total time it took to do the TRACK.
+An approximate number of files per second  it was tracking at.
+
+All the files that were tracked will show up in the TRACKED FILES list. As a
+default they will all be selected with a '>'. You can move through this list with
+the slider or arrows at the right of this list. You can also unselect files by
+simply clicking on them, they can be re-selected by again clicking on the file
+name.
+
+After a TRACK is completed, the row of gadgets under the file list will become
+active, these include...
+
+SORT   - Sort the file list by File Name or File size.
+ALL    - Selects all files.
+NONE   - No files are selected.
+TOGGLE - This will toggle the file selections.
+DEST   - A DESTINATION Requester will appear allowing you to select your final
+         destination for the files.
+
+Just to the right of DEST is a checkbox gadget marked 'INTERROGATE'. When this is
+checked, you can click on any file in the list and a requestor will appear with
+information about this file including...
+
+FILE NAME.
+FILE SIZE.
+PROTECTION BITS.
+FULL PATH.
+
+While this mode is enabled, you can do nothing else apart from read the ABOUT msg
+or quit, to leave this mode simply un-check this gadget.
+
+If you already have selected a destination, it's path and amount of free space will
+be shown in the two extra boxes in the middle of the window. If there is enough
+free space for all the files then the COPY ALL gadget will become active, if not,
+then the COPY TO FIT gadget will.
+
+As you select and de-select files, a counter at the bottom right will keep track of
+your progress. It shows the total number of files you have selected and the total
+number of bytes those files take up. It also recalculates the space needed and
+adjusts the COPY gadgets accordingly.
+
+Click on either COPY ALL or COPY TO FIT to start the process. A requester will ask
+you to confirm that you want to copy the selected files.
+
+Once copying has commenced, a progress meter will appear showing the % complete.
+
+During this process a requestor may appear saying that a file already exists. It
+will tell you the name of the file and also the file sizes of the new and old
+files. You will be prompted to do one of 3 things.
+
+RENAME!    - Selecting this will append a . and a number depending on how many
+             copies already exist.
+SKIP IT!   - This will skip the curent file.
+OVERWRITE! - The existing file will be overwritten by the new file.
+
+If you selected COPY ALL then the copy process will continue until it is completed.
+
+IF you selected COPY TO FIT then, depending on how much space is needed and what is
+available, it will ask you to select a new destination until all files have been
+copied.
+
+At the moment the SORT function is disabled until I can get a better routine that
+does not run out of stack space.
+
+A big thanks to Gary O'Conner for the new useful commands he wrote for Blitz.
+
+Well if you find this program useful then do send me a postcard.
+
+send any postcards, bug reports or suggestions for improvement to ....
+
+Neil Miller.
+P.O. Box 791
+Hornsby, NSW, AUSTRALIA, 2077
+
+Or drop me a line of internet at neil@triode.apana.org.au or find me on Midnight
+Caller under the handle of TEX.
+
+I would love someone to do a nice Magic WB type icon for the program, if you do
+then send it to me and I will release it with the next version.
+

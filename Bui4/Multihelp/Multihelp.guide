@@ -1,0 +1,198 @@
+@database amigaguide.guide
+@master Blitz2Progs:MultiHelp.GUIDE
+@$VER: V1.1
+@author "Lee Packham"
+@(c) "1995 Lee Packham"
+@wordwrap
+@remark Created with Heddley v1.1 (c) Edd Dumbill 1994
+
+@node "MAIN" "MultiHelp V1 - Contents"
+                                MultiHelp V1.1
+                                By Lee Packham
+                             (C)1995 Lee Packham
+
+        @{"    " link "INTRO" 0} Introduction
+        @{"    " link "DISCLAIMER" 0} Disclaimer
+
+        @{"    " link "REQUIRE" 0} System Requirements
+        @{"    " link "INSTALL" 0} Installation
+        @{"    " link "RUN" 0} Running MultiHelp
+
+        @{"    " link "USING" 0} Using MultiHelp
+        @{"    " link "CONFIGURE" 0} Configuring MultiHelp
+
+        @{"    " link "CONTACT" 0} Contacting The Author
+        @{"    " link "CREDITS" 0} Credits/Thankyous
+        @{"    " link "HISTORY" 0} History
+@endnode
+
+@node "INTRO" "MultiHelp V1 - Introduction"
+        Picture This:- Youv`e just got a new PD/Shareware program that is 
+really complicated to use (PGP is a good example). Everytime you get stuck 
+you have to go back to the directory where the program is and double-click 
+on the GUIDE or DOC file. And even then the Default Tool is normally wrong 
+for you system!
+        This is where MultiHelp comes in. MultiHelp is a commodity that 
+sits in the background. It allows you to assign Hotkeys to the GUIDES and 
+DOCS asscoiated with these annoying programs. The viewers are pre-defined 
+in the programs configuration, so you never get "Unable To Load You 
+Tool..." errors, there a thing of the past!
+@endnode
+
+@node "DISCLAIMER" "MultiHelp V1 - Disclaimer"
+        MultiHelp is (C)opyright 1995 Lee Packham. All Rights Reserverd. 
+MultiHelp is freely distributable but the copyright remains with the author,
+so nobody goes to make a program called MultiHelp okay!?!!
+        MultiHelp is freely distributable as long as the following rules 
+are kept to...
+
+                1. None of the files are modified in
+                   anyway at all (this included
+                   crunching).
+
+                2. MultiHelp may only be archived with
+                   LhA or LZX.
+
+                3. MultiHelp must not be distributed
+                   for profit.
+
+                4. If a magazine wishes to include
+                   MultiHelp on there magazine coverdisk
+                   they should at least contact me
+                   first.
+@endnode
+
+@node "REQUIRE" "MultiHelp V1 - Requirements"
+        Guess what? MultiHelp is KS2.04+ only. KS1.3 is ancient and should 
+have the last nail nailed into it`s coffin!
+        MultiHelp needs the following libraries in the LIBS: directory 
+(these are not included)...
+
+                1) commodities.library
+                2) reqtools.library
+@endnode
+
+@node "INSTALL" "MultiHelp V1 - Installation"
+        Just drag MultiHelp into any directory you wish to and it`ll be 
+happy!
+@endnode
+
+@node "RUN" "MultiHelp V1 - Running"
+        Double-Click on the icon! MultiHelp CAN`T be run from the CLI so 
+don`t try it. You also can`t rename the program for security reasons.
+@endnode
+
+@node "USING" "MultiHelp V1 - Using"
+        Upon loading, MultiHelp will bring up a window. This window 
+contains the main gadgets and menu options you will need to use the 
+program. Here is a list of things you will want to do and how to do 
+them...
+
+                @{"    " link "U1" 0} Adding A New Entry
+                @{"    " link "U2" 0} Editing An Entry
+                @{"    " link "U3" 0} Deleting An Entry        
+                @{"    " link "U4" 0} Saving The List Of Entries
+                @{"    " link "U5" 0} Calling A HelpFile
+@endnode
+
+@node "U1" "MultiHelp V1 - Adding A New Entry"
+        To add a new entry click on the "New" button. This will bring up a 
+window for you to enter the details of the file. You can then click on 
+"Okay" to add it, "Cancel" to errrhhh and "Test" to errrhhh!
+@endnode
+
+@node "U2" "MultiHelp V1 - Editing An Entry"
+        To edit an entry, click on it in the list. This will bring up the 
+same window as if you were going to add a new entry but with the details 
+filled in. Edit as you need to.
+@endnode
+
+@node "U3" "MultiHelp V1 - Deleteing An Entru"
+        To delete an entry, click on it in the list to bring up the edit 
+window, then from the menu on that window select "Delete Item". This will, 
+erm, delete the item.
+@endnode
+
+@node "U4" "MultiHelp V1 - Saving The List Of Entries"
+        To save the list of entries, click on "Save". This will create a 
+file called "S:MultiHelp.CFG" which will automatically be loaded when you 
+load the program.
+@endnode
+
+@node "U5" "MultiHelp V1 - Calling A HelpFile"
+        To call a HelpFile just hit the hotkey you chose when you entered 
+the entry.
+@endnode
+
+@node "CONFIGURE" "MultiHelp V1 - Configuring"
+        MultiHelp`s configuration is in the form of tool types connected 
+to the program`s icon. To edit these click once on the program`s icon and 
+select "Information..." from the "Icon" menu. The following ToolTypes are 
+avaliable...
+
+                @{"    " link "C1" 0} CX_POPUP
+                @{"    " link "C2" 0} CX_POPKEY
+                @{"    " link "C3" 0} GUIDE
+                @{"    " link "C4" 0} TXT
+@endnode
+
+@node "C1" "MultiHelp V1 - CX_POPUP"
+ ToolType: CX_POPUP Type: BOOL
+
+This is either set to "YES" or "NO" depending on whether you wish MultiHelp 
+to bring up it`s window upon loading of not.
+@endnode
+
+@node "C2" "MultiHelp V1 - CX_POPKEY"
+ ToolType: CX_POPKEY Type: STRING
+
+This is the hotkey for bringing up the MultiHelp window whenever you need it.
+@endnode
+
+@node "C3" "MultiHelp V1 - GUIDE"
+ ToolType: GUIDE Type: STRING
+
+This is the program that will be used for AmigaGuide files.
+
+        e.g. GUIDE=SYS:Utilities/AmigaGuide
+        or   GUIDE=SYS:Utilities/MultiView
+@endnode
+
+@node "C4" "MultiHelp V1 - TXT"
+ ToolType: TXT Type: STRING
+
+This is the program that will be used for Plain ASCII files.
+
+        e.g. TXT=SYS:Utilities/More
+        or   TXT=SYS:Utilities/Multiview
+@endnode
+
+@node "CONTACT" "MultiHelp V1 - Contacting The Author"
+
+        Lee Packham
+        212 Upper Shoreham Road
+        Shoreham-By-Sea
+        West Sussex
+        BN43 6BG
+        ENGLAND
+
+        Phone No.
+        +44-1-273-465335
+
+@endnode
+
+@node "CREDITS" "MultiHelp V1 - Credits"
+Lee Packham - Programming, Design, Original Concept
+              (In Other Words, EVERYTHING!)
+
+Kevin Winspear - The cool programmer `ere up North!
+@endnode
+
+@node "HISTORY" "MultiHelp V1 - History"
+ V1        The first ever, took about a week to
+           program
+
+ V1.1      Added true font adaptivity, I hope, to
+           the liking of myself!
+@endnode
+

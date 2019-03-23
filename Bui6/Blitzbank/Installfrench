@@ -1,0 +1,80 @@
+
+(welcome)
+
+(set PROGNAME "BlitzBank")
+
+(set path
+   (askdir
+      (prompt ("Dans quel répertoire Voulez-vous installer %s ?" PROGNAME) )
+      (help
+         "Tous les fichiers de la disquette seront"
+         " copiés directement dans le répertoire choisi."
+         " Aucun répertoire supplémentaire ne sera créé."
+      )
+      (default "dh1:")
+   )
+)
+
+; Install main program files
+
+(set path.source (pathonly @icon) )
+
+(copyfiles
+   (prompt ("Copie Des Fichiers vers %s" path))
+   (help   "")
+   (choices
+   "datas"
+   "Doc"
+   "Doc.info"
+   "BlitzBank"
+   "BlitzBank.prefs"
+   "BlitzBank.im"
+   "BlitzBank.info"
+   "BlitzBank.tap"
+   "Exemple.cpt"
+   "Exemple.cpt.info")
+   (source path.source)
+   (dest path)
+)
+
+(copyfiles
+   (prompt ("Copie Des Fichiers vers %s" "locale:catalogs/français"))
+   (help   "")
+   (choices "catalogs")
+   (source path.source)
+   (dest "locale:")
+)
+
+(complete 80)
+
+(copyfiles
+   (prompt "Copie Des Fonts")
+   (help ""
+   )
+   (choices "BlitzBank" "BlitzBank.font" )
+   (source "fonts")
+   (dest "FONTS:")
+   (infos)
+   (optional nofail)
+)
+
+(complete 90)
+
+(startup
+   PROGNAME
+   (prompt "Souhaitez-Vous que j'ajoute les commandes "
+           "nécessaires à votre User-Startup ?"
+   )
+   (help
+      "Sélectionnez le bouton PROCEED si vous autorisez l'écriture"
+      " sur votre User-Startup ."
+   )
+   (command ("assign blitzbank: %s" path))
+)
+
+(complete 100)
+
+(exit
+   "Maintenant,rebooter votre Amiga et lancer BlitzBank "
+   ("depuis le répertoire %s" path)
+)

@@ -1,0 +1,6 @@
+   N Levels sets the number of levels you want to have randomly built or to
+have available in the editor. This field will also determine what values
+can be displayed in the Level and Range fields. These fields cannot have a
+value greater than N Levels.
+   When clicking on the arrow buttons to change the value, a left click
+changes it by 1 and a right click changes it by 5.

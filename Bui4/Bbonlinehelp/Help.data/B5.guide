@@ -1,0 +1,300 @@
+@DATABASE "B5.guide"
+
+@NODE B583
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}FASTFREE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}FastFree@{fg text} 
+Modes: Amiga or Blitz
+
+This function returns the size of the largest block of FAST memory.
+@ENDNODE
+
+@NODE B502
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}Par$@{fg text}
+--------------------------------------------------------------------------
+Syntax  : Par$(parameter#) 
+Library : cliargslib
+
+Description:
+Returns the string value of a parameter.  
+
+@{fg shine}NOTE:@{fg text} If the parameter asked for is a directory/device/volume etc
+(IE NOT A FILE) then Par$(#) will return an empty string.  This is a one
+way you can check to see if a file was passed or not.
+@ENDNODE
+
+@NODE B503
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}FromCLI@{fg text}
+--------------------------------------------------------------------------
+Function: FromCLI 
+Library : cliargslib
+
+Description:
+Returns TRUE (-1) if your program was run from the CLI, or FALSE (0) if run
+from the WorkBench.
+@ENDNODE
+
+@NODE B504
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ParPath$@{fg text}
+--------------------------------------------------------------------------
+Syntax  : ParPath$ (parameter,type)
+Library : cliargslib
+
+Description:
+This returns the path that this parameter resides in. 'type' specifies 
+how you want the path returned.
+
+0 You want only the directory of the parameter returned.
+1 You want the directory along with the parameter name returned.
+
+EG:
+
+If you passed the parameter "FRED" to your program from WorkBench, and 
+FRED resides in the directory "work:mystuff/myprograms" then ParPath$(0,0)
+will return "work:mystuff/myprograms", but ParPath$(0,1) will return
+"work:mystuff/myprograms/FRED".
+
+CAVEAT
+The way WB handles argument passing of directories is different to that 
+of files.  When a directory is passed as an argument, ArgsLib gets an 
+empty string for the name, and the directory string holds the path to the
+passed directory AND the directory name itself.  EG
+
+Passing the blitz2 directory to a program will result in:
+
+Par$(x)     Being an empty string.
+ParPath$(x,0)   Being something like work:Basic/blitz2.
+ParPath$(x,1) Being work:Basic/blitz2/
+
+YES!  The / is appended!  This is because to keep things simpler, and more
+uniform ParPath$(x,1) Is the concatenation of
+
+1)  The directory string passed by Workbench
+
+AND
+
+2)  A / followed by the name given by WorkBench.
+
+So you can see why the / followed by the empty string occurs.
+
+The easy way around this is simply to check Par$(x), if it is empty, then
+use ParPath$(x,0), if it isn't (IE a file was passed) use ParPath$(x,1) 
+and you will have the entire pathname of the file OR directory.
+
+See the demo program, which handles both cases.
+
+@{fg shine}NOTE 2:@{fg text} Is only useable from WorkBench, you will get an error if your 
+program was run from the CLI and you try to call ParPath$.
+@ENDNODE
+
+@NODE B581
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}NULL@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Null@{fg text} (String$)
+Modes: Amiga or Blitz
+
+Many Amiga shared libraries (like the DOS library) require addresses
+of null-terminated strings as arguments.  This function will return
+a long-integer address of a null-terminated string in memory for such
+commands.
+@ENDNODE
+
+@NODE B582
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}CHIPFREE@{fg text}
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ChipFree@{fg text} 
+Modes: Amiga or Blitz
+
+This function will return the size, in bytes, of the largest block of
+free CHIP memory in your system.
+
+See Also: @{" FastFree " link B583},@{" LargestFree " link B584}
+@ENDNODE
+
+@NODE B584
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}LARGESTFREE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}LargestFree@{fg text} 
+Modes: Amiga or Blitz
+
+This function will return the size of the largest chunk of memory 
+available. This memory may be FAST or CHIP, depending on your system.
+@ENDNODE
+
+@NODE B585
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}INTUITIONBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}IntuitionBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns Intuition Library base
+@ENDNODE
+
+@NODE B586
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}DOSBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}DosBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns DOS Library base
+@ENDNODE
+
+@NODE B587
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}GRAPHICSBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}GraphicsBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns Graphics Library base
+@ENDNODE
+
+@NODE B588
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement: @{fg shine}FileFilter@{fg text}
+--------------------------------------------------------------------------
+Syntax   : FileFilter Show$,Hide$
+
+This sets the Hide and Show filters in the req file requester
+
+FileFilter "Req.*","*.Bak"
+
+This will show all files starting with 'Req.' but not ones ending with 
+'.Bak'
+@ENDNODE
+
+@NODE B589
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}DISKFONTBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}DiskFontBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns DiskFont Library base
+@ENDNODE
+
+@NODE B58A
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}COMMODITIESBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}CommoditiesBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns Commodities Library base
+@ENDNODE
+
+@NODE B58B
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ICONBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}IconBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns Icon Library base
+@ENDNODE
+
+@NODE B58C
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}REXXSYSBASE@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}RexxSysBase@{fg text}  
+Modes: Amiga or Blitz
+
+Returns RexxSys Library base
+@ENDNODE
+
+@NODE B58D
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement or Function: @{fg shine}REQUEST@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}Request@{fg text} (Title$,Text$,GadgetText$)
+Modes: Amiga
+
+
+@{fg shine}This command is 2.0-specific.  If you're still using 1.3, 
+this command will be unavailable to you.@{fg text}
+
+"Request" can be used as both a command or a function.  You may
+provide an optional title (or "" for default window title) a string
+of text (separated by pipes "|" for each line) and a string containing
+text for gadgets within the requester.  (Separate with "|" if you
+need more than one.)
+Used as a command, it merely displays the requester on the current
+screen and waits for the user to click a gadget.  As a function, it
+will also return a number corresponding to the gadget selected.
+The gadget on the right should be reserved for negative responses
+such as "CANCEL" or "NO" and will always return zero.  Other gadgets
+will return values in the order that they appear, beginning with
+1 for the first gadget, 2 for the next, etc.
+@ENDNODE
+
+@NODE B58E
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ACTIVESCREEN@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ActiveScreen@{fg text}
+Modes: Amiga
+
+This function returns ADDRESS of current Intuition screen.  This is
+useful with many Intuition library commands, or to find out information
+about the currently active screen.
+@ENDNODE
+
+@NODE B58F
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SCREENWIDTH@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ScreenWidth@{fg text}  
+Modes: Amiga
+
+This function returns the pixelwidth of the currently active screen.
+@ENDNODE
+
+@NODE B590
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}SCREENHEIGHT@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ScreenHeight@{fg text}  
+Modes: Amiga
+
+This function returns the pixelheight of the active screen
+@ENDNODE
+
+@NODE B591
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Function: @{fg shine}ACTIVEWINDOW@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}ActiveWindow@{fg text}  
+Modes: Amiga
+
+This function returns the address of the current window.
+This address is mainly used in conjunction with Intuition library
+commands.
+@ENDNODE
+
+@NODE B592
+@toc "Blitz2:Help.Data/BBOnLineHelp.guide/MAIN"
+Statement or Function: @{fg shine}WAITFOR@{fg text} 
+--------------------------------------------------------------------------
+Syntax: @{fg shine}WaitFor@{fg text} (IDCMP Code)  
+Modes: Amiga
+
+Similar to WaitEvent, WAITFOR puts the Amiga to "sleep" until a 
+specified IDCMP code wakes it up.  For example, WaitFor $400 would wait
+until the user strikes a key, and WaitFor $8 would wait until the 
+"close" gadget of the current window was clicked on.  These IDCMP codes 
+are additive, so WaitFor $408 would wait until either the "close" gadget
+was selected, or a key was pressed.  Refer to the section on "windows" 
+in the Blitz2 Reference Manual for more information on IDCMP codes.
+@ENDNODE
+
+

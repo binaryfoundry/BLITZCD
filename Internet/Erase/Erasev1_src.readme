@@ -1,0 +1,44 @@
+Short:     Blitz Source code for Erase
+Uploader:  paull@thenet.co.uk  (Paul Lathwell)
+Author:    paull@thenet.co.uk
+Type:      dev/blitz
+
+
+OVERVIEW
+
+ Blitz Source code distribution for Erase - a simple file deletion utility.
+
+ Just a simple program to open a requester for deleting files,
+ rather than having to resort to a directory utility, cli or
+ using the Workbench delete menus. I really wrote this program
+ for two reasons...
+
+ 1. So my brother could delete files he had created in Wordworth
+    without having to resort to learning the use of Directory Opus
+    etc. which also means he is unlikely to delete any of my files!
+
+ 2. As a test program to use the reqtools library requester using the
+    commands available in the 'neilsreqtoolslib' library.
+
+
+USAGE
+
+ Erase is best used by adding it to your Workbench menus using a program
+ such as Toolsdaemon. There are two tooltype that may be set...
+
+ PATH - This sets the default directory the file requester opens when
+        Erase is run. Intially set to - Sys:
+
+ PATTERN - The pattern used by the requester. Initally set to -  #?
+
+ Just run Erase and select the files you want to delete. Hold down the
+ shift key to select multiple files. Just click on 'Okay' when you've
+ selected the required files - job done. :-)
+
+
+This program and source may be freely distrubuted, providing the contents
+of the  archive remain unchanged.
+
+Erase and it's source code is provided 'as is' and without warranty.
+You use this program entirely at your own risk!
+
