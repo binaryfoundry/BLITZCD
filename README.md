@@ -15,3 +15,14 @@ A PDF scan of the Blitz Basic 2.1 manual has been included from the English Amig
 http://eab.abime.net/showthread.php?t=91144
 
 [PDF Manual](Manual/BB21Manual.pdf)
+
+# Credits
+
+## Acid Software
+
+I have not been in contact with Acid directly for their approval, but the CD is present on archive.org and I felt it needed preserving properly. I will take down the repo if they object to it.
+
+## EAB Forums members
+
+* MickGyver
+* idrougge
