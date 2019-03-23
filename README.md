@@ -7,3 +7,11 @@ http://eab.abime.net/showthread.php?t=82871
 ## Usage
 
 Select this directory as a hard drive in WinUAE/FS-UAE as BLITZCD, run the installer.
+
+## Manual
+
+A PDF scan of the Blitz Basic 2.1 manual has been included from the English Amiga Board forums.
+
+http://eab.abime.net/showthread.php?t=91144
+
+[PDF Manual](Manual/BB21Manual.pdf)
