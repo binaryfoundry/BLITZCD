@@ -4,6 +4,8 @@ This CD originally came from archive.org but the installer would not work. A pat
 
 http://eab.abime.net/showthread.php?t=82871
 
+Commit 56da8 updates the Deflibs file, which corrects some unknown tokens loaded from .bb2 binary source files appearing as '?????'. This makes much of the code on the CD useful again.
+
 ## Usage
 
 Select this directory as a hard drive in WinUAE/FS-UAE as BLITZCD, run the installer.
@@ -11,8 +13,6 @@ Select this directory as a hard drive in WinUAE/FS-UAE as BLITZCD, run the insta
 ### ASCII Source Files
 
 Some .bb2 files have been converted to ASCII to be readable outside of TED the Blitz editor, however this will break INCLUDE directives so included files will need to be saved in Blitz format again to work.
-
-Commit 56da8 updates the Deflibs file which corrects some unknown tokens loaded from .bb2 binary source files appearing as '?????'.
 
 ## Manual
 
