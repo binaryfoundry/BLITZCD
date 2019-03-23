@@ -8,6 +8,12 @@ http://eab.abime.net/showthread.php?t=82871
 
 Select this directory as a hard drive in WinUAE/FS-UAE as BLITZCD, run the installer.
 
+### ASCII Source Files
+
+Some .bb2 files have been converted to ASCII to be readable outside of TED the Blitz editor, however this will break INCLUDE directives so included files will need to be saved in Blitz format again to work.
+
+On occasion tokens have changed between versions of Blitz and source files load with '?????' in place of the unknown token, in these cases the code has been left in Blitz format instead of ASCII.
+
 ## Manual
 
 A PDF scan of the Blitz Basic 2.1 manual has been included from the English Amiga Board forums.
